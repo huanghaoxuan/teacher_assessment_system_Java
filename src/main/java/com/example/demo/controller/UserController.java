@@ -11,9 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import com.example.demo.service.UserService;
 import springfox.documentation.annotations.ApiIgnore;
 
-import javax.xml.transform.Result;
-import java.util.List;
-
 /**
  * @program: demo
  * @description: 用户控制器demo
@@ -46,5 +43,4 @@ public class UserController {
     public PageInfo<User> getAllUser(@ApiIgnore int pageName, int pageSize) {
         return userService.selectAllUser(pageName, pageSize);
     }
-
 }
