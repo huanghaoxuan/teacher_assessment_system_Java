@@ -21,13 +21,14 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
 
-
     @Override
-    public PageInfo<User> selectAllUser(int pageNum, int pageSize) {
+    public PageInfo<User> accessTeacher(User teacher, int pageNum, int pageSize) {
+        if (teacher.getGonghao()==null || teacher.getGonghao()=="" || teacher.getInkey() == ""|| teacher.getInkey()==null){
+            return null;
+        }
         PageHelper.startPage(pageNum, pageSize);
-        List<User> users = userMapper.selectAllUser();
+        List<User> users = userMapper.accessTeacher(teacher);
         PageInfo<User> result = new PageInfo<>(users);
-
         return result;
     }
 }

@@ -26,21 +26,23 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping(value = "/test", method = {RequestMethod.GET})
-    @ApiOperation(value="一个用来测试的方法", notes="test: 返回hello world")
+    @ApiOperation(value="一个没有任何卵用的方法", notes="test: 返回hello world")
     public String test() {
         return "Hello World";
     }
 
-
-//    private Logger logger = LoggerFactory.getLogger(this.getClass());
-
-    @RequestMapping(value = "/getAllUser", method = {RequestMethod.GET})
-    @ApiOperation(value="获取所有用户", notes="用户获取接口")
+    @RequestMapping(value = "/accessTeacher", method = {RequestMethod.POST})
+    @ApiOperation(value = "检查教师用户权限", notes = "教师用户数据获取接口")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "pageName", value = "页数", required = true, dataType = "int", paramType = "query", defaultValue = "1"),
+            @ApiImplicitParam(name = "gonghao", value = "工号", required = true, dataType = "varchar", paramType = "query"),
+            @ApiImplicitParam(name = "inkey", value = "密码", required = true, dataType = "varchar", paramType = "query"),
+            @ApiImplicitParam(name = "pageNum", value = "页数", required = true, dataType = "int", paramType = "query", defaultValue = "1"),
             @ApiImplicitParam(name = "pageSize", value = "页大小", required = true, dataType = "int", paramType = "query", defaultValue = "1"),
     })
-    public PageInfo<User> getAllUser(@ApiIgnore int pageName, int pageSize) {
-        return userService.selectAllUser(pageName, pageSize);
+    public PageInfo<User> accessTeacher(@ApiIgnore String gonghao, String inkey, int pageNum, int pageSize){
+        User teacher = new User();
+        teacher.setGonghao(gonghao);
+        teacher.setInkey(inkey);
+        return userService.accessTeacher(teacher, pageNum, pageSize);
     }
 }

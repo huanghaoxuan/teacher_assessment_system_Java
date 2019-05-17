@@ -9,29 +9,27 @@ import java.io.Serializable;
  * @author: zalej
  * @create: 2019-04-17 09:54
  **/
-@Table(name = "mydb")
 public class User implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer userId;
-    @Column(name = "center_id")
-    private String userName;
+    private String gonghao;
+    @Column(name = "inkey")
+    private String inkey;
 
-
-    public Integer getUserId() {
-        return userId;
+    public String getGonghao() {
+        return gonghao;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setGonghao(String gonghao) {
+        this.gonghao = gonghao;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getInkey() {
+        return inkey;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setInkey(String inkey) {
+        this.inkey = inkey;
     }
 }
