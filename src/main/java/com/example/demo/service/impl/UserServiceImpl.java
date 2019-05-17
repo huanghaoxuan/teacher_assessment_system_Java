@@ -22,13 +22,18 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     @Override
-    public PageInfo<User> accessTeacher(User teacher, int pageNum, int pageSize) {
+    public PageInfo<User> getTeacher(User teacher, int pageNum, int pageSize) {
         if (teacher.getGonghao()==null || teacher.getGonghao()=="" || teacher.getInkey() == ""|| teacher.getInkey()==null){
             return null;
         }
         PageHelper.startPage(pageNum, pageSize);
-        List<User> users = userMapper.accessTeacher(teacher);
+        List<User> users = userMapper.getTeacher(teacher);
         PageInfo<User> result = new PageInfo<>(users);
         return result;
+    }
+
+    @Override
+    public PageInfo<User> getDepManager(User teacher, int pageNum, int pageSize) {
+        return null;
     }
 }

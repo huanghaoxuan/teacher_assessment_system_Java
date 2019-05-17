@@ -19,7 +19,7 @@ import java.util.Map;
 
 public interface UserMapper extends Mapper<User> {
     List<User> getUser(User user);
-    List<User> accessTeacher(User user);
+    List<User> getTeacher(User user);
     List<User> accessDepManager(User user);
     List<User> getSupManager(User user);
 }

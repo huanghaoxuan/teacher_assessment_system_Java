@@ -11,7 +11,7 @@ public interface UserService {
     * @return:  List
     * @date:    2019/4/17 9:57
     */
-    PageInfo<User> accessTeacher(User teacher, int pageNum, int pageSize);
+    PageInfo<User> getTeacher(User teacher, int pageNum, int pageSize);
 
     /**
     * @author:  jizhaolun@zto.cn
@@ -19,5 +19,5 @@ public interface UserService {
     * @return:
     * @date:    2019/5/17 22:09
     */
-//    PageInfo<User> accessDepManager(User teacher, int pageNum, int pageSize);
+    PageInfo<User> getDepManager(User teacher, int pageNum, int pageSize);
 }

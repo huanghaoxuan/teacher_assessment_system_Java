@@ -35,14 +35,15 @@ public class UserController {
     @ApiOperation(value = "检查教师用户权限", notes = "教师用户数据获取接口")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "gonghao", value = "工号", required = true, dataType = "varchar", paramType = "query"),
-            @ApiImplicitParam(name = "inkey", value = "密码", required = true, dataType = "varchar", paramType = "query"),
-            @ApiImplicitParam(name = "pageNum", value = "页数", required = true, dataType = "int", paramType = "query", defaultValue = "1"),
-            @ApiImplicitParam(name = "pageSize", value = "页大小", required = true, dataType = "int", paramType = "query", defaultValue = "1"),
+            @ApiImplicitParam(name = "inkey", value = "密码", required = true, dataType = "varchar", paramType = "query")
     })
-    public PageInfo<User> accessTeacher(@ApiIgnore String gonghao, String inkey, int pageNum, int pageSize){
+    public boolean accessTeacher(@ApiIgnore String gonghao, String inkey){
         User teacher = new User();
         teacher.setGonghao(gonghao);
         teacher.setInkey(inkey);
-        return userService.accessTeacher(teacher, pageNum, pageSize);
+        if (userService.getTeacher(teacher, 1, 1).getSize() == 1){
+            return true;
+        }
+        return false;
     }
 }

@@ -6,11 +6,15 @@
         <result column="inkey" jdbcType="VARCHAR" property="inkey"/>
     </resultMap>
 
-    <select id="accessTeacher" resultMap="BaseResultMap" parameterType="com.example.demo.model.User">
+    <select id="getTeacher" resultMap="BaseResultMap" parameterType="com.example.demo.model.User">
         SELECT gonghao,inkey FROM teachers WHERE
         1=1
-        AND gonghao=#{gonghao}
-        AND  inkey=#{inkey}
+        <if test="#{gonghao}!=null">
+            AND gonghao=#{gonghao}
+        </if>
+        <if test="#{inkey}!=null">
+            AND inkey=#{inkey}
+        </if>
     </select>
 
 
