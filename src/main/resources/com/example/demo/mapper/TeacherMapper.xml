@@ -1,0 +1,21 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.mapper.TeacherMapper" >
+
+    <resultMap id="BaseResultMap" type="com.example.demo.model.Teacher">
+        <id column="gonghao" jdbcType="VARCHAR" property="gonghao"/>
+        <result column="inkey" jdbcType="VARCHAR" property="inkey"/>
+    </resultMap>
+    <sql id="BASE_TABLE">
+        teachers
+    </sql>
+
+
+    <select id="selectAllTeacher" resultMap="BaseResultMap">
+        SELECT
+        gonghao, inkey
+        FROM
+        <include refid="BASE_TABLE"/>
+    </select>
+
+
+</mapper>
