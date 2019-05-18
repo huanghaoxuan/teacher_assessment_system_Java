@@ -10,10 +10,10 @@
     <select id="getTeacher" resultMap="BaseResultMap" parameterType="com.example.demo.model.User">
         SELECT access_name,access_pass, access_identity FROM user_access WHERE
         #{accessIdentity}= 'teacher'
-        <if test="#{accessName}!=null">
+        <if test="accessName!=null and accessName!=''">
             AND access_name=#{accessName}
         </if>
-        <if test="#{accessPass}!=null">
+        <if test="accessPass!=null and accessPass!=''">
             AND access_pass=#{accessPass}
         </if>
     </select>

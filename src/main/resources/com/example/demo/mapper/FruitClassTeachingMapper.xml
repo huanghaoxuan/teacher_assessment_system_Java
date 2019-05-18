@@ -27,7 +27,7 @@
   <select id="getClassTeaching" parameterType="com.example.demo.model.FruitClassTeaching" resultMap="BaseResultMap">
     SELECT * FROM fruit_class_teaching WHERE 1=1
       AND class_teacher=#{classTeacher}
-    <if test="#{classYear}!=null">
+    <if test="classYear!=null and classYear!=''">
       AND class_year=#{classYear}
     </if>
   </select>
