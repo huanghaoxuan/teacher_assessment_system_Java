@@ -26,7 +26,7 @@ import java.util.List;
 @Api(value = "UserController|一个用户控制器")
 public class FruitClassTeachingController {
     @Autowired
-    private FruitClassTeachingService  fruitClassTeachingService;
+    private FruitClassTeachingService fruitClassTeachingService;
 
     @RequestMapping(value = "/findClassTeaching", method = {RequestMethod.POST})
     @ApiOperation(value = "查询课堂教学数据", notes = "课堂教学查询接口")
@@ -37,11 +37,15 @@ public class FruitClassTeachingController {
             @ApiImplicitParam(name = "pageNum", value = "页码", required = true, dataType = "int", paramType = "query"),
             @ApiImplicitParam(name = "pageSize", value = "页大小", required = true, dataType = "int", paramType = "query")
     })
-    public PageInfo<FruitClassTeaching> findClassTeaching(@ApiIgnore String classTeacher, String year, String semester, int pageNum, int pageSize){
+    public PageInfo<FruitClassTeaching> findClassTeaching(@ApiIgnore String classTeacher, String year, String semester, int pageNum, int pageSize) {
         FruitClassTeaching fruitClassTeaching = new FruitClassTeaching();
         fruitClassTeaching.setClassTeacher(classTeacher);
-        fruitClassTeaching.setYear(Integer.parseInt(year));
-        fruitClassTeaching.setSemester(Integer.parseInt(semester));
+        if (year != null && !year.equals("")) {
+            fruitClassTeaching.setYear(Integer.parseInt(year));
+        }
+        if (semester != null && !semester.equals("")) {
+            fruitClassTeaching.setSemester(Integer.parseInt(semester));
+        }
         return fruitClassTeachingService.getClassTeaching(fruitClassTeaching, pageNum, pageSize);
     }
 
@@ -53,7 +57,7 @@ public class FruitClassTeachingController {
             @ApiImplicitParam(name = "pageNum", value = "页码", required = true, dataType = "int", paramType = "query"),
             @ApiImplicitParam(name = "pageSize", value = "页大小", required = true, dataType = "int", paramType = "query")
     })
-    public String commitClassTeaching(){
+    public String commitClassTeaching() {
         return null;
     }
 }
