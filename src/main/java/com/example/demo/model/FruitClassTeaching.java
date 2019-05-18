@@ -11,260 +11,181 @@ public class FruitClassTeaching implements Serializable {
     private Integer id;
 
     @Column(name = "class_name")
-    private String className;
+    private String name;
 
     @Column(name = "class_character")
-    private String classCharacter;
+    private String character;
 
     @Column(name = "class_type")
-    private String classType;
+    private String type;
 
     @Column(name = "class_yesorno")
-    private String classYesorno;
+    private String yesorno;
 
     @Column(name = "class_credits")
-    private BigDecimal classCredits;
+    private BigDecimal credits;
 
     @Column(name = "class_hours")
-    private BigDecimal classHours;
+    private BigDecimal hours;
 
     @Column(name = "class_number")
-    private Byte classNumber;
+    private Byte classesNumber;
 
     @Column(name = "class_parallel")
-    private Integer classParallel;
+    private Integer parallelClassesNumber;
 
     @Column(name = "class_homework_number")
-    private Integer classHomeworkNumber;
+    private Integer homeworkNumber;
 
     @Column(name = "class_correcting_number")
-    private Integer classCorrectingNumber;
+    private Integer correctingNumber;
 
     @Column(name = "class_answering_number")
-    private Integer classAnsweringNumber;
+    private Integer answeringNumber;
 
     @Column(name = "class_note")
-    private String classNote;
+    private String note;
 
     @Column(name = "class_year")
-    private String classYear;
+    private int year;
 
     @Column(name = "class_status")
-    private String classStatus;
+    private String status;
 
     @Column(name = "class_teacher")
     private String classTeacher;
 
+    @Column(name = "class_semester")
+    private int semester;
+
     private static final long serialVersionUID = 1L;
 
-    /**
-     * @return id
-     */
     public Integer getId() {
         return id;
     }
 
-    /**
-     * @param id
-     */
     public void setId(Integer id) {
         this.id = id;
     }
 
-    /**
-     * @return class_name
-     */
-    public String getClassName() {
-        return className;
+    public String getName() {
+        return name;
     }
 
-    /**
-     * @param className
-     */
-    public void setClassName(String className) {
-        this.className = className;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    /**
-     * @return class_character
-     */
-    public String getClassCharacter() {
-        return classCharacter;
+    public String getCharacter() {
+        return character;
     }
 
-    /**
-     * @param classCharacter
-     */
-    public void setClassCharacter(String classCharacter) {
-        this.classCharacter = classCharacter;
+    public void setCharacter(String character) {
+        this.character = character;
     }
 
-    /**
-     * @return class_type
-     */
-    public String getClassType() {
-        return classType;
+    public String getType() {
+        return type;
     }
 
-    /**
-     * @param classType
-     */
-    public void setClassType(String classType) {
-        this.classType = classType;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    /**
-     * @return class_yesorno
-     */
-    public String getClassYesorno() {
-        return classYesorno;
+    public String getYesorno() {
+        return yesorno;
     }
 
-    /**
-     * @param classYesorno
-     */
-    public void setClassYesorno(String classYesorno) {
-        this.classYesorno = classYesorno;
+    public void setYesorno(String yesorno) {
+        this.yesorno = yesorno;
     }
 
-    /**
-     * @return class_credits
-     */
-    public BigDecimal getClassCredits() {
-        return classCredits;
+    public BigDecimal getCredits() {
+        return credits;
     }
 
-    /**
-     * @param classCredits
-     */
-    public void setClassCredits(BigDecimal classCredits) {
-        this.classCredits = classCredits;
+    public void setCredits(BigDecimal credits) {
+        this.credits = credits;
     }
 
-    /**
-     * @return class_hours
-     */
-    public BigDecimal getClassHours() {
-        return classHours;
+    public BigDecimal getHours() {
+        return hours;
     }
 
-    /**
-     * @param classHours
-     */
-    public void setClassHours(BigDecimal classHours) {
-        this.classHours = classHours;
+    public void setHours(BigDecimal hours) {
+        this.hours = hours;
     }
 
-    /**
-     * @return class_number
-     */
-    public Byte getClassNumber() {
-        return classNumber;
+    public Byte getClassesNumber() {
+        return classesNumber;
     }
 
-    /**
-     * @param classNumber
-     */
-    public void setClassNumber(Byte classNumber) {
-        this.classNumber = classNumber;
+    public void setClassesNumber(Byte classesNumber) {
+        this.classesNumber = classesNumber;
     }
 
-    /**
-     * @return class_parallel
-     */
-    public Integer getClassParallel() {
-        return classParallel;
+    public Integer getParallelClassesNumber() {
+        return parallelClassesNumber;
     }
 
-    /**
-     * @param classParallel
-     */
-    public void setClassParallel(Integer classParallel) {
-        this.classParallel = classParallel;
+    public void setParallelClassesNumber(Integer parallelClassesNumber) {
+        this.parallelClassesNumber = parallelClassesNumber;
     }
 
-    /**
-     * @return class_homework_number
-     */
-    public Integer getClassHomeworkNumber() {
-        return classHomeworkNumber;
+    public Integer getHomeworkNumber() {
+        return homeworkNumber;
     }
 
-    /**
-     * @param classHomeworkNumber
-     */
-    public void setClassHomeworkNumber(Integer classHomeworkNumber) {
-        this.classHomeworkNumber = classHomeworkNumber;
+    public void setHomeworkNumber(Integer homeworkNumber) {
+        this.homeworkNumber = homeworkNumber;
     }
 
-    /**
-     * @return class_correcting_number
-     */
-    public Integer getClassCorrectingNumber() {
-        return classCorrectingNumber;
+    public Integer getCorrectingNumber() {
+        return correctingNumber;
     }
 
-    /**
-     * @param classCorrectingNumber
-     */
-    public void setClassCorrectingNumber(Integer classCorrectingNumber) {
-        this.classCorrectingNumber = classCorrectingNumber;
+    public void setCorrectingNumber(Integer correctingNumber) {
+        this.correctingNumber = correctingNumber;
     }
 
-    /**
-     * @return class_answering_number
-     */
-    public Integer getClassAnsweringNumber() {
-        return classAnsweringNumber;
+    public Integer getAnsweringNumber() {
+        return answeringNumber;
     }
 
-    /**
-     * @param classAnsweringNumber
-     */
-    public void setClassAnsweringNumber(Integer classAnsweringNumber) {
-        this.classAnsweringNumber = classAnsweringNumber;
+    public void setAnsweringNumber(Integer answeringNumber) {
+        this.answeringNumber = answeringNumber;
     }
 
-    /**
-     * @return class_note
-     */
-    public String getClassNote() {
-        return classNote;
+    public String getNote() {
+        return note;
     }
 
-    /**
-     * @param classNote
-     */
-    public void setClassNote(String classNote) {
-        this.classNote = classNote;
+    public void setNote(String note) {
+        this.note = note;
     }
 
-    /**
-     * @return class_year
-     */
-    public String getClassYear() {
-        return classYear;
+    public int getYear() {
+        return year;
     }
 
-    /**
-     * @param classYear
-     */
-    public void setClassYear(String classYear) {
-        this.classYear = classYear;
+    public void setYear(int year) {
+        this.year = year;
     }
 
-    /**
-     * @return class_status
-     */
-    public String getClassStatus() {
-        return classStatus;
+    public int getSemester() {
+        return semester;
     }
 
-    /**
-     * @param classStatus
-     */
-    public void setClassStatus(String classStatus) {
-        this.classStatus = classStatus;
+    public void setSemester(int semester) {
+        this.semester = semester;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     /**
