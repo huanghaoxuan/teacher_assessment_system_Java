@@ -13,23 +13,33 @@ public class User implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String gonghao;
-    @Column(name = "inkey")
-    private String inkey;
+    private String accessName;
+    @Column(name = "access_pass")
+    private String accessPass;
+    @Column(name = "access_identity")
+    private String accessIdentity;
 
-    public String getGonghao() {
-        return gonghao;
+    public String getAccessName() {
+        return accessName;
     }
 
-    public void setGonghao(String gonghao) {
-        this.gonghao = gonghao;
+    public void setAccessName(String accessName) {
+        this.accessName = accessName;
     }
 
-    public String getInkey() {
-        return inkey;
+    public String getAccessPass() {
+        return accessPass;
     }
 
-    public void setInkey(String inkey) {
-        this.inkey = inkey;
+    public void setAccessPass(String accessPass) {
+        this.accessPass = accessPass;
+    }
+
+    public String getAccessIdentity() {
+        return accessIdentity;
+    }
+
+    public void setAccessIdentity(String accessIdentity) {
+        this.accessIdentity = accessIdentity;
     }
 }

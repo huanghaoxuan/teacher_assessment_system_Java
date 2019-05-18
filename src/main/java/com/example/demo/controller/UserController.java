@@ -1,7 +1,6 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.User;
-import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -34,13 +33,15 @@ public class UserController {
     @RequestMapping(value = "/accessTeacher", method = {RequestMethod.POST})
     @ApiOperation(value = "检查教师用户权限", notes = "教师用户数据获取接口")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "gonghao", value = "工号", required = true, dataType = "varchar", paramType = "query"),
-            @ApiImplicitParam(name = "inkey", value = "密码", required = true, dataType = "varchar", paramType = "query")
+            @ApiImplicitParam(name = "name", value = "用户名", required = true, dataType = "varchar", paramType = "query"),
+            @ApiImplicitParam(name = "pass", value = "密码", required = true, dataType = "varchar", paramType = "query"),
+            @ApiImplicitParam(name = "identity", value = "身份", required = true, dataType = "varchar", paramType = "query")
     })
-    public boolean accessTeacher(@ApiIgnore String gonghao, String inkey){
+    public boolean accessTeacher(@ApiIgnore String name, String pass, String identity){
         User teacher = new User();
-        teacher.setGonghao(gonghao);
-        teacher.setInkey(inkey);
+        teacher.setAccessName(name);
+        teacher.setAccessPass(pass);
+        teacher.setAccessIdentity(identity);
         if (userService.getTeacher(teacher, 1, 1).getSize() == 1){
             return true;
         }

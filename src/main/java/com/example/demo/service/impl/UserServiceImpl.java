@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public PageInfo<User> getTeacher(User teacher, int pageNum, int pageSize) {
-        if (teacher.getGonghao()==null || teacher.getGonghao()=="" || teacher.getInkey() == ""|| teacher.getInkey()==null){
+        if (teacher.getAccessName()==null || teacher.getAccessName()=="" || teacher.getAccessPass() == ""|| teacher.getAccessPass()==null){
             return null;
         }
         PageHelper.startPage(pageNum, pageSize);

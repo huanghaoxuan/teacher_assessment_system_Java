@@ -2,18 +2,19 @@
 <mapper namespace="com.example.demo.mapper.UserMapper" >
 
     <resultMap id="BaseResultMap" type="com.example.demo.model.User">
-        <id column="gonghao" jdbcType="VARCHAR" property="gonghao"/>
-        <result column="inkey" jdbcType="VARCHAR" property="inkey"/>
+        <id column="access_name" jdbcType="VARCHAR" property="accessName"/>
+        <result column="access_pass" jdbcType="VARCHAR" property="accessPass"/>
+        <result column="access_identity" jdbcType="VARCHAR" property="accessIdentity"/>
     </resultMap>
 
     <select id="getTeacher" resultMap="BaseResultMap" parameterType="com.example.demo.model.User">
-        SELECT gonghao,inkey FROM teachers WHERE
-        1=1
-        <if test="#{gonghao}!=null">
-            AND gonghao=#{gonghao}
+        SELECT access_name,access_pass, access_identity FROM user_access WHERE
+        #{accessIdentity}= 'teacher'
+        <if test="#{accessName}!=null">
+            AND access_name=#{accessName}
         </if>
-        <if test="#{inkey}!=null">
-            AND inkey=#{inkey}
+        <if test="#{accessPass}!=null">
+            AND access_pass=#{accessPass}
         </if>
     </select>
 
