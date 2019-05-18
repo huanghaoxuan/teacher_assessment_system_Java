@@ -33,13 +33,27 @@ public class FruitClassTeachingController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "classTeacher", value = "教师用户工号", required = true, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "year", value = "学年", required = false, dataType = "varchar", paramType = "query"),
+            @ApiImplicitParam(name = "semester", value = "学期", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "pageNum", value = "页码", required = true, dataType = "int", paramType = "query"),
             @ApiImplicitParam(name = "pageSize", value = "页大小", required = true, dataType = "int", paramType = "query")
     })
-    public PageInfo<FruitClassTeaching> findClassTeaching(@ApiIgnore String classTeacher, String year, int pageNum, int pageSize){
+    public PageInfo<FruitClassTeaching> findClassTeaching(@ApiIgnore String classTeacher, String year, String semester, int pageNum, int pageSize){
         FruitClassTeaching fruitClassTeaching = new FruitClassTeaching();
         fruitClassTeaching.setClassTeacher(classTeacher);
-        fruitClassTeaching.setClassYear(year);
+        fruitClassTeaching.setYear(Integer.parseInt(year));
+        fruitClassTeaching.setSemester(Integer.parseInt(semester));
         return fruitClassTeachingService.getClassTeaching(fruitClassTeaching, pageNum, pageSize);
+    }
+
+    @RequestMapping(value = "/commitClassTeaching", method = {RequestMethod.POST})
+    @ApiOperation(value = "提交课堂教学数据", notes = "课堂教学提交接口")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "classTeacher", value = "教师用户工号", required = true, dataType = "varchar", paramType = "query"),
+            @ApiImplicitParam(name = "year", value = "学年", required = false, dataType = "varchar", paramType = "query"),
+            @ApiImplicitParam(name = "pageNum", value = "页码", required = true, dataType = "int", paramType = "query"),
+            @ApiImplicitParam(name = "pageSize", value = "页大小", required = true, dataType = "int", paramType = "query")
+    })
+    public String commitClassTeaching(){
+        return null;
     }
 }
