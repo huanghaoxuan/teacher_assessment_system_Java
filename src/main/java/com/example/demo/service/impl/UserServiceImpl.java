@@ -21,13 +21,19 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
 
+    @Override
+    public PageInfo<User> getTeacher(User teacher, int pageNum, int pageSize) {
+        if (teacher.getAccessName()==null || teacher.getAccessName()=="" || teacher.getAccessPass() == ""|| teacher.getAccessPass()==null){
+            return null;
+        }
+        PageHelper.startPage(pageNum, pageSize);
+        List<User> users = userMapper.getTeacher(teacher);
+        PageInfo<User> result = new PageInfo<>(users);
+        return result;
+    }
 
     @Override
-    public PageInfo<User> selectAllUser(int pageNum, int pageSize) {
-        PageHelper.startPage(pageNum, pageSize);
-        List<User> users = userMapper.selectAllUser();
-        PageInfo<User> result = new PageInfo<>(users);
-
-        return result;
+    public PageInfo<User> getDepManager(User teacher, int pageNum, int pageSize) {
+        return null;
     }
 }

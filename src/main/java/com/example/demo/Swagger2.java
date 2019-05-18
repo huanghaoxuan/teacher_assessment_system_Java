@@ -53,9 +53,9 @@ public class Swagger2 {
      */
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("Spring Boot中使用Swagger2构建RESTful APIs")
-                .description("更多请关注http://www.github.com/ZaleJ/")
-                .termsOfServiceUrl("http://www.github.com/ZaleJ")
+                .title("高校教师成果信息管理系统")
+                .description("后端作者：http://www.github.com/ZaleJ/")
+                .termsOfServiceUrl("http://jskh.cxxy.seu.edu.cn")
                 .contact(new Contact("zalej", "http://github.com/ZaleJ/", "hellojzl@foxmail.com"))
                 .version("1.0")
                 .build();

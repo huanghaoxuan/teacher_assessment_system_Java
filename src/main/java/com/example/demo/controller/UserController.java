@@ -1,7 +1,6 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.User;
-import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -26,21 +25,26 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping(value = "/test", method = {RequestMethod.GET})
-    @ApiOperation(value="一个用来测试的方法", notes="test: 返回hello world")
+    @ApiOperation(value="一个没有任何卵用的方法", notes="test: 返回hello world")
     public String test() {
         return "Hello World";
     }
 
-
-//    private Logger logger = LoggerFactory.getLogger(this.getClass());
-
-    @RequestMapping(value = "/getAllUser", method = {RequestMethod.GET})
-    @ApiOperation(value="获取所有用户", notes="用户获取接口")
+    @RequestMapping(value = "/accessTeacher", method = {RequestMethod.POST})
+    @ApiOperation(value = "检查教师用户权限", notes = "教师用户数据获取接口")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "pageName", value = "页数", required = true, dataType = "int", paramType = "query", defaultValue = "1"),
-            @ApiImplicitParam(name = "pageSize", value = "页大小", required = true, dataType = "int", paramType = "query", defaultValue = "1"),
+            @ApiImplicitParam(name = "name", value = "用户名", required = true, dataType = "varchar", paramType = "query"),
+            @ApiImplicitParam(name = "pass", value = "密码", required = true, dataType = "varchar", paramType = "query"),
+            @ApiImplicitParam(name = "identity", value = "身份", required = true, dataType = "varchar", paramType = "query")
     })
-    public PageInfo<User> getAllUser(@ApiIgnore int pageName, int pageSize) {
-        return userService.selectAllUser(pageName, pageSize);
+    public boolean accessTeacher(@ApiIgnore String name, String pass, String identity){
+        User teacher = new User();
+        teacher.setAccessName(name);
+        teacher.setAccessPass(pass);
+        teacher.setAccessIdentity(identity);
+        if (userService.getTeacher(teacher, 1, 1).getSize() == 1){
+            return true;
+        }
+        return false;
     }
 }

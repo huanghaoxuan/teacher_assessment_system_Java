@@ -9,29 +9,37 @@ import java.io.Serializable;
  * @author: zalej
  * @create: 2019-04-17 09:54
  **/
-@Table(name = "mydb")
 public class User implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer userId;
-    @Column(name = "center_id")
-    private String userName;
+    private String accessName;
+    @Column(name = "access_pass")
+    private String accessPass;
+    @Column(name = "access_identity")
+    private String accessIdentity;
 
-
-    public Integer getUserId() {
-        return userId;
+    public String getAccessName() {
+        return accessName;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setAccessName(String accessName) {
+        this.accessName = accessName;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getAccessPass() {
+        return accessPass;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setAccessPass(String accessPass) {
+        this.accessPass = accessPass;
+    }
+
+    public String getAccessIdentity() {
+        return accessIdentity;
+    }
+
+    public void setAccessIdentity(String accessIdentity) {
+        this.accessIdentity = accessIdentity;
     }
 }

@@ -2,20 +2,22 @@
 <mapper namespace="com.example.demo.mapper.UserMapper" >
 
     <resultMap id="BaseResultMap" type="com.example.demo.model.User">
-        <id column="id" jdbcType="INTEGER" property="userId"/>
-        <result column="name" jdbcType="INTEGER" property="userName"/>
+        <id column="access_name" jdbcType="VARCHAR" property="accessName"/>
+        <result column="access_pass" jdbcType="VARCHAR" property="accessPass"/>
+        <result column="access_identity" jdbcType="VARCHAR" property="accessIdentity"/>
     </resultMap>
-    <sql id="BASE_TABLE">
-        my_table
-    </sql>
 
-
-    <select id="selectAllUser" resultMap="BaseResultMap">
-        SELECT
-        id,name
-        FROM
-        <include refid="BASE_TABLE"/>
+    <select id="getTeacher" resultMap="BaseResultMap" parameterType="com.example.demo.model.User">
+        SELECT access_name,access_pass, access_identity FROM user_access WHERE
+        #{accessIdentity}= 'teacher'
+        <if test="accessName!=null and accessName!=''">
+            AND access_name=#{accessName}
+        </if>
+        <if test="accessPass!=null and accessPass!=''">
+            AND access_pass=#{accessPass}
+        </if>
     </select>
+
 
 
 </mapper>

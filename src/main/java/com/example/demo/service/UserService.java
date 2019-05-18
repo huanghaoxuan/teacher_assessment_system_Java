@@ -6,11 +6,18 @@ import com.example.demo.model.User;
 public interface UserService {
 
     /**
-    * @author:  jizhaolun@zto.cn
+    * @author:  hellojzl@foxmail.com
     * @params:
     * @return:  List
     * @date:    2019/4/17 9:57
     */
-    PageInfo<User> selectAllUser(int pageNum, int pageSize);
+    PageInfo<User> getTeacher(User teacher, int pageNum, int pageSize);
 
+    /**
+    * @author:  jizhaolun@zto.cn
+    * @params:
+    * @return:
+    * @date:    2019/5/17 22:09
+    */
+    PageInfo<User> getDepManager(User teacher, int pageNum, int pageSize);
 }

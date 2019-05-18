@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.FruitClassTeachingMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.model.FruitClassTeaching">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="class_name" jdbcType="NVARCHAR" property="className" />
+    <result column="class_character" jdbcType="NVARCHAR" property="classCharacter" />
+    <result column="class_type" jdbcType="NVARCHAR" property="classType" />
+    <result column="class_yesorno" jdbcType="NVARCHAR" property="classYesorno" />
+    <result column="class_credits" jdbcType="DECIMAL" property="classCredits" />
+    <result column="class_hours" jdbcType="DECIMAL" property="classHours" />
+    <result column="class_number" jdbcType="TINYINT" property="classNumber" />
+    <result column="class_parallel" jdbcType="INTEGER" property="classParallel" />
+    <result column="class_homework_number" jdbcType="INTEGER" property="classHomeworkNumber" />
+    <result column="class_correcting_number" jdbcType="INTEGER" property="classCorrectingNumber" />
+    <result column="class_answering_number" jdbcType="INTEGER" property="classAnsweringNumber" />
+    <result column="class_note" jdbcType="NVARCHAR" property="classNote" />
+    <result column="class_year" jdbcType="NVARCHAR" property="classYear" />
+    <result column="class_status" jdbcType="NVARCHAR" property="classStatus" />
+    <result column="class_teacher" jdbcType="NVARCHAR" property="classTeacher" />
+  </resultMap>
+
+
+  <select id="getClassTeaching" parameterType="com.example.demo.model.FruitClassTeaching" resultMap="BaseResultMap">
+    SELECT * FROM fruit_class_teaching WHERE 1=1
+      AND class_teacher=#{classTeacher}
+    <if test="classYear!=null and classYear!=''">
+      AND class_year=#{classYear}
+    </if>
+  </select>
+</mapper>
