@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface FruitClassTeachingMapper extends Mapper<FruitClassTeaching> {
     List<FruitClassTeaching> getClassTeaching(FruitClassTeaching fruitClassTeaching);
+
 }
