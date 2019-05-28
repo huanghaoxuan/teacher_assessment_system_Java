@@ -23,7 +23,7 @@ import java.util.List;
  **/
 @RestController
 @RequestMapping("/fruitClassTeaching")
-@Api(value = "课堂教学的数据接口")
+@Api(tags = "课堂教学的数据接口")
 public class FruitClassTeachingController {
     @Autowired
     private FruitClassTeachingService fruitClassTeachingService;

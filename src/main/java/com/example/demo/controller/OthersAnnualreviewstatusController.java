@@ -15,7 +15,7 @@ import springfox.documentation.annotations.ApiIgnore;
 
 @RestController
 @RequestMapping("/othersAnnualreviewstatus")
-@Api(value = "年度考核情况的数据接口")
+@Api(tags = "年度考核情况的数据接口")
 public class OthersAnnualreviewstatusController {
 
     @Autowired
