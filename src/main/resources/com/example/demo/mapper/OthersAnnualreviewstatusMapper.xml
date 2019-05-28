@@ -43,7 +43,7 @@
     SELECT * FROM others_annualReviewStatus WHERE 1=1
     AND classTeacher=#{classTeacher,jdbcType=NVARCHAR}
     <if test="year!=null and year!=''">
-      AND class_year=#{year,jdbcType=INTEGER}
+      AND year=#{year,jdbcType=INTEGER}
     </if>
   </select>
 </mapper>

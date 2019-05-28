@@ -32,19 +32,19 @@ public class FruitClassTeachingController {
     @ApiOperation(value = "查询课堂教学数据", notes = "课堂教学查询接口")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "classTeacher", value = "教师用户工号", required = true, dataType = "varchar", paramType = "query"),
-            @ApiImplicitParam(name = "year", value = "学年", required = false, dataType = "varchar", paramType = "query"),
-            @ApiImplicitParam(name = "semester", value = "学期", required = false, dataType = "varchar", paramType = "query"),
+            @ApiImplicitParam(name = "year", value = "学年", required = false, dataType = "int", paramType = "query"),
+            @ApiImplicitParam(name = "semester", value = "学期", required = true, dataType = "int", paramType = "query"),
             @ApiImplicitParam(name = "pageNum", value = "页码", required = true, dataType = "int", paramType = "query"),
             @ApiImplicitParam(name = "pageSize", value = "页大小", required = true, dataType = "int", paramType = "query")
     })
-    public PageInfo<FruitClassTeaching> findClassTeaching(@ApiIgnore String classTeacher, String year, String semester, int pageNum, int pageSize) {
+    public PageInfo<FruitClassTeaching> findClassTeaching(@ApiIgnore String classTeacher, Integer year, Integer semester, int pageNum, int pageSize) {
         FruitClassTeaching fruitClassTeaching = new FruitClassTeaching();
         fruitClassTeaching.setClassTeacher(classTeacher);
-        if (year != null && !year.equals("")) {
-            fruitClassTeaching.setYear(Integer.parseInt(year));
+        if (year != null) {
+            fruitClassTeaching.setYear(year);
         }
-        if (semester != null && !semester.equals("")) {
-            fruitClassTeaching.setSemester(Integer.parseInt(semester));
+        if (semester != null) {
+            fruitClassTeaching.setSemester(semester);
         }
         return fruitClassTeachingService.getClassTeaching(fruitClassTeaching, pageNum, pageSize);
     }
