@@ -24,7 +24,7 @@ import springfox.documentation.annotations.ApiIgnore;
 @RestController
 @RequestMapping("/othersComprehensiveawardwinning")
 @Api(tags = "综合获奖的数据接口")
-public class othersComprehensiveawardwinningController {
+public class OthersComprehensiveawardwinningController {
     @Autowired
     private OthersComprehensiveawardwinningService othersComprehensiveawardwinningService;
     @RequestMapping(value = "/selectByClassTeacher", method = {RequestMethod.GET})
@@ -55,7 +55,7 @@ public class othersComprehensiveawardwinningController {
             @ApiImplicitParam(name = "ranking", value = "排名", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "peopleNumber", value = "总人数", required = false, dataType = "int", paramType = "query"),
             @ApiImplicitParam(name = "note", value = "备注", required = false, dataType = "varchar", paramType = "query"),
-            @ApiImplicitParam(name = "year", value = "学年", required = true, dataType = "varchar", paramType = "query"),
+            @ApiImplicitParam(name = "year", value = "学年", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "status", value = "审核情况", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "classTeacher", value = "教师用户工号", required = true, dataType = "varchar", paramType = "query")
 
@@ -76,7 +76,7 @@ public class othersComprehensiveawardwinningController {
             @ApiImplicitParam(name = "ranking", value = "排名", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "peopleNumber", value = "总人数", required = false, dataType = "int", paramType = "query"),
             @ApiImplicitParam(name = "note", value = "备注", required = false, dataType = "varchar", paramType = "query"),
-            @ApiImplicitParam(name = "year", value = "学年", required = true, dataType = "varchar", paramType = "query"),
+            @ApiImplicitParam(name = "year", value = "学年", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "status", value = "审核情况", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "classTeacher", value = "教师用户工号", required = true, dataType = "varchar", paramType = "query")
 

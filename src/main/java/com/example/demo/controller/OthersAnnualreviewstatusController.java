@@ -43,7 +43,7 @@ public class OthersAnnualreviewstatusController {
             @ApiImplicitParam(name = "id", value = "主键序列", required = true, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "assessmentStatus", value = "考核情况", required = true, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "note", value = "备注", required = false, dataType = "varchar", paramType = "query"),
-            @ApiImplicitParam(name = "year", value = "学年", required = true, dataType = "int", paramType = "query"),
+            @ApiImplicitParam(name = "year", value = "学年", required = false, dataType = "int", paramType = "query"),
             @ApiImplicitParam(name = "status", value = "审核情况", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "classTeacher", value = "教师用户工号", required = true, dataType = "varchar", paramType = "query")
 
@@ -59,7 +59,7 @@ public class OthersAnnualreviewstatusController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "assessmentStatus", value = "考核情况", required = true, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "note", value = "备注", required = false, dataType = "varchar", paramType = "query"),
-            @ApiImplicitParam(name = "year", value = "学年", required = true, dataType = "int", paramType = "query"),
+            @ApiImplicitParam(name = "year", value = "学年", required = false, dataType = "int", paramType = "query"),
             @ApiImplicitParam(name = "status", value = "审核情况", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "classTeacher", value = "教师用户工号", required = true, dataType = "varchar", paramType = "query")
 

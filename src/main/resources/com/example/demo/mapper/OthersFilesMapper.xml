@@ -49,9 +49,9 @@
     select id, name, time, rank, peopleNumber, useScope, note, year, status, classTeacher
     from others_files
   </select>
-    <select id="selectByClassTeacher" parameterType="com.example.demo.model.OthersComprehensiveawardwinning"
+    <select id="selectByClassTeacher" parameterType="com.example.demo.model.OthersFiles"
             resultMap="BaseResultMap">
-        SELECT * FROM others_comprehensiveAwardWinning WHERE 1=1
+        SELECT * FROM others_files WHERE 1=1
         AND classTeacher=#{classTeacher,jdbcType=NVARCHAR}
         <if test="year!=null and year!=''">
             AND year=#{year,jdbcType=INTEGER}

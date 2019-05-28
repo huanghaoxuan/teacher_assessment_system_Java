@@ -1,10 +1,7 @@
 package com.example.demo.service;
 
-import com.example.demo.model.OthersComprehensiveawardwinning;
 import com.example.demo.model.OthersFiles;
 import com.github.pagehelper.PageInfo;
-
-import java.util.List;
 
 public interface OthersFilesService {
     int deleteByPrimaryKey(Integer id);
