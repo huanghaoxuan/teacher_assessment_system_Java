@@ -82,7 +82,7 @@ public class othersComprehensiveawardwinningController {
 
     })
     public Integer insert(@ApiIgnore  String name, String time, String department, String level, String ranking, Integer peopleNumber, String note, Integer year, String status, String classTeacher) {
-        OthersComprehensiveawardwinning othersComprehensiveawardwinning = new OthersComprehensiveawardwinning(  name,  time,  department,  level,  ranking,  peopleNumber,  note,  year,  status,  classTeacher);
+        OthersComprehensiveawardwinning othersComprehensiveawardwinning = new OthersComprehensiveawardwinning(name, time, department, level, ranking, peopleNumber, note, year, status, classTeacher);
 
         return othersComprehensiveawardwinningService.insert(othersComprehensiveawardwinning);
     }
