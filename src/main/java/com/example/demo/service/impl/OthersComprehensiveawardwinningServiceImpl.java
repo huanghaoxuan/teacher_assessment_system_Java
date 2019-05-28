@@ -19,7 +19,7 @@ import java.util.List;
  * @Version 1.0
  */
 
-@Service(value = "othersComprehensiveawardwinning")
+@Service
 public class OthersComprehensiveawardwinningServiceImpl implements OthersComprehensiveawardwinningService {
 
     @Autowired
