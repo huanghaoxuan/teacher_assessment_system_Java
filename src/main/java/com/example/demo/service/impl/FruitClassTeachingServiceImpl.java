@@ -7,6 +7,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
 
@@ -28,5 +29,23 @@ public class FruitClassTeachingServiceImpl implements FruitClassTeachingService 
         List<FruitClassTeaching> teachings = fruitClassTeachingMapper.getClassTeaching(teaching);
         PageInfo<FruitClassTeaching> result = new PageInfo<>(teachings);
         return result;
+    }
+
+    @Override
+    public int updateClassTeaching(FruitClassTeaching teaching) {
+        int effectRows = 0;
+        Example example = new Example(FruitClassTeaching.class);
+        example.and().andEqualTo("id", teaching.getId());
+        effectRows = fruitClassTeachingMapper.updateByExample(teaching, example);
+        return effectRows;
+    }
+
+
+    @Override
+    public int insertClassTeaching(FruitClassTeaching teaching) {
+        int effectRows = 0;
+        Example example = new Example(FruitClassTeaching.class);
+        effectRows = fruitClassTeachingMapper.insertSelective(teaching);
+        return effectRows;
     }
 }

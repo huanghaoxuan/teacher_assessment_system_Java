@@ -23,7 +23,7 @@ import java.util.List;
  **/
 @RestController
 @RequestMapping("/fruitClassTeaching")
-@Api(value = "UserController|一个用户控制器")
+@Api(tags = "课堂教学的数据接口")
 public class FruitClassTeachingController {
     @Autowired
     private FruitClassTeachingService fruitClassTeachingService;
@@ -53,11 +53,23 @@ public class FruitClassTeachingController {
     @ApiOperation(value = "提交课堂教学数据", notes = "课堂教学提交接口")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "classTeacher", value = "教师用户工号", required = true, dataType = "varchar", paramType = "query"),
-            @ApiImplicitParam(name = "year", value = "学年", required = false, dataType = "varchar", paramType = "query"),
-            @ApiImplicitParam(name = "pageNum", value = "页码", required = true, dataType = "int", paramType = "query"),
-            @ApiImplicitParam(name = "pageSize", value = "页大小", required = true, dataType = "int", paramType = "query")
+            @ApiImplicitParam(name = "name", value = "课堂教学名称", required = false, dataType = "varchar", paramType = "query"),
+            @ApiImplicitParam(name = "character", value = "角色", required = false, dataType = "varchar", paramType = "query"),
+            @ApiImplicitParam(name = "type", value = "类型", required = false, dataType = "varchar", paramType = "query"),
+            @ApiImplicitParam(name = "yesorno", value = "是否", required = false, dataType = "varchar", paramType = "query"),
+            @ApiImplicitParam(name = "credits", value = "学分", required = false, dataType = "decimal", paramType = "query"),
+            @ApiImplicitParam(name = "hours", value = "学时", required = false, dataType = "decimal", paramType = "query"),
+            @ApiImplicitParam(name = "classesNumber", value = "授课班个数", required = false, dataType = "int", paramType = "query"),
+            @ApiImplicitParam(name = "parallelClassesNumber", value = "平行班个数", required = false, dataType = "int", paramType = "query"),
+            @ApiImplicitParam(name = "homeworkNumber", value = "作业次数", required = false, dataType = "int", paramType = "query"),
+            @ApiImplicitParam(name = "correctingNumber", value = "批改次数", required = false, dataType = "int", paramType = "query"),
+            @ApiImplicitParam(name = "answeringNumber", value = "答疑次数", required = false, dataType = "int", paramType = "query"),
+            @ApiImplicitParam(name = "note", value = "备注", required = false, dataType = "varchar", paramType = "query"),
+            @ApiImplicitParam(name = "year", value = "学年", required = true, dataType = "int", paramType = "query"),
+            @ApiImplicitParam(name = "semester", value = "学期", required = true, dataType = "int", paramType = "query"),
+            @ApiImplicitParam(name = "status", value = "审核情况", required = true, dataType = "varchar", paramType = "query")
     })
-    public String commitClassTeaching() {
-        return null;
+    public int commitClassTeaching(@ApiIgnore FruitClassTeaching fruitClassTeaching) {
+        return fruitClassTeachingService.insertClassTeaching(fruitClassTeaching);
     }
 }

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.FruitGuideTheGreatCreationMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.model.FruitGuideTheGreatCreation">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="NVARCHAR" property="name" />
+    <result column="level" jdbcType="NVARCHAR" property="level" />
+    <result column="source" jdbcType="NVARCHAR" property="source" />
+    <result column="project_status" jdbcType="NVARCHAR" property="projectStatus" />
+    <result column="title_level" jdbcType="NVARCHAR" property="titleLevel" />
+    <result column="student_grade" jdbcType="NVARCHAR" property="studentGrade" />
+    <result column="student_number" jdbcType="INTEGER" property="studentNumber" />
+    <result column="effect" jdbcType="NVARCHAR" property="effect" />
+    <result column="mentors_number" jdbcType="INTEGER" property="mentorsNumber" />
+    <result column="mentors_level" jdbcType="NVARCHAR" property="mentorsLevel" />
+    <result column="note" jdbcType="NVARCHAR" property="note" />
+    <result column="year" jdbcType="INTEGER" property="year" />
+    <result column="semester" jdbcType="INTEGER" property="semester" />
+    <result column="status" jdbcType="NVARCHAR" property="status" />
+    <result column="teacher" jdbcType="NVARCHAR" property="teacher" />
+    <result column="assign" jdbcType="DECIMAL" property="assign" />
+  </resultMap>
+
+
+</mapper>

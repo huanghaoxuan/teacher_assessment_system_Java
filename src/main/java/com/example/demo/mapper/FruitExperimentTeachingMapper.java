@@ -7,5 +7,4 @@ import java.util.List;
 
 public interface FruitExperimentTeachingMapper extends Mapper<FruitExperimentTeaching> {
     List<FruitExperimentTeaching> getExperimentTeaching(FruitExperimentTeaching fruitExperimentTeaching);
-
 }
