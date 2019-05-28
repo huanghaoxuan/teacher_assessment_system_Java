@@ -48,7 +48,7 @@ public class othersComprehensiveawardwinningController {
     @ApiOperation(value = "更新综合获奖情况", notes = "综合获奖情况更新接口")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", value = "主键序列", required = true, dataType = "int", paramType = "query"),
-            @ApiImplicitParam(name = "assessmentStatus", value = "荣誉称号、表彰奖励名称", required = true, dataType = "varchar", paramType = "query"),
+            @ApiImplicitParam(name = "name", value = "荣誉称号、表彰奖励名称", required = true, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "time", value = "时间", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "department", value = "授奖部门", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "level", value = "获奖级别", required = false, dataType = "varchar", paramType = "query"),
@@ -69,7 +69,7 @@ public class othersComprehensiveawardwinningController {
     @RequestMapping(value = "/insert", method = {RequestMethod.POST})
     @ApiOperation(value = "插入综合获奖情况", notes = "插入考核情况更新接口")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "assessmentStatus", value = "荣誉称号、表彰奖励名称", required = true, dataType = "varchar", paramType = "query"),
+            @ApiImplicitParam(name = "name", value = "荣誉称号、表彰奖励名称", required = true, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "time", value = "时间", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "department", value = "授奖部门", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "level", value = "获奖级别", required = false, dataType = "varchar", paramType = "query"),
