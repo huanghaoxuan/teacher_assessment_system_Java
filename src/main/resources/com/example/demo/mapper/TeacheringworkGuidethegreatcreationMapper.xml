@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.TeacheringworkGuidethegreatcreationMapper">
+    <resultMap id="BaseResultMap" type="com.example.demo.model.TeacheringworkGuidethegreatcreation">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="classTeacher" jdbcType="NVARCHAR" property="classTeacher"/>
+        <result column="status" jdbcType="NVARCHAR" property="status"/>
+        <result column="name" jdbcType="NVARCHAR" property="name"/>
+        <result column="level" jdbcType="NVARCHAR" property="level"/>
+        <result column="source" jdbcType="NVARCHAR" property="source"/>
+        <result column="projectStatus" jdbcType="NVARCHAR" property="projectStatus"/>
+        <result column="titleLevel" jdbcType="NVARCHAR" property="titleLevel"/>
+        <result column="studentGrade" jdbcType="NVARCHAR" property="studentGrade"/>
+        <result column="studentNumber" jdbcType="INTEGER" property="studentNumber"/>
+        <result column="effect" jdbcType="NVARCHAR" property="effect"/>
+        <result column="mentorsNumber" jdbcType="INTEGER" property="mentorsNumber"/>
+        <result column="mentorsLevel" jdbcType="NVARCHAR" property="mentorsLevel"/>
+        <result column="note" jdbcType="NVARCHAR" property="note"/>
+        <result column="year" jdbcType="INTEGER" property="year"/>
+        <result column="semester" jdbcType="INTEGER" property="semester"/>
+    </resultMap>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from teacheringWork_guideTheGreatCreation
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="com.example.demo.model.TeacheringworkGuidethegreatcreation">
+    insert into teacheringWork_guideTheGreatCreation (classTeacher, status,
+      name, level, source, 
+      projectStatus, titleLevel, studentGrade, 
+      studentNumber, effect, mentorsNumber, 
+      mentorsLevel, note, year, 
+      semester)
+    values (#{classTeacher,jdbcType=NVARCHAR}, #{status,jdbcType=NVARCHAR},
+      #{name,jdbcType=NVARCHAR}, #{level,jdbcType=NVARCHAR}, #{source,jdbcType=NVARCHAR}, 
+      #{projectStatus,jdbcType=NVARCHAR}, #{titleLevel,jdbcType=NVARCHAR}, #{studentGrade,jdbcType=NVARCHAR}, 
+      #{studentNumber,jdbcType=INTEGER}, #{effect,jdbcType=NVARCHAR}, #{mentorsNumber,jdbcType=INTEGER}, 
+      #{mentorsLevel,jdbcType=NVARCHAR}, #{note,jdbcType=NVARCHAR}, #{year,jdbcType=INTEGER}, 
+      #{semester,jdbcType=INTEGER})
+  </insert>
+    <update id="updateByPrimaryKey" parameterType="com.example.demo.model.TeacheringworkGuidethegreatcreation">
+    update teacheringWork_guideTheGreatCreation
+    set classTeacher = #{classTeacher,jdbcType=NVARCHAR},
+      status = #{status,jdbcType=NVARCHAR},
+      name = #{name,jdbcType=NVARCHAR},
+      level = #{level,jdbcType=NVARCHAR},
+      source = #{source,jdbcType=NVARCHAR},
+      projectStatus = #{projectStatus,jdbcType=NVARCHAR},
+      titleLevel = #{titleLevel,jdbcType=NVARCHAR},
+      studentGrade = #{studentGrade,jdbcType=NVARCHAR},
+      studentNumber = #{studentNumber,jdbcType=INTEGER},
+      effect = #{effect,jdbcType=NVARCHAR},
+      mentorsNumber = #{mentorsNumber,jdbcType=INTEGER},
+      mentorsLevel = #{mentorsLevel,jdbcType=NVARCHAR},
+      note = #{note,jdbcType=NVARCHAR},
+      year = #{year,jdbcType=INTEGER},
+      semester = #{semester,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, classTeacher, status, name, level, source, projectStatus, titleLevel, 
+    studentGrade, studentNumber, effect, mentorsNumber, mentorsLevel, note, year, semester
+    from teacheringWork_guideTheGreatCreation
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+    <select id="selectAll" resultMap="BaseResultMap">
+    SELECT * FROM teacheringWork_guideTheGreatCreation
+  </select>
+    <select id="selectByClassTeacher" parameterType="com.example.demo.model.TeacheringworkGuidethegreatcreation"
+            resultMap="BaseResultMap">
+        SELECT * FROM teacheringWork_guideTheGreatCreation WHERE 1=1
+        AND classTeacher=#{classTeacher,jdbcType=NVARCHAR}
+        <if test="year!=null and year!=''">
+            AND year=#{year,jdbcType=INTEGER}
+        </if>
+    </select>
+</mapper>
