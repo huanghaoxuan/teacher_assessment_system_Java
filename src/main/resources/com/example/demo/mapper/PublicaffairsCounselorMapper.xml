@@ -22,7 +22,7 @@
       schoolLevel, provinceLevel, caucusLaval, 
       startTime, endTime, note, 
       year)
-    values (#{jdbcType=INTEGER}, #{classTeacher,jdbcType=NVARCHAR}, #{status,jdbcType=NVARCHAR},
+    values (#{classTeacher,jdbcType=NVARCHAR}, #{status,jdbcType=NVARCHAR},
       #{schoolLevel,jdbcType=NVARCHAR}, #{provinceLevel,jdbcType=NVARCHAR}, #{caucusLaval,jdbcType=NVARCHAR}, 
       #{startTime,jdbcType=NVARCHAR}, #{endTime,jdbcType=NVARCHAR}, #{note,jdbcType=NVARCHAR}, 
       #{year,jdbcType=INTEGER})
