@@ -1,7 +1,6 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.mapper.OthersAnnualreviewstatusMapper;
-import com.example.demo.model.FruitClassTeaching;
 import com.example.demo.model.OthersAnnualreviewstatus;
 import com.example.demo.service.OthersAnnualreviewstatusService;
 import com.github.pagehelper.PageHelper;
