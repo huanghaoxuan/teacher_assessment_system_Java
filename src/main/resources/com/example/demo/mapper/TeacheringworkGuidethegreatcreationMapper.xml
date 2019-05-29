@@ -25,16 +25,16 @@
   </delete>
     <insert id="insert" parameterType="com.example.demo.model.TeacheringworkGuidethegreatcreation">
     insert into teacheringWork_guideTheGreatCreation (classTeacher, status,
-      name, level, source, 
-      projectStatus, titleLevel, studentGrade, 
-      studentNumber, effect, mentorsNumber, 
-      mentorsLevel, note, year, 
+      name, level, source,
+      projectStatus, titleLevel, studentGrade,
+      studentNumber, effect, mentorsNumber,
+      mentorsLevel, note, year,
       semester)
     values (#{classTeacher,jdbcType=NVARCHAR}, #{status,jdbcType=NVARCHAR},
-      #{name,jdbcType=NVARCHAR}, #{level,jdbcType=NVARCHAR}, #{source,jdbcType=NVARCHAR}, 
-      #{projectStatus,jdbcType=NVARCHAR}, #{titleLevel,jdbcType=NVARCHAR}, #{studentGrade,jdbcType=NVARCHAR}, 
-      #{studentNumber,jdbcType=INTEGER}, #{effect,jdbcType=NVARCHAR}, #{mentorsNumber,jdbcType=INTEGER}, 
-      #{mentorsLevel,jdbcType=NVARCHAR}, #{note,jdbcType=NVARCHAR}, #{year,jdbcType=INTEGER}, 
+      #{name,jdbcType=NVARCHAR}, #{level,jdbcType=NVARCHAR}, #{source,jdbcType=NVARCHAR},
+      #{projectStatus,jdbcType=NVARCHAR}, #{titleLevel,jdbcType=NVARCHAR}, #{studentGrade,jdbcType=NVARCHAR},
+      #{studentNumber,jdbcType=INTEGER}, #{effect,jdbcType=NVARCHAR}, #{mentorsNumber,jdbcType=INTEGER},
+      #{mentorsLevel,jdbcType=NVARCHAR}, #{note,jdbcType=NVARCHAR}, #{year,jdbcType=INTEGER},
       #{semester,jdbcType=INTEGER})
   </insert>
     <update id="updateByPrimaryKey" parameterType="com.example.demo.model.TeacheringworkGuidethegreatcreation">
@@ -57,7 +57,7 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
     <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select id, classTeacher, status, name, level, source, projectStatus, titleLevel, 
+    select id, classTeacher, status, name, level, source, projectStatus, titleLevel,
     studentGrade, studentNumber, effect, mentorsNumber, mentorsLevel, note, year, semester
     from teacheringWork_guideTheGreatCreation
     where id = #{id,jdbcType=INTEGER}
