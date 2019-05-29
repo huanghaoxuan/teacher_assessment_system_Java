@@ -1,6 +1,5 @@
 package com.example.demo.mapper;
 
-import com.example.demo.model.OthersComprehensiveawardwinning;
 import com.example.demo.model.OthersFiles;
 
 import java.util.List;
@@ -16,6 +15,6 @@ public interface OthersFilesMapper {
 
     int updateByPrimaryKey(OthersFiles record);
 
-    List<OthersFiles> selectByClassTeacher(OthersFiles othersFiles);
+    List<OthersFiles> selectByClassTeacher(OthersFiles record);
 
 }

@@ -19,6 +19,8 @@ public class PublicaffairsAdmissions implements Serializable {
 
     private String classTeacher;
 
+    private String status;
+
     private static final long serialVersionUID = 1L;
 
     public Integer getId() {
@@ -36,7 +38,7 @@ public class PublicaffairsAdmissions implements Serializable {
     public PublicaffairsAdmissions() {
     }
 
-    public PublicaffairsAdmissions(String admissionsHeader, String performance, String result, String address, String note, Integer year, String classTeacher) {
+    public PublicaffairsAdmissions(String admissionsHeader, String performance, String result, String address, String note, Integer year, String classTeacher, String status) {
         this.admissionsHeader = admissionsHeader;
         this.performance = performance;
         this.result = result;
@@ -44,9 +46,10 @@ public class PublicaffairsAdmissions implements Serializable {
         this.note = note;
         this.year = year;
         this.classTeacher = classTeacher;
+        this.status = status;
     }
 
-    public PublicaffairsAdmissions(Integer id, String admissionsHeader, String performance, String result, String address, String note, Integer year, String classTeacher) {
+    public PublicaffairsAdmissions(Integer id, String admissionsHeader, String performance, String result, String address, String note, Integer year, String classTeacher, String status) {
         this.id = id;
         this.admissionsHeader = admissionsHeader;
         this.performance = performance;
@@ -55,6 +58,7 @@ public class PublicaffairsAdmissions implements Serializable {
         this.note = note;
         this.year = year;
         this.classTeacher = classTeacher;
+        this.status = status;
     }
 
     public void setAdmissionsHeader(String admissionsHeader) {
@@ -109,6 +113,14 @@ public class PublicaffairsAdmissions implements Serializable {
         this.classTeacher = classTeacher == null ? null : classTeacher.trim();
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status == null ? null : status.trim();
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -123,6 +135,7 @@ public class PublicaffairsAdmissions implements Serializable {
         sb.append(", note=").append(note);
         sb.append(", year=").append(year);
         sb.append(", classTeacher=").append(classTeacher);
+        sb.append(", status=").append(status);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

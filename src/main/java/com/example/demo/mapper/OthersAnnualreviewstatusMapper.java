@@ -14,5 +14,5 @@ public interface OthersAnnualreviewstatusMapper {
 
     int updateByPrimaryKey(OthersAnnualreviewstatus record);
 
-    List<OthersAnnualreviewstatus> selectByClassTeacher(OthersAnnualreviewstatus othersAnnualreviewstatus);
+    List<OthersAnnualreviewstatus> selectByClassTeacher(OthersAnnualreviewstatus record);
 }

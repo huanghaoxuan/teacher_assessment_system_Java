@@ -15,5 +15,5 @@ public interface PublicaffairsAdmissionsMapper {
 
     int updateByPrimaryKey(PublicaffairsAdmissions record);
 
-    List<PublicaffairsAdmissions> selectByClassTeacher(PublicaffairsAdmissions publicaffairsAdmissions);
+    List<PublicaffairsAdmissions> selectByClassTeacher(PublicaffairsAdmissions record);
 }

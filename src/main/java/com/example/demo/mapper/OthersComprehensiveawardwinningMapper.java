@@ -1,6 +1,5 @@
 package com.example.demo.mapper;
 
-import com.example.demo.model.OthersAnnualreviewstatus;
 import com.example.demo.model.OthersComprehensiveawardwinning;
 
 import java.util.List;
@@ -16,6 +15,6 @@ public interface OthersComprehensiveawardwinningMapper {
 
     int updateByPrimaryKey(OthersComprehensiveawardwinning record);
 
-    List<OthersComprehensiveawardwinning> selectByClassTeacher(OthersComprehensiveawardwinning othersComprehensiveawardwinning);
+    List<OthersComprehensiveawardwinning> selectByClassTeacher(OthersComprehensiveawardwinning record);
 
 }
