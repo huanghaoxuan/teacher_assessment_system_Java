@@ -55,7 +55,7 @@ public class PublicaffairsAdmissionsController {
             @ApiImplicitParam(name = "result", value = "招生业绩", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "address", value = "招生地点", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "note", value = "备注", required = false, dataType = "varchar", paramType = "query"),
-            @ApiImplicitParam(name = "year", value = "学年", required = false, dataType = "varchar", paramType = "query"),
+            @ApiImplicitParam(name = "year", value = "学年", required = false, dataType = "int", paramType = "query"),
             @ApiImplicitParam(name = "status", value = "审核情况", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "classTeacher", value = "教师用户工号", required = true, dataType = "varchar", paramType = "query")
 
@@ -75,7 +75,7 @@ public class PublicaffairsAdmissionsController {
             @ApiImplicitParam(name = "result", value = "招生业绩", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "address", value = "招生地点", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "note", value = "备注", required = false, dataType = "varchar", paramType = "query"),
-            @ApiImplicitParam(name = "year", value = "学年", required = false, dataType = "varchar", paramType = "query"),
+            @ApiImplicitParam(name = "year", value = "学年", required = false, dataType = "int", paramType = "query"),
             @ApiImplicitParam(name = "status", value = "审核情况", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "classTeacher", value = "教师用户工号", required = true, dataType = "varchar", paramType = "query")
 

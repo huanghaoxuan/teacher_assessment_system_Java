@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.PublicaffairsCounselorMapper">
+    <resultMap id="BaseResultMap" type="com.example.demo.model.PublicaffairsCounselor">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="classTeacher" jdbcType="NVARCHAR" property="classTeacher"/>
+        <result column="status" jdbcType="NVARCHAR" property="status"/>
+        <result column="schoolLevel" jdbcType="NVARCHAR" property="schoolLevel"/>
+        <result column="provinceLevel" jdbcType="NVARCHAR" property="provinceLevel"/>
+        <result column="caucusLaval" jdbcType="NVARCHAR" property="caucusLaval"/>
+        <result column="startTime" jdbcType="NVARCHAR" property="startTime"/>
+        <result column="endTime" jdbcType="NVARCHAR" property="endTime"/>
+        <result column="note" jdbcType="NVARCHAR" property="note"/>
+        <result column="year" jdbcType="INTEGER" property="year"/>
+    </resultMap>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from publicAffairs_counselor
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="com.example.demo.model.PublicaffairsCounselor">
+    insert into publicAffairs_counselor (classTeacher, status,
+      schoolLevel, provinceLevel, caucusLaval, 
+      startTime, endTime, note, 
+      year)
+    values (#{jdbcType=INTEGER}, #{classTeacher,jdbcType=NVARCHAR}, #{status,jdbcType=NVARCHAR},
+      #{schoolLevel,jdbcType=NVARCHAR}, #{provinceLevel,jdbcType=NVARCHAR}, #{caucusLaval,jdbcType=NVARCHAR}, 
+      #{startTime,jdbcType=NVARCHAR}, #{endTime,jdbcType=NVARCHAR}, #{note,jdbcType=NVARCHAR}, 
+      #{year,jdbcType=INTEGER})
+  </insert>
+    <update id="updateByPrimaryKey" parameterType="com.example.demo.model.PublicaffairsCounselor">
+    update publicAffairs_counselor
+    set classTeacher = #{classTeacher,jdbcType=NVARCHAR},
+      status = #{status,jdbcType=NVARCHAR},
+      schoolLevel = #{schoolLevel,jdbcType=NVARCHAR},
+      provinceLevel = #{provinceLevel,jdbcType=NVARCHAR},
+      caucusLaval = #{caucusLaval,jdbcType=NVARCHAR},
+      startTime = #{startTime,jdbcType=NVARCHAR},
+      endTime = #{endTime,jdbcType=NVARCHAR},
+      note = #{note,jdbcType=NVARCHAR},
+      year = #{year,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, classTeacher, status, schoolLevel, provinceLevel, caucusLaval, startTime, 
+    endTime, note, year
+    from publicAffairs_counselor
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+    <select id="selectAll" resultMap="BaseResultMap">
+    select id, classTeacher, status, schoolLevel, provinceLevel, caucusLaval, startTime, 
+    endTime, note, year
+    from publicAffairs_counselor
+  </select>
+    <select id="selectByClassTeacher" parameterType="com.example.demo.model.PublicaffairsCounselor"
+            resultMap="BaseResultMap">
+        SELECT * FROM publicAffairs_counselor WHERE 1=1
+        AND classTeacher=#{classTeacher,jdbcType=NVARCHAR}
+        <if test="year!=null and year!=''">
+            AND year=#{year,jdbcType=INTEGER}
+        </if>
+    </select>
+</mapper>
