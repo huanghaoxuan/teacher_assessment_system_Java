@@ -20,12 +20,12 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
     <insert id="insert" parameterType="com.example.demo.model.ScientificresearchHorizontaltopicprojects">
-    insert into scientificResearch_horizontalTopicProjects (id, classTeacher, status, 
+    insert into scientificResearch_horizontalTopicProjects (classTeacher, status,
       name, source, character, 
       money, startTime, estimatedClosingTime, 
       result, note, year
       )
-    values (#{id,jdbcType=INTEGER}, #{classTeacher,jdbcType=NVARCHAR}, #{status,jdbcType=NVARCHAR}, 
+    values (#{classTeacher,jdbcType=NVARCHAR}, #{status,jdbcType=NVARCHAR},
       #{name,jdbcType=NVARCHAR}, #{source,jdbcType=NVARCHAR}, #{character,jdbcType=NVARCHAR}, 
       #{money,jdbcType=NVARCHAR}, #{startTime,jdbcType=NVARCHAR}, #{estimatedClosingTime,jdbcType=NVARCHAR}, 
       #{result,jdbcType=NVARCHAR}, #{note,jdbcType=NVARCHAR}, #{year,jdbcType=INTEGER}
