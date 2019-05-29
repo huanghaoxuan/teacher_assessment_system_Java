@@ -69,6 +69,7 @@ public class TeachingconstructionCurriculumconstructionController {
             @ApiImplicitParam(name = "name", value = "活动名称", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "character", value = "任务角色", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "undertakingTasks", value = "承担任务", required = false, dataType = "varchar", paramType = "query"),
+            @ApiImplicitParam(name = "note", value = "备注", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "year", value = "学年", required = false, dataType = "int", paramType = "query"),
             @ApiImplicitParam(name = "status", value = "审核情况", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "classTeacher", value = "教师用户工号", required = true, dataType = "varchar", paramType = "query")
