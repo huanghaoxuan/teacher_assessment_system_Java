@@ -6,6 +6,7 @@ import com.example.demo.service.PublicaffairsAdmissionsService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -16,6 +17,8 @@ import java.util.List;
  * @Date: 2019/5/29 9:01
  * @Version 1.0
  */
+
+@Service
 public class PublicaffairsAdmissionsServiceImpl implements PublicaffairsAdmissionsService {
 
     @Autowired
