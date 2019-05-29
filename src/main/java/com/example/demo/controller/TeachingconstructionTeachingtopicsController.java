@@ -50,6 +50,7 @@ public class TeachingconstructionTeachingtopicsController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", value = "主键序列", required = true, dataType = "int", paramType = "query"),
             @ApiImplicitParam(name = "name", value = "活动名称", required = false, dataType = "varchar", paramType = "query"),
+            @ApiImplicitParam(name = "source", value = "课题来源", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "character", value = "任务角色", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "type", value = "课题性质", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "condition", value = "项目状况", required = false, dataType = "varchar", paramType = "query"),
@@ -72,6 +73,7 @@ public class TeachingconstructionTeachingtopicsController {
     @ApiOperation(value = "插入承担教研教改课题", notes = "承担教研教改课题更新接口")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "name", value = "活动名称", required = false, dataType = "varchar", paramType = "query"),
+            @ApiImplicitParam(name = "source", value = "课题来源", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "character", value = "任务角色", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "type", value = "课题性质", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "condition", value = "项目状况", required = false, dataType = "varchar", paramType = "query"),

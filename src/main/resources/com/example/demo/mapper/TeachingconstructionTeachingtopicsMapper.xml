@@ -22,14 +22,14 @@
   </delete>
     <insert id="insert" parameterType="com.example.demo.model.TeachingconstructionTeachingtopics">
     insert into teachingConstruction_teachingTopics (classTeacher, status,
-      name, source, character, 
-      type, condition, startTime, 
-      endTime, result, note, 
+      name, source, character,
+      type, condition, startTime,
+      endTime, result, note,
       year)
     values (#{classTeacher,jdbcType=NVARCHAR}, #{status,jdbcType=NVARCHAR},
-      #{name,jdbcType=NVARCHAR}, #{source,jdbcType=NVARCHAR}, #{character,jdbcType=NVARCHAR}, 
-      #{type,jdbcType=NVARCHAR}, #{condition,jdbcType=NVARCHAR}, #{startTime,jdbcType=NVARCHAR}, 
-      #{endTime,jdbcType=NVARCHAR}, #{result,jdbcType=NVARCHAR}, #{note,jdbcType=NVARCHAR}, 
+      #{name,jdbcType=NVARCHAR}, #{source,jdbcType=NVARCHAR}, #{character,jdbcType=NVARCHAR},
+      #{type,jdbcType=NVARCHAR}, #{condition,jdbcType=NVARCHAR}, #{startTime,jdbcType=NVARCHAR},
+      #{endTime,jdbcType=NVARCHAR}, #{result,jdbcType=NVARCHAR}, #{note,jdbcType=NVARCHAR},
       #{year,jdbcType=INTEGER})
   </insert>
     <update id="updateByPrimaryKey" parameterType="com.example.demo.model.TeachingconstructionTeachingtopics">
@@ -49,15 +49,13 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
     <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select id, classTeacher, status, name, source, character, type, condition, startTime, 
+    select id, classTeacher, status, name, source, character, type, condition, startTime,
     endTime, result, note, year
     from teachingConstruction_teachingTopics
     where id = #{id,jdbcType=INTEGER}
   </select>
     <select id="selectAll" resultMap="BaseResultMap">
-    select id, classTeacher, status, name, source, character, type, condition, startTime, 
-    endTime, result, note, year
-    from teachingConstruction_teachingTopics
+    SELECT * FROM teachingConstruction_teachingTopics
   </select>
     <select id="selectByClassTeacher" parameterType="com.example.demo.model.TeachingconstructionTeachingtopics"
             resultMap="BaseResultMap">
