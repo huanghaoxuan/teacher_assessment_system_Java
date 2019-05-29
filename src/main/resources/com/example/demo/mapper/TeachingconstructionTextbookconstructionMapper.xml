@@ -19,11 +19,11 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
     <insert id="insert" parameterType="com.example.demo.model.TeachingconstructionTextbookconstruction">
-    insert into teachingConstruction_textbookConstruction (id, classTeacher, status, 
+    insert into teachingConstruction_textbookConstruction (classTeacher, status,
       name, press, publicationTime, 
       textbooksNumber, character, yesorno, 
       note, year)
-    values (#{id,jdbcType=INTEGER}, #{classTeacher,jdbcType=NVARCHAR}, #{status,jdbcType=NVARCHAR}, 
+    values (#{classTeacher,jdbcType=NVARCHAR}, #{status,jdbcType=NVARCHAR},
       #{name,jdbcType=NVARCHAR}, #{press,jdbcType=NVARCHAR}, #{publicationTime,jdbcType=NVARCHAR}, 
       #{textbooksNumber,jdbcType=NVARCHAR}, #{character,jdbcType=NVARCHAR}, #{yesorno,jdbcType=NVARCHAR}, 
       #{note,jdbcType=NVARCHAR}, #{year,jdbcType=INTEGER})
