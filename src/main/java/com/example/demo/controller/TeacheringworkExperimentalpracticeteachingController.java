@@ -70,7 +70,7 @@ public class TeacheringworkExperimentalpracticeteachingController {
 
     })
     public Integer updateByPrimaryKey(@ApiIgnore Integer id, String classTeacher, String status, String name, String character, BigDecimal allTime, BigDecimal weekTime, Integer studentNumber, Integer parallelClassesNumber, Integer groupingPerClassNumber, Integer instructorsNumber, String experimentType, Integer reportsNumber, Integer correctionsNumber, Integer note, Integer year, Integer semester) {
-        TeacheringworkExperimentalpracticeteaching teacheringworkExperimentalpracticeteaching = new TeacheringworkExperimentalpracticeteaching(classTeacher, status, name, character, allTime, weekTime, studentNumber, parallelClassesNumber, groupingPerClassNumber, instructorsNumber, experimentType, reportsNumber, correctionsNumber, note, year, semester);
+        TeacheringworkExperimentalpracticeteaching teacheringworkExperimentalpracticeteaching = new TeacheringworkExperimentalpracticeteaching(id, classTeacher, status, name, character, allTime, weekTime, studentNumber, parallelClassesNumber, groupingPerClassNumber, instructorsNumber, experimentType, reportsNumber, correctionsNumber, note, year, semester);
 
         return teacheringworkExperimentalpracticeteachingService.updateByPrimaryKey(teacheringworkExperimentalpracticeteaching);
     }

@@ -67,7 +67,7 @@ public class TeacheringworkInternshipguideController {
 
     })
     public Integer updateByPrimaryKey(@ApiIgnore Integer id, String classTeacher, String status, String name, BigDecimal credits, BigDecimal hours, Integer studentNumber, Integer loopsNumber, String guidanceContent, String internshipReport, String hasCorrecting, String note, Integer year, Integer semester) {
-        TeacheringworkInternshipguide teacheringworkInternshipguide = new TeacheringworkInternshipguide(classTeacher, status, name, credits, hours, studentNumber, loopsNumber, guidanceContent, internshipReport, hasCorrecting, note, year, semester);
+        TeacheringworkInternshipguide teacheringworkInternshipguide = new TeacheringworkInternshipguide(id, classTeacher, status, name, credits, hours, studentNumber, loopsNumber, guidanceContent, internshipReport, hasCorrecting, note, year, semester);
 
         return teacheringworkInternshipguideService.updateByPrimaryKey(teacheringworkInternshipguide);
     }

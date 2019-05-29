@@ -67,8 +67,8 @@ public class TeachingconstructionLaboratoryconstructionController {
             @ApiImplicitParam(name = "classTeacher", value = "教师用户工号", required = true, dataType = "varchar", paramType = "query")
 
     })
-    public Integer updateByPrimaryKey(@ApiIgnore Integer id, String classTeacher, String status, String name, String contribution, BigDecimal hours, Integer peopleNumber, String professional, String grade, String controlDeviceName, String reformingDeviceName, String money, String note, Integer year) {
-        TeachingconstructionLaboratoryconstruction teachingconstructionLaboratoryconstruction = new TeachingconstructionLaboratoryconstruction(id, classTeacher, status, name, contribution, hours, peopleNumber, professional, grade, controlDeviceName, reformingDeviceName, money, note, year);
+    public Integer updateByPrimaryKey(@ApiIgnore Integer id, String classTeacher, String status, String name, String character, String contribution, BigDecimal hours, Integer peopleNumber, String professional, String grade, String controlDeviceName, String reformingDeviceName, String money, String note, Integer year) {
+        TeachingconstructionLaboratoryconstruction teachingconstructionLaboratoryconstruction = new TeachingconstructionLaboratoryconstruction(id, classTeacher, status, name, character, contribution, hours, peopleNumber, professional, grade, controlDeviceName, reformingDeviceName, money, note, year);
 
         return teachingconstructionLaboratoryconstructionService.updateByPrimaryKey(teachingconstructionLaboratoryconstruction);
     }
@@ -92,8 +92,8 @@ public class TeachingconstructionLaboratoryconstructionController {
             @ApiImplicitParam(name = "classTeacher", value = "教师用户工号", required = true, dataType = "varchar", paramType = "query")
 
     })
-    public Integer insert(@ApiIgnore String classTeacher, String status, String name, String contribution, BigDecimal hours, Integer peopleNumber, String professional, String grade, String controlDeviceName, String reformingDeviceName, String money, String note, Integer year) {
-        TeachingconstructionLaboratoryconstruction teachingconstructionLaboratoryconstruction = new TeachingconstructionLaboratoryconstruction(classTeacher, status, name, contribution, hours, peopleNumber, professional, grade, controlDeviceName, reformingDeviceName, money, note, year);
+    public Integer insert(@ApiIgnore String classTeacher, String status, String name, String character, String contribution, BigDecimal hours, Integer peopleNumber, String professional, String grade, String controlDeviceName, String reformingDeviceName, String money, String note, Integer year) {
+        TeachingconstructionLaboratoryconstruction teachingconstructionLaboratoryconstruction = new TeachingconstructionLaboratoryconstruction(classTeacher, status, name, character, contribution, hours, peopleNumber, professional, grade, controlDeviceName, reformingDeviceName, money, note, year);
 
         return teachingconstructionLaboratoryconstructionService.insert(teachingconstructionLaboratoryconstruction);
     }

@@ -12,6 +12,8 @@ public class TeachingconstructionLaboratoryconstruction implements Serializable 
 
     private String name;
 
+    private String character;
+
     private String contribution;
 
     private BigDecimal hours;
@@ -20,17 +22,14 @@ public class TeachingconstructionLaboratoryconstruction implements Serializable 
 
     private String professional;
 
-    private String grade;
-
-    private String controlDeviceName;
-
     public TeachingconstructionLaboratoryconstruction() {
     }
 
-    public TeachingconstructionLaboratoryconstruction(String classTeacher, String status, String name, String contribution, BigDecimal hours, Integer peopleNumber, String professional, String grade, String controlDeviceName, String reformingDeviceName, String money, String note, Integer year) {
+    public TeachingconstructionLaboratoryconstruction(String classTeacher, String status, String name, String character, String contribution, BigDecimal hours, Integer peopleNumber, String professional, String grade, String controlDeviceName, String reformingDeviceName, String money, String note, Integer year) {
         this.classTeacher = classTeacher;
         this.status = status;
         this.name = name;
+        this.character = character;
         this.contribution = contribution;
         this.hours = hours;
         this.peopleNumber = peopleNumber;
@@ -43,11 +42,12 @@ public class TeachingconstructionLaboratoryconstruction implements Serializable 
         this.year = year;
     }
 
-    public TeachingconstructionLaboratoryconstruction(Integer id, String classTeacher, String status, String name, String contribution, BigDecimal hours, Integer peopleNumber, String professional, String grade, String controlDeviceName, String reformingDeviceName, String money, String note, Integer year) {
+    public TeachingconstructionLaboratoryconstruction(Integer id, String classTeacher, String status, String name, String character, String contribution, BigDecimal hours, Integer peopleNumber, String professional, String grade, String controlDeviceName, String reformingDeviceName, String money, String note, Integer year) {
         this.id = id;
         this.classTeacher = classTeacher;
         this.status = status;
         this.name = name;
+        this.character = character;
         this.contribution = contribution;
         this.hours = hours;
         this.peopleNumber = peopleNumber;
@@ -59,6 +59,10 @@ public class TeachingconstructionLaboratoryconstruction implements Serializable 
         this.note = note;
         this.year = year;
     }
+
+    private String grade;
+
+    private String controlDeviceName;
 
     private String reformingDeviceName;
 
@@ -100,6 +104,14 @@ public class TeachingconstructionLaboratoryconstruction implements Serializable 
 
     public void setName(String name) {
         this.name = name == null ? null : name.trim();
+    }
+
+    public String getCharacter() {
+        return character;
+    }
+
+    public void setCharacter(String character) {
+        this.character = character == null ? null : character.trim();
     }
 
     public String getContribution() {
@@ -192,6 +204,7 @@ public class TeachingconstructionLaboratoryconstruction implements Serializable 
         sb.append(", classTeacher=").append(classTeacher);
         sb.append(", status=").append(status);
         sb.append(", name=").append(name);
+        sb.append(", character=").append(character);
         sb.append(", contribution=").append(contribution);
         sb.append(", hours=").append(hours);
         sb.append(", peopleNumber=").append(peopleNumber);

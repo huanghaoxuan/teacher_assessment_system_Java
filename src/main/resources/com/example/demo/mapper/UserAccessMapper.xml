@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.UserAccessMapper">
+    <resultMap id="BaseResultMap" type="com.example.demo.model.UserAccess">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="access_name" jdbcType="NVARCHAR" property="access_name"/>
+        <result column="access_pass" jdbcType="NVARCHAR" property="access_pass"/>
+        <result column="access_identity" jdbcType="NVARCHAR" property="access_identity"/>
+    </resultMap>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from user_access
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="com.example.demo.model.UserAccess">
+    insert into user_access (access_name, access_pass,
+      access_identity)
+    values (#{access_name,jdbcType=NVARCHAR}, #{access_pass,jdbcType=NVARCHAR},
+      #{access_identity,jdbcType=INTEGER})
+  </insert>
+    <update id="updateByPrimaryKey" parameterType="com.example.demo.model.UserAccess">
+    update user_access
+    set access_name = #{access_name,jdbcType=NVARCHAR},
+      access_pass = #{access_pass,jdbcType=NVARCHAR},
+      access_identity = #{access_identity,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, access_name, access_pass, access_identity
+    from user_access
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+    <select id="selectAll" resultMap="BaseResultMap">
+    select id, access_name, access_pass, access_identity
+    from user_access
+  </select>
+    <select id="selectByNamePassword" parameterType="com.example.demo.model.UserAccess"
+            resultMap="BaseResultMap">
+    SELECT * FROM user_access WHERE access_name=#{access_name,jdbcType=NVARCHAR}
+    AND access_pass=#{access_pass,jdbcType=NVARCHAR}
+  </select>
+</mapper>
