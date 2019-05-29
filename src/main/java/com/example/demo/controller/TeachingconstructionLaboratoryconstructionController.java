@@ -26,7 +26,7 @@ import java.math.BigDecimal;
 @RestController
 @RequestMapping("/teachingconstructionLaboratoryconstruction")
 @Api(tags = "实验室建设的数据接口")
-public class TeachingconstructionLaboratoryconstructionController1 {
+public class TeachingconstructionLaboratoryconstructionController {
     @Autowired
     private TeachingconstructionLaboratoryconstructionService teachingconstructionLaboratoryconstructionService;
 
