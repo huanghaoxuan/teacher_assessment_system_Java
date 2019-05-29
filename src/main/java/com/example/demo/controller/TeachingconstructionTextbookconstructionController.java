@@ -24,7 +24,7 @@ import springfox.documentation.annotations.ApiIgnore;
 @RestController
 @RequestMapping("/teachingconstructionTextbookconstruction")
 @Api(tags = "教材建设的数据接口")
-public class TeachingconstructionTextbookconstructionController1 {
+public class TeachingconstructionTextbookconstructionController {
     @Autowired
     private TeachingconstructionTextbookconstructionService teachingconstructionTextbookconstructionService;
 
