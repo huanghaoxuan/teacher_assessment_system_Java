@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.UserinformationMapper">
+    <resultMap id="BaseResultMap" type="com.example.demo.model.Userinformation">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="name" jdbcType="NVARCHAR" property="name"/>
+        <result column="sex" jdbcType="NVARCHAR" property="sex"/>
+        <result column="birthday" jdbcType="NVARCHAR" property="birthday"/>
+        <result column="academicQualifications" jdbcType="NVARCHAR" property="academicQualifications"/>
+        <result column="academicDegrees" jdbcType="NVARCHAR" property="academicDegrees"/>
+        <result column="duties" jdbcType="NVARCHAR" property="duties"/>
+        <result column="politicalLandscape" jdbcType="NVARCHAR" property="politicalLandscape"/>
+        <result column="classTeacher" jdbcType="NVARCHAR" property="classTeacher"/>
+        <result column="departmentDept" jdbcType="NVARCHAR" property="departmentDept"/>
+        <result column="enterSchoolTime" jdbcType="NVARCHAR" property="enterSchoolTime"/>
+        <result column="universityYear" jdbcType="NVARCHAR" property="universityYear"/>
+        <result column="undergraduateGraduationSchool" jdbcType="NVARCHAR" property="undergraduateGraduationSchool"/>
+        <result column="academicQualificationsSchool" jdbcType="NVARCHAR" property="academicQualificationsSchool"/>
+        <result column="academicDegreesSchool" jdbcType="NVARCHAR" property="academicDegreesSchool"/>
+        <result column="idcard" jdbcType="NVARCHAR" property="idcard"/>
+        <result column="willDiscipline" jdbcType="NVARCHAR" property="willDiscipline"/>
+        <result column="willProfessionalTitles" jdbcType="NVARCHAR" property="willProfessionalTitles"/>
+        <result column="studyProfessional" jdbcType="NVARCHAR" property="studyProfessional"/>
+        <result column="jobYear" jdbcType="DECIMAL" property="jobYear"/>
+        <result column="teacherQualificationCertificate" jdbcType="NVARCHAR"
+                property="teacherQualificationCertificate"/>
+        <result column="preJobTraining" jdbcType="NVARCHAR" property="preJobTraining"/>
+        <result column="putonghuaExam" jdbcType="NVARCHAR" property="putonghuaExam"/>
+        <result column="academicQualificationsTime" jdbcType="NVARCHAR" property="academicQualificationsTime"/>
+        <result column="academicDegreesTime" jdbcType="NVARCHAR" property="academicDegreesTime"/>
+        <result column="professionalTechnologyDuties" jdbcType="NVARCHAR" property="professionalTechnologyDuties"/>
+        <result column="professionalTechnologyDutiesTime" jdbcType="NVARCHAR"
+                property="professionalTechnologyDutiesTime"/>
+        <result column="professionalStudyDirection" jdbcType="NVARCHAR" property="professionalStudyDirection"/>
+        <result column="professionalStudyDirectionYear" jdbcType="NVARCHAR" property="professionalStudyDirectionYear"/>
+        <result column="continuingEducationSituation" jdbcType="NVARCHAR" property="continuingEducationSituation"/>
+        <result column="engineeringPracticeExperience" jdbcType="NVARCHAR" property="engineeringPracticeExperience"/>
+        <result column="guidanceStudentPracticeNumber" jdbcType="INTEGER" property="guidanceStudentPracticeNumber"/>
+    </resultMap>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from userInformation
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="com.example.demo.model.Userinformation">
+    insert into userInformation (name, sex,
+      birthday, academicQualifications, academicDegrees, 
+      duties, politicalLandscape, classTeacher, 
+      departmentDept, enterSchoolTime, universityYear, 
+      undergraduateGraduationSchool, academicQualificationsSchool, 
+      academicDegreesSchool, idcard, willDiscipline, 
+      willProfessionalTitles, studyProfessional, 
+      jobYear, teacherQualificationCertificate, 
+      preJobTraining, putonghuaExam, academicQualificationsTime, 
+      academicDegreesTime, professionalTechnologyDuties, 
+      professionalTechnologyDutiesTime, professionalStudyDirection, 
+      professionalStudyDirectionYear, continuingEducationSituation, 
+      engineeringPracticeExperience, guidanceStudentPracticeNumber
+      )
+    values (#{name,jdbcType=NVARCHAR}, #{sex,jdbcType=NVARCHAR},
+      #{birthday,jdbcType=NVARCHAR}, #{academicQualifications,jdbcType=NVARCHAR}, #{academicDegrees,jdbcType=NVARCHAR}, 
+      #{duties,jdbcType=NVARCHAR}, #{politicalLandscape,jdbcType=NVARCHAR}, #{classTeacher,jdbcType=NVARCHAR}, 
+      #{departmentDept,jdbcType=NVARCHAR}, #{enterSchoolTime,jdbcType=NVARCHAR}, #{universityYear,jdbcType=NVARCHAR}, 
+      #{undergraduateGraduationSchool,jdbcType=NVARCHAR}, #{academicQualificationsSchool,jdbcType=NVARCHAR}, 
+      #{academicDegreesSchool,jdbcType=NVARCHAR}, #{idcard,jdbcType=NVARCHAR}, #{willDiscipline,jdbcType=NVARCHAR}, 
+      #{willProfessionalTitles,jdbcType=NVARCHAR}, #{studyProfessional,jdbcType=NVARCHAR}, 
+      #{jobYear,jdbcType=DECIMAL}, #{teacherQualificationCertificate,jdbcType=NVARCHAR}, 
+      #{preJobTraining,jdbcType=NVARCHAR}, #{putonghuaExam,jdbcType=NVARCHAR}, #{academicQualificationsTime,jdbcType=NVARCHAR}, 
+      #{academicDegreesTime,jdbcType=NVARCHAR}, #{professionalTechnologyDuties,jdbcType=NVARCHAR}, 
+      #{professionalTechnologyDutiesTime,jdbcType=NVARCHAR}, #{professionalStudyDirection,jdbcType=NVARCHAR}, 
+      #{professionalStudyDirectionYear,jdbcType=NVARCHAR}, #{continuingEducationSituation,jdbcType=NVARCHAR}, 
+      #{engineeringPracticeExperience,jdbcType=NVARCHAR}, #{guidanceStudentPracticeNumber,jdbcType=INTEGER}
+      )
+  </insert>
+    <update id="updateByPrimaryKey" parameterType="com.example.demo.model.Userinformation">
+    update userInformation
+    set name = #{name,jdbcType=NVARCHAR},
+      sex = #{sex,jdbcType=NVARCHAR},
+      birthday = #{birthday,jdbcType=NVARCHAR},
+      academicQualifications = #{academicQualifications,jdbcType=NVARCHAR},
+      academicDegrees = #{academicDegrees,jdbcType=NVARCHAR},
+      duties = #{duties,jdbcType=NVARCHAR},
+      politicalLandscape = #{politicalLandscape,jdbcType=NVARCHAR},
+      classTeacher = #{classTeacher,jdbcType=NVARCHAR},
+      departmentDept = #{departmentDept,jdbcType=NVARCHAR},
+      enterSchoolTime = #{enterSchoolTime,jdbcType=NVARCHAR},
+      universityYear = #{universityYear,jdbcType=NVARCHAR},
+      undergraduateGraduationSchool = #{undergraduateGraduationSchool,jdbcType=NVARCHAR},
+      academicQualificationsSchool = #{academicQualificationsSchool,jdbcType=NVARCHAR},
+      academicDegreesSchool = #{academicDegreesSchool,jdbcType=NVARCHAR},
+      idcard = #{idcard,jdbcType=NVARCHAR},
+      willDiscipline = #{willDiscipline,jdbcType=NVARCHAR},
+      willProfessionalTitles = #{willProfessionalTitles,jdbcType=NVARCHAR},
+      studyProfessional = #{studyProfessional,jdbcType=NVARCHAR},
+      jobYear = #{jobYear,jdbcType=DECIMAL},
+      teacherQualificationCertificate = #{teacherQualificationCertificate,jdbcType=NVARCHAR},
+      preJobTraining = #{preJobTraining,jdbcType=NVARCHAR},
+      putonghuaExam = #{putonghuaExam,jdbcType=NVARCHAR},
+      academicQualificationsTime = #{academicQualificationsTime,jdbcType=NVARCHAR},
+      academicDegreesTime = #{academicDegreesTime,jdbcType=NVARCHAR},
+      professionalTechnologyDuties = #{professionalTechnologyDuties,jdbcType=NVARCHAR},
+      professionalTechnologyDutiesTime = #{professionalTechnologyDutiesTime,jdbcType=NVARCHAR},
+      professionalStudyDirection = #{professionalStudyDirection,jdbcType=NVARCHAR},
+      professionalStudyDirectionYear = #{professionalStudyDirectionYear,jdbcType=NVARCHAR},
+      continuingEducationSituation = #{continuingEducationSituation,jdbcType=NVARCHAR},
+      engineeringPracticeExperience = #{engineeringPracticeExperience,jdbcType=NVARCHAR},
+      guidanceStudentPracticeNumber = #{guidanceStudentPracticeNumber,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, name, sex, birthday, academicQualifications, academicDegrees, duties, 
+    politicalLandscape, classTeacher, departmentDept, enterSchoolTime, universityYear, 
+    undergraduateGraduationSchool, academicQualificationsSchool, academicDegreesSchool, 
+    idcard, willDiscipline, willProfessionalTitles, studyProfessional, jobYear, teacherQualificationCertificate, 
+    preJobTraining, putonghuaExam, academicQualificationsTime, academicDegreesTime, professionalTechnologyDuties, 
+    professionalTechnologyDutiesTime, professionalStudyDirection, professionalStudyDirectionYear, 
+    continuingEducationSituation, engineeringPracticeExperience, guidanceStudentPracticeNumber
+    from userInformation
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+    <select id="selectAll" resultMap="BaseResultMap">
+    select id, name, sex, birthday, academicQualifications, academicDegrees, duties, 
+    politicalLandscape, classTeacher, departmentDept, enterSchoolTime, universityYear, 
+    undergraduateGraduationSchool, academicQualificationsSchool, academicDegreesSchool, 
+    idcard, willDiscipline, willProfessionalTitles, studyProfessional, jobYear, teacherQualificationCertificate, 
+    preJobTraining, putonghuaExam, academicQualificationsTime, academicDegreesTime, professionalTechnologyDuties, 
+    professionalTechnologyDutiesTime, professionalStudyDirection, professionalStudyDirectionYear, 
+    continuingEducationSituation, engineeringPracticeExperience, guidanceStudentPracticeNumber
+    from userInformation
+  </select>
+    <select id="selectByClassTeacher" parameterType="com.example.demo.model.Userinformation"
+            resultMap="BaseResultMap">
+    SELECT * FROM userInformation WHERE 1=1
+    AND classTeacher=#{classTeacher,jdbcType=NVARCHAR}
+  </select>
+</mapper>

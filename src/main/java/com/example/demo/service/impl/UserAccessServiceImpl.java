@@ -1,7 +1,9 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.mapper.UserAccessMapper;
+import com.example.demo.mapper.UserinformationMapper;
 import com.example.demo.model.UserAccess;
+import com.example.demo.model.Userinformation;
 import com.example.demo.service.UserAccessService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,10 +22,16 @@ import java.util.List;
 public class UserAccessServiceImpl implements UserAccessService {
 
     @Autowired
+    private UserinformationMapper userinformationMapper;
+
+    @Autowired
     private UserAccessMapper userAccessMapper;
 
     @Override
     public int insert(UserAccess record) {
+        Userinformation userinformation = new Userinformation();
+        userinformation.setClassTeacher(record.getAccess_name());
+        userinformationMapper.insert(userinformation);
         return userAccessMapper.insert(record);
     }
 
