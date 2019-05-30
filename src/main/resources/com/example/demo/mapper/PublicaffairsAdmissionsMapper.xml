@@ -4,6 +4,7 @@
     <resultMap id="BaseResultMap" type="com.example.demo.model.PublicaffairsAdmissions">
         <id column="id" jdbcType="INTEGER" property="id"/>
         <result column="admissionsHeader" jdbcType="NVARCHAR" property="admissionsHeader"/>
+        <result column="hasAdmission" jdbcType="NVARCHAR" property="hasAdmission"/>
         <result column="performance" jdbcType="NVARCHAR" property="performance"/>
         <result column="result" jdbcType="NVARCHAR" property="result"/>
         <result column="address" jdbcType="NVARCHAR" property="address"/>
@@ -17,18 +18,19 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
     <insert id="insert" parameterType="com.example.demo.model.PublicaffairsAdmissions">
-    insert into publicAffairs_admissions (admissionsHeader, performance,
-      result, address, note, 
-      year, classTeacher, status
-      )
-    values (#{admissionsHeader,jdbcType=NVARCHAR}, #{performance,jdbcType=NVARCHAR},
-      #{result,jdbcType=NVARCHAR}, #{address,jdbcType=NVARCHAR}, #{note,jdbcType=NVARCHAR}, 
-      #{year,jdbcType=INTEGER}, #{classTeacher,jdbcType=NVARCHAR}, #{status,jdbcType=NVARCHAR}
-      )
+    insert into publicAffairs_admissions (admissionsHeader, hasAdmission,
+      performance, result, address, 
+      note, year, classTeacher, 
+      status)
+    values (#{admissionsHeader,jdbcType=NVARCHAR}, #{hasAdmission,jdbcType=NVARCHAR},
+      #{performance,jdbcType=NVARCHAR}, #{result,jdbcType=NVARCHAR}, #{address,jdbcType=NVARCHAR}, 
+      #{note,jdbcType=NVARCHAR}, #{year,jdbcType=INTEGER}, #{classTeacher,jdbcType=NVARCHAR}, 
+      #{status,jdbcType=NVARCHAR})
   </insert>
     <update id="updateByPrimaryKey" parameterType="com.example.demo.model.PublicaffairsAdmissions">
     update publicAffairs_admissions
     set admissionsHeader = #{admissionsHeader,jdbcType=NVARCHAR},
+      hasAdmission = #{hasAdmission,jdbcType=NVARCHAR},
       performance = #{performance,jdbcType=NVARCHAR},
       result = #{result,jdbcType=NVARCHAR},
       address = #{address,jdbcType=NVARCHAR},
@@ -39,8 +41,8 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
     <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select id, admissionsHeader, performance, result, address, note, year, classTeacher, 
-    status
+    select id, admissionsHeader, hasAdmission, performance, result, address, note, year, 
+    classTeacher, status
     from publicAffairs_admissions
     where id = #{id,jdbcType=INTEGER}
   </select>

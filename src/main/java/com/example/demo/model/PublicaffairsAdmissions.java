@@ -7,6 +7,8 @@ public class PublicaffairsAdmissions implements Serializable {
 
     private String admissionsHeader;
 
+    private String hasAdmission;
+
     private String performance;
 
     private String result;
@@ -16,6 +18,34 @@ public class PublicaffairsAdmissions implements Serializable {
     private String note;
 
     private Integer year;
+
+    public PublicaffairsAdmissions() {
+    }
+
+    public PublicaffairsAdmissions(String admissionsHeader, String hasAdmission, String performance, String result, String address, String note, Integer year, String classTeacher, String status) {
+        this.admissionsHeader = admissionsHeader;
+        this.hasAdmission = hasAdmission;
+        this.performance = performance;
+        this.result = result;
+        this.address = address;
+        this.note = note;
+        this.year = year;
+        this.classTeacher = classTeacher;
+        this.status = status;
+    }
+
+    public PublicaffairsAdmissions(Integer id, String admissionsHeader, String hasAdmission, String performance, String result, String address, String note, Integer year, String classTeacher, String status) {
+        this.id = id;
+        this.admissionsHeader = admissionsHeader;
+        this.hasAdmission = hasAdmission;
+        this.performance = performance;
+        this.result = result;
+        this.address = address;
+        this.note = note;
+        this.year = year;
+        this.classTeacher = classTeacher;
+        this.status = status;
+    }
 
     private String classTeacher;
 
@@ -35,34 +65,16 @@ public class PublicaffairsAdmissions implements Serializable {
         return admissionsHeader;
     }
 
-    public PublicaffairsAdmissions() {
-    }
-
-    public PublicaffairsAdmissions(String admissionsHeader, String performance, String result, String address, String note, Integer year, String classTeacher, String status) {
-        this.admissionsHeader = admissionsHeader;
-        this.performance = performance;
-        this.result = result;
-        this.address = address;
-        this.note = note;
-        this.year = year;
-        this.classTeacher = classTeacher;
-        this.status = status;
-    }
-
-    public PublicaffairsAdmissions(Integer id, String admissionsHeader, String performance, String result, String address, String note, Integer year, String classTeacher, String status) {
-        this.id = id;
-        this.admissionsHeader = admissionsHeader;
-        this.performance = performance;
-        this.result = result;
-        this.address = address;
-        this.note = note;
-        this.year = year;
-        this.classTeacher = classTeacher;
-        this.status = status;
-    }
-
     public void setAdmissionsHeader(String admissionsHeader) {
         this.admissionsHeader = admissionsHeader == null ? null : admissionsHeader.trim();
+    }
+
+    public String getHasAdmission() {
+        return hasAdmission;
+    }
+
+    public void setHasAdmission(String hasAdmission) {
+        this.hasAdmission = hasAdmission == null ? null : hasAdmission.trim();
     }
 
     public String getPerformance() {
@@ -129,6 +141,7 @@ public class PublicaffairsAdmissions implements Serializable {
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
         sb.append(", admissionsHeader=").append(admissionsHeader);
+        sb.append(", hasAdmission=").append(hasAdmission);
         sb.append(", performance=").append(performance);
         sb.append(", result=").append(result);
         sb.append(", address=").append(address);
