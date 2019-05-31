@@ -43,7 +43,7 @@ public class OthersEmploymentServiceImpl implements OthersEmploymentService {
 
     @Override
     public PageInfo<OthersEmployment> selectByClassTeacher(OthersEmployment teaching, int pageNum, int pageSize) {
-        PageHelper.startPage(pageNum, pageSize);
+        PageHelper.startPage(pageNum, pageSize, "id desc");
         List<OthersEmployment> teachings = othersEmploymentMapper.selectByClassTeacher(teaching);
         PageInfo<OthersEmployment> result = new PageInfo<>(teachings);
         return result;

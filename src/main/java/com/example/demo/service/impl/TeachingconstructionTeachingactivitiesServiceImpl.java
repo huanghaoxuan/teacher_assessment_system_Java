@@ -45,7 +45,7 @@ public class TeachingconstructionTeachingactivitiesServiceImpl implements Teachi
 
     @Override
     public PageInfo<TeachingconstructionTeachingactivities> selectByClassTeacher(TeachingconstructionTeachingactivities teaching, int pageNum, int pageSize) {
-        PageHelper.startPage(pageNum, pageSize);
+        PageHelper.startPage(pageNum, pageSize, "id desc");
         List<TeachingconstructionTeachingactivities> teachings = teachingconstructionTeachingactivitiesMapper.selectByClassTeacher(teaching);
         PageInfo<TeachingconstructionTeachingactivities> result = new PageInfo<>(teachings);
         return result;

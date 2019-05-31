@@ -44,7 +44,7 @@ public class ScientificresearchPatentapplicationServiceImpl implements Scientifi
 
     @Override
     public PageInfo<ScientificresearchPatentapplication> selectByClassTeacher(ScientificresearchPatentapplication teaching, int pageNum, int pageSize) {
-        PageHelper.startPage(pageNum, pageSize);
+        PageHelper.startPage(pageNum, pageSize, "id desc");
         List<ScientificresearchPatentapplication> teachings = scientificresearchPatentapplicationMapper.selectByClassTeacher(teaching);
         PageInfo<ScientificresearchPatentapplication> result = new PageInfo<>(teachings);
         return result;

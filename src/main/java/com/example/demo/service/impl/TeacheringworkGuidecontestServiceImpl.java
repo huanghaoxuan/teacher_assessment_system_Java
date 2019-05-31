@@ -44,7 +44,7 @@ public class TeacheringworkGuidecontestServiceImpl implements TeacheringworkGuid
 
     @Override
     public PageInfo<TeacheringworkGuidecontest> selectByClassTeacher(TeacheringworkGuidecontest teaching, int pageNum, int pageSize) {
-        PageHelper.startPage(pageNum, pageSize);
+        PageHelper.startPage(pageNum, pageSize, "id desc");
         List<TeacheringworkGuidecontest> teachings = teacheringworkGuidecontestMapper.selectByClassTeacher(teaching);
         PageInfo<TeacheringworkGuidecontest> result = new PageInfo<>(teachings);
         return result;

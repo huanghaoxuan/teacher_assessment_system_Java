@@ -44,7 +44,7 @@ public class PublicaffairsSocialservicesServiceImpl implements PublicaffairsSoci
 
     @Override
     public PageInfo<PublicaffairsSocialservices> selectByClassTeacher(PublicaffairsSocialservices teaching, int pageNum, int pageSize) {
-        PageHelper.startPage(pageNum, pageSize);
+        PageHelper.startPage(pageNum, pageSize, "id desc");
         List<PublicaffairsSocialservices> teachings = publicaffairsSocialservicesMapper.selectByClassTeacher(teaching);
         PageInfo<PublicaffairsSocialservices> result = new PageInfo<>(teachings);
         return result;

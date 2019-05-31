@@ -44,7 +44,7 @@ public class PublicaffairsEmploymentServiceImpl implements PublicaffairsEmployme
 
     @Override
     public PageInfo<PublicaffairsEmployment> selectByClassTeacher(PublicaffairsEmployment teaching, int pageNum, int pageSize) {
-        PageHelper.startPage(pageNum, pageSize);
+        PageHelper.startPage(pageNum, pageSize, "id desc");
         List<PublicaffairsEmployment> teachings = publicaffairsEmploymentMapper.selectByClassTeacher(teaching);
         PageInfo<PublicaffairsEmployment> result = new PageInfo<>(teachings);
         return result;

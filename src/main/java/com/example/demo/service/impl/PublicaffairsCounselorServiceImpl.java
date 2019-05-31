@@ -44,7 +44,7 @@ public class PublicaffairsCounselorServiceImpl implements PublicaffairsCounselor
 
     @Override
     public PageInfo<PublicaffairsCounselor> selectByClassTeacher(PublicaffairsCounselor teaching, int pageNum, int pageSize) {
-        PageHelper.startPage(pageNum, pageSize);
+        PageHelper.startPage(pageNum, pageSize, "id desc");
         List<PublicaffairsCounselor> teachings = publicaffairsCounselorMapper.selectByClassTeacher(teaching);
         PageInfo<PublicaffairsCounselor> result = new PageInfo<>(teachings);
         return result;

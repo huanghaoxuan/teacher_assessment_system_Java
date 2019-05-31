@@ -1,7 +1,6 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.mapper.OthersComprehensiveawardwinningMapper;
-import com.example.demo.model.OthersAnnualreviewstatus;
 import com.example.demo.model.OthersComprehensiveawardwinning;
 import com.example.demo.service.OthersComprehensiveawardwinningService;
 import com.github.pagehelper.PageHelper;
@@ -45,7 +44,7 @@ public class OthersComprehensiveawardwinningServiceImpl implements OthersCompreh
 
     @Override
     public PageInfo<OthersComprehensiveawardwinning> selectByClassTeacher(OthersComprehensiveawardwinning teaching, int pageNum, int pageSize) {
-        PageHelper.startPage(pageNum, pageSize);
+        PageHelper.startPage(pageNum, pageSize, "id desc");
         List<OthersComprehensiveawardwinning> teachings = othersComprehensiveawardwinningMapper.selectByClassTeacher(teaching);
         PageInfo<OthersComprehensiveawardwinning> result = new PageInfo<>(teachings);
         return result;

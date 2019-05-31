@@ -44,7 +44,7 @@ public class PublicaffairsAdmissionsServiceImpl implements PublicaffairsAdmissio
 
     @Override
     public PageInfo<PublicaffairsAdmissions> selectByClassTeacher(PublicaffairsAdmissions teaching, int pageNum, int pageSize) {
-        PageHelper.startPage(pageNum, pageSize);
+        PageHelper.startPage(pageNum, pageSize, "id desc");
         List<PublicaffairsAdmissions> teachings = publicaffairsAdmissionsMapper.selectByClassTeacher(teaching);
         PageInfo<PublicaffairsAdmissions> result = new PageInfo<>(teachings);
         return result;

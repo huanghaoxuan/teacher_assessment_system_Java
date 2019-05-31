@@ -44,7 +44,7 @@ public class TeacheringworkGraduationdesignguideServiceImpl implements Teacherin
 
     @Override
     public PageInfo<TeacheringworkGraduationdesignguide> selectByClassTeacher(TeacheringworkGraduationdesignguide teaching, int pageNum, int pageSize) {
-        PageHelper.startPage(pageNum, pageSize);
+        PageHelper.startPage(pageNum, pageSize, "id desc");
         List<TeacheringworkGraduationdesignguide> teachings = teacheringworkGraduationdesignguideMapper.selectByClassTeacher(teaching);
         PageInfo<TeacheringworkGraduationdesignguide> result = new PageInfo<>(teachings);
         return result;

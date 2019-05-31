@@ -26,7 +26,7 @@ public class OthersAnnualreviewstatusServiceImpl implements OthersAnnualreviewst
 
     @Override
     public PageInfo<OthersAnnualreviewstatus> selectByClassTeacher(OthersAnnualreviewstatus teaching, int pageNum, int pageSize) {
-        PageHelper.startPage(pageNum, pageSize);
+        PageHelper.startPage(pageNum, pageSize, "id desc");
         List<OthersAnnualreviewstatus> teachings = othersAnnualreviewstatusMapper.selectByClassTeacher(teaching);
         PageInfo<OthersAnnualreviewstatus> result = new PageInfo<>(teachings);
         return result;

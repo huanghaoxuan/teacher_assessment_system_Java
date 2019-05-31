@@ -44,7 +44,7 @@ public class ScientificresearchHorizontaltopicprojectsServiceImpl implements Sci
 
     @Override
     public PageInfo<ScientificresearchHorizontaltopicprojects> selectByClassTeacher(ScientificresearchHorizontaltopicprojects teaching, int pageNum, int pageSize) {
-        PageHelper.startPage(pageNum, pageSize);
+        PageHelper.startPage(pageNum, pageSize, "id desc");
         List<ScientificresearchHorizontaltopicprojects> teachings = scientificresearchHorizontaltopicprojectsMapper.selectByClassTeacher(teaching);
         PageInfo<ScientificresearchHorizontaltopicprojects> result = new PageInfo<>(teachings);
         return result;

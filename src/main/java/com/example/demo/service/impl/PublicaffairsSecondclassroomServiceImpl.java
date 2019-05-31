@@ -44,7 +44,7 @@ public class PublicaffairsSecondclassroomServiceImpl implements PublicaffairsSec
 
     @Override
     public PageInfo<PublicaffairsSecondclassroom> selectByClassTeacher(PublicaffairsSecondclassroom teaching, int pageNum, int pageSize) {
-        PageHelper.startPage(pageNum, pageSize);
+        PageHelper.startPage(pageNum, pageSize, "id desc");
         List<PublicaffairsSecondclassroom> teachings = publicaffairsSecondclassroomMapper.selectByClassTeacher(teaching);
         PageInfo<PublicaffairsSecondclassroom> result = new PageInfo<>(teachings);
         return result;

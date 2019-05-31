@@ -1,7 +1,6 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.mapper.OthersFilesMapper;
-import com.example.demo.model.OthersComprehensiveawardwinning;
 import com.example.demo.model.OthersFiles;
 import com.example.demo.service.OthersFilesService;
 import com.github.pagehelper.PageHelper;
@@ -45,7 +44,7 @@ public class OthersFilesServiceImpl implements OthersFilesService {
 
     @Override
     public PageInfo<OthersFiles> selectByClassTeacher(OthersFiles teaching, int pageNum, int pageSize) {
-        PageHelper.startPage(pageNum, pageSize);
+        PageHelper.startPage(pageNum, pageSize, "id desc");
         List<OthersFiles> teachings = othersFilesMapper.selectByClassTeacher(teaching);
         PageInfo<OthersFiles> result = new PageInfo<>(teachings);
         return result;

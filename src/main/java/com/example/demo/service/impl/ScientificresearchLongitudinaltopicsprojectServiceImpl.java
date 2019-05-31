@@ -44,7 +44,7 @@ public class ScientificresearchLongitudinaltopicsprojectServiceImpl implements S
 
     @Override
     public PageInfo<ScientificresearchLongitudinaltopicsproject> selectByClassTeacher(ScientificresearchLongitudinaltopicsproject teaching, int pageNum, int pageSize) {
-        PageHelper.startPage(pageNum, pageSize);
+        PageHelper.startPage(pageNum, pageSize, "id desc");
         List<ScientificresearchLongitudinaltopicsproject> teachings = scientificresearchLongitudinaltopicsprojectMapper.selectByClassTeacher(teaching);
         PageInfo<ScientificresearchLongitudinaltopicsproject> result = new PageInfo<>(teachings);
         return result;

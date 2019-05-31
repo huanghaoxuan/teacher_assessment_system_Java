@@ -44,7 +44,7 @@ public class TeacheringworkGuidethegreatcreationServiceImpl implements Teacherin
 
     @Override
     public PageInfo<TeacheringworkGuidethegreatcreation> selectByClassTeacher(TeacheringworkGuidethegreatcreation teaching, int pageNum, int pageSize) {
-        PageHelper.startPage(pageNum, pageSize);
+        PageHelper.startPage(pageNum, pageSize, "id desc");
         List<TeacheringworkGuidethegreatcreation> teachings = teacheringworkGuidethegreatcreationMapper.selectByClassTeacher(teaching);
         PageInfo<TeacheringworkGuidethegreatcreation> result = new PageInfo<>(teachings);
         return result;

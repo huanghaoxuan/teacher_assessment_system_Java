@@ -36,7 +36,7 @@ public class TeachingconstructionTextbookconstructionServiceImpl implements Teac
 
     @Override
     public PageInfo<TeachingconstructionTextbookconstruction> selectAll(int pageNum, int pageSize) {
-        PageHelper.startPage(pageNum, pageSize);
+        PageHelper.startPage(pageNum, pageSize, "id desc");
         List<TeachingconstructionTextbookconstruction> teachings = teachingconstructionTextbookconstructionMapper.selectAll();
         PageInfo<TeachingconstructionTextbookconstruction> result = new PageInfo<>(teachings);
         return result;

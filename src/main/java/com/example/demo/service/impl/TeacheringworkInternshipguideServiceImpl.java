@@ -44,7 +44,7 @@ public class TeacheringworkInternshipguideServiceImpl implements TeacheringworkI
 
     @Override
     public PageInfo<TeacheringworkInternshipguide> selectByClassTeacher(TeacheringworkInternshipguide teaching, int pageNum, int pageSize) {
-        PageHelper.startPage(pageNum, pageSize);
+        PageHelper.startPage(pageNum, pageSize, "id desc");
         List<TeacheringworkInternshipguide> teachings = teacheringworkInternshipguideMapper.selectByClassTeacher(teaching);
         PageInfo<TeacheringworkInternshipguide> result = new PageInfo<>(teachings);
         return result;

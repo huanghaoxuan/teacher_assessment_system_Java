@@ -44,7 +44,7 @@ public class ScientificresearchPublishpaperServiceImpl implements Scientificrese
 
     @Override
     public PageInfo<ScientificresearchPublishpaper> selectByClassTeacher(ScientificresearchPublishpaper teaching, int pageNum, int pageSize) {
-        PageHelper.startPage(pageNum, pageSize);
+        PageHelper.startPage(pageNum, pageSize, "id desc");
         List<ScientificresearchPublishpaper> teachings = pcientificresearchPublishpaperMapper.selectByClassTeacher(teaching);
         PageInfo<ScientificresearchPublishpaper> result = new PageInfo<>(teachings);
         return result;
