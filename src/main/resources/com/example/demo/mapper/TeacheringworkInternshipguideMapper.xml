@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.mapper.TeacheringworkInternshipguideMapper">
-    <resultMap id="BaseResultMap" type="com.example.demo.model.TeacheringworkInternshipguide">
-        <id column="id" jdbcType="INTEGER" property="id"/>
-        <result column="classTeacher" jdbcType="NVARCHAR" property="classTeacher"/>
-        <result column="status" jdbcType="NVARCHAR" property="status"/>
-        <result column="name" jdbcType="NVARCHAR" property="name"/>
-        <result column="credits" jdbcType="DECIMAL" property="credits"/>
-        <result column="hours" jdbcType="DECIMAL" property="hours"/>
-        <result column="studentNumber" jdbcType="INTEGER" property="studentNumber"/>
-        <result column="loopsNumber" jdbcType="INTEGER" property="loopsNumber"/>
-        <result column="guidanceContent" jdbcType="NVARCHAR" property="guidanceContent"/>
-        <result column="internshipReport" jdbcType="NVARCHAR" property="internshipReport"/>
-        <result column="hasCorrecting" jdbcType="NVARCHAR" property="hasCorrecting"/>
-        <result column="note" jdbcType="NVARCHAR" property="note"/>
-        <result column="year" jdbcType="INTEGER" property="year"/>
-        <result column="semester" jdbcType="INTEGER" property="semester"/>
-    </resultMap>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <resultMap id="BaseResultMap" type="com.example.demo.model.TeacheringworkInternshipguide">
+    <id column="id" jdbcType="INTEGER" property="id"/>
+    <result column="classTeacher" jdbcType="NVARCHAR" property="classTeacher"/>
+    <result column="status" jdbcType="NVARCHAR" property="status"/>
+    <result column="name" jdbcType="NVARCHAR" property="name"/>
+    <result column="credits" jdbcType="DECIMAL" property="credits"/>
+    <result column="hours" jdbcType="DECIMAL" property="hours"/>
+    <result column="studentNumber" jdbcType="INTEGER" property="studentNumber"/>
+    <result column="loopsNumber" jdbcType="INTEGER" property="loopsNumber"/>
+    <result column="guidanceContent" jdbcType="NVARCHAR" property="guidanceContent"/>
+    <result column="internshipReport" jdbcType="NVARCHAR" property="internshipReport"/>
+    <result column="hasCorrecting" jdbcType="NVARCHAR" property="hasCorrecting"/>
+    <result column="note" jdbcType="NVARCHAR" property="note"/>
+    <result column="year" jdbcType="INTEGER" property="year"/>
+    <result column="semester" jdbcType="NVARCHAR" property="semester"/>
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from teacheringWork_internshipGuide
     where id = #{id,jdbcType=INTEGER}
   </delete>
-    <insert id="insert" parameterType="com.example.demo.model.TeacheringworkInternshipguide">
+  <insert id="insert" parameterType="com.example.demo.model.TeacheringworkInternshipguide">
     insert into teacheringWork_internshipGuide (classTeacher, status,
       name, credits, hours, 
       studentNumber, loopsNumber, guidanceContent, 
@@ -31,9 +31,9 @@
       #{name,jdbcType=NVARCHAR}, #{credits,jdbcType=DECIMAL}, #{hours,jdbcType=DECIMAL}, 
       #{studentNumber,jdbcType=INTEGER}, #{loopsNumber,jdbcType=INTEGER}, #{guidanceContent,jdbcType=NVARCHAR}, 
       #{internshipReport,jdbcType=NVARCHAR}, #{hasCorrecting,jdbcType=NVARCHAR}, #{note,jdbcType=NVARCHAR}, 
-      #{year,jdbcType=INTEGER}, #{semester,jdbcType=INTEGER})
+      #{year,jdbcType=INTEGER}, #{semester,jdbcType=NVARCHAR})
   </insert>
-    <update id="updateByPrimaryKey" parameterType="com.example.demo.model.TeacheringworkInternshipguide">
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.model.TeacheringworkInternshipguide">
     update teacheringWork_internshipGuide
     set classTeacher = #{classTeacher,jdbcType=NVARCHAR},
       status = #{status,jdbcType=NVARCHAR},
@@ -47,10 +47,10 @@
       hasCorrecting = #{hasCorrecting,jdbcType=NVARCHAR},
       note = #{note,jdbcType=NVARCHAR},
       year = #{year,jdbcType=INTEGER},
-      semester = #{semester,jdbcType=INTEGER}
+      semester = #{semester,jdbcType=NVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
-    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select id, classTeacher, status, name, credits, hours, studentNumber, loopsNumber, 
     guidanceContent, internshipReport, hasCorrecting, note, year, semester
     from teacheringWork_internshipGuide
@@ -59,8 +59,8 @@
     <select id="selectAll" resultMap="BaseResultMap">
     SELECT * FROM teacheringWork_internshipGuide
   </select>
-    <select id="selectByClassTeacher" parameterType="com.example.demo.model.TeacheringworkInternshipguide"
-            resultMap="BaseResultMap">
+  <select id="selectByClassTeacher" parameterType="com.example.demo.model.TeacheringworkInternshipguide"
+          resultMap="BaseResultMap">
         SELECT * FROM teacheringWork_internshipGuide WHERE 1=1
         AND classTeacher=#{classTeacher,jdbcType=NVARCHAR}
         <if test="year!=null and year!=''">

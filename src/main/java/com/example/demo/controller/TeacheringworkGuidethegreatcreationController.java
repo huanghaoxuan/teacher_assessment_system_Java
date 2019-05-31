@@ -61,12 +61,12 @@ public class TeacheringworkGuidethegreatcreationController {
             @ApiImplicitParam(name = "mentorsLevel", value = "指导等级", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "note", value = "备注", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "year", value = "学年", required = false, dataType = "int", paramType = "query"),
-            @ApiImplicitParam(name = "semester", value = "学期", required = false, dataType = "int", paramType = "query"),
+            @ApiImplicitParam(name = "semester", value = "学期", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "status", value = "审核情况", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "classTeacher", value = "教师用户工号", required = true, dataType = "varchar", paramType = "query")
 
     })
-    public Integer updateByPrimaryKey(@ApiIgnore Integer id, String classTeacher, String status, String name, String level, String source, String projectStatus, String titleLevel, String studentGrade, Integer studentNumber, String effect, Integer mentorsNumber, String mentorsLevel, String note, Integer year, Integer semester) {
+    public Integer updateByPrimaryKey(@ApiIgnore Integer id, String classTeacher, String status, String name, String level, String source, String projectStatus, String titleLevel, String studentGrade, Integer studentNumber, String effect, Integer mentorsNumber, String mentorsLevel, String note, Integer year, String semester) {
         TeacheringworkGuidethegreatcreation teacheringworkGuidethegreatcreation = new TeacheringworkGuidethegreatcreation(id, classTeacher, status, name, level, source, projectStatus, titleLevel, studentGrade, studentNumber, effect, mentorsNumber, mentorsLevel, note, year, semester);
 
         return teacheringworkGuidethegreatcreationService.updateByPrimaryKey(teacheringworkGuidethegreatcreation);
@@ -87,12 +87,12 @@ public class TeacheringworkGuidethegreatcreationController {
             @ApiImplicitParam(name = "mentorsLevel", value = "指导等级", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "note", value = "备注", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "year", value = "学年", required = false, dataType = "int", paramType = "query"),
-            @ApiImplicitParam(name = "semester", value = "学期", required = false, dataType = "int", paramType = "query"),
+            @ApiImplicitParam(name = "semester", value = "学期", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "status", value = "审核情况", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "classTeacher", value = "教师用户工号", required = true, dataType = "varchar", paramType = "query")
 
     })
-    public Integer insert(@ApiIgnore String classTeacher, String status, String name, String level, String source, String projectStatus, String titleLevel, String studentGrade, Integer studentNumber, String effect, Integer mentorsNumber, String mentorsLevel, String note, Integer year, Integer semester) {
+    public Integer insert(@ApiIgnore String classTeacher, String status, String name, String level, String source, String projectStatus, String titleLevel, String studentGrade, Integer studentNumber, String effect, Integer mentorsNumber, String mentorsLevel, String note, Integer year, String semester) {
         TeacheringworkGuidethegreatcreation teacheringworkGuidethegreatcreation = new TeacheringworkGuidethegreatcreation(classTeacher, status, name, level, source, projectStatus, titleLevel, studentGrade, studentNumber, effect, mentorsNumber, mentorsLevel, note, year, semester);
 
         return teacheringworkGuidethegreatcreationService.insert(teacheringworkGuidethegreatcreation);

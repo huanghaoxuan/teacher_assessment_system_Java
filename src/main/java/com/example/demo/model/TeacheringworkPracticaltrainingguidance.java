@@ -18,10 +18,12 @@ public class TeacheringworkPracticaltrainingguidance implements Serializable {
 
     private Integer studentNumber;
 
+    private Integer loopsNumber;
+
     public TeacheringworkPracticaltrainingguidance() {
     }
 
-    public TeacheringworkPracticaltrainingguidance(String classTeacher, String status, String name, BigDecimal credits, BigDecimal hours, Integer studentNumber, Integer loopsNumber, String trainingType, String results, String note, Integer year, Integer semester) {
+    public TeacheringworkPracticaltrainingguidance(String classTeacher, String status, String name, BigDecimal credits, BigDecimal hours, Integer studentNumber, Integer loopsNumber, String trainingType, String results, String note, Integer year, String semester) {
         this.classTeacher = classTeacher;
         this.status = status;
         this.name = name;
@@ -36,7 +38,7 @@ public class TeacheringworkPracticaltrainingguidance implements Serializable {
         this.semester = semester;
     }
 
-    public TeacheringworkPracticaltrainingguidance(Integer id, String classTeacher, String status, String name, BigDecimal credits, BigDecimal hours, Integer studentNumber, Integer loopsNumber, String trainingType, String results, String note, Integer year, Integer semester) {
+    public TeacheringworkPracticaltrainingguidance(Integer id, String classTeacher, String status, String name, BigDecimal credits, BigDecimal hours, Integer studentNumber, Integer loopsNumber, String trainingType, String results, String note, Integer year, String semester) {
         this.id = id;
         this.classTeacher = classTeacher;
         this.status = status;
@@ -52,8 +54,6 @@ public class TeacheringworkPracticaltrainingguidance implements Serializable {
         this.semester = semester;
     }
 
-    private Integer loopsNumber;
-
     private String trainingType;
 
     private String results;
@@ -62,7 +62,7 @@ public class TeacheringworkPracticaltrainingguidance implements Serializable {
 
     private Integer year;
 
-    private Integer semester;
+    private String semester;
 
     private static final long serialVersionUID = 1L;
 
@@ -162,12 +162,12 @@ public class TeacheringworkPracticaltrainingguidance implements Serializable {
         this.year = year;
     }
 
-    public Integer getSemester() {
+    public String getSemester() {
         return semester;
     }
 
-    public void setSemester(Integer semester) {
-        this.semester = semester;
+    public void setSemester(String semester) {
+        this.semester = semester == null ? null : semester.trim();
     }
 
     @Override

@@ -1,33 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.mapper.PublicaffairsAdmissionsMapper">
-    <resultMap id="BaseResultMap" type="com.example.demo.model.PublicaffairsAdmissions">
-        <id column="id" jdbcType="INTEGER" property="id"/>
-        <result column="admissionsHeader" jdbcType="NVARCHAR" property="admissionsHeader"/>
-        <result column="hasAdmission" jdbcType="NVARCHAR" property="hasAdmission"/>
-        <result column="performance" jdbcType="NVARCHAR" property="performance"/>
-        <result column="result" jdbcType="NVARCHAR" property="result"/>
-        <result column="address" jdbcType="NVARCHAR" property="address"/>
-        <result column="note" jdbcType="NVARCHAR" property="note"/>
-        <result column="year" jdbcType="INTEGER" property="year"/>
-        <result column="classTeacher" jdbcType="NVARCHAR" property="classTeacher"/>
-        <result column="status" jdbcType="NVARCHAR" property="status"/>
-    </resultMap>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <resultMap id="BaseResultMap" type="com.example.demo.model.PublicaffairsAdmissions">
+    <id column="id" jdbcType="INTEGER" property="id"/>
+    <result column="admissionsHeader" jdbcType="NVARCHAR" property="admissionsHeader"/>
+    <result column="hasAdmission" jdbcType="NVARCHAR" property="hasAdmission"/>
+    <result column="performance" jdbcType="NVARCHAR" property="performance"/>
+    <result column="result" jdbcType="NVARCHAR" property="result"/>
+    <result column="address" jdbcType="NVARCHAR" property="address"/>
+    <result column="note" jdbcType="NVARCHAR" property="note"/>
+    <result column="year" jdbcType="INTEGER" property="year"/>
+    <result column="semester" jdbcType="NVARCHAR" property="semester"/>
+    <result column="classTeacher" jdbcType="NVARCHAR" property="classTeacher"/>
+    <result column="status" jdbcType="NVARCHAR" property="status"/>
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from publicAffairs_admissions
     where id = #{id,jdbcType=INTEGER}
   </delete>
-    <insert id="insert" parameterType="com.example.demo.model.PublicaffairsAdmissions">
+  <insert id="insert" parameterType="com.example.demo.model.PublicaffairsAdmissions">
     insert into publicAffairs_admissions (admissionsHeader, hasAdmission,
       performance, result, address, 
-      note, year, classTeacher, 
-      status)
+      note, year, semester, 
+      classTeacher, status)
     values (#{admissionsHeader,jdbcType=NVARCHAR}, #{hasAdmission,jdbcType=NVARCHAR},
       #{performance,jdbcType=NVARCHAR}, #{result,jdbcType=NVARCHAR}, #{address,jdbcType=NVARCHAR}, 
-      #{note,jdbcType=NVARCHAR}, #{year,jdbcType=INTEGER}, #{classTeacher,jdbcType=NVARCHAR}, 
-      #{status,jdbcType=NVARCHAR})
+      #{note,jdbcType=NVARCHAR}, #{year,jdbcType=INTEGER}, #{semester,jdbcType=NVARCHAR}, 
+      #{classTeacher,jdbcType=NVARCHAR}, #{status,jdbcType=NVARCHAR})
   </insert>
-    <update id="updateByPrimaryKey" parameterType="com.example.demo.model.PublicaffairsAdmissions">
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.model.PublicaffairsAdmissions">
     update publicAffairs_admissions
     set admissionsHeader = #{admissionsHeader,jdbcType=NVARCHAR},
       hasAdmission = #{hasAdmission,jdbcType=NVARCHAR},
@@ -36,23 +37,22 @@
       address = #{address,jdbcType=NVARCHAR},
       note = #{note,jdbcType=NVARCHAR},
       year = #{year,jdbcType=INTEGER},
+      semester = #{semester,jdbcType=NVARCHAR},
       classTeacher = #{classTeacher,jdbcType=NVARCHAR},
       status = #{status,jdbcType=NVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
-    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select id, admissionsHeader, hasAdmission, performance, result, address, note, year, 
-    classTeacher, status
+    semester, classTeacher, status
     from publicAffairs_admissions
     where id = #{id,jdbcType=INTEGER}
   </select>
     <select id="selectAll" resultMap="BaseResultMap">
-    select id, admissionsHeader, performance, result, address, note, year, classTeacher, 
-    status
-    from publicAffairs_admissions
+        SELECT * FROM publicAffairs_admissions
   </select>
-    <select id="selectByClassTeacher" parameterType="com.example.demo.model.PublicaffairsAdmissions"
-            resultMap="BaseResultMap">
+  <select id="selectByClassTeacher" parameterType="com.example.demo.model.PublicaffairsAdmissions"
+          resultMap="BaseResultMap">
         SELECT * FROM publicAffairs_admissions WHERE 1=1
         AND classTeacher=#{classTeacher,jdbcType=NVARCHAR}
         <if test="year!=null and year!=''">

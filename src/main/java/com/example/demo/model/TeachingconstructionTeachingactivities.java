@@ -18,6 +18,8 @@ public class TeachingconstructionTeachingactivities implements Serializable {
 
     private Integer year;
 
+    private String semester;
+
     private static final long serialVersionUID = 1L;
 
     public Integer getId() {
@@ -28,23 +30,20 @@ public class TeachingconstructionTeachingactivities implements Serializable {
         this.id = id;
     }
 
-    public String getClassTeacher() {
-        return classTeacher;
-    }
-
     public TeachingconstructionTeachingactivities() {
     }
 
-    public TeachingconstructionTeachingactivities(String classTeacher, String status, BigDecimal absent, BigDecimal lateDeparture, String note, Integer year) {
+    public TeachingconstructionTeachingactivities(String classTeacher, String status, BigDecimal absent, BigDecimal lateDeparture, String note, Integer year, String semester) {
         this.classTeacher = classTeacher;
         this.status = status;
         this.absent = absent;
         this.lateDeparture = lateDeparture;
         this.note = note;
         this.year = year;
+        this.semester = semester;
     }
 
-    public TeachingconstructionTeachingactivities(Integer id, String classTeacher, String status, BigDecimal absent, BigDecimal lateDeparture, String note, Integer year) {
+    public TeachingconstructionTeachingactivities(Integer id, String classTeacher, String status, BigDecimal absent, BigDecimal lateDeparture, String note, Integer year, String semester) {
         this.id = id;
         this.classTeacher = classTeacher;
         this.status = status;
@@ -52,6 +51,11 @@ public class TeachingconstructionTeachingactivities implements Serializable {
         this.lateDeparture = lateDeparture;
         this.note = note;
         this.year = year;
+        this.semester = semester;
+    }
+
+    public String getClassTeacher() {
+        return classTeacher;
     }
 
     public void setClassTeacher(String classTeacher) {
@@ -98,6 +102,14 @@ public class TeachingconstructionTeachingactivities implements Serializable {
         this.year = year;
     }
 
+    public String getSemester() {
+        return semester;
+    }
+
+    public void setSemester(String semester) {
+        this.semester = semester == null ? null : semester.trim();
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -111,6 +123,7 @@ public class TeachingconstructionTeachingactivities implements Serializable {
         sb.append(", lateDeparture=").append(lateDeparture);
         sb.append(", note=").append(note);
         sb.append(", year=").append(year);
+        sb.append(", semester=").append(semester);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

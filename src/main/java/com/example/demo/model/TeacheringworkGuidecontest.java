@@ -21,14 +21,10 @@ public class TeacheringworkGuidecontest implements Serializable {
 
     private Integer thirdPersonsNumber;
 
-    private Integer outstandingAwardsNumber;
-
-    private String guidanceType;
-
     public TeacheringworkGuidecontest() {
     }
 
-    public TeacheringworkGuidecontest(String classTeacher, String status, String name, String level, Integer prizePersonsNumber, Integer firstPersonsNumber, Integer secondPersonsNumber, Integer thirdPersonsNumber, Integer outstandingAwardsNumber, String guidanceType, Integer instructorsNumber, String note, Integer year, Integer semester) {
+    public TeacheringworkGuidecontest(String classTeacher, String status, String name, String level, Integer prizePersonsNumber, Integer firstPersonsNumber, Integer secondPersonsNumber, Integer thirdPersonsNumber, Integer outstandingAwardsNumber, String guidanceType, Integer instructorsNumber, String note, Integer year, String semester) {
         this.classTeacher = classTeacher;
         this.status = status;
         this.name = name;
@@ -45,7 +41,7 @@ public class TeacheringworkGuidecontest implements Serializable {
         this.semester = semester;
     }
 
-    public TeacheringworkGuidecontest(Integer id, String classTeacher, String status, String name, String level, Integer prizePersonsNumber, Integer firstPersonsNumber, Integer secondPersonsNumber, Integer thirdPersonsNumber, Integer outstandingAwardsNumber, String guidanceType, Integer instructorsNumber, String note, Integer year, Integer semester) {
+    public TeacheringworkGuidecontest(Integer id, String classTeacher, String status, String name, String level, Integer prizePersonsNumber, Integer firstPersonsNumber, Integer secondPersonsNumber, Integer thirdPersonsNumber, Integer outstandingAwardsNumber, String guidanceType, Integer instructorsNumber, String note, Integer year, String semester) {
         this.id = id;
         this.classTeacher = classTeacher;
         this.status = status;
@@ -63,13 +59,17 @@ public class TeacheringworkGuidecontest implements Serializable {
         this.semester = semester;
     }
 
+    private Integer outstandingAwardsNumber;
+
+    private String guidanceType;
+
     private Integer instructorsNumber;
 
     private String note;
 
     private Integer year;
 
-    private Integer semester;
+    private String semester;
 
     private static final long serialVersionUID = 1L;
 
@@ -185,12 +185,12 @@ public class TeacheringworkGuidecontest implements Serializable {
         this.year = year;
     }
 
-    public Integer getSemester() {
+    public String getSemester() {
         return semester;
     }
 
-    public void setSemester(Integer semester) {
-        this.semester = semester;
+    public void setSemester(String semester) {
+        this.semester = semester == null ? null : semester.trim();
     }
 
     @Override

@@ -63,12 +63,13 @@ public class TeachingconstructionLaboratoryconstructionController {
             @ApiImplicitParam(name = "money", value = "节省经费数", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "note", value = "备注", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "year", value = "学年", required = false, dataType = "int", paramType = "query"),
+            @ApiImplicitParam(name = "semester", value = "学期", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "status", value = "审核情况", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "classTeacher", value = "教师用户工号", required = true, dataType = "varchar", paramType = "query")
 
     })
-    public Integer updateByPrimaryKey(@ApiIgnore Integer id, String classTeacher, String status, String name, String character, String contribution, BigDecimal hours, Integer peopleNumber, String professional, String grade, String controlDeviceName, String reformingDeviceName, String money, String note, Integer year) {
-        TeachingconstructionLaboratoryconstruction teachingconstructionLaboratoryconstruction = new TeachingconstructionLaboratoryconstruction(id, classTeacher, status, name, character, contribution, hours, peopleNumber, professional, grade, controlDeviceName, reformingDeviceName, money, note, year);
+    public Integer updateByPrimaryKey(@ApiIgnore Integer id, String classTeacher, String status, String name, String character, String contribution, BigDecimal hours, Integer peopleNumber, String professional, String grade, String controlDeviceName, String reformingDeviceName, String money, String note, Integer year, String semester) {
+        TeachingconstructionLaboratoryconstruction teachingconstructionLaboratoryconstruction = new TeachingconstructionLaboratoryconstruction(id, classTeacher, status, name, character, contribution, hours, peopleNumber, professional, grade, controlDeviceName, reformingDeviceName, money, note, year, semester);
 
         return teachingconstructionLaboratoryconstructionService.updateByPrimaryKey(teachingconstructionLaboratoryconstruction);
     }
@@ -88,12 +89,13 @@ public class TeachingconstructionLaboratoryconstructionController {
             @ApiImplicitParam(name = "money", value = "节省经费数", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "note", value = "备注", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "year", value = "学年", required = false, dataType = "int", paramType = "query"),
+            @ApiImplicitParam(name = "semester", value = "学期", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "status", value = "审核情况", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "classTeacher", value = "教师用户工号", required = true, dataType = "varchar", paramType = "query")
 
     })
-    public Integer insert(@ApiIgnore String classTeacher, String status, String name, String character, String contribution, BigDecimal hours, Integer peopleNumber, String professional, String grade, String controlDeviceName, String reformingDeviceName, String money, String note, Integer year) {
-        TeachingconstructionLaboratoryconstruction teachingconstructionLaboratoryconstruction = new TeachingconstructionLaboratoryconstruction(classTeacher, status, name, character, contribution, hours, peopleNumber, professional, grade, controlDeviceName, reformingDeviceName, money, note, year);
+    public Integer insert(@ApiIgnore String classTeacher, String status, String name, String character, String contribution, BigDecimal hours, Integer peopleNumber, String professional, String grade, String controlDeviceName, String reformingDeviceName, String money, String note, Integer year, String semester) {
+        TeachingconstructionLaboratoryconstruction teachingconstructionLaboratoryconstruction = new TeachingconstructionLaboratoryconstruction(classTeacher, status, name, character, contribution, hours, peopleNumber, professional, grade, controlDeviceName, reformingDeviceName, money, note, year, semester);
 
         return teachingconstructionLaboratoryconstructionService.insert(teachingconstructionLaboratoryconstruction);
     }

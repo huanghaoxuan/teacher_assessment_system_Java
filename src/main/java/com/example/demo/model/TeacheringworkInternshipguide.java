@@ -22,10 +22,12 @@ public class TeacheringworkInternshipguide implements Serializable {
 
     private String guidanceContent;
 
+    private String internshipReport;
+
     public TeacheringworkInternshipguide() {
     }
 
-    public TeacheringworkInternshipguide(String classTeacher, String status, String name, BigDecimal credits, BigDecimal hours, Integer studentNumber, Integer loopsNumber, String guidanceContent, String internshipReport, String hasCorrecting, String note, Integer year, Integer semester) {
+    public TeacheringworkInternshipguide(String classTeacher, String status, String name, BigDecimal credits, BigDecimal hours, Integer studentNumber, Integer loopsNumber, String guidanceContent, String internshipReport, String hasCorrecting, String note, Integer year, String semester) {
         this.classTeacher = classTeacher;
         this.status = status;
         this.name = name;
@@ -41,7 +43,7 @@ public class TeacheringworkInternshipguide implements Serializable {
         this.semester = semester;
     }
 
-    public TeacheringworkInternshipguide(Integer id, String classTeacher, String status, String name, BigDecimal credits, BigDecimal hours, Integer studentNumber, Integer loopsNumber, String guidanceContent, String internshipReport, String hasCorrecting, String note, Integer year, Integer semester) {
+    public TeacheringworkInternshipguide(Integer id, String classTeacher, String status, String name, BigDecimal credits, BigDecimal hours, Integer studentNumber, Integer loopsNumber, String guidanceContent, String internshipReport, String hasCorrecting, String note, Integer year, String semester) {
         this.id = id;
         this.classTeacher = classTeacher;
         this.status = status;
@@ -58,15 +60,13 @@ public class TeacheringworkInternshipguide implements Serializable {
         this.semester = semester;
     }
 
-    private String internshipReport;
-
     private String hasCorrecting;
 
     private String note;
 
     private Integer year;
 
-    private Integer semester;
+    private String semester;
 
     private static final long serialVersionUID = 1L;
 
@@ -174,12 +174,12 @@ public class TeacheringworkInternshipguide implements Serializable {
         this.year = year;
     }
 
-    public Integer getSemester() {
+    public String getSemester() {
         return semester;
     }
 
-    public void setSemester(Integer semester) {
-        this.semester = semester;
+    public void setSemester(String semester) {
+        this.semester = semester == null ? null : semester.trim();
     }
 
     @Override

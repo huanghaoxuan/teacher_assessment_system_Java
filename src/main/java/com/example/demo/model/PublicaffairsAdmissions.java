@@ -19,10 +19,12 @@ public class PublicaffairsAdmissions implements Serializable {
 
     private Integer year;
 
+    private String semester;
+
     public PublicaffairsAdmissions() {
     }
 
-    public PublicaffairsAdmissions(String admissionsHeader, String hasAdmission, String performance, String result, String address, String note, Integer year, String classTeacher, String status) {
+    public PublicaffairsAdmissions(String admissionsHeader, String hasAdmission, String performance, String result, String address, String note, Integer year, String semester, String classTeacher, String status) {
         this.admissionsHeader = admissionsHeader;
         this.hasAdmission = hasAdmission;
         this.performance = performance;
@@ -30,11 +32,12 @@ public class PublicaffairsAdmissions implements Serializable {
         this.address = address;
         this.note = note;
         this.year = year;
+        this.semester = semester;
         this.classTeacher = classTeacher;
         this.status = status;
     }
 
-    public PublicaffairsAdmissions(Integer id, String admissionsHeader, String hasAdmission, String performance, String result, String address, String note, Integer year, String classTeacher, String status) {
+    public PublicaffairsAdmissions(Integer id, String admissionsHeader, String hasAdmission, String performance, String result, String address, String note, Integer year, String semester, String classTeacher, String status) {
         this.id = id;
         this.admissionsHeader = admissionsHeader;
         this.hasAdmission = hasAdmission;
@@ -43,6 +46,7 @@ public class PublicaffairsAdmissions implements Serializable {
         this.address = address;
         this.note = note;
         this.year = year;
+        this.semester = semester;
         this.classTeacher = classTeacher;
         this.status = status;
     }
@@ -117,6 +121,14 @@ public class PublicaffairsAdmissions implements Serializable {
         this.year = year;
     }
 
+    public String getSemester() {
+        return semester;
+    }
+
+    public void setSemester(String semester) {
+        this.semester = semester == null ? null : semester.trim();
+    }
+
     public String getClassTeacher() {
         return classTeacher;
     }
@@ -147,6 +159,7 @@ public class PublicaffairsAdmissions implements Serializable {
         sb.append(", address=").append(address);
         sb.append(", note=").append(note);
         sb.append(", year=").append(year);
+        sb.append(", semester=").append(semester);
         sb.append(", classTeacher=").append(classTeacher);
         sb.append(", status=").append(status);
         sb.append(", serialVersionUID=").append(serialVersionUID);

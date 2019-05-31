@@ -21,13 +21,10 @@ public class OthersComprehensiveawardwinning implements Serializable {
 
     private Integer year;
 
-    private String status;
+    public OthersComprehensiveawardwinning() {
+    }
 
-    private String classTeacher;
-
-    private static final long serialVersionUID = 1L;
-
-    public OthersComprehensiveawardwinning(String name, String time, String department, String level, String ranking, Integer peopleNumber, String note, Integer year, String status, String classTeacher) {
+    public OthersComprehensiveawardwinning(String name, String time, String department, String level, String ranking, Integer peopleNumber, String note, Integer year, String semester, String status, String classTeacher) {
         this.name = name;
         this.time = time;
         this.department = department;
@@ -36,11 +33,12 @@ public class OthersComprehensiveawardwinning implements Serializable {
         this.peopleNumber = peopleNumber;
         this.note = note;
         this.year = year;
+        this.semester = semester;
         this.status = status;
         this.classTeacher = classTeacher;
     }
 
-    public OthersComprehensiveawardwinning(Integer id, String name, String time, String department, String level, String ranking, Integer peopleNumber, String note, Integer year, String status, String classTeacher) {
+    public OthersComprehensiveawardwinning(Integer id, String name, String time, String department, String level, String ranking, Integer peopleNumber, String note, Integer year, String semester, String status, String classTeacher) {
         this.id = id;
         this.name = name;
         this.time = time;
@@ -50,12 +48,18 @@ public class OthersComprehensiveawardwinning implements Serializable {
         this.peopleNumber = peopleNumber;
         this.note = note;
         this.year = year;
+        this.semester = semester;
         this.status = status;
         this.classTeacher = classTeacher;
     }
 
-    public OthersComprehensiveawardwinning() {
-    }
+    private String semester;
+
+    private String status;
+
+    private String classTeacher;
+
+    private static final long serialVersionUID = 1L;
 
     public Integer getId() {
         return id;
@@ -129,6 +133,14 @@ public class OthersComprehensiveawardwinning implements Serializable {
         this.year = year;
     }
 
+    public String getSemester() {
+        return semester;
+    }
+
+    public void setSemester(String semester) {
+        this.semester = semester == null ? null : semester.trim();
+    }
+
     public String getStatus() {
         return status;
     }
@@ -160,6 +172,7 @@ public class OthersComprehensiveawardwinning implements Serializable {
         sb.append(", peopleNumber=").append(peopleNumber);
         sb.append(", note=").append(note);
         sb.append(", year=").append(year);
+        sb.append(", semester=").append(semester);
         sb.append(", status=").append(status);
         sb.append(", classTeacher=").append(classTeacher);
         sb.append(", serialVersionUID=").append(serialVersionUID);

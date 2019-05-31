@@ -57,12 +57,12 @@ public class TeacheringworkTeachingawardsController {
             @ApiImplicitParam(name = "participantsNumber", value = "参赛人数", required = false, dataType = "int", paramType = "query"),
             @ApiImplicitParam(name = "note", value = "备注", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "year", value = "学年", required = false, dataType = "int", paramType = "query"),
-            @ApiImplicitParam(name = "semester", value = "学期", required = false, dataType = "int", paramType = "query"),
+            @ApiImplicitParam(name = "semester", value = "学期", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "status", value = "审核情况", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "classTeacher", value = "教师用户工号", required = true, dataType = "varchar", paramType = "query")
 
     })
-    public Integer updateByPrimaryKey(@ApiIgnore Integer id, String classTeacher, String status, String name, String type, String level, String grade, String character, Integer participantsNumber, String note, Integer year, Integer semester) {
+    public Integer updateByPrimaryKey(@ApiIgnore Integer id, String classTeacher, String status, String name, String type, String level, String grade, String character, Integer participantsNumber, String note, Integer year, String semester) {
         TeacheringworkTeachingawards teacheringworkTeachingawards = new TeacheringworkTeachingawards(id, classTeacher, status, name, type, level, grade, character, participantsNumber, note, year, semester);
 
         return teacheringworkTeachingawardsService.updateByPrimaryKey(teacheringworkTeachingawards);
@@ -79,12 +79,12 @@ public class TeacheringworkTeachingawardsController {
             @ApiImplicitParam(name = "participantsNumber", value = "参赛人数", required = false, dataType = "int", paramType = "query"),
             @ApiImplicitParam(name = "note", value = "备注", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "year", value = "学年", required = false, dataType = "int", paramType = "query"),
-            @ApiImplicitParam(name = "semester", value = "学期", required = false, dataType = "int", paramType = "query"),
+            @ApiImplicitParam(name = "semester", value = "学期", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "status", value = "审核情况", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "classTeacher", value = "教师用户工号", required = true, dataType = "varchar", paramType = "query")
 
     })
-    public Integer insert(@ApiIgnore String classTeacher, String status, String name, String type, String level, String grade, String character, Integer participantsNumber, String note, Integer year, Integer semester) {
+    public Integer insert(@ApiIgnore String classTeacher, String status, String name, String type, String level, String grade, String character, Integer participantsNumber, String note, Integer year, String semester) {
         TeacheringworkTeachingawards teacheringworkTeachingawards = new TeacheringworkTeachingawards(classTeacher, status, name, type, level, grade, character, participantsNumber, note, year, semester);
 
         return teacheringworkTeachingawardsService.insert(teacheringworkTeachingawards);

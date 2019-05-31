@@ -21,14 +21,10 @@ public class PublicaffairsCounselor implements Serializable {
 
     private String note;
 
-    private Integer year;
-
-    private static final long serialVersionUID = 1L;
-
     public PublicaffairsCounselor() {
     }
 
-    public PublicaffairsCounselor(String classTeacher, String status, String schoolLevel, String provinceLevel, String caucusLaval, String startTime, String endTime, String note, Integer year) {
+    public PublicaffairsCounselor(String classTeacher, String status, String schoolLevel, String provinceLevel, String caucusLaval, String startTime, String endTime, String note, Integer year, String semester) {
         this.classTeacher = classTeacher;
         this.status = status;
         this.schoolLevel = schoolLevel;
@@ -38,9 +34,10 @@ public class PublicaffairsCounselor implements Serializable {
         this.endTime = endTime;
         this.note = note;
         this.year = year;
+        this.semester = semester;
     }
 
-    public PublicaffairsCounselor(Integer id, String classTeacher, String status, String schoolLevel, String provinceLevel, String caucusLaval, String startTime, String endTime, String note, Integer year) {
+    public PublicaffairsCounselor(Integer id, String classTeacher, String status, String schoolLevel, String provinceLevel, String caucusLaval, String startTime, String endTime, String note, Integer year, String semester) {
         this.id = id;
         this.classTeacher = classTeacher;
         this.status = status;
@@ -51,7 +48,14 @@ public class PublicaffairsCounselor implements Serializable {
         this.endTime = endTime;
         this.note = note;
         this.year = year;
+        this.semester = semester;
     }
+
+    private Integer year;
+
+    private String semester;
+
+    private static final long serialVersionUID = 1L;
 
     public Integer getId() {
         return id;
@@ -133,6 +137,14 @@ public class PublicaffairsCounselor implements Serializable {
         this.year = year;
     }
 
+    public String getSemester() {
+        return semester;
+    }
+
+    public void setSemester(String semester) {
+        this.semester = semester == null ? null : semester.trim();
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -149,6 +161,7 @@ public class PublicaffairsCounselor implements Serializable {
         sb.append(", endTime=").append(endTime);
         sb.append(", note=").append(note);
         sb.append(", year=").append(year);
+        sb.append(", semester=").append(semester);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

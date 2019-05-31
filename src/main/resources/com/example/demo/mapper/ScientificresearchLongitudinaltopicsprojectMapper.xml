@@ -1,38 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.mapper.ScientificresearchLongitudinaltopicsprojectMapper">
-    <resultMap id="BaseResultMap" type="com.example.demo.model.ScientificresearchLongitudinaltopicsproject">
-        <id column="id" jdbcType="INTEGER" property="id"/>
-        <result column="classTeacher" jdbcType="NVARCHAR" property="classTeacher"/>
-        <result column="status" jdbcType="NVARCHAR" property="status"/>
-        <result column="name" jdbcType="NVARCHAR" property="name"/>
-        <result column="source" jdbcType="NVARCHAR" property="source"/>
-        <result column="character" jdbcType="NVARCHAR" property="character"/>
-        <result column="type" jdbcType="NVARCHAR" property="type"/>
-        <result column="money" jdbcType="NVARCHAR" property="money"/>
-        <result column="startTime" jdbcType="NVARCHAR" property="startTime"/>
-        <result column="estimatedClosingTime" jdbcType="NVARCHAR" property="estimatedClosingTime"/>
-        <result column="result" jdbcType="NVARCHAR" property="result"/>
-        <result column="note" jdbcType="NVARCHAR" property="note"/>
-        <result column="year" jdbcType="INTEGER" property="year"/>
-    </resultMap>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <resultMap id="BaseResultMap" type="com.example.demo.model.ScientificresearchLongitudinaltopicsproject">
+    <id column="id" jdbcType="INTEGER" property="id"/>
+    <result column="classTeacher" jdbcType="NVARCHAR" property="classTeacher"/>
+    <result column="status" jdbcType="NVARCHAR" property="status"/>
+    <result column="name" jdbcType="NVARCHAR" property="name"/>
+    <result column="source" jdbcType="NVARCHAR" property="source"/>
+    <result column="character" jdbcType="NVARCHAR" property="character"/>
+    <result column="type" jdbcType="NVARCHAR" property="type"/>
+    <result column="money" jdbcType="NVARCHAR" property="money"/>
+    <result column="startTime" jdbcType="NVARCHAR" property="startTime"/>
+    <result column="estimatedClosingTime" jdbcType="NVARCHAR" property="estimatedClosingTime"/>
+    <result column="result" jdbcType="NVARCHAR" property="result"/>
+    <result column="note" jdbcType="NVARCHAR" property="note"/>
+    <result column="year" jdbcType="INTEGER" property="year"/>
+    <result column="semester" jdbcType="NVARCHAR" property="semester"/>
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from scientificResearch_longitudinalTopicsProject
     where id = #{id,jdbcType=INTEGER}
   </delete>
-    <insert id="insert" parameterType="com.example.demo.model.ScientificresearchLongitudinaltopicsproject">
+  <insert id="insert" parameterType="com.example.demo.model.ScientificresearchLongitudinaltopicsproject">
     insert into scientificResearch_longitudinalTopicsProject (classTeacher, status,
       name, source, character, 
       type, money, startTime, 
       estimatedClosingTime, result, note, 
-      year)
+      year, semester)
     values (#{classTeacher,jdbcType=NVARCHAR}, #{status,jdbcType=NVARCHAR},
       #{name,jdbcType=NVARCHAR}, #{source,jdbcType=NVARCHAR}, #{character,jdbcType=NVARCHAR}, 
       #{type,jdbcType=NVARCHAR}, #{money,jdbcType=NVARCHAR}, #{startTime,jdbcType=NVARCHAR}, 
       #{estimatedClosingTime,jdbcType=NVARCHAR}, #{result,jdbcType=NVARCHAR}, #{note,jdbcType=NVARCHAR}, 
-      #{year,jdbcType=INTEGER})
+      #{year,jdbcType=INTEGER}, #{semester,jdbcType=NVARCHAR})
   </insert>
-    <update id="updateByPrimaryKey" parameterType="com.example.demo.model.ScientificresearchLongitudinaltopicsproject">
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.model.ScientificresearchLongitudinaltopicsproject">
     update scientificResearch_longitudinalTopicsProject
     set classTeacher = #{classTeacher,jdbcType=NVARCHAR},
       status = #{status,jdbcType=NVARCHAR},
@@ -45,20 +46,21 @@
       estimatedClosingTime = #{estimatedClosingTime,jdbcType=NVARCHAR},
       result = #{result,jdbcType=NVARCHAR},
       note = #{note,jdbcType=NVARCHAR},
-      year = #{year,jdbcType=INTEGER}
+      year = #{year,jdbcType=INTEGER},
+      semester = #{semester,jdbcType=NVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
-    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select id, classTeacher, status, name, source, character, type, money, startTime, 
-    estimatedClosingTime, result, note, year
+    estimatedClosingTime, result, note, year, semester
     from scientificResearch_longitudinalTopicsProject
     where id = #{id,jdbcType=INTEGER}
   </select>
     <select id="selectAll" resultMap="BaseResultMap">
     SELECT * FROM scientificResearch_longitudinalTopicsProject
   </select>
-    <select id="selectByClassTeacher" parameterType="com.example.demo.model.ScientificresearchLongitudinaltopicsproject"
-            resultMap="BaseResultMap">
+  <select id="selectByClassTeacher" parameterType="com.example.demo.model.ScientificresearchLongitudinaltopicsproject"
+          resultMap="BaseResultMap">
         SELECT * FROM scientificResearch_longitudinalTopicsProject WHERE 1=1
         AND classTeacher=#{classTeacher,jdbcType=NVARCHAR}
         <if test="year!=null and year!=''">

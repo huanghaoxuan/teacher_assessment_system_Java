@@ -1,48 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.mapper.PublicaffairsSocialservicesMapper">
-    <resultMap id="BaseResultMap" type="com.example.demo.model.PublicaffairsSocialservices">
-        <id column="id" jdbcType="INTEGER" property="id"/>
-        <result column="classTeacher" jdbcType="NVARCHAR" property="classTeacher"/>
-        <result column="status" jdbcType="NVARCHAR" property="status"/>
-        <result column="name" jdbcType="NVARCHAR" property="name"/>
-        <result column="tpye" jdbcType="NVARCHAR" property="tpye"/>
-        <result column="note" jdbcType="NVARCHAR" property="note"/>
-        <result column="year" jdbcType="INTEGER" property="year"/>
-    </resultMap>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <resultMap id="BaseResultMap" type="com.example.demo.model.PublicaffairsSocialservices">
+    <id column="id" jdbcType="INTEGER" property="id"/>
+    <result column="classTeacher" jdbcType="NVARCHAR" property="classTeacher"/>
+    <result column="status" jdbcType="NVARCHAR" property="status"/>
+    <result column="name" jdbcType="NVARCHAR" property="name"/>
+    <result column="tpye" jdbcType="NVARCHAR" property="tpye"/>
+    <result column="note" jdbcType="NVARCHAR" property="note"/>
+    <result column="year" jdbcType="INTEGER" property="year"/>
+    <result column="semester" jdbcType="NVARCHAR" property="semester"/>
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from publicAffairs_socialServices
     where id = #{id,jdbcType=INTEGER}
   </delete>
-    <insert id="insert" parameterType="com.example.demo.model.PublicaffairsSocialservices">
+  <insert id="insert" parameterType="com.example.demo.model.PublicaffairsSocialservices">
     insert into publicAffairs_socialServices (classTeacher, status,
       name, tpye, note, 
-      year)
+      year, semester)
     values (#{classTeacher,jdbcType=NVARCHAR}, #{status,jdbcType=NVARCHAR},
       #{name,jdbcType=NVARCHAR}, #{tpye,jdbcType=NVARCHAR}, #{note,jdbcType=NVARCHAR}, 
-      #{year,jdbcType=INTEGER})
+      #{year,jdbcType=INTEGER}, #{semester,jdbcType=NVARCHAR})
   </insert>
-    <update id="updateByPrimaryKey" parameterType="com.example.demo.model.PublicaffairsSocialservices">
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.model.PublicaffairsSocialservices">
     update publicAffairs_socialServices
     set classTeacher = #{classTeacher,jdbcType=NVARCHAR},
       status = #{status,jdbcType=NVARCHAR},
       name = #{name,jdbcType=NVARCHAR},
       tpye = #{tpye,jdbcType=NVARCHAR},
       note = #{note,jdbcType=NVARCHAR},
-      year = #{year,jdbcType=INTEGER}
+      year = #{year,jdbcType=INTEGER},
+      semester = #{semester,jdbcType=NVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
-    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select id, classTeacher, status, name, tpye, note, year
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, classTeacher, status, name, tpye, note, year, semester
     from publicAffairs_socialServices
     where id = #{id,jdbcType=INTEGER}
   </select>
     <select id="selectAll" resultMap="BaseResultMap">
-    select id, classTeacher, status, name, tpye, note, year
-    from publicAffairs_socialServices
+        SELECT * FROM publicAffairs_socialServices
   </select>
-    <select id="selectByClassTeacher" parameterType="com.example.demo.model.PublicaffairsSocialservices"
-            resultMap="BaseResultMap">
+  <select id="selectByClassTeacher" parameterType="com.example.demo.model.PublicaffairsSocialservices"
+          resultMap="BaseResultMap">
         SELECT * FROM publicAffairs_socialServices WHERE 1=1
         AND classTeacher=#{classTeacher,jdbcType=NVARCHAR}
         <if test="year!=null and year!=''">

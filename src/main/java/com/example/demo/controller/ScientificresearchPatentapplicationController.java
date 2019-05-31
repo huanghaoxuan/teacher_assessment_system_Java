@@ -57,12 +57,13 @@ public class ScientificresearchPatentapplicationController {
             @ApiImplicitParam(name = "hasPatent", value = "是否获专利", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "note", value = "备注", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "year", value = "学年", required = false, dataType = "int", paramType = "query"),
+            @ApiImplicitParam(name = "semester", value = "学期", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "status", value = "审核情况", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "classTeacher", value = "教师用户工号", required = true, dataType = "varchar", paramType = "query")
 
     })
-    public Integer updateByPrimaryKey(@ApiIgnore Integer id, String classTeacher, String status, String name, String tpye, String publicationDate, String hasProcessing, String hasAuthorized, String hasPatent, String note, Integer year) {
-        ScientificresearchPatentapplication scientificresearchPatentapplication = new ScientificresearchPatentapplication(id, classTeacher, status, name, tpye, publicationDate, hasProcessing, hasAuthorized, hasPatent, note, year);
+    public Integer updateByPrimaryKey(@ApiIgnore Integer id, String classTeacher, String status, String name, String tpye, String publicationDate, String hasProcessing, String hasAuthorized, String hasPatent, String note, Integer year, String semester) {
+        ScientificresearchPatentapplication scientificresearchPatentapplication = new ScientificresearchPatentapplication(id, classTeacher, status, name, tpye, publicationDate, hasProcessing, hasAuthorized, hasPatent, note, year, semester);
 
         return scientificresearchPatentapplicationService.updateByPrimaryKey(scientificresearchPatentapplication);
     }
@@ -78,12 +79,13 @@ public class ScientificresearchPatentapplicationController {
             @ApiImplicitParam(name = "hasPatent", value = "是否获专利", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "note", value = "备注", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "year", value = "学年", required = false, dataType = "int", paramType = "query"),
+            @ApiImplicitParam(name = "semester", value = "学期", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "status", value = "审核情况", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "classTeacher", value = "教师用户工号", required = true, dataType = "varchar", paramType = "query")
 
     })
-    public Integer insert(@ApiIgnore String classTeacher, String status, String name, String tpye, String publicationDate, String hasProcessing, String hasAuthorized, String hasPatent, String note, Integer year) {
-        ScientificresearchPatentapplication scientificresearchPatentapplication = new ScientificresearchPatentapplication(classTeacher, status, name, tpye, publicationDate, hasProcessing, hasAuthorized, hasPatent, note, year);
+    public Integer insert(@ApiIgnore String classTeacher, String status, String name, String tpye, String publicationDate, String hasProcessing, String hasAuthorized, String hasPatent, String note, Integer year, String semester) {
+        ScientificresearchPatentapplication scientificresearchPatentapplication = new ScientificresearchPatentapplication(classTeacher, status, name, tpye, publicationDate, hasProcessing, hasAuthorized, hasPatent, note, year, semester);
 
         return scientificresearchPatentapplicationService.insert(scientificresearchPatentapplication);
     }

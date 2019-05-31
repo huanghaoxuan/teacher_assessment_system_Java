@@ -56,12 +56,13 @@ public class PublicaffairsAdmissionsController {
             @ApiImplicitParam(name = "address", value = "招生地点", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "note", value = "备注", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "year", value = "学年", required = false, dataType = "int", paramType = "query"),
+            @ApiImplicitParam(name = "semester", value = "学期", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "status", value = "审核情况", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "classTeacher", value = "教师用户工号", required = true, dataType = "varchar", paramType = "query")
 
     })
-    public Integer updateByPrimaryKey(@ApiIgnore Integer id, String admissionsHeader, String hasAdmission, String performance, String result, String address, String note, Integer year, String classTeacher, String status) {
-        PublicaffairsAdmissions publicaffairsAdmissions = new PublicaffairsAdmissions(id, admissionsHeader, hasAdmission, performance, result, address, note, year, classTeacher, status);
+    public Integer updateByPrimaryKey(@ApiIgnore Integer id, String admissionsHeader, String hasAdmission, String performance, String result, String address, String note, Integer year, String semester, String classTeacher, String status) {
+        PublicaffairsAdmissions publicaffairsAdmissions = new PublicaffairsAdmissions(id, admissionsHeader, hasAdmission, performance, result, address, note, year, semester, classTeacher, status);
 
         return publicaffairsAdmissionsService.updateByPrimaryKey(publicaffairsAdmissions);
     }
@@ -76,12 +77,13 @@ public class PublicaffairsAdmissionsController {
             @ApiImplicitParam(name = "address", value = "招生地点", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "note", value = "备注", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "year", value = "学年", required = false, dataType = "int", paramType = "query"),
+            @ApiImplicitParam(name = "semester", value = "学期", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "status", value = "审核情况", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "classTeacher", value = "教师用户工号", required = true, dataType = "varchar", paramType = "query")
 
     })
-    public Integer insert(@ApiIgnore String admissionsHeader, String hasAdmission, String performance, String result, String address, String note, Integer year, String classTeacher, String status) {
-        PublicaffairsAdmissions publicaffairsAdmissions = new PublicaffairsAdmissions(admissionsHeader, hasAdmission, performance, result, address, note, year, classTeacher, status);
+    public Integer insert(@ApiIgnore String admissionsHeader, String hasAdmission, String performance, String result, String address, String note, Integer year, String semester, String classTeacher, String status) {
+        PublicaffairsAdmissions publicaffairsAdmissions = new PublicaffairsAdmissions(admissionsHeader, hasAdmission, performance, result, address, note, year, semester, classTeacher, status);
 
         return publicaffairsAdmissionsService.insert(publicaffairsAdmissions);
     }

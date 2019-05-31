@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.mapper.TeacheringworkClassroomteachingMapper">
-    <resultMap id="BaseResultMap" type="com.example.demo.model.TeacheringworkClassroomteaching">
-        <id column="id" jdbcType="INTEGER" property="id"/>
-        <result column="classTeacher" jdbcType="NVARCHAR" property="classTeacher"/>
-        <result column="status" jdbcType="NVARCHAR" property="status"/>
-        <result column="name" jdbcType="NVARCHAR" property="name"/>
-        <result column="character" jdbcType="NVARCHAR" property="character"/>
-        <result column="type" jdbcType="NVARCHAR" property="type"/>
-        <result column="yesorno" jdbcType="NVARCHAR" property="yesorno"/>
-        <result column="credits" jdbcType="DECIMAL" property="credits"/>
-        <result column="hours" jdbcType="DECIMAL" property="hours"/>
-        <result column="classesNumber" jdbcType="INTEGER" property="classesNumber"/>
-        <result column="parallelClassesNumber" jdbcType="INTEGER" property="parallelClassesNumber"/>
-        <result column="homeworkNumber" jdbcType="INTEGER" property="homeworkNumber"/>
-        <result column="correctingNumber" jdbcType="INTEGER" property="correctingNumber"/>
-        <result column="answeringNumber" jdbcType="INTEGER" property="answeringNumber"/>
-        <result column="note" jdbcType="NVARCHAR" property="note"/>
-        <result column="year" jdbcType="INTEGER" property="year"/>
-        <result column="semester" jdbcType="INTEGER" property="semester"/>
-    </resultMap>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <resultMap id="BaseResultMap" type="com.example.demo.model.TeacheringworkClassroomteaching">
+    <id column="id" jdbcType="INTEGER" property="id"/>
+    <result column="classTeacher" jdbcType="NVARCHAR" property="classTeacher"/>
+    <result column="status" jdbcType="NVARCHAR" property="status"/>
+    <result column="name" jdbcType="NVARCHAR" property="name"/>
+    <result column="character" jdbcType="NVARCHAR" property="character"/>
+    <result column="type" jdbcType="NVARCHAR" property="type"/>
+    <result column="yesorno" jdbcType="NVARCHAR" property="yesorno"/>
+    <result column="credits" jdbcType="DECIMAL" property="credits"/>
+    <result column="hours" jdbcType="DECIMAL" property="hours"/>
+    <result column="classesNumber" jdbcType="INTEGER" property="classesNumber"/>
+    <result column="parallelClassesNumber" jdbcType="INTEGER" property="parallelClassesNumber"/>
+    <result column="homeworkNumber" jdbcType="INTEGER" property="homeworkNumber"/>
+    <result column="correctingNumber" jdbcType="INTEGER" property="correctingNumber"/>
+    <result column="answeringNumber" jdbcType="INTEGER" property="answeringNumber"/>
+    <result column="note" jdbcType="NVARCHAR" property="note"/>
+    <result column="year" jdbcType="INTEGER" property="year"/>
+    <result column="semester" jdbcType="NVARCHAR" property="semester"/>
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from teacheringWork_classroomTeaching
     where id = #{id,jdbcType=INTEGER}
   </delete>
-    <insert id="insert" parameterType="com.example.demo.model.TeacheringworkClassroomteaching">
+  <insert id="insert" parameterType="com.example.demo.model.TeacheringworkClassroomteaching">
     insert into teacheringWork_classroomTeaching (classTeacher, status,
       name, character, type, 
       yesorno, credits, hours, 
@@ -36,9 +36,9 @@
       #{yesorno,jdbcType=NVARCHAR}, #{credits,jdbcType=DECIMAL}, #{hours,jdbcType=DECIMAL}, 
       #{classesNumber,jdbcType=INTEGER}, #{parallelClassesNumber,jdbcType=INTEGER}, #{homeworkNumber,jdbcType=INTEGER}, 
       #{correctingNumber,jdbcType=INTEGER}, #{answeringNumber,jdbcType=INTEGER}, #{note,jdbcType=NVARCHAR}, 
-      #{year,jdbcType=INTEGER}, #{semester,jdbcType=INTEGER})
+      #{year,jdbcType=INTEGER}, #{semester,jdbcType=NVARCHAR})
   </insert>
-    <update id="updateByPrimaryKey" parameterType="com.example.demo.model.TeacheringworkClassroomteaching">
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.model.TeacheringworkClassroomteaching">
     update teacheringWork_classroomTeaching
     set classTeacher = #{classTeacher,jdbcType=NVARCHAR},
       status = #{status,jdbcType=NVARCHAR},
@@ -55,10 +55,10 @@
       answeringNumber = #{answeringNumber,jdbcType=INTEGER},
       note = #{note,jdbcType=NVARCHAR},
       year = #{year,jdbcType=INTEGER},
-      semester = #{semester,jdbcType=INTEGER}
+      semester = #{semester,jdbcType=NVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
-    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select id, classTeacher, status, name, character, type, yesorno, credits, hours, 
     classesNumber, parallelClassesNumber, homeworkNumber, correctingNumber, answeringNumber, 
     note, year, semester
@@ -68,8 +68,8 @@
     <select id="selectAll" resultMap="BaseResultMap">
     SELECT * FROM teacheringWork_classroomTeaching
   </select>
-    <select id="selectByClassTeacher" parameterType="com.example.demo.model.TeacheringworkClassroomteaching"
-            resultMap="BaseResultMap">
+  <select id="selectByClassTeacher" parameterType="com.example.demo.model.TeacheringworkClassroomteaching"
+          resultMap="BaseResultMap">
         SELECT * FROM teacheringWork_classroomTeaching WHERE 1=1
         AND classTeacher=#{classTeacher,jdbcType=NVARCHAR}
         <if test="year!=null and year!=''">

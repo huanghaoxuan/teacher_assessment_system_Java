@@ -19,22 +19,10 @@ public class ScientificresearchLongitudinaltopicsproject implements Serializable
 
     private String money;
 
-    private String startTime;
-
-    private String estimatedClosingTime;
-
-    private String result;
-
-    private String note;
-
-    private Integer year;
-
-    private static final long serialVersionUID = 1L;
-
     public ScientificresearchLongitudinaltopicsproject() {
     }
 
-    public ScientificresearchLongitudinaltopicsproject(String classTeacher, String status, String name, String source, String character, String type, String money, String startTime, String estimatedClosingTime, String result, String note, Integer year) {
+    public ScientificresearchLongitudinaltopicsproject(String classTeacher, String status, String name, String source, String character, String type, String money, String startTime, String estimatedClosingTime, String result, String note, Integer year, String semester) {
         this.classTeacher = classTeacher;
         this.status = status;
         this.name = name;
@@ -47,9 +35,10 @@ public class ScientificresearchLongitudinaltopicsproject implements Serializable
         this.result = result;
         this.note = note;
         this.year = year;
+        this.semester = semester;
     }
 
-    public ScientificresearchLongitudinaltopicsproject(Integer id, String classTeacher, String status, String name, String source, String character, String type, String money, String startTime, String estimatedClosingTime, String result, String note, Integer year) {
+    public ScientificresearchLongitudinaltopicsproject(Integer id, String classTeacher, String status, String name, String source, String character, String type, String money, String startTime, String estimatedClosingTime, String result, String note, Integer year, String semester) {
         this.id = id;
         this.classTeacher = classTeacher;
         this.status = status;
@@ -63,7 +52,22 @@ public class ScientificresearchLongitudinaltopicsproject implements Serializable
         this.result = result;
         this.note = note;
         this.year = year;
+        this.semester = semester;
     }
+
+    private String startTime;
+
+    private String estimatedClosingTime;
+
+    private String result;
+
+    private String note;
+
+    private Integer year;
+
+    private String semester;
+
+    private static final long serialVersionUID = 1L;
 
     public Integer getId() {
         return id;
@@ -169,6 +173,14 @@ public class ScientificresearchLongitudinaltopicsproject implements Serializable
         this.year = year;
     }
 
+    public String getSemester() {
+        return semester;
+    }
+
+    public void setSemester(String semester) {
+        this.semester = semester == null ? null : semester.trim();
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -188,6 +200,7 @@ public class ScientificresearchLongitudinaltopicsproject implements Serializable
         sb.append(", result=").append(result);
         sb.append(", note=").append(note);
         sb.append(", year=").append(year);
+        sb.append(", semester=").append(semester);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

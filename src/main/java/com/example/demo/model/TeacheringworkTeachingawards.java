@@ -19,12 +19,10 @@ public class TeacheringworkTeachingawards implements Serializable {
 
     private String character;
 
-    private Integer participantsNumber;
-
     public TeacheringworkTeachingawards() {
     }
 
-    public TeacheringworkTeachingawards(String classTeacher, String status, String name, String type, String level, String grade, String character, Integer participantsNumber, String note, Integer year, Integer semester) {
+    public TeacheringworkTeachingawards(String classTeacher, String status, String name, String type, String level, String grade, String character, Integer participantsNumber, String note, Integer year, String semester) {
         this.classTeacher = classTeacher;
         this.status = status;
         this.name = name;
@@ -38,7 +36,7 @@ public class TeacheringworkTeachingawards implements Serializable {
         this.semester = semester;
     }
 
-    public TeacheringworkTeachingawards(Integer id, String classTeacher, String status, String name, String type, String level, String grade, String character, Integer participantsNumber, String note, Integer year, Integer semester) {
+    public TeacheringworkTeachingawards(Integer id, String classTeacher, String status, String name, String type, String level, String grade, String character, Integer participantsNumber, String note, Integer year, String semester) {
         this.id = id;
         this.classTeacher = classTeacher;
         this.status = status;
@@ -53,11 +51,13 @@ public class TeacheringworkTeachingawards implements Serializable {
         this.semester = semester;
     }
 
+    private Integer participantsNumber;
+
     private String note;
 
     private Integer year;
 
-    private Integer semester;
+    private String semester;
 
     private static final long serialVersionUID = 1L;
 
@@ -149,12 +149,12 @@ public class TeacheringworkTeachingawards implements Serializable {
         this.year = year;
     }
 
-    public Integer getSemester() {
+    public String getSemester() {
         return semester;
     }
 
-    public void setSemester(Integer semester) {
-        this.semester = semester;
+    public void setSemester(String semester) {
+        this.semester = semester == null ? null : semester.trim();
     }
 
     @Override

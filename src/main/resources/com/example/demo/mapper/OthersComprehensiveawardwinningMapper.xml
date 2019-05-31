@@ -1,34 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.mapper.OthersComprehensiveawardwinningMapper">
-    <resultMap id="BaseResultMap" type="com.example.demo.model.OthersComprehensiveawardwinning">
-        <id column="id" jdbcType="INTEGER" property="id"/>
-        <result column="name" jdbcType="NVARCHAR" property="name"/>
-        <result column="time" jdbcType="NVARCHAR" property="time"/>
-        <result column="department" jdbcType="NVARCHAR" property="department"/>
-        <result column="level" jdbcType="NVARCHAR" property="level"/>
-        <result column="ranking" jdbcType="NVARCHAR" property="ranking"/>
-        <result column="peopleNumber" jdbcType="INTEGER" property="peopleNumber"/>
-        <result column="note" jdbcType="NVARCHAR" property="note"/>
-        <result column="year" jdbcType="INTEGER" property="year"/>
-        <result column="status" jdbcType="NVARCHAR" property="status"/>
-        <result column="classTeacher" jdbcType="NVARCHAR" property="classTeacher"/>
-    </resultMap>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <resultMap id="BaseResultMap" type="com.example.demo.model.OthersComprehensiveawardwinning">
+    <id column="id" jdbcType="INTEGER" property="id"/>
+    <result column="name" jdbcType="NVARCHAR" property="name"/>
+    <result column="time" jdbcType="NVARCHAR" property="time"/>
+    <result column="department" jdbcType="NVARCHAR" property="department"/>
+    <result column="level" jdbcType="NVARCHAR" property="level"/>
+    <result column="ranking" jdbcType="NVARCHAR" property="ranking"/>
+    <result column="peopleNumber" jdbcType="INTEGER" property="peopleNumber"/>
+    <result column="note" jdbcType="NVARCHAR" property="note"/>
+    <result column="year" jdbcType="INTEGER" property="year"/>
+    <result column="semester" jdbcType="NVARCHAR" property="semester"/>
+    <result column="status" jdbcType="NVARCHAR" property="status"/>
+    <result column="classTeacher" jdbcType="NVARCHAR" property="classTeacher"/>
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from others_comprehensiveAwardWinning
     where id = #{id,jdbcType=INTEGER}
   </delete>
-    <insert id="insert" parameterType="com.example.demo.model.OthersComprehensiveawardwinning">
+  <insert id="insert" parameterType="com.example.demo.model.OthersComprehensiveawardwinning">
     insert into others_comprehensiveAwardWinning (name, time,
       department, level, ranking, 
       peopleNumber, note, year, 
-      status, classTeacher)
+      semester, status, classTeacher
+      )
     values (#{name,jdbcType=NVARCHAR}, #{time,jdbcType=NVARCHAR},
       #{department,jdbcType=NVARCHAR}, #{level,jdbcType=NVARCHAR}, #{ranking,jdbcType=NVARCHAR}, 
       #{peopleNumber,jdbcType=INTEGER}, #{note,jdbcType=NVARCHAR}, #{year,jdbcType=INTEGER}, 
-      #{status,jdbcType=NVARCHAR}, #{classTeacher,jdbcType=NVARCHAR})
+      #{semester,jdbcType=NVARCHAR}, #{status,jdbcType=NVARCHAR}, #{classTeacher,jdbcType=NVARCHAR}
+      )
   </insert>
-    <update id="updateByPrimaryKey" parameterType="com.example.demo.model.OthersComprehensiveawardwinning">
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.model.OthersComprehensiveawardwinning">
     update others_comprehensiveAwardWinning
     set name = #{name,jdbcType=NVARCHAR},
       time = #{time,jdbcType=NVARCHAR},
@@ -38,23 +41,22 @@
       peopleNumber = #{peopleNumber,jdbcType=INTEGER},
       note = #{note,jdbcType=NVARCHAR},
       year = #{year,jdbcType=INTEGER},
+      semester = #{semester,jdbcType=NVARCHAR},
       status = #{status,jdbcType=NVARCHAR},
       classTeacher = #{classTeacher,jdbcType=NVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
-    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select id, name, time, department, level, ranking, peopleNumber, note, year, status, 
-    classTeacher
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, name, time, department, level, ranking, peopleNumber, note, year, semester, 
+    status, classTeacher
     from others_comprehensiveAwardWinning
     where id = #{id,jdbcType=INTEGER}
   </select>
     <select id="selectAll" resultMap="BaseResultMap">
-    select id, name, time, department, level, ranking, peopleNumber, note, year, status, 
-    classTeacher
-    from others_comprehensiveAwardWinning
+        SELECT * FROM others_comprehensiveAwardWinning
   </select>
-    <select id="selectByClassTeacher" parameterType="com.example.demo.model.OthersComprehensiveawardwinning"
-            resultMap="BaseResultMap">
+  <select id="selectByClassTeacher" parameterType="com.example.demo.model.OthersComprehensiveawardwinning"
+          resultMap="BaseResultMap">
         SELECT * FROM others_comprehensiveAwardWinning WHERE 1=1
         AND classTeacher=#{classTeacher,jdbcType=NVARCHAR}
         <if test="year!=null and year!=''">

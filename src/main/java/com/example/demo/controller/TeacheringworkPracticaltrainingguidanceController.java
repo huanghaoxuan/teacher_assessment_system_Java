@@ -60,12 +60,12 @@ public class TeacheringworkPracticaltrainingguidanceController {
             @ApiImplicitParam(name = "results", value = "成果形式", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "note", value = "备注", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "year", value = "学年", required = false, dataType = "int", paramType = "query"),
-            @ApiImplicitParam(name = "semester", value = "学期", required = false, dataType = "int", paramType = "query"),
+            @ApiImplicitParam(name = "semester", value = "学期", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "status", value = "审核情况", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "classTeacher", value = "教师用户工号", required = true, dataType = "varchar", paramType = "query")
 
     })
-    public Integer updateByPrimaryKey(@ApiIgnore Integer id, String classTeacher, String status, String name, BigDecimal credits, BigDecimal hours, Integer studentNumber, Integer loopsNumber, String trainingType, String results, String note, Integer year, Integer semester) {
+    public Integer updateByPrimaryKey(@ApiIgnore Integer id, String classTeacher, String status, String name, BigDecimal credits, BigDecimal hours, Integer studentNumber, Integer loopsNumber, String trainingType, String results, String note, Integer year, String semester) {
         TeacheringworkPracticaltrainingguidance teacheringworkPracticaltrainingguidance = new TeacheringworkPracticaltrainingguidance(id, classTeacher, status, name, credits, hours, studentNumber, loopsNumber, trainingType, results, note, year, semester);
 
         return teacheringworkPracticaltrainingguidanceService.updateByPrimaryKey(teacheringworkPracticaltrainingguidance);
@@ -83,12 +83,12 @@ public class TeacheringworkPracticaltrainingguidanceController {
             @ApiImplicitParam(name = "results", value = "成果形式", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "note", value = "备注", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "year", value = "学年", required = false, dataType = "int", paramType = "query"),
-            @ApiImplicitParam(name = "semester", value = "学期", required = false, dataType = "int", paramType = "query"),
+            @ApiImplicitParam(name = "semester", value = "学期", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "status", value = "审核情况", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "classTeacher", value = "教师用户工号", required = true, dataType = "varchar", paramType = "query")
 
     })
-    public Integer insert(@ApiIgnore String classTeacher, String status, String name, BigDecimal credits, BigDecimal hours, Integer studentNumber, Integer loopsNumber, String trainingType, String results, String note, Integer year, Integer semester) {
+    public Integer insert(@ApiIgnore String classTeacher, String status, String name, BigDecimal credits, BigDecimal hours, Integer studentNumber, Integer loopsNumber, String trainingType, String results, String note, Integer year, String semester) {
         TeacheringworkPracticaltrainingguidance teacheringworkPracticaltrainingguidance = new TeacheringworkPracticaltrainingguidance(classTeacher, status, name, credits, hours, studentNumber, loopsNumber, trainingType, results, note, year, semester);
 
         return teacheringworkPracticaltrainingguidanceService.insert(teacheringworkPracticaltrainingguidance);

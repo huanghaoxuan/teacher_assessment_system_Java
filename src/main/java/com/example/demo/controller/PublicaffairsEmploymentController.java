@@ -57,12 +57,13 @@ public class PublicaffairsEmploymentController {
             @ApiImplicitParam(name = "guideEntrepreneurshipNumber", value = "指导学生成功创业", required = false, dataType = "int", paramType = "query"),
             @ApiImplicitParam(name = "note", value = "备注", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "year", value = "学年", required = false, dataType = "int", paramType = "query"),
+            @ApiImplicitParam(name = "semester", value = "学期", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "status", value = "审核情况", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "classTeacher", value = "教师用户工号", required = true, dataType = "varchar", paramType = "query")
 
     })
-    public Integer updateByPrimaryKey(@ApiIgnore Integer id, Integer directEmploymentNumber, Integer helpConnectEmploymentNumber, Integer participationInEmploymentGuidanceNumber, Integer mentoringExaminationCoursesNumber, Integer helpAdmitEntranceNumber, Integer guideEntrepreneurshipNumber, String note, Integer year, String classTeacher, String status) {
-        PublicaffairsEmployment publicaffairsEmployment = new PublicaffairsEmployment(id, directEmploymentNumber, helpConnectEmploymentNumber, participationInEmploymentGuidanceNumber, mentoringExaminationCoursesNumber, helpAdmitEntranceNumber, guideEntrepreneurshipNumber, note, year, classTeacher, status);
+    public Integer updateByPrimaryKey(@ApiIgnore Integer id, Integer directEmploymentNumber, Integer helpConnectEmploymentNumber, Integer participationInEmploymentGuidanceNumber, Integer mentoringExaminationCoursesNumber, Integer helpAdmitEntranceNumber, Integer guideEntrepreneurshipNumber, String note, Integer year, String semester, String classTeacher, String status) {
+        PublicaffairsEmployment publicaffairsEmployment = new PublicaffairsEmployment(id, directEmploymentNumber, helpConnectEmploymentNumber, participationInEmploymentGuidanceNumber, mentoringExaminationCoursesNumber, helpAdmitEntranceNumber, guideEntrepreneurshipNumber, note, year, semester, classTeacher, status);
 
         return publicaffairsEmploymentService.updateByPrimaryKey(publicaffairsEmployment);
     }
@@ -78,12 +79,13 @@ public class PublicaffairsEmploymentController {
             @ApiImplicitParam(name = "guideEntrepreneurshipNumber", value = "指导学生成功创业", required = false, dataType = "int", paramType = "query"),
             @ApiImplicitParam(name = "note", value = "备注", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "year", value = "学年", required = false, dataType = "int", paramType = "query"),
+            @ApiImplicitParam(name = "semester", value = "学期", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "status", value = "审核情况", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "classTeacher", value = "教师用户工号", required = true, dataType = "varchar", paramType = "query")
 
     })
-    public Integer insert(@ApiIgnore Integer directEmploymentNumber, Integer helpConnectEmploymentNumber, Integer participationInEmploymentGuidanceNumber, Integer mentoringExaminationCoursesNumber, Integer helpAdmitEntranceNumber, Integer guideEntrepreneurshipNumber, String note, Integer year, String classTeacher, String status) {
-        PublicaffairsEmployment publicaffairsEmployment = new PublicaffairsEmployment(directEmploymentNumber, helpConnectEmploymentNumber, participationInEmploymentGuidanceNumber, mentoringExaminationCoursesNumber, helpAdmitEntranceNumber, guideEntrepreneurshipNumber, note, year, classTeacher, status);
+    public Integer insert(@ApiIgnore Integer directEmploymentNumber, Integer helpConnectEmploymentNumber, Integer participationInEmploymentGuidanceNumber, Integer mentoringExaminationCoursesNumber, Integer helpAdmitEntranceNumber, Integer guideEntrepreneurshipNumber, String note, Integer year, String semester, String classTeacher, String status) {
+        PublicaffairsEmployment publicaffairsEmployment = new PublicaffairsEmployment(directEmploymentNumber, helpConnectEmploymentNumber, participationInEmploymentGuidanceNumber, mentoringExaminationCoursesNumber, helpAdmitEntranceNumber, guideEntrepreneurshipNumber, note, year, semester, classTeacher, status);
 
         return publicaffairsEmploymentService.insert(publicaffairsEmployment);
     }

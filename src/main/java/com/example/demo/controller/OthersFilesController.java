@@ -56,12 +56,13 @@ public class OthersFilesController {
             @ApiImplicitParam(name = "useScope", value = "使用范围及产生效益", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "note", value = "备注", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "year", value = "学年", required = false, dataType = "int", paramType = "query"),
+            @ApiImplicitParam(name = "semester", value = "学期", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "status", value = "审核情况", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "classTeacher", value = "教师用户工号", required = true, dataType = "varchar", paramType = "query")
 
     })
-    public Integer updateByPrimaryKey(@ApiIgnore Integer id, String name, String time, String rank, Integer peopleNumber, String useScope, String note, Integer year, String status, String classTeacher) {
-        OthersFiles othersFiles = new OthersFiles(id, name, time, rank, peopleNumber, useScope, note, year, status, classTeacher);
+    public Integer updateByPrimaryKey(@ApiIgnore Integer id, String name, String time, String rank, Integer peopleNumber, String useScope, String note, Integer year, String semester, String status, String classTeacher) {
+        OthersFiles othersFiles = new OthersFiles(id, name, time, rank, peopleNumber, useScope, note, year, semester, status, classTeacher);
 
         return othersFilesService.updateByPrimaryKey(othersFiles);
     }
@@ -76,11 +77,12 @@ public class OthersFilesController {
             @ApiImplicitParam(name = "useScope", value = "使用范围及产生效益", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "note", value = "备注", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "year", value = "学年", required = false, dataType = "int", paramType = "query"),
+            @ApiImplicitParam(name = "semester", value = "学期", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "status", value = "审核情况", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "classTeacher", value = "教师用户工号", required = true, dataType = "varchar", paramType = "query")
     })
-    public Integer insert(@ApiIgnore String name, String time, String rank, Integer peopleNumber, String useScope, String note, Integer year, String status, String classTeacher) {
-        OthersFiles othersFiles = new OthersFiles(name, time, rank, peopleNumber, useScope, note, year, status, classTeacher);
+    public Integer insert(@ApiIgnore String name, String time, String rank, Integer peopleNumber, String useScope, String note, Integer year, String semester, String status, String classTeacher) {
+        OthersFiles othersFiles = new OthersFiles(name, time, rank, peopleNumber, useScope, note, year, semester, status, classTeacher);
 
         return othersFilesService.insert(othersFiles);
     }

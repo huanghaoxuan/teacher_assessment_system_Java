@@ -1,35 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.mapper.ScientificresearchPublishpaperMapper">
-    <resultMap id="BaseResultMap" type="com.example.demo.model.ScientificresearchPublishpaper">
-        <id column="id" jdbcType="INTEGER" property="id"/>
-        <result column="classTeacher" jdbcType="NVARCHAR" property="classTeacher"/>
-        <result column="status" jdbcType="NVARCHAR" property="status"/>
-        <result column="name" jdbcType="NVARCHAR" property="name"/>
-        <result column="journals" jdbcType="NVARCHAR" property="journals"/>
-        <result column="publicationDate" jdbcType="NVARCHAR" property="publicationDate"/>
-        <result column="level" jdbcType="NVARCHAR" property="level"/>
-        <result column="collectionInformation" jdbcType="NVARCHAR" property="collectionInformation"/>
-        <result column="character" jdbcType="NVARCHAR" property="character"/>
-        <result column="type" jdbcType="NVARCHAR" property="type"/>
-        <result column="note" jdbcType="NVARCHAR" property="note"/>
-        <result column="year" jdbcType="INTEGER" property="year"/>
-    </resultMap>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <resultMap id="BaseResultMap" type="com.example.demo.model.ScientificresearchPublishpaper">
+    <id column="id" jdbcType="INTEGER" property="id"/>
+    <result column="classTeacher" jdbcType="NVARCHAR" property="classTeacher"/>
+    <result column="status" jdbcType="NVARCHAR" property="status"/>
+    <result column="name" jdbcType="NVARCHAR" property="name"/>
+    <result column="journals" jdbcType="NVARCHAR" property="journals"/>
+    <result column="publicationDate" jdbcType="NVARCHAR" property="publicationDate"/>
+    <result column="level" jdbcType="NVARCHAR" property="level"/>
+    <result column="collectionInformation" jdbcType="NVARCHAR" property="collectionInformation"/>
+    <result column="character" jdbcType="NVARCHAR" property="character"/>
+    <result column="type" jdbcType="NVARCHAR" property="type"/>
+    <result column="note" jdbcType="NVARCHAR" property="note"/>
+    <result column="year" jdbcType="INTEGER" property="year"/>
+    <result column="semester" jdbcType="NVARCHAR" property="semester"/>
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from scientificResearch_publishPaper
     where id = #{id,jdbcType=INTEGER}
   </delete>
-    <insert id="insert" parameterType="com.example.demo.model.ScientificresearchPublishpaper">
+  <insert id="insert" parameterType="com.example.demo.model.ScientificresearchPublishpaper">
     insert into scientificResearch_publishPaper (classTeacher, status,
       name, journals, publicationDate, 
       level, collectionInformation, character, 
-      type, note, year)
+      type, note, year, 
+      semester)
     values (#{classTeacher,jdbcType=NVARCHAR}, #{status,jdbcType=NVARCHAR},
       #{name,jdbcType=NVARCHAR}, #{journals,jdbcType=NVARCHAR}, #{publicationDate,jdbcType=NVARCHAR}, 
       #{level,jdbcType=NVARCHAR}, #{collectionInformation,jdbcType=NVARCHAR}, #{character,jdbcType=NVARCHAR}, 
-      #{type,jdbcType=NVARCHAR}, #{note,jdbcType=NVARCHAR}, #{year,jdbcType=INTEGER})
+      #{type,jdbcType=NVARCHAR}, #{note,jdbcType=NVARCHAR}, #{year,jdbcType=INTEGER}, 
+      #{semester,jdbcType=NVARCHAR})
   </insert>
-    <update id="updateByPrimaryKey" parameterType="com.example.demo.model.ScientificresearchPublishpaper">
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.model.ScientificresearchPublishpaper">
     update scientificResearch_publishPaper
     set classTeacher = #{classTeacher,jdbcType=NVARCHAR},
       status = #{status,jdbcType=NVARCHAR},
@@ -41,20 +44,21 @@
       character = #{character,jdbcType=NVARCHAR},
       type = #{type,jdbcType=NVARCHAR},
       note = #{note,jdbcType=NVARCHAR},
-      year = #{year,jdbcType=INTEGER}
+      year = #{year,jdbcType=INTEGER},
+      semester = #{semester,jdbcType=NVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
-    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select id, classTeacher, status, name, journals, publicationDate, level, collectionInformation, 
-    character, type, note, year
+    character, type, note, year, semester
     from scientificResearch_publishPaper
     where id = #{id,jdbcType=INTEGER}
   </select>
     <select id="selectAll" resultMap="BaseResultMap">
     SELECT * FROM scientificResearch_publishPaper
   </select>
-    <select id="selectByClassTeacher" parameterType="com.example.demo.model.ScientificresearchPublishpaper"
-            resultMap="BaseResultMap">
+  <select id="selectByClassTeacher" parameterType="com.example.demo.model.ScientificresearchPublishpaper"
+          resultMap="BaseResultMap">
         SELECT * FROM scientificResearch_publishPaper WHERE 1=1
         AND classTeacher=#{classTeacher,jdbcType=NVARCHAR}
         <if test="year!=null and year!=''">

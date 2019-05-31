@@ -21,12 +21,12 @@ public class TeacheringworkGraduationdesignguide implements Serializable {
 
     private Integer year;
 
-    private Integer semester;
+    private String semester;
 
     public TeacheringworkGraduationdesignguide() {
     }
 
-    public TeacheringworkGraduationdesignguide(String classTeacher, String status, String name, String character, String level, Integer winnersNumber, String note, Integer year, Integer semester) {
+    public TeacheringworkGraduationdesignguide(String classTeacher, String status, String name, String character, String level, Integer winnersNumber, String note, Integer year, String semester) {
         this.classTeacher = classTeacher;
         this.status = status;
         this.name = name;
@@ -38,7 +38,7 @@ public class TeacheringworkGraduationdesignguide implements Serializable {
         this.semester = semester;
     }
 
-    public TeacheringworkGraduationdesignguide(Integer id, String classTeacher, String status, String name, String character, String level, Integer winnersNumber, String note, Integer year, Integer semester) {
+    public TeacheringworkGraduationdesignguide(Integer id, String classTeacher, String status, String name, String character, String level, Integer winnersNumber, String note, Integer year, String semester) {
         this.id = id;
         this.classTeacher = classTeacher;
         this.status = status;
@@ -125,12 +125,12 @@ public class TeacheringworkGraduationdesignguide implements Serializable {
         this.year = year;
     }
 
-    public Integer getSemester() {
+    public String getSemester() {
         return semester;
     }
 
-    public void setSemester(Integer semester) {
-        this.semester = semester;
+    public void setSemester(String semester) {
+        this.semester = semester == null ? null : semester.trim();
     }
 
     @Override

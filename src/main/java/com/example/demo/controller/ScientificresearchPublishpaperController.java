@@ -58,12 +58,13 @@ public class ScientificresearchPublishpaperController {
             @ApiImplicitParam(name = "type", value = "论文种类", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "note", value = "备注", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "year", value = "学年", required = false, dataType = "int", paramType = "query"),
+            @ApiImplicitParam(name = "semester", value = "学期", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "status", value = "审核情况", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "classTeacher", value = "教师用户工号", required = true, dataType = "varchar", paramType = "query")
 
     })
-    public Integer updateByPrimaryKey(@ApiIgnore Integer id, String classTeacher, String status, String name, String journals, String publicationDate, String level, String collectionInformation, String character, String type, String note, Integer year) {
-        ScientificresearchPublishpaper scientificresearchPublishpaper = new ScientificresearchPublishpaper(id, classTeacher, status, name, journals, publicationDate, level, collectionInformation, character, type, note, year);
+    public Integer updateByPrimaryKey(@ApiIgnore Integer id, String classTeacher, String status, String name, String journals, String publicationDate, String level, String collectionInformation, String character, String type, String note, Integer year, String semester) {
+        ScientificresearchPublishpaper scientificresearchPublishpaper = new ScientificresearchPublishpaper(id, classTeacher, status, name, journals, publicationDate, level, collectionInformation, character, type, note, year, semester);
 
         return scientificresearchPublishpaperService.updateByPrimaryKey(scientificresearchPublishpaper);
     }
@@ -80,12 +81,13 @@ public class ScientificresearchPublishpaperController {
             @ApiImplicitParam(name = "type", value = "论文种类", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "note", value = "备注", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "year", value = "学年", required = false, dataType = "int", paramType = "query"),
+            @ApiImplicitParam(name = "semester", value = "学期", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "status", value = "审核情况", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "classTeacher", value = "教师用户工号", required = true, dataType = "varchar", paramType = "query")
 
     })
-    public Integer insert(@ApiIgnore String classTeacher, String status, String name, String journals, String publicationDate, String level, String collectionInformation, String character, String type, String note, Integer year) {
-        ScientificresearchPublishpaper scientificresearchPublishpaper = new ScientificresearchPublishpaper(classTeacher, status, name, journals, publicationDate, level, collectionInformation, character, type, note, year);
+    public Integer insert(@ApiIgnore String classTeacher, String status, String name, String journals, String publicationDate, String level, String collectionInformation, String character, String type, String note, Integer year, String semester) {
+        ScientificresearchPublishpaper scientificresearchPublishpaper = new ScientificresearchPublishpaper(classTeacher, status, name, journals, publicationDate, level, collectionInformation, character, type, note, year, semester);
 
         return scientificresearchPublishpaperService.insert(scientificresearchPublishpaper);
     }

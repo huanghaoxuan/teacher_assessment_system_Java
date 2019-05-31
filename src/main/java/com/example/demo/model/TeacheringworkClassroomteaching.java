@@ -20,48 +20,6 @@ public class TeacheringworkClassroomteaching implements Serializable {
 
     private BigDecimal credits;
 
-    public TeacheringworkClassroomteaching() {
-    }
-
-    public TeacheringworkClassroomteaching(String classTeacher, String status, String name, String character, String type, String yesorno, BigDecimal credits, BigDecimal hours, Integer classesNumber, Integer parallelClassesNumber, Integer homeworkNumber, Integer correctingNumber, Integer answeringNumber, String note, Integer year, Integer semester) {
-        this.classTeacher = classTeacher;
-        this.status = status;
-        this.name = name;
-        this.character = character;
-        this.type = type;
-        this.yesorno = yesorno;
-        this.credits = credits;
-        this.hours = hours;
-        this.classesNumber = classesNumber;
-        this.parallelClassesNumber = parallelClassesNumber;
-        this.homeworkNumber = homeworkNumber;
-        this.correctingNumber = correctingNumber;
-        this.answeringNumber = answeringNumber;
-        this.note = note;
-        this.year = year;
-        this.semester = semester;
-    }
-
-    public TeacheringworkClassroomteaching(Integer id, String classTeacher, String status, String name, String character, String type, String yesorno, BigDecimal credits, BigDecimal hours, Integer classesNumber, Integer parallelClassesNumber, Integer homeworkNumber, Integer correctingNumber, Integer answeringNumber, String note, Integer year, Integer semester) {
-        this.id = id;
-        this.classTeacher = classTeacher;
-        this.status = status;
-        this.name = name;
-        this.character = character;
-        this.type = type;
-        this.yesorno = yesorno;
-        this.credits = credits;
-        this.hours = hours;
-        this.classesNumber = classesNumber;
-        this.parallelClassesNumber = parallelClassesNumber;
-        this.homeworkNumber = homeworkNumber;
-        this.correctingNumber = correctingNumber;
-        this.answeringNumber = answeringNumber;
-        this.note = note;
-        this.year = year;
-        this.semester = semester;
-    }
-
     private BigDecimal hours;
 
     private Integer classesNumber;
@@ -78,7 +36,7 @@ public class TeacheringworkClassroomteaching implements Serializable {
 
     private Integer year;
 
-    private Integer semester;
+    private String semester;
 
     private static final long serialVersionUID = 1L;
 
@@ -178,6 +136,48 @@ public class TeacheringworkClassroomteaching implements Serializable {
         this.homeworkNumber = homeworkNumber;
     }
 
+    public TeacheringworkClassroomteaching() {
+    }
+
+    public TeacheringworkClassroomteaching(String classTeacher, String status, String name, String character, String type, String yesorno, BigDecimal credits, BigDecimal hours, Integer classesNumber, Integer parallelClassesNumber, Integer homeworkNumber, Integer correctingNumber, Integer answeringNumber, String note, Integer year, String semester) {
+        this.classTeacher = classTeacher;
+        this.status = status;
+        this.name = name;
+        this.character = character;
+        this.type = type;
+        this.yesorno = yesorno;
+        this.credits = credits;
+        this.hours = hours;
+        this.classesNumber = classesNumber;
+        this.parallelClassesNumber = parallelClassesNumber;
+        this.homeworkNumber = homeworkNumber;
+        this.correctingNumber = correctingNumber;
+        this.answeringNumber = answeringNumber;
+        this.note = note;
+        this.year = year;
+        this.semester = semester;
+    }
+
+    public TeacheringworkClassroomteaching(Integer id, String classTeacher, String status, String name, String character, String type, String yesorno, BigDecimal credits, BigDecimal hours, Integer classesNumber, Integer parallelClassesNumber, Integer homeworkNumber, Integer correctingNumber, Integer answeringNumber, String note, Integer year, String semester) {
+        this.id = id;
+        this.classTeacher = classTeacher;
+        this.status = status;
+        this.name = name;
+        this.character = character;
+        this.type = type;
+        this.yesorno = yesorno;
+        this.credits = credits;
+        this.hours = hours;
+        this.classesNumber = classesNumber;
+        this.parallelClassesNumber = parallelClassesNumber;
+        this.homeworkNumber = homeworkNumber;
+        this.correctingNumber = correctingNumber;
+        this.answeringNumber = answeringNumber;
+        this.note = note;
+        this.year = year;
+        this.semester = semester;
+    }
+
     public Integer getCorrectingNumber() {
         return correctingNumber;
     }
@@ -210,12 +210,12 @@ public class TeacheringworkClassroomteaching implements Serializable {
         this.year = year;
     }
 
-    public Integer getSemester() {
+    public String getSemester() {
         return semester;
     }
 
-    public void setSemester(Integer semester) {
-        this.semester = semester;
+    public void setSemester(String semester) {
+        this.semester = semester == null ? null : semester.trim();
     }
 
     @Override

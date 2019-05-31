@@ -21,10 +21,12 @@ public class TeacheringworkGuidethegreatcreation implements Serializable {
 
     private String studentGrade;
 
+    private Integer studentNumber;
+
     public TeacheringworkGuidethegreatcreation() {
     }
 
-    public TeacheringworkGuidethegreatcreation(String classTeacher, String status, String name, String level, String source, String projectStatus, String titleLevel, String studentGrade, Integer studentNumber, String effect, Integer mentorsNumber, String mentorsLevel, String note, Integer year, Integer semester) {
+    public TeacheringworkGuidethegreatcreation(String classTeacher, String status, String name, String level, String source, String projectStatus, String titleLevel, String studentGrade, Integer studentNumber, String effect, Integer mentorsNumber, String mentorsLevel, String note, Integer year, String semester) {
         this.classTeacher = classTeacher;
         this.status = status;
         this.name = name;
@@ -42,7 +44,7 @@ public class TeacheringworkGuidethegreatcreation implements Serializable {
         this.semester = semester;
     }
 
-    public TeacheringworkGuidethegreatcreation(Integer id, String classTeacher, String status, String name, String level, String source, String projectStatus, String titleLevel, String studentGrade, Integer studentNumber, String effect, Integer mentorsNumber, String mentorsLevel, String note, Integer year, Integer semester) {
+    public TeacheringworkGuidethegreatcreation(Integer id, String classTeacher, String status, String name, String level, String source, String projectStatus, String titleLevel, String studentGrade, Integer studentNumber, String effect, Integer mentorsNumber, String mentorsLevel, String note, Integer year, String semester) {
         this.id = id;
         this.classTeacher = classTeacher;
         this.status = status;
@@ -61,8 +63,6 @@ public class TeacheringworkGuidethegreatcreation implements Serializable {
         this.semester = semester;
     }
 
-    private Integer studentNumber;
-
     private String effect;
 
     private Integer mentorsNumber;
@@ -73,7 +73,7 @@ public class TeacheringworkGuidethegreatcreation implements Serializable {
 
     private Integer year;
 
-    private Integer semester;
+    private String semester;
 
     private static final long serialVersionUID = 1L;
 
@@ -197,12 +197,12 @@ public class TeacheringworkGuidethegreatcreation implements Serializable {
         this.year = year;
     }
 
-    public Integer getSemester() {
+    public String getSemester() {
         return semester;
     }
 
-    public void setSemester(Integer semester) {
-        this.semester = semester;
+    public void setSemester(String semester) {
+        this.semester = semester == null ? null : semester.trim();
     }
 
     @Override

@@ -22,10 +22,12 @@ public class TeachingconstructionLaboratoryconstruction implements Serializable 
 
     private String professional;
 
+    private String grade;
+
     public TeachingconstructionLaboratoryconstruction() {
     }
 
-    public TeachingconstructionLaboratoryconstruction(String classTeacher, String status, String name, String character, String contribution, BigDecimal hours, Integer peopleNumber, String professional, String grade, String controlDeviceName, String reformingDeviceName, String money, String note, Integer year) {
+    public TeachingconstructionLaboratoryconstruction(String classTeacher, String status, String name, String character, String contribution, BigDecimal hours, Integer peopleNumber, String professional, String grade, String controlDeviceName, String reformingDeviceName, String money, String note, Integer year, String semester) {
         this.classTeacher = classTeacher;
         this.status = status;
         this.name = name;
@@ -40,9 +42,10 @@ public class TeachingconstructionLaboratoryconstruction implements Serializable 
         this.money = money;
         this.note = note;
         this.year = year;
+        this.semester = semester;
     }
 
-    public TeachingconstructionLaboratoryconstruction(Integer id, String classTeacher, String status, String name, String character, String contribution, BigDecimal hours, Integer peopleNumber, String professional, String grade, String controlDeviceName, String reformingDeviceName, String money, String note, Integer year) {
+    public TeachingconstructionLaboratoryconstruction(Integer id, String classTeacher, String status, String name, String character, String contribution, BigDecimal hours, Integer peopleNumber, String professional, String grade, String controlDeviceName, String reformingDeviceName, String money, String note, Integer year, String semester) {
         this.id = id;
         this.classTeacher = classTeacher;
         this.status = status;
@@ -58,9 +61,8 @@ public class TeachingconstructionLaboratoryconstruction implements Serializable 
         this.money = money;
         this.note = note;
         this.year = year;
+        this.semester = semester;
     }
-
-    private String grade;
 
     private String controlDeviceName;
 
@@ -71,6 +73,8 @@ public class TeachingconstructionLaboratoryconstruction implements Serializable 
     private String note;
 
     private Integer year;
+
+    private String semester;
 
     private static final long serialVersionUID = 1L;
 
@@ -194,6 +198,14 @@ public class TeachingconstructionLaboratoryconstruction implements Serializable 
         this.year = year;
     }
 
+    public String getSemester() {
+        return semester;
+    }
+
+    public void setSemester(String semester) {
+        this.semester = semester == null ? null : semester.trim();
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -215,6 +227,7 @@ public class TeachingconstructionLaboratoryconstruction implements Serializable 
         sb.append(", money=").append(money);
         sb.append(", note=").append(note);
         sb.append(", year=").append(year);
+        sb.append(", semester=").append(semester);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

@@ -23,9 +23,45 @@ public class ScientificresearchHorizontaltopicprojects implements Serializable {
 
     private String result;
 
+    public ScientificresearchHorizontaltopicprojects() {
+    }
+
+    public ScientificresearchHorizontaltopicprojects(String classTeacher, String status, String name, String source, String character, String money, String startTime, String estimatedClosingTime, String result, String note, Integer year, String semester) {
+        this.classTeacher = classTeacher;
+        this.status = status;
+        this.name = name;
+        this.source = source;
+        this.character = character;
+        this.money = money;
+        this.startTime = startTime;
+        this.estimatedClosingTime = estimatedClosingTime;
+        this.result = result;
+        this.note = note;
+        this.year = year;
+        this.semester = semester;
+    }
+
+    public ScientificresearchHorizontaltopicprojects(Integer id, String classTeacher, String status, String name, String source, String character, String money, String startTime, String estimatedClosingTime, String result, String note, Integer year, String semester) {
+        this.id = id;
+        this.classTeacher = classTeacher;
+        this.status = status;
+        this.name = name;
+        this.source = source;
+        this.character = character;
+        this.money = money;
+        this.startTime = startTime;
+        this.estimatedClosingTime = estimatedClosingTime;
+        this.result = result;
+        this.note = note;
+        this.year = year;
+        this.semester = semester;
+    }
+
     private String note;
 
     private Integer year;
+
+    private String semester;
 
     private static final long serialVersionUID = 1L;
 
@@ -35,38 +71,6 @@ public class ScientificresearchHorizontaltopicprojects implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public ScientificresearchHorizontaltopicprojects() {
-    }
-
-    public ScientificresearchHorizontaltopicprojects(String classTeacher, String status, String name, String source, String character, String money, String startTime, String estimatedClosingTime, String result, String note, Integer year) {
-        this.classTeacher = classTeacher;
-        this.status = status;
-        this.name = name;
-        this.source = source;
-        this.character = character;
-        this.money = money;
-        this.startTime = startTime;
-        this.estimatedClosingTime = estimatedClosingTime;
-        this.result = result;
-        this.note = note;
-        this.year = year;
-    }
-
-    public ScientificresearchHorizontaltopicprojects(Integer id, String classTeacher, String status, String name, String source, String character, String money, String startTime, String estimatedClosingTime, String result, String note, Integer year) {
-        this.id = id;
-        this.classTeacher = classTeacher;
-        this.status = status;
-        this.name = name;
-        this.source = source;
-        this.character = character;
-        this.money = money;
-        this.startTime = startTime;
-        this.estimatedClosingTime = estimatedClosingTime;
-        this.result = result;
-        this.note = note;
-        this.year = year;
     }
 
     public String getClassTeacher() {
@@ -157,6 +161,14 @@ public class ScientificresearchHorizontaltopicprojects implements Serializable {
         this.year = year;
     }
 
+    public String getSemester() {
+        return semester;
+    }
+
+    public void setSemester(String semester) {
+        this.semester = semester == null ? null : semester.trim();
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -175,6 +187,7 @@ public class ScientificresearchHorizontaltopicprojects implements Serializable {
         sb.append(", result=").append(result);
         sb.append(", note=").append(note);
         sb.append(", year=").append(year);
+        sb.append(", semester=").append(semester);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

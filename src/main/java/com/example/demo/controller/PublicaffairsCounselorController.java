@@ -56,12 +56,13 @@ public class PublicaffairsCounselorController {
             @ApiImplicitParam(name = "endTime", value = "结束时间", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "note", value = "备注", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "year", value = "学年", required = false, dataType = "varchar", paramType = "query"),
+            @ApiImplicitParam(name = "semester", value = "学期", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "status", value = "审核情况", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "classTeacher", value = "教师用户工号", required = true, dataType = "varchar", paramType = "query")
 
     })
-    public Integer updateByPrimaryKey(@ApiIgnore Integer id, String classTeacher, String status, String schoolLevel, String provinceLevel, String caucusLaval, String startTime, String endTime, String note, Integer year) {
-        PublicaffairsCounselor publicaffairsCounselor = new PublicaffairsCounselor(id, classTeacher, status, schoolLevel, provinceLevel, caucusLaval, startTime, endTime, note, year);
+    public Integer updateByPrimaryKey(@ApiIgnore Integer id, String classTeacher, String status, String schoolLevel, String provinceLevel, String caucusLaval, String startTime, String endTime, String note, Integer year, String semester) {
+        PublicaffairsCounselor publicaffairsCounselor = new PublicaffairsCounselor(id, classTeacher, status, schoolLevel, provinceLevel, caucusLaval, startTime, endTime, note, year, semester);
 
         return publicaffairsCounselorService.updateByPrimaryKey(publicaffairsCounselor);
     }
@@ -76,12 +77,13 @@ public class PublicaffairsCounselorController {
             @ApiImplicitParam(name = "endTime", value = "结束时间", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "note", value = "备注", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "year", value = "学年", required = false, dataType = "varchar", paramType = "query"),
+            @ApiImplicitParam(name = "semester", value = "学期", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "status", value = "审核情况", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "classTeacher", value = "教师用户工号", required = true, dataType = "varchar", paramType = "query")
 
     })
-    public Integer insert(@ApiIgnore String classTeacher, String status, String schoolLevel, String provinceLevel, String caucusLaval, String startTime, String endTime, String note, Integer year) {
-        PublicaffairsCounselor publicaffairsCounselor = new PublicaffairsCounselor(classTeacher, status, schoolLevel, provinceLevel, caucusLaval, startTime, endTime, note, year);
+    public Integer insert(@ApiIgnore String classTeacher, String status, String schoolLevel, String provinceLevel, String caucusLaval, String startTime, String endTime, String note, Integer year, String semester) {
+        PublicaffairsCounselor publicaffairsCounselor = new PublicaffairsCounselor(classTeacher, status, schoolLevel, provinceLevel, caucusLaval, startTime, endTime, note, year, semester);
 
         return publicaffairsCounselorService.insert(publicaffairsCounselor);
     }

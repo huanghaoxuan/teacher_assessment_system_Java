@@ -17,10 +17,14 @@ public class ScientificresearchPatentapplication implements Serializable {
 
     private String hasProcessing;
 
+    private String hasAuthorized;
+
+    private String hasPatent;
+
     public ScientificresearchPatentapplication() {
     }
 
-    public ScientificresearchPatentapplication(String classTeacher, String status, String name, String tpye, String publicationDate, String hasProcessing, String hasAuthorized, String hasPatent, String note, Integer year) {
+    public ScientificresearchPatentapplication(String classTeacher, String status, String name, String tpye, String publicationDate, String hasProcessing, String hasAuthorized, String hasPatent, String note, Integer year, String semester) {
         this.classTeacher = classTeacher;
         this.status = status;
         this.name = name;
@@ -31,9 +35,10 @@ public class ScientificresearchPatentapplication implements Serializable {
         this.hasPatent = hasPatent;
         this.note = note;
         this.year = year;
+        this.semester = semester;
     }
 
-    public ScientificresearchPatentapplication(Integer id, String classTeacher, String status, String name, String tpye, String publicationDate, String hasProcessing, String hasAuthorized, String hasPatent, String note, Integer year) {
+    public ScientificresearchPatentapplication(Integer id, String classTeacher, String status, String name, String tpye, String publicationDate, String hasProcessing, String hasAuthorized, String hasPatent, String note, Integer year, String semester) {
         this.id = id;
         this.classTeacher = classTeacher;
         this.status = status;
@@ -45,15 +50,14 @@ public class ScientificresearchPatentapplication implements Serializable {
         this.hasPatent = hasPatent;
         this.note = note;
         this.year = year;
+        this.semester = semester;
     }
-
-    private String hasAuthorized;
-
-    private String hasPatent;
 
     private String note;
 
     private Integer year;
+
+    private String semester;
 
     private static final long serialVersionUID = 1L;
 
@@ -145,6 +149,14 @@ public class ScientificresearchPatentapplication implements Serializable {
         this.year = year;
     }
 
+    public String getSemester() {
+        return semester;
+    }
+
+    public void setSemester(String semester) {
+        this.semester = semester == null ? null : semester.trim();
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -162,6 +174,7 @@ public class ScientificresearchPatentapplication implements Serializable {
         sb.append(", hasPatent=").append(hasPatent);
         sb.append(", note=").append(note);
         sb.append(", year=").append(year);
+        sb.append(", semester=").append(semester);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

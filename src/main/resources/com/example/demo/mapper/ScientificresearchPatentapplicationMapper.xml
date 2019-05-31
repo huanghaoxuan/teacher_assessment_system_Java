@@ -1,34 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.mapper.ScientificresearchPatentapplicationMapper">
-    <resultMap id="BaseResultMap" type="com.example.demo.model.ScientificresearchPatentapplication">
-        <id column="id" jdbcType="INTEGER" property="id"/>
-        <result column="classTeacher" jdbcType="NVARCHAR" property="classTeacher"/>
-        <result column="status" jdbcType="NVARCHAR" property="status"/>
-        <result column="name" jdbcType="NVARCHAR" property="name"/>
-        <result column="tpye" jdbcType="NVARCHAR" property="tpye"/>
-        <result column="publicationDate" jdbcType="NVARCHAR" property="publicationDate"/>
-        <result column="hasProcessing" jdbcType="NVARCHAR" property="hasProcessing"/>
-        <result column="hasAuthorized" jdbcType="NVARCHAR" property="hasAuthorized"/>
-        <result column="hasPatent" jdbcType="NVARCHAR" property="hasPatent"/>
-        <result column="note" jdbcType="NVARCHAR" property="note"/>
-        <result column="year" jdbcType="INTEGER" property="year"/>
-    </resultMap>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <resultMap id="BaseResultMap" type="com.example.demo.model.ScientificresearchPatentapplication">
+    <id column="id" jdbcType="INTEGER" property="id"/>
+    <result column="classTeacher" jdbcType="NVARCHAR" property="classTeacher"/>
+    <result column="status" jdbcType="NVARCHAR" property="status"/>
+    <result column="name" jdbcType="NVARCHAR" property="name"/>
+    <result column="tpye" jdbcType="NVARCHAR" property="tpye"/>
+    <result column="publicationDate" jdbcType="NVARCHAR" property="publicationDate"/>
+    <result column="hasProcessing" jdbcType="NVARCHAR" property="hasProcessing"/>
+    <result column="hasAuthorized" jdbcType="NVARCHAR" property="hasAuthorized"/>
+    <result column="hasPatent" jdbcType="NVARCHAR" property="hasPatent"/>
+    <result column="note" jdbcType="NVARCHAR" property="note"/>
+    <result column="year" jdbcType="INTEGER" property="year"/>
+    <result column="semester" jdbcType="NVARCHAR" property="semester"/>
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from scientificResearch_patentApplication
     where id = #{id,jdbcType=INTEGER}
   </delete>
-    <insert id="insert" parameterType="com.example.demo.model.ScientificresearchPatentapplication">
+  <insert id="insert" parameterType="com.example.demo.model.ScientificresearchPatentapplication">
     insert into scientificResearch_patentApplication (classTeacher, status,
       name, tpye, publicationDate, 
       hasProcessing, hasAuthorized, hasPatent, 
-      note, year)
+      note, year, semester
+      )
     values (#{classTeacher,jdbcType=NVARCHAR}, #{status,jdbcType=NVARCHAR},
       #{name,jdbcType=NVARCHAR}, #{tpye,jdbcType=NVARCHAR}, #{publicationDate,jdbcType=NVARCHAR}, 
       #{hasProcessing,jdbcType=NVARCHAR}, #{hasAuthorized,jdbcType=NVARCHAR}, #{hasPatent,jdbcType=NVARCHAR}, 
-      #{note,jdbcType=NVARCHAR}, #{year,jdbcType=INTEGER})
+      #{note,jdbcType=NVARCHAR}, #{year,jdbcType=INTEGER}, #{semester,jdbcType=NVARCHAR}
+      )
   </insert>
-    <update id="updateByPrimaryKey" parameterType="com.example.demo.model.ScientificresearchPatentapplication">
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.model.ScientificresearchPatentapplication">
     update scientificResearch_patentApplication
     set classTeacher = #{classTeacher,jdbcType=NVARCHAR},
       status = #{status,jdbcType=NVARCHAR},
@@ -39,20 +42,21 @@
       hasAuthorized = #{hasAuthorized,jdbcType=NVARCHAR},
       hasPatent = #{hasPatent,jdbcType=NVARCHAR},
       note = #{note,jdbcType=NVARCHAR},
-      year = #{year,jdbcType=INTEGER}
+      year = #{year,jdbcType=INTEGER},
+      semester = #{semester,jdbcType=NVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
-    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select id, classTeacher, status, name, tpye, publicationDate, hasProcessing, hasAuthorized, 
-    hasPatent, note, year
+    hasPatent, note, year, semester
     from scientificResearch_patentApplication
     where id = #{id,jdbcType=INTEGER}
   </select>
     <select id="selectAll" resultMap="BaseResultMap">
     SELECT * FROM scientificResearch_patentApplication
   </select>
-    <select id="selectByClassTeacher" parameterType="com.example.demo.model.ScientificresearchPatentapplication"
-            resultMap="BaseResultMap">
+  <select id="selectByClassTeacher" parameterType="com.example.demo.model.ScientificresearchPatentapplication"
+          resultMap="BaseResultMap">
         SELECT * FROM scientificResearch_patentApplication WHERE 1=1
         AND classTeacher=#{classTeacher,jdbcType=NVARCHAR}
         <if test="year!=null and year!=''">

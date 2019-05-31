@@ -17,24 +17,23 @@ public class OthersEmployment implements Serializable {
 
     private Integer year;
 
-    private String classTeacher;
-
-    private static final long serialVersionUID = 1L;
+    private String semester;
 
     public OthersEmployment() {
     }
 
-    public OthersEmployment(String name, Integer employment, Integer graduating, Integer disciplinaryRate, String note, Integer year, String classTeacher) {
+    public OthersEmployment(String name, Integer employment, Integer graduating, Integer disciplinaryRate, String note, Integer year, String semester, String classTeacher) {
         this.name = name;
         this.employment = employment;
         this.graduating = graduating;
         this.disciplinaryRate = disciplinaryRate;
         this.note = note;
         this.year = year;
+        this.semester = semester;
         this.classTeacher = classTeacher;
     }
 
-    public OthersEmployment(Integer id, String name, Integer employment, Integer graduating, Integer disciplinaryRate, String note, Integer year, String classTeacher) {
+    public OthersEmployment(Integer id, String name, Integer employment, Integer graduating, Integer disciplinaryRate, String note, Integer year, String semester, String classTeacher) {
         this.id = id;
         this.name = name;
         this.employment = employment;
@@ -42,8 +41,13 @@ public class OthersEmployment implements Serializable {
         this.disciplinaryRate = disciplinaryRate;
         this.note = note;
         this.year = year;
+        this.semester = semester;
         this.classTeacher = classTeacher;
     }
+
+    private String classTeacher;
+
+    private static final long serialVersionUID = 1L;
 
     public Integer getId() {
         return id;
@@ -101,6 +105,14 @@ public class OthersEmployment implements Serializable {
         this.year = year;
     }
 
+    public String getSemester() {
+        return semester;
+    }
+
+    public void setSemester(String semester) {
+        this.semester = semester == null ? null : semester.trim();
+    }
+
     public String getClassTeacher() {
         return classTeacher;
     }
@@ -122,6 +134,7 @@ public class OthersEmployment implements Serializable {
         sb.append(", disciplinaryRate=").append(disciplinaryRate);
         sb.append(", note=").append(note);
         sb.append(", year=").append(year);
+        sb.append(", semester=").append(semester);
         sb.append(", classTeacher=").append(classTeacher);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");

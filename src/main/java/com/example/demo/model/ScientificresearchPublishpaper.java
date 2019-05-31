@@ -17,10 +17,16 @@ public class ScientificresearchPublishpaper implements Serializable {
 
     private String level;
 
+    private String collectionInformation;
+
+    private String character;
+
+    private String type;
+
     public ScientificresearchPublishpaper() {
     }
 
-    public ScientificresearchPublishpaper(String classTeacher, String status, String name, String journals, String publicationDate, String level, String collectionInformation, String character, String type, String note, Integer year) {
+    public ScientificresearchPublishpaper(String classTeacher, String status, String name, String journals, String publicationDate, String level, String collectionInformation, String character, String type, String note, Integer year, String semester) {
         this.classTeacher = classTeacher;
         this.status = status;
         this.name = name;
@@ -32,9 +38,10 @@ public class ScientificresearchPublishpaper implements Serializable {
         this.type = type;
         this.note = note;
         this.year = year;
+        this.semester = semester;
     }
 
-    public ScientificresearchPublishpaper(Integer id, String classTeacher, String status, String name, String journals, String publicationDate, String level, String collectionInformation, String character, String type, String note, Integer year) {
+    public ScientificresearchPublishpaper(Integer id, String classTeacher, String status, String name, String journals, String publicationDate, String level, String collectionInformation, String character, String type, String note, Integer year, String semester) {
         this.id = id;
         this.classTeacher = classTeacher;
         this.status = status;
@@ -47,17 +54,14 @@ public class ScientificresearchPublishpaper implements Serializable {
         this.type = type;
         this.note = note;
         this.year = year;
+        this.semester = semester;
     }
-
-    private String collectionInformation;
-
-    private String character;
-
-    private String type;
 
     private String note;
 
     private Integer year;
+
+    private String semester;
 
     private static final long serialVersionUID = 1L;
 
@@ -157,6 +161,14 @@ public class ScientificresearchPublishpaper implements Serializable {
         this.year = year;
     }
 
+    public String getSemester() {
+        return semester;
+    }
+
+    public void setSemester(String semester) {
+        this.semester = semester == null ? null : semester.trim();
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -175,6 +187,7 @@ public class ScientificresearchPublishpaper implements Serializable {
         sb.append(", type=").append(type);
         sb.append(", note=").append(note);
         sb.append(", year=").append(year);
+        sb.append(", semester=").append(semester);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

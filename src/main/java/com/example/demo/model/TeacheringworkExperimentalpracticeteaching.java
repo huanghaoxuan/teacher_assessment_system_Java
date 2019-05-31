@@ -25,7 +25,7 @@ public class TeacheringworkExperimentalpracticeteaching implements Serializable 
     public TeacheringworkExperimentalpracticeteaching() {
     }
 
-    public TeacheringworkExperimentalpracticeteaching(String classTeacher, String status, String name, String character, BigDecimal allTime, BigDecimal weekTime, Integer studentNumber, Integer parallelClassesNumber, Integer groupingPerClassNumber, Integer instructorsNumber, String experimentType, Integer reportsNumber, Integer correctionsNumber, Integer note, Integer year, Integer semester) {
+    public TeacheringworkExperimentalpracticeteaching(String classTeacher, String status, String name, String character, BigDecimal allTime, BigDecimal weekTime, Integer studentNumber, Integer parallelClassesNumber, Integer groupingPerClassNumber, Integer instructorsNumber, String experimentType, Integer reportsNumber, Integer correctionsNumber, Integer note, Integer year, String semester) {
         this.classTeacher = classTeacher;
         this.status = status;
         this.name = name;
@@ -44,7 +44,7 @@ public class TeacheringworkExperimentalpracticeteaching implements Serializable 
         this.semester = semester;
     }
 
-    public TeacheringworkExperimentalpracticeteaching(Integer id, String classTeacher, String status, String name, String character, BigDecimal allTime, BigDecimal weekTime, Integer studentNumber, Integer parallelClassesNumber, Integer groupingPerClassNumber, Integer instructorsNumber, String experimentType, Integer reportsNumber, Integer correctionsNumber, Integer note, Integer year, Integer semester) {
+    public TeacheringworkExperimentalpracticeteaching(Integer id, String classTeacher, String status, String name, String character, BigDecimal allTime, BigDecimal weekTime, Integer studentNumber, Integer parallelClassesNumber, Integer groupingPerClassNumber, Integer instructorsNumber, String experimentType, Integer reportsNumber, Integer correctionsNumber, Integer note, Integer year, String semester) {
         this.id = id;
         this.classTeacher = classTeacher;
         this.status = status;
@@ -78,7 +78,7 @@ public class TeacheringworkExperimentalpracticeteaching implements Serializable 
 
     private Integer year;
 
-    private Integer semester;
+    private String semester;
 
     private static final long serialVersionUID = 1L;
 
@@ -210,12 +210,12 @@ public class TeacheringworkExperimentalpracticeteaching implements Serializable 
         this.year = year;
     }
 
-    public Integer getSemester() {
+    public String getSemester() {
         return semester;
     }
 
-    public void setSemester(Integer semester) {
-        this.semester = semester;
+    public void setSemester(String semester) {
+        this.semester = semester == null ? null : semester.trim();
     }
 
     @Override

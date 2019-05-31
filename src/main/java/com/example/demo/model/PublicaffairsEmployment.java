@@ -21,16 +21,10 @@ public class PublicaffairsEmployment implements Serializable {
 
     private Integer year;
 
-    private String classTeacher;
-
-    private String status;
-
-    private static final long serialVersionUID = 1L;
-
     public PublicaffairsEmployment() {
     }
 
-    public PublicaffairsEmployment(Integer directEmploymentNumber, Integer helpConnectEmploymentNumber, Integer participationInEmploymentGuidanceNumber, Integer mentoringExaminationCoursesNumber, Integer helpAdmitEntranceNumber, Integer guideEntrepreneurshipNumber, String note, Integer year, String classTeacher, String status) {
+    public PublicaffairsEmployment(Integer directEmploymentNumber, Integer helpConnectEmploymentNumber, Integer participationInEmploymentGuidanceNumber, Integer mentoringExaminationCoursesNumber, Integer helpAdmitEntranceNumber, Integer guideEntrepreneurshipNumber, String note, Integer year, String semester, String classTeacher, String status) {
         this.directEmploymentNumber = directEmploymentNumber;
         this.helpConnectEmploymentNumber = helpConnectEmploymentNumber;
         this.participationInEmploymentGuidanceNumber = participationInEmploymentGuidanceNumber;
@@ -39,11 +33,12 @@ public class PublicaffairsEmployment implements Serializable {
         this.guideEntrepreneurshipNumber = guideEntrepreneurshipNumber;
         this.note = note;
         this.year = year;
+        this.semester = semester;
         this.classTeacher = classTeacher;
         this.status = status;
     }
 
-    public PublicaffairsEmployment(Integer id, Integer directEmploymentNumber, Integer helpConnectEmploymentNumber, Integer participationInEmploymentGuidanceNumber, Integer mentoringExaminationCoursesNumber, Integer helpAdmitEntranceNumber, Integer guideEntrepreneurshipNumber, String note, Integer year, String classTeacher, String status) {
+    public PublicaffairsEmployment(Integer id, Integer directEmploymentNumber, Integer helpConnectEmploymentNumber, Integer participationInEmploymentGuidanceNumber, Integer mentoringExaminationCoursesNumber, Integer helpAdmitEntranceNumber, Integer guideEntrepreneurshipNumber, String note, Integer year, String semester, String classTeacher, String status) {
         this.id = id;
         this.directEmploymentNumber = directEmploymentNumber;
         this.helpConnectEmploymentNumber = helpConnectEmploymentNumber;
@@ -53,9 +48,18 @@ public class PublicaffairsEmployment implements Serializable {
         this.guideEntrepreneurshipNumber = guideEntrepreneurshipNumber;
         this.note = note;
         this.year = year;
+        this.semester = semester;
         this.classTeacher = classTeacher;
         this.status = status;
     }
+
+    private String semester;
+
+    private String classTeacher;
+
+    private String status;
+
+    private static final long serialVersionUID = 1L;
 
     public Integer getId() {
         return id;
@@ -129,6 +133,14 @@ public class PublicaffairsEmployment implements Serializable {
         this.year = year;
     }
 
+    public String getSemester() {
+        return semester;
+    }
+
+    public void setSemester(String semester) {
+        this.semester = semester == null ? null : semester.trim();
+    }
+
     public String getClassTeacher() {
         return classTeacher;
     }
@@ -160,6 +172,7 @@ public class PublicaffairsEmployment implements Serializable {
         sb.append(", guideEntrepreneurshipNumber=").append(guideEntrepreneurshipNumber);
         sb.append(", note=").append(note);
         sb.append(", year=").append(year);
+        sb.append(", semester=").append(semester);
         sb.append(", classTeacher=").append(classTeacher);
         sb.append(", status=").append(status);
         sb.append(", serialVersionUID=").append(serialVersionUID);

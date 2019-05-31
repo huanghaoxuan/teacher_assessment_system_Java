@@ -59,12 +59,13 @@ public class ScientificresearchLongitudinaltopicsprojectController {
             @ApiImplicitParam(name = "result", value = "结题结论", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "note", value = "备注", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "year", value = "学年", required = false, dataType = "int", paramType = "query"),
+            @ApiImplicitParam(name = "semester", value = "学期", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "status", value = "审核情况", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "classTeacher", value = "教师用户工号", required = true, dataType = "varchar", paramType = "query")
 
     })
-    public Integer updateByPrimaryKey(@ApiIgnore Integer id, String classTeacher, String status, String name, String source, String character, String type, String money, String startTime, String estimatedClosingTime, String result, String note, Integer year) {
-        ScientificresearchLongitudinaltopicsproject scientificresearchLongitudinaltopicsproject = new ScientificresearchLongitudinaltopicsproject(id, classTeacher, status, name, source, character, type, money, startTime, estimatedClosingTime, result, note, year);
+    public Integer updateByPrimaryKey(@ApiIgnore Integer id, String classTeacher, String status, String name, String source, String character, String type, String money, String startTime, String estimatedClosingTime, String result, String note, Integer year, String semester) {
+        ScientificresearchLongitudinaltopicsproject scientificresearchLongitudinaltopicsproject = new ScientificresearchLongitudinaltopicsproject(id, classTeacher, status, name, source, character, type, money, startTime, estimatedClosingTime, result, note, year, semester);
 
         return scientificresearchLongitudinaltopicsprojectService.updateByPrimaryKey(scientificresearchLongitudinaltopicsproject);
     }
@@ -82,12 +83,13 @@ public class ScientificresearchLongitudinaltopicsprojectController {
             @ApiImplicitParam(name = "result", value = "结题结论", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "note", value = "备注", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "year", value = "学年", required = false, dataType = "int", paramType = "query"),
+            @ApiImplicitParam(name = "semester", value = "学期", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "status", value = "审核情况", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "classTeacher", value = "教师用户工号", required = true, dataType = "varchar", paramType = "query")
 
     })
-    public Integer insert(@ApiIgnore String classTeacher, String status, String name, String source, String character, String type, String money, String startTime, String estimatedClosingTime, String result, String note, Integer year) {
-        ScientificresearchLongitudinaltopicsproject scientificresearchLongitudinaltopicsproject = new ScientificresearchLongitudinaltopicsproject(classTeacher, status, name, source, character, type, money, startTime, estimatedClosingTime, result, note, year);
+    public Integer insert(@ApiIgnore String classTeacher, String status, String name, String source, String character, String type, String money, String startTime, String estimatedClosingTime, String result, String note, Integer year, String semester) {
+        ScientificresearchLongitudinaltopicsproject scientificresearchLongitudinaltopicsproject = new ScientificresearchLongitudinaltopicsproject(classTeacher, status, name, source, character, type, money, startTime, estimatedClosingTime, result, note, year, semester);
 
         return scientificresearchLongitudinaltopicsprojectService.insert(scientificresearchLongitudinaltopicsproject);
     }

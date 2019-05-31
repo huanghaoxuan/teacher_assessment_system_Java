@@ -19,16 +19,12 @@ public class OthersFiles implements Serializable {
 
     private Integer year;
 
-    private String status;
-
-    private String classTeacher;
-
-    private static final long serialVersionUID = 1L;
+    private String semester;
 
     public OthersFiles() {
     }
 
-    public OthersFiles(String name, String time, String rank, Integer peopleNumber, String useScope, String note, Integer year, String status, String classTeacher) {
+    public OthersFiles(String name, String time, String rank, Integer peopleNumber, String useScope, String note, Integer year, String semester, String status, String classTeacher) {
         this.name = name;
         this.time = time;
         this.rank = rank;
@@ -36,11 +32,12 @@ public class OthersFiles implements Serializable {
         this.useScope = useScope;
         this.note = note;
         this.year = year;
+        this.semester = semester;
         this.status = status;
         this.classTeacher = classTeacher;
     }
 
-    public OthersFiles(Integer id, String name, String time, String rank, Integer peopleNumber, String useScope, String note, Integer year, String status, String classTeacher) {
+    public OthersFiles(Integer id, String name, String time, String rank, Integer peopleNumber, String useScope, String note, Integer year, String semester, String status, String classTeacher) {
         this.id = id;
         this.name = name;
         this.time = time;
@@ -49,9 +46,16 @@ public class OthersFiles implements Serializable {
         this.useScope = useScope;
         this.note = note;
         this.year = year;
+        this.semester = semester;
         this.status = status;
         this.classTeacher = classTeacher;
     }
+
+    private String status;
+
+    private String classTeacher;
+
+    private static final long serialVersionUID = 1L;
 
     public Integer getId() {
         return id;
@@ -117,6 +121,14 @@ public class OthersFiles implements Serializable {
         this.year = year;
     }
 
+    public String getSemester() {
+        return semester;
+    }
+
+    public void setSemester(String semester) {
+        this.semester = semester == null ? null : semester.trim();
+    }
+
     public String getStatus() {
         return status;
     }
@@ -147,6 +159,7 @@ public class OthersFiles implements Serializable {
         sb.append(", useScope=").append(useScope);
         sb.append(", note=").append(note);
         sb.append(", year=").append(year);
+        sb.append(", semester=").append(semester);
         sb.append(", status=").append(status);
         sb.append(", classTeacher=").append(classTeacher);
         sb.append(", serialVersionUID=").append(serialVersionUID);

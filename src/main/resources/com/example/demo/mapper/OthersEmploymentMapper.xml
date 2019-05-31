@@ -1,29 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.mapper.OthersEmploymentMapper">
-    <resultMap id="BaseResultMap" type="com.example.demo.model.OthersEmployment">
-        <id column="id" jdbcType="INTEGER" property="id"/>
-        <result column="name" jdbcType="NVARCHAR" property="name"/>
-        <result column="employment" jdbcType="INTEGER" property="employment"/>
-        <result column="graduating" jdbcType="INTEGER" property="graduating"/>
-        <result column="disciplinaryRate" jdbcType="INTEGER" property="disciplinaryRate"/>
-        <result column="note" jdbcType="NVARCHAR" property="note"/>
-        <result column="year" jdbcType="INTEGER" property="year"/>
-        <result column="classTeacher" jdbcType="NVARCHAR" property="classTeacher"/>
-    </resultMap>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <resultMap id="BaseResultMap" type="com.example.demo.model.OthersEmployment">
+    <id column="id" jdbcType="INTEGER" property="id"/>
+    <result column="name" jdbcType="NVARCHAR" property="name"/>
+    <result column="employment" jdbcType="INTEGER" property="employment"/>
+    <result column="graduating" jdbcType="INTEGER" property="graduating"/>
+    <result column="disciplinaryRate" jdbcType="INTEGER" property="disciplinaryRate"/>
+    <result column="note" jdbcType="NVARCHAR" property="note"/>
+    <result column="year" jdbcType="INTEGER" property="year"/>
+    <result column="semester" jdbcType="NVARCHAR" property="semester"/>
+    <result column="classTeacher" jdbcType="NVARCHAR" property="classTeacher"/>
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from others_employment
     where id = #{id,jdbcType=INTEGER}
   </delete>
-    <insert id="insert" parameterType="com.example.demo.model.OthersEmployment">
+  <insert id="insert" parameterType="com.example.demo.model.OthersEmployment">
     insert into others_employment (name, employment,
-      graduating, disciplinaryRate, note,
-      year, classTeacher)
+      graduating, disciplinaryRate, note, 
+      year, semester, classTeacher
+      )
     values (#{name,jdbcType=NVARCHAR}, #{employment,jdbcType=INTEGER},
-      #{graduating,jdbcType=INTEGER}, #{disciplinaryRate,jdbcType=INTEGER}, #{note,jdbcType=NVARCHAR},
-      #{year,jdbcType=INTEGER}, #{classTeacher,jdbcType=NVARCHAR})
+      #{graduating,jdbcType=INTEGER}, #{disciplinaryRate,jdbcType=INTEGER}, #{note,jdbcType=NVARCHAR}, 
+      #{year,jdbcType=INTEGER}, #{semester,jdbcType=NVARCHAR}, #{classTeacher,jdbcType=NVARCHAR}
+      )
   </insert>
-    <update id="updateByPrimaryKey" parameterType="com.example.demo.model.OthersEmployment">
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.model.OthersEmployment">
     update others_employment
     set name = #{name,jdbcType=NVARCHAR},
       employment = #{employment,jdbcType=INTEGER},
@@ -31,20 +34,20 @@
       disciplinaryRate = #{disciplinaryRate,jdbcType=INTEGER},
       note = #{note,jdbcType=NVARCHAR},
       year = #{year,jdbcType=INTEGER},
+      semester = #{semester,jdbcType=NVARCHAR},
       classTeacher = #{classTeacher,jdbcType=NVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
-    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select id, name, employment, graduating, disciplinaryRate, note, year, classTeacher
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, name, employment, graduating, disciplinaryRate, note, year, semester, 
+    classTeacher
     from others_employment
     where id = #{id,jdbcType=INTEGER}
   </select>
     <select id="selectAll" resultMap="BaseResultMap">
-    select id, name, employment, graduating, disciplinaryRate, note, year, classTeacher
-    from others_employment
+        SELECT * FROM others_employment
   </select>
-    <select id="selectByClassTeacher" parameterType="com.example.demo.model.OthersEmployment"
-            resultMap="BaseResultMap">
+  <select id="selectByClassTeacher" parameterType="com.example.demo.model.OthersEmployment" resultMap="BaseResultMap">
         SELECT * FROM others_employment WHERE 1=1
         AND classTeacher=#{classTeacher,jdbcType=NVARCHAR}
         <if test="year!=null and year!=''">

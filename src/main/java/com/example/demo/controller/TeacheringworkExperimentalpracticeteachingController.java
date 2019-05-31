@@ -64,12 +64,12 @@ public class TeacheringworkExperimentalpracticeteachingController {
             @ApiImplicitParam(name = "correctionsNumber", value = "批改次数", required = false, dataType = "int", paramType = "query"),
             @ApiImplicitParam(name = "note", value = "备注", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "year", value = "学年", required = false, dataType = "int", paramType = "query"),
-            @ApiImplicitParam(name = "semester", value = "学期", required = false, dataType = "int", paramType = "query"),
+            @ApiImplicitParam(name = "semester", value = "学期", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "status", value = "审核情况", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "classTeacher", value = "教师用户工号", required = true, dataType = "varchar", paramType = "query")
 
     })
-    public Integer updateByPrimaryKey(@ApiIgnore Integer id, String classTeacher, String status, String name, String character, BigDecimal allTime, BigDecimal weekTime, Integer studentNumber, Integer parallelClassesNumber, Integer groupingPerClassNumber, Integer instructorsNumber, String experimentType, Integer reportsNumber, Integer correctionsNumber, Integer note, Integer year, Integer semester) {
+    public Integer updateByPrimaryKey(@ApiIgnore Integer id, String classTeacher, String status, String name, String character, BigDecimal allTime, BigDecimal weekTime, Integer studentNumber, Integer parallelClassesNumber, Integer groupingPerClassNumber, Integer instructorsNumber, String experimentType, Integer reportsNumber, Integer correctionsNumber, Integer note, Integer year, String semester) {
         TeacheringworkExperimentalpracticeteaching teacheringworkExperimentalpracticeteaching = new TeacheringworkExperimentalpracticeteaching(id, classTeacher, status, name, character, allTime, weekTime, studentNumber, parallelClassesNumber, groupingPerClassNumber, instructorsNumber, experimentType, reportsNumber, correctionsNumber, note, year, semester);
 
         return teacheringworkExperimentalpracticeteachingService.updateByPrimaryKey(teacheringworkExperimentalpracticeteaching);
@@ -91,12 +91,12 @@ public class TeacheringworkExperimentalpracticeteachingController {
             @ApiImplicitParam(name = "correctionsNumber", value = "批改次数", required = false, dataType = "int", paramType = "query"),
             @ApiImplicitParam(name = "note", value = "备注", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "year", value = "学年", required = false, dataType = "int", paramType = "query"),
-            @ApiImplicitParam(name = "semester", value = "学期", required = false, dataType = "int", paramType = "query"),
+            @ApiImplicitParam(name = "semester", value = "学期", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "status", value = "审核情况", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "classTeacher", value = "教师用户工号", required = true, dataType = "varchar", paramType = "query")
 
     })
-    public Integer insert(@ApiIgnore String classTeacher, String status, String name, String character, BigDecimal allTime, BigDecimal weekTime, Integer studentNumber, Integer parallelClassesNumber, Integer groupingPerClassNumber, Integer instructorsNumber, String experimentType, Integer reportsNumber, Integer correctionsNumber, Integer note, Integer year, Integer semester) {
+    public Integer insert(@ApiIgnore String classTeacher, String status, String name, String character, BigDecimal allTime, BigDecimal weekTime, Integer studentNumber, Integer parallelClassesNumber, Integer groupingPerClassNumber, Integer instructorsNumber, String experimentType, Integer reportsNumber, Integer correctionsNumber, Integer note, Integer year, String semester) {
         TeacheringworkExperimentalpracticeteaching teacheringworkExperimentalpracticeteaching = new TeacheringworkExperimentalpracticeteaching(classTeacher, status, name, character, allTime, weekTime, studentNumber, parallelClassesNumber, groupingPerClassNumber, instructorsNumber, experimentType, reportsNumber, correctionsNumber, note, year, semester);
 
         return teacheringworkExperimentalpracticeteachingService.insert(teacheringworkExperimentalpracticeteaching);

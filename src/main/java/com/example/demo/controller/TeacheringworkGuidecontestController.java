@@ -60,12 +60,12 @@ public class TeacheringworkGuidecontestController {
             @ApiImplicitParam(name = "instructorsNumber", value = "指导教师人数", required = false, dataType = "int", paramType = "query"),
             @ApiImplicitParam(name = "note", value = "备注", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "year", value = "学年", required = false, dataType = "int", paramType = "query"),
-            @ApiImplicitParam(name = "semester", value = "学期", required = false, dataType = "int", paramType = "query"),
+            @ApiImplicitParam(name = "semester", value = "学期", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "status", value = "审核情况", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "classTeacher", value = "教师用户工号", required = true, dataType = "varchar", paramType = "query")
 
     })
-    public Integer updateByPrimaryKey(@ApiIgnore Integer id, String classTeacher, String status, String name, String level, Integer prizePersonsNumber, Integer firstPersonsNumber, Integer secondPersonsNumber, Integer thirdPersonsNumber, Integer outstandingAwardsNumber, String guidanceType, Integer instructorsNumber, String note, Integer year, Integer semester) {
+    public Integer updateByPrimaryKey(@ApiIgnore Integer id, String classTeacher, String status, String name, String level, Integer prizePersonsNumber, Integer firstPersonsNumber, Integer secondPersonsNumber, Integer thirdPersonsNumber, Integer outstandingAwardsNumber, String guidanceType, Integer instructorsNumber, String note, Integer year, String semester) {
         TeacheringworkGuidecontest teacheringworkGuidecontest = new TeacheringworkGuidecontest(id, classTeacher, status, name, level, prizePersonsNumber, firstPersonsNumber, secondPersonsNumber, thirdPersonsNumber, outstandingAwardsNumber, guidanceType, instructorsNumber, note, year, semester);
 
         return teacheringworkGuidecontestService.updateByPrimaryKey(teacheringworkGuidecontest);
@@ -85,12 +85,12 @@ public class TeacheringworkGuidecontestController {
             @ApiImplicitParam(name = "instructorsNumber", value = "指导教师人数", required = false, dataType = "int", paramType = "query"),
             @ApiImplicitParam(name = "note", value = "备注", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "year", value = "学年", required = false, dataType = "int", paramType = "query"),
-            @ApiImplicitParam(name = "semester", value = "学期", required = false, dataType = "int", paramType = "query"),
+            @ApiImplicitParam(name = "semester", value = "学期", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "status", value = "审核情况", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "classTeacher", value = "教师用户工号", required = true, dataType = "varchar", paramType = "query")
 
     })
-    public Integer insert(@ApiIgnore String classTeacher, String status, String name, String level, Integer prizePersonsNumber, Integer firstPersonsNumber, Integer secondPersonsNumber, Integer thirdPersonsNumber, Integer outstandingAwardsNumber, String guidanceType, Integer instructorsNumber, String note, Integer year, Integer semester) {
+    public Integer insert(@ApiIgnore String classTeacher, String status, String name, String level, Integer prizePersonsNumber, Integer firstPersonsNumber, Integer secondPersonsNumber, Integer thirdPersonsNumber, Integer outstandingAwardsNumber, String guidanceType, Integer instructorsNumber, String note, Integer year, String semester) {
         TeacheringworkGuidecontest teacheringworkGuidecontest = new TeacheringworkGuidecontest(classTeacher, status, name, level, prizePersonsNumber, firstPersonsNumber, secondPersonsNumber, thirdPersonsNumber, outstandingAwardsNumber, guidanceType, instructorsNumber, note, year, semester);
 
         return teacheringworkGuidecontestService.insert(teacheringworkGuidecontest);

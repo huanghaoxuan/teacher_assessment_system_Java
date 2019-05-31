@@ -11,31 +11,35 @@ public class OthersAnnualreviewstatus implements Serializable {
 
     private Integer year;
 
+    private String semester;
+
     private String status;
-
-    private String classTeacher;
-
-    private static final long serialVersionUID = 1L;
 
     public OthersAnnualreviewstatus() {
     }
 
-    public OthersAnnualreviewstatus(Integer id, String assessmentStatus, String note, Integer year, String status, String classTeacher) {
-        this.id = id;
+    public OthersAnnualreviewstatus(String assessmentStatus, String note, Integer year, String semester, String status, String classTeacher) {
         this.assessmentStatus = assessmentStatus;
         this.note = note;
         this.year = year;
+        this.semester = semester;
         this.status = status;
         this.classTeacher = classTeacher;
     }
 
-    public OthersAnnualreviewstatus(String assessmentStatus, String note, Integer year, String status, String classTeacher) {
+    public OthersAnnualreviewstatus(Integer id, String assessmentStatus, String note, Integer year, String semester, String status, String classTeacher) {
+        this.id = id;
         this.assessmentStatus = assessmentStatus;
         this.note = note;
         this.year = year;
+        this.semester = semester;
         this.status = status;
         this.classTeacher = classTeacher;
     }
+
+    private String classTeacher;
+
+    private static final long serialVersionUID = 1L;
 
     public Integer getId() {
         return id;
@@ -69,6 +73,14 @@ public class OthersAnnualreviewstatus implements Serializable {
         this.year = year;
     }
 
+    public String getSemester() {
+        return semester;
+    }
+
+    public void setSemester(String semester) {
+        this.semester = semester == null ? null : semester.trim();
+    }
+
     public String getStatus() {
         return status;
     }
@@ -95,6 +107,7 @@ public class OthersAnnualreviewstatus implements Serializable {
         sb.append(", assessmentStatus=").append(assessmentStatus);
         sb.append(", note=").append(note);
         sb.append(", year=").append(year);
+        sb.append(", semester=").append(semester);
         sb.append(", status=").append(status);
         sb.append(", classTeacher=").append(classTeacher);
         sb.append(", serialVersionUID=").append(serialVersionUID);

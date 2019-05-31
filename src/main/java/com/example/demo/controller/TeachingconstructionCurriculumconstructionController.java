@@ -53,12 +53,13 @@ public class TeachingconstructionCurriculumconstructionController {
             @ApiImplicitParam(name = "undertakingTasks", value = "承担任务", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "note", value = "备注", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "year", value = "学年", required = false, dataType = "int", paramType = "query"),
+            @ApiImplicitParam(name = "semester", value = "学期", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "status", value = "审核情况", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "classTeacher", value = "教师用户工号", required = true, dataType = "varchar", paramType = "query")
 
     })
-    public Integer updateByPrimaryKey(@ApiIgnore Integer id, String classTeacher, String status, String character, String undertakingTasks, String note, Integer year) {
-        TeachingconstructionCurriculumconstruction teachingconstructionCurriculumconstruction = new TeachingconstructionCurriculumconstruction(id, classTeacher, status, character, undertakingTasks, note, year);
+    public Integer updateByPrimaryKey(@ApiIgnore Integer id, String classTeacher, String status, String character, String undertakingTasks, String note, Integer year, String semester) {
+        TeachingconstructionCurriculumconstruction teachingconstructionCurriculumconstruction = new TeachingconstructionCurriculumconstruction(id, classTeacher, status, character, undertakingTasks, note, year, semester);
 
         return teachingconstructionCurriculumconstructionService.updateByPrimaryKey(teachingconstructionCurriculumconstruction);
     }
@@ -71,12 +72,13 @@ public class TeachingconstructionCurriculumconstructionController {
             @ApiImplicitParam(name = "undertakingTasks", value = "承担任务", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "note", value = "备注", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "year", value = "学年", required = false, dataType = "int", paramType = "query"),
+            @ApiImplicitParam(name = "semester", value = "学期", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "status", value = "审核情况", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "classTeacher", value = "教师用户工号", required = true, dataType = "varchar", paramType = "query")
 
     })
-    public Integer insert(@ApiIgnore String classTeacher, String status, String character, String undertakingTasks, String note, Integer year) {
-        TeachingconstructionCurriculumconstruction teachingconstructionCurriculumconstruction = new TeachingconstructionCurriculumconstruction(classTeacher, status, character, undertakingTasks, note, year);
+    public Integer insert(@ApiIgnore String classTeacher, String status, String character, String undertakingTasks, String note, Integer year, String semester) {
+        TeachingconstructionCurriculumconstruction teachingconstructionCurriculumconstruction = new TeachingconstructionCurriculumconstruction(classTeacher, status, character, undertakingTasks, note, year, semester);
 
         return teachingconstructionCurriculumconstructionService.insert(teachingconstructionCurriculumconstruction);
     }

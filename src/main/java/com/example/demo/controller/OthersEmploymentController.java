@@ -55,12 +55,13 @@ public class OthersEmploymentController {
             @ApiImplicitParam(name = "disciplinaryRate", value = "违纪率", required = false, dataType = "int", paramType = "query"),
             @ApiImplicitParam(name = "note", value = "备注", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "year", value = "学年", required = false, dataType = "int", paramType = "query"),
+            @ApiImplicitParam(name = "semester", value = "学期", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "status", value = "审核情况", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "classTeacher", value = "教师用户工号", required = true, dataType = "varchar", paramType = "query")
 
     })
-    public Integer updateByPrimaryKey(@ApiIgnore Integer id, String name, Integer employment, Integer graduating, Integer disciplinaryRate, String note, Integer year, String classTeacher) {
-        OthersEmployment othersEmployment = new OthersEmployment(id, name, employment, graduating, disciplinaryRate, note, year, classTeacher);
+    public Integer updateByPrimaryKey(@ApiIgnore Integer id, String name, Integer employment, Integer graduating, Integer disciplinaryRate, String note, Integer year, String semester, String classTeacher) {
+        OthersEmployment othersEmployment = new OthersEmployment(id, name, employment, graduating, disciplinaryRate, note, year, semester, classTeacher);
 
         return othersEmploymentService.updateByPrimaryKey(othersEmployment);
     }
@@ -74,11 +75,12 @@ public class OthersEmploymentController {
             @ApiImplicitParam(name = "disciplinaryRate", value = "违纪率", required = false, dataType = "int", paramType = "query"),
             @ApiImplicitParam(name = "note", value = "备注", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "year", value = "学年", required = false, dataType = "int", paramType = "query"),
+            @ApiImplicitParam(name = "semester", value = "学期", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "status", value = "审核情况", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "classTeacher", value = "教师用户工号", required = true, dataType = "varchar", paramType = "query")
     })
-    public Integer insert(@ApiIgnore String name, Integer employment, Integer graduating, Integer disciplinaryRate, String note, Integer year, String classTeacher) {
-        OthersEmployment othersEmployment = new OthersEmployment(name, employment, graduating, disciplinaryRate, note, year, classTeacher);
+    public Integer insert(@ApiIgnore String name, Integer employment, Integer graduating, Integer disciplinaryRate, String note, Integer year, String semester, String classTeacher) {
+        OthersEmployment othersEmployment = new OthersEmployment(name, employment, graduating, disciplinaryRate, note, year, semester, classTeacher);
 
         return othersEmploymentService.insert(othersEmployment);
     }

@@ -17,29 +17,28 @@ public class TeachingconstructionCurriculumconstruction implements Serializable 
 
     private Integer year;
 
+    private String semester;
+
     private static final long serialVersionUID = 1L;
 
     public Integer getId() {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public TeachingconstructionCurriculumconstruction() {
     }
 
-    public TeachingconstructionCurriculumconstruction(String classTeacher, String status, String character, String undertakingTasks, String note, Integer year) {
+    public TeachingconstructionCurriculumconstruction(String classTeacher, String status, String character, String undertakingTasks, String note, Integer year, String semester) {
         this.classTeacher = classTeacher;
         this.status = status;
         this.character = character;
         this.undertakingTasks = undertakingTasks;
         this.note = note;
         this.year = year;
+        this.semester = semester;
     }
 
-    public TeachingconstructionCurriculumconstruction(Integer id, String classTeacher, String status, String character, String undertakingTasks, String note, Integer year) {
+    public TeachingconstructionCurriculumconstruction(Integer id, String classTeacher, String status, String character, String undertakingTasks, String note, Integer year, String semester) {
         this.id = id;
         this.classTeacher = classTeacher;
         this.status = status;
@@ -47,6 +46,11 @@ public class TeachingconstructionCurriculumconstruction implements Serializable 
         this.undertakingTasks = undertakingTasks;
         this.note = note;
         this.year = year;
+        this.semester = semester;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getClassTeacher() {
@@ -97,6 +101,14 @@ public class TeachingconstructionCurriculumconstruction implements Serializable 
         this.year = year;
     }
 
+    public String getSemester() {
+        return semester;
+    }
+
+    public void setSemester(String semester) {
+        this.semester = semester == null ? null : semester.trim();
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -110,6 +122,7 @@ public class TeachingconstructionCurriculumconstruction implements Serializable 
         sb.append(", undertakingTasks=").append(undertakingTasks);
         sb.append(", note=").append(note);
         sb.append(", year=").append(year);
+        sb.append(", semester=").append(semester);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();
