@@ -15,5 +15,9 @@ public interface UserAccessMapper {
 
     int updateByPrimaryKey(UserAccess record);
 
+    int updateIdentity(UserAccess record);
+
     List<UserAccess> selectByNamePassword(UserAccess record);
+
+    List<UserAccess> selectByName(UserAccess record);
 }

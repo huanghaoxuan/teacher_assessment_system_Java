@@ -6,5 +6,7 @@ public interface UserAccessService {
 
     int insert(UserAccess record);
 
+    int updateIdentity(UserAccess record);
+
     int selectByNamePassword(UserAccess record);
 }

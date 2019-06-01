@@ -29,10 +29,19 @@ public class UserAccessServiceImpl implements UserAccessService {
 
     @Override
     public int insert(UserAccess record) {
-        Userinformation userinformation = new Userinformation();
-        userinformation.setClassTeacher(record.getAccess_name());
-        userinformationMapper.insert(userinformation);
-        return userAccessMapper.insert(record);
+        if (userAccessMapper.selectByName(record).isEmpty()) {
+            Userinformation userinformation = new Userinformation();
+            userinformation.setClassTeacher(record.getAccess_name());
+            userinformationMapper.insert(userinformation);
+            return userAccessMapper.insert(record);
+        } else {
+            return 0;
+        }
+    }
+
+    @Override
+    public int updateIdentity(UserAccess record) {
+        return userAccessMapper.updateIdentity(record);
     }
 
     @Override

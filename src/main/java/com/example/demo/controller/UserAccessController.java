@@ -44,5 +44,19 @@ public class UserAccessController {
         return userAccessService.insert(userAccess);
     }
 
+    @RequestMapping(value = "/updateIdentity", method = {RequestMethod.POST})
+    @ApiOperation(value = "更新账号权限", notes = "更新账号权限")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "access_name", value = "账号", required = true, dataType = "varchar", paramType = "query"),
+            @ApiImplicitParam(name = "access_identity", value = "权限", required = true, dataType = "int", paramType = "query"),
+
+    })
+    public int updateIdentity(@ApiIgnore String access_name, Integer access_identity) {
+        UserAccess userAccess = new UserAccess();
+        userAccess.setAccess_name(access_name);
+        userAccess.setAccess_identity(access_identity);
+        return userAccessService.updateIdentity(userAccess);
+    }
+
 
 }

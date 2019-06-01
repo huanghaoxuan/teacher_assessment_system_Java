@@ -24,6 +24,11 @@
       access_identity = #{access_identity,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+    <update id="updateIdentity" parameterType="com.example.demo.model.UserAccess">
+    update user_access
+    set access_identity = #{access_identity,jdbcType=INTEGER}
+    where access_name = #{access_name,jdbcType=NVARCHAR}
+  </update>
     <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select id, access_name, access_pass, access_identity
     from user_access
@@ -37,5 +42,9 @@
             resultMap="BaseResultMap">
     SELECT * FROM user_access WHERE access_name=#{access_name,jdbcType=NVARCHAR}
     AND access_pass=#{access_pass,jdbcType=NVARCHAR}
+  </select>
+    <select id="selectByName" parameterType="com.example.demo.model.UserAccess"
+            resultMap="BaseResultMap">
+    SELECT * FROM user_access WHERE access_name=#{access_name,jdbcType=NVARCHAR}
   </select>
 </mapper>
