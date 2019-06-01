@@ -3,6 +3,8 @@ package com.example.demo.service;
 import com.example.demo.model.TeacheringworkGuidethegreatcreation;
 import com.github.pagehelper.PageInfo;
 
+import java.math.BigDecimal;
+
 public interface TeacheringworkGuidethegreatcreationService {
     int deleteByPrimaryKey(Integer id);
 
@@ -13,4 +15,6 @@ public interface TeacheringworkGuidethegreatcreationService {
     PageInfo<TeacheringworkGuidethegreatcreation> selectByClassTeacher(TeacheringworkGuidethegreatcreation teaching, int pageNum, int pageSize);
 
     int updateByPrimaryKey(TeacheringworkGuidethegreatcreation record);
+
+    BigDecimal getScore(String level, String titleLevel, Integer mentorsNumber);
 }

@@ -14,6 +14,7 @@
     <result column="note" jdbcType="NVARCHAR" property="note"/>
     <result column="year" jdbcType="INTEGER" property="year"/>
     <result column="semester" jdbcType="NVARCHAR" property="semester"/>
+    <result column="score" jdbcType="DECIMAL" property="score"/>
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from teacheringWork_teachingAwards
@@ -43,7 +44,8 @@
       participantsNumber = #{participantsNumber,jdbcType=INTEGER},
       note = #{note,jdbcType=NVARCHAR},
       year = #{year,jdbcType=INTEGER},
-      semester = #{semester,jdbcType=NVARCHAR}
+      semester = #{semester,jdbcType=NVARCHAR},
+      score = #{score,jdbcType=DECIMAL}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">

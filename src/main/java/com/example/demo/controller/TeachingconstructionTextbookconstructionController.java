@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.annotations.ApiIgnore;
 
+import java.math.BigDecimal;
+
 /**
  * @Author: HuangHaoXuan
  * @Email: huanghaoxuan1998@outlook.com
@@ -52,7 +54,7 @@ public class TeachingconstructionTextbookconstructionController {
             @ApiImplicitParam(name = "name", value = "教材名称", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "press", value = "出版社", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "publicationTime", value = "出版时间", required = false, dataType = "varchar", paramType = "query"),
-            @ApiImplicitParam(name = "textbooksNumber", value = "教材字数", required = false, dataType = "varchar", paramType = "query"),
+            @ApiImplicitParam(name = "textbooksNumber", value = "教材字数", required = false, dataType = "decimal", paramType = "query"),
             @ApiImplicitParam(name = "character", value = "本人贡献", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "yesorno", value = "是否", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "note", value = "备注", required = false, dataType = "varchar", paramType = "query"),
@@ -62,9 +64,14 @@ public class TeachingconstructionTextbookconstructionController {
             @ApiImplicitParam(name = "classTeacher", value = "教师用户工号", required = true, dataType = "varchar", paramType = "query")
 
     })
-    public Integer updateByPrimaryKey(@ApiIgnore Integer id, String classTeacher, String status, String name, String press, String publicationTime, String textbooksNumber, String character, String yesorno, String note, Integer year, String semester) {
+    public Integer updateByPrimaryKey(@ApiIgnore Integer id, String classTeacher, String status, String name, String press, String publicationTime, BigDecimal textbooksNumber, String character, String yesorno, String note, Integer year, String semester) {
         TeachingconstructionTextbookconstruction teachingconstructionTextbookconstruction = new TeachingconstructionTextbookconstruction(id, classTeacher, status, name, press, publicationTime, textbooksNumber, character, yesorno, note, year, semester);
-
+        if (status.equals("通过")) {
+            BigDecimal score = teachingconstructionTextbookconstructionService.getScore(yesorno, textbooksNumber);
+            teachingconstructionTextbookconstruction.setScore(score);
+        } else if (status.equals("不通过") || status.equals("未审核")) {
+            teachingconstructionTextbookconstruction.setScore(null);
+        }
         return teachingconstructionTextbookconstructionService.updateByPrimaryKey(teachingconstructionTextbookconstruction);
     }
 
@@ -74,7 +81,7 @@ public class TeachingconstructionTextbookconstructionController {
             @ApiImplicitParam(name = "name", value = "教材名称", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "press", value = "出版社", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "publicationTime", value = "出版时间", required = false, dataType = "varchar", paramType = "query"),
-            @ApiImplicitParam(name = "textbooksNumber", value = "教材字数", required = false, dataType = "varchar", paramType = "query"),
+            @ApiImplicitParam(name = "textbooksNumber", value = "教材字数", required = false, dataType = "decimal", paramType = "query"),
             @ApiImplicitParam(name = "character", value = "本人贡献", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "yesorno", value = "是否", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "note", value = "备注", required = false, dataType = "varchar", paramType = "query"),
@@ -84,7 +91,7 @@ public class TeachingconstructionTextbookconstructionController {
             @ApiImplicitParam(name = "classTeacher", value = "教师用户工号", required = true, dataType = "varchar", paramType = "query")
 
     })
-    public Integer insert(@ApiIgnore String classTeacher, String status, String name, String press, String publicationTime, String textbooksNumber, String character, String yesorno, String note, Integer year, String semester) {
+    public Integer insert(@ApiIgnore String classTeacher, String status, String name, String press, String publicationTime, BigDecimal textbooksNumber, String character, String yesorno, String note, Integer year, String semester) {
         TeachingconstructionTextbookconstruction teachingconstructionTextbookconstruction = new TeachingconstructionTextbookconstruction(classTeacher, status, name, press, publicationTime, textbooksNumber, character, yesorno, note, year, semester);
 
         return teachingconstructionTextbookconstructionService.insert(teachingconstructionTextbookconstruction);

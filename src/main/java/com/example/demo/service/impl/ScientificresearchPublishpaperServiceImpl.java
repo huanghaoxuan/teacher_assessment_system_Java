@@ -3,11 +3,13 @@ package com.example.demo.service.impl;
 import com.example.demo.mapper.ScientificresearchPublishpaperMapper;
 import com.example.demo.model.ScientificresearchPublishpaper;
 import com.example.demo.service.ScientificresearchPublishpaperService;
+import com.example.demo.service.ScorePublishpaperService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -23,6 +25,9 @@ public class ScientificresearchPublishpaperServiceImpl implements Scientificrese
 
     @Autowired
     private ScientificresearchPublishpaperMapper pcientificresearchPublishpaperMapper;
+
+    @Autowired
+    private ScorePublishpaperService scorePublishpaperService;
 
     @Override
     public int deleteByPrimaryKey(Integer id) {
@@ -53,5 +58,47 @@ public class ScientificresearchPublishpaperServiceImpl implements Scientificrese
     @Override
     public int updateByPrimaryKey(ScientificresearchPublishpaper record) {
         return pcientificresearchPublishpaperMapper.updateByPrimaryKey(record);
+    }
+
+    @Override
+    public BigDecimal getScore(String collectionInformation, String character) {
+        if (collectionInformation.equals("SCI")) {
+            if (character.equals("独立发表")) {
+                return scorePublishpaperService.selectByPrimaryKey(1).getSCI();
+            } else if (character.equals("第一作者")) {
+                return scorePublishpaperService.selectByPrimaryKey(1).getSCI().multiply(BigDecimal.valueOf(0.6));
+            } else if (character.equals("第二作者")) {
+                return scorePublishpaperService.selectByPrimaryKey(1).getSCI().multiply(BigDecimal.valueOf(0.3));
+            } else if (character.equals("第三作者")) {
+                return scorePublishpaperService.selectByPrimaryKey(1).getSCI().multiply(BigDecimal.valueOf(0.1));
+            } else if (character.equals("通讯作者")) {
+                return scorePublishpaperService.selectByPrimaryKey(1).getSCI().multiply(BigDecimal.valueOf(0.5));
+            }
+        } else if (collectionInformation.equals("EI")) {
+            if (character.equals("独立发表")) {
+                return scorePublishpaperService.selectByPrimaryKey(1).getEI();
+            } else if (character.equals("第一作者")) {
+                return scorePublishpaperService.selectByPrimaryKey(1).getEI().multiply(BigDecimal.valueOf(0.6));
+            } else if (character.equals("第二作者")) {
+                return scorePublishpaperService.selectByPrimaryKey(1).getEI().multiply(BigDecimal.valueOf(0.3));
+            } else if (character.equals("第三作者")) {
+                return scorePublishpaperService.selectByPrimaryKey(1).getEI().multiply(BigDecimal.valueOf(0.1));
+            } else if (character.equals("通讯作者")) {
+                return scorePublishpaperService.selectByPrimaryKey(1).getEI().multiply(BigDecimal.valueOf(0.5));
+            }
+        } else if (collectionInformation.equals("其他")) {
+            if (character.equals("独立发表")) {
+                return scorePublishpaperService.selectByPrimaryKey(1).getOthers();
+            } else if (character.equals("第一作者")) {
+                return scorePublishpaperService.selectByPrimaryKey(1).getOthers().multiply(BigDecimal.valueOf(0.6));
+            } else if (character.equals("第二作者")) {
+                return scorePublishpaperService.selectByPrimaryKey(1).getOthers().multiply(BigDecimal.valueOf(0.3));
+            } else if (character.equals("第三作者")) {
+                return scorePublishpaperService.selectByPrimaryKey(1).getOthers().multiply(BigDecimal.valueOf(0.1));
+            } else if (character.equals("通讯作者")) {
+                return scorePublishpaperService.selectByPrimaryKey(1).getOthers().multiply(BigDecimal.valueOf(0.5));
+            }
+        }
+        return BigDecimal.valueOf(0);
     }
 }

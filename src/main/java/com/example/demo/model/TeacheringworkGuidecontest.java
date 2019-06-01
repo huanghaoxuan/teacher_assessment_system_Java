@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 public class TeacheringworkGuidecontest implements Serializable {
     private Integer id;
@@ -20,6 +21,16 @@ public class TeacheringworkGuidecontest implements Serializable {
     private Integer secondPersonsNumber;
 
     private Integer thirdPersonsNumber;
+
+    private BigDecimal score;
+
+    public BigDecimal getScore() {
+        return score;
+    }
+
+    public void setScore(BigDecimal score) {
+        this.score = score;
+    }
 
     public TeacheringworkGuidecontest() {
     }

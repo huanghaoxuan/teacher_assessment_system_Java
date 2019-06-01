@@ -2,12 +2,14 @@ package com.example.demo.service.impl;
 
 import com.example.demo.mapper.TeacheringworkGraduationdesignguideMapper;
 import com.example.demo.model.TeacheringworkGraduationdesignguide;
+import com.example.demo.service.ScoreGuidecontestService;
 import com.example.demo.service.TeacheringworkGraduationdesignguideService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -23,6 +25,9 @@ public class TeacheringworkGraduationdesignguideServiceImpl implements Teacherin
 
     @Autowired
     private TeacheringworkGraduationdesignguideMapper teacheringworkGraduationdesignguideMapper;
+
+    @Autowired
+    private ScoreGuidecontestService scoreGuidecontestService;
 
     @Override
     public int deleteByPrimaryKey(Integer id) {
@@ -53,5 +58,20 @@ public class TeacheringworkGraduationdesignguideServiceImpl implements Teacherin
     @Override
     public int updateByPrimaryKey(TeacheringworkGraduationdesignguide record) {
         return teacheringworkGraduationdesignguideMapper.updateByPrimaryKey(record);
+    }
+
+    @Override
+    public BigDecimal getScore(String level, Integer winnersNumber) {
+        BigDecimal bwinnersNumber = BigDecimal.valueOf(winnersNumber);
+        if (level.equals("省级一等奖") || level.equals("省级团队一等奖")) {
+            return scoreGuidecontestService.selectByPrimaryKey(1).getProvincialFirstDigit().divide(bwinnersNumber, 3);
+        } else if (level.equals("省级二等奖") || level.equals("省级团队二等奖")) {
+            return scoreGuidecontestService.selectByPrimaryKey(1).getProvincialSecondDigit().divide(bwinnersNumber, 3);
+        } else if (level.equals("省级三等奖") || level.equals("省级团队三等奖")) {
+            return scoreGuidecontestService.selectByPrimaryKey(1).getProvincialThirdDigit().divide(bwinnersNumber, 3);
+        } else if (level.equals("院级优秀奖")) {
+            return scoreGuidecontestService.selectByPrimaryKey(1).getSchoolSecondDigit().divide(bwinnersNumber, 3);
+        }
+        return BigDecimal.valueOf(0);
     }
 }

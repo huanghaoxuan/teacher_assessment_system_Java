@@ -8,13 +8,14 @@
     <result column="name" jdbcType="NVARCHAR" property="name"/>
     <result column="source" jdbcType="NVARCHAR" property="source"/>
     <result column="character" jdbcType="NVARCHAR" property="character"/>
-    <result column="money" jdbcType="NVARCHAR" property="money"/>
+    <result column="money" jdbcType="DECIMAL" property="money"/>
     <result column="startTime" jdbcType="NVARCHAR" property="startTime"/>
     <result column="estimatedClosingTime" jdbcType="NVARCHAR" property="estimatedClosingTime"/>
     <result column="result" jdbcType="NVARCHAR" property="result"/>
     <result column="note" jdbcType="NVARCHAR" property="note"/>
     <result column="year" jdbcType="INTEGER" property="year"/>
     <result column="semester" jdbcType="NVARCHAR" property="semester"/>
+    <result column="score" jdbcType="DECIMAL" property="score"/>
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from scientificResearch_horizontalTopicProjects
@@ -28,7 +29,7 @@
       semester)
     values (#{classTeacher,jdbcType=NVARCHAR}, #{status,jdbcType=NVARCHAR},
       #{name,jdbcType=NVARCHAR}, #{source,jdbcType=NVARCHAR}, #{character,jdbcType=NVARCHAR}, 
-      #{money,jdbcType=NVARCHAR}, #{startTime,jdbcType=NVARCHAR}, #{estimatedClosingTime,jdbcType=NVARCHAR}, 
+      #{money,jdbcType=DECIMAL}, #{startTime,jdbcType=NVARCHAR}, #{estimatedClosingTime,jdbcType=NVARCHAR},
       #{result,jdbcType=NVARCHAR}, #{note,jdbcType=NVARCHAR}, #{year,jdbcType=INTEGER}, 
       #{semester,jdbcType=NVARCHAR})
   </insert>
@@ -39,13 +40,14 @@
       name = #{name,jdbcType=NVARCHAR},
       source = #{source,jdbcType=NVARCHAR},
       character = #{character,jdbcType=NVARCHAR},
-      money = #{money,jdbcType=NVARCHAR},
+      money = #{money,jdbcType=DECIMAL},
       startTime = #{startTime,jdbcType=NVARCHAR},
       estimatedClosingTime = #{estimatedClosingTime,jdbcType=NVARCHAR},
       result = #{result,jdbcType=NVARCHAR},
       note = #{note,jdbcType=NVARCHAR},
       year = #{year,jdbcType=INTEGER},
-      semester = #{semester,jdbcType=NVARCHAR}
+      semester = #{semester,jdbcType=NVARCHAR},
+      score = #{score,jdbcType=DECIMAL}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">

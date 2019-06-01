@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.annotations.ApiIgnore;
 
+import java.math.BigDecimal;
+
 /**
  * @Author: HuangHaoXuan
  * @Email: huanghaoxuan1998@outlook.com
@@ -52,7 +54,7 @@ public class ScientificresearchHorizontaltopicprojectsController {
             @ApiImplicitParam(name = "name", value = "项目名称", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "source", value = "项目来源", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "character", value = "任务角色", required = false, dataType = "varchar", paramType = "query"),
-            @ApiImplicitParam(name = "money", value = "项目经费", required = false, dataType = "varchar", paramType = "query"),
+            @ApiImplicitParam(name = "money", value = "项目经费", required = false, dataType = "decimal", paramType = "query"),
             @ApiImplicitParam(name = "startTime", value = "立项时间", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "estimatedClosingTime", value = "预计结题时间", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "result", value = "结题结论", required = false, dataType = "varchar", paramType = "query"),
@@ -63,9 +65,14 @@ public class ScientificresearchHorizontaltopicprojectsController {
             @ApiImplicitParam(name = "classTeacher", value = "教师用户工号", required = true, dataType = "varchar", paramType = "query")
 
     })
-    public Integer updateByPrimaryKey(@ApiIgnore Integer id, String classTeacher, String status, String name, String source, String character, String money, String startTime, String estimatedClosingTime, String result, String note, Integer year, String semester) {
+    public Integer updateByPrimaryKey(@ApiIgnore Integer id, String classTeacher, String status, String name, String source, String character, BigDecimal money, String startTime, String estimatedClosingTime, String result, String note, Integer year, String semester) {
         ScientificresearchHorizontaltopicprojects scientificresearchHorizontaltopicprojects = new ScientificresearchHorizontaltopicprojects(id, classTeacher, status, name, source, character, money, startTime, estimatedClosingTime, result, note, year, semester);
-
+        if (status.equals("通过")) {
+            BigDecimal score = scientificresearchHorizontaltopicprojectsService.getScore(money);
+            scientificresearchHorizontaltopicprojects.setScore(score);
+        } else if (status.equals("不通过") || status.equals("未审核")) {
+            scientificresearchHorizontaltopicprojects.setScore(null);
+        }
         return scientificresearchHorizontaltopicprojectsService.updateByPrimaryKey(scientificresearchHorizontaltopicprojects);
     }
 
@@ -75,7 +82,7 @@ public class ScientificresearchHorizontaltopicprojectsController {
             @ApiImplicitParam(name = "name", value = "项目名称", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "source", value = "项目来源", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "character", value = "任务角色", required = false, dataType = "varchar", paramType = "query"),
-            @ApiImplicitParam(name = "money", value = "项目经费", required = false, dataType = "varchar", paramType = "query"),
+            @ApiImplicitParam(name = "money", value = "项目经费", required = false, dataType = "decimal", paramType = "query"),
             @ApiImplicitParam(name = "startTime", value = "立项时间", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "estimatedClosingTime", value = "预计结题时间", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "result", value = "结题结论", required = false, dataType = "varchar", paramType = "query"),
@@ -86,7 +93,7 @@ public class ScientificresearchHorizontaltopicprojectsController {
             @ApiImplicitParam(name = "classTeacher", value = "教师用户工号", required = true, dataType = "varchar", paramType = "query")
 
     })
-    public Integer insert(@ApiIgnore String classTeacher, String status, String name, String source, String character, String money, String startTime, String estimatedClosingTime, String result, String note, Integer year, String semester) {
+    public Integer insert(@ApiIgnore String classTeacher, String status, String name, String source, String character, BigDecimal money, String startTime, String estimatedClosingTime, String result, String note, Integer year, String semester) {
         ScientificresearchHorizontaltopicprojects scientificresearchHorizontaltopicprojects = new ScientificresearchHorizontaltopicprojects(classTeacher, status, name, source, character, money, startTime, estimatedClosingTime, result, note, year, semester);
 
         return scientificresearchHorizontaltopicprojectsService.insert(scientificresearchHorizontaltopicprojects);

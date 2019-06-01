@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 public class ScientificresearchPatentapplication implements Serializable {
     private Integer id;
@@ -24,6 +25,15 @@ public class ScientificresearchPatentapplication implements Serializable {
     public ScientificresearchPatentapplication() {
     }
 
+    private BigDecimal score;
+
+    public BigDecimal getScore() {
+        return score;
+    }
+
+    public void setScore(BigDecimal score) {
+        this.score = score;
+    }
     public ScientificresearchPatentapplication(String classTeacher, String status, String name, String tpye, String publicationDate, String hasProcessing, String hasAuthorized, String hasPatent, String note, Integer year, String semester) {
         this.classTeacher = classTeacher;
         this.status = status;

@@ -8,12 +8,13 @@
     <result column="name" jdbcType="NVARCHAR" property="name"/>
     <result column="press" jdbcType="NVARCHAR" property="press"/>
     <result column="publicationTime" jdbcType="NVARCHAR" property="publicationTime"/>
-    <result column="textbooksNumber" jdbcType="NVARCHAR" property="textbooksNumber"/>
+    <result column="textbooksNumber" jdbcType="DECIMAL" property="textbooksNumber"/>
     <result column="character" jdbcType="NVARCHAR" property="character"/>
     <result column="yesorno" jdbcType="NVARCHAR" property="yesorno"/>
     <result column="note" jdbcType="NVARCHAR" property="note"/>
     <result column="year" jdbcType="INTEGER" property="year"/>
     <result column="semester" jdbcType="NVARCHAR" property="semester"/>
+    <result column="score" jdbcType="DECIMAL" property="score"/>
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from teachingConstruction_textbookConstruction
@@ -27,7 +28,7 @@
       )
     values (#{classTeacher,jdbcType=NVARCHAR}, #{status,jdbcType=NVARCHAR},
       #{name,jdbcType=NVARCHAR}, #{press,jdbcType=NVARCHAR}, #{publicationTime,jdbcType=NVARCHAR}, 
-      #{textbooksNumber,jdbcType=NVARCHAR}, #{character,jdbcType=NVARCHAR}, #{yesorno,jdbcType=NVARCHAR}, 
+      #{textbooksNumber,jdbcType=DECIMAL}, #{character,jdbcType=NVARCHAR}, #{yesorno,jdbcType=NVARCHAR},
       #{note,jdbcType=NVARCHAR}, #{year,jdbcType=INTEGER}, #{semester,jdbcType=NVARCHAR}
       )
   </insert>
@@ -38,12 +39,13 @@
       name = #{name,jdbcType=NVARCHAR},
       press = #{press,jdbcType=NVARCHAR},
       publicationTime = #{publicationTime,jdbcType=NVARCHAR},
-      textbooksNumber = #{textbooksNumber,jdbcType=NVARCHAR},
+      textbooksNumber = #{textbooksNumber,jdbcType=DECIMAL},
       character = #{character,jdbcType=NVARCHAR},
       yesorno = #{yesorno,jdbcType=NVARCHAR},
       note = #{note,jdbcType=NVARCHAR},
       year = #{year,jdbcType=INTEGER},
-      semester = #{semester,jdbcType=NVARCHAR}
+      semester = #{semester,jdbcType=NVARCHAR},
+      score = #{score,jdbcType=DECIMAL}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">

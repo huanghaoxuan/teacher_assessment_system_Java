@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 public class ScientificresearchHorizontaltopicprojects implements Serializable {
     private Integer id;
@@ -15,7 +16,17 @@ public class ScientificresearchHorizontaltopicprojects implements Serializable {
 
     private String character;
 
-    private String money;
+    private BigDecimal money;
+
+    private BigDecimal score;
+
+    public BigDecimal getScore() {
+        return score;
+    }
+
+    public void setScore(BigDecimal score) {
+        this.score = score;
+    }
 
     private String startTime;
 
@@ -26,7 +37,7 @@ public class ScientificresearchHorizontaltopicprojects implements Serializable {
     public ScientificresearchHorizontaltopicprojects() {
     }
 
-    public ScientificresearchHorizontaltopicprojects(String classTeacher, String status, String name, String source, String character, String money, String startTime, String estimatedClosingTime, String result, String note, Integer year, String semester) {
+    public ScientificresearchHorizontaltopicprojects(String classTeacher, String status, String name, String source, String character, BigDecimal money, String startTime, String estimatedClosingTime, String result, String note, Integer year, String semester) {
         this.classTeacher = classTeacher;
         this.status = status;
         this.name = name;
@@ -41,7 +52,7 @@ public class ScientificresearchHorizontaltopicprojects implements Serializable {
         this.semester = semester;
     }
 
-    public ScientificresearchHorizontaltopicprojects(Integer id, String classTeacher, String status, String name, String source, String character, String money, String startTime, String estimatedClosingTime, String result, String note, Integer year, String semester) {
+    public ScientificresearchHorizontaltopicprojects(Integer id, String classTeacher, String status, String name, String source, String character, BigDecimal money, String startTime, String estimatedClosingTime, String result, String note, Integer year, String semester) {
         this.id = id;
         this.classTeacher = classTeacher;
         this.status = status;
@@ -113,12 +124,12 @@ public class ScientificresearchHorizontaltopicprojects implements Serializable {
         this.character = character == null ? null : character.trim();
     }
 
-    public String getMoney() {
+    public BigDecimal getMoney() {
         return money;
     }
 
-    public void setMoney(String money) {
-        this.money = money == null ? null : money.trim();
+    public void setMoney(BigDecimal money) {
+        this.money = money;
     }
 
     public String getStartTime() {

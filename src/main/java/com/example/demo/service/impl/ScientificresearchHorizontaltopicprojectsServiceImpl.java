@@ -3,11 +3,13 @@ package com.example.demo.service.impl;
 import com.example.demo.mapper.ScientificresearchHorizontaltopicprojectsMapper;
 import com.example.demo.model.ScientificresearchHorizontaltopicprojects;
 import com.example.demo.service.ScientificresearchHorizontaltopicprojectsService;
+import com.example.demo.service.ScoreHorizontaltopicprojectsService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -23,6 +25,9 @@ public class ScientificresearchHorizontaltopicprojectsServiceImpl implements Sci
 
     @Autowired
     private ScientificresearchHorizontaltopicprojectsMapper scientificresearchHorizontaltopicprojectsMapper;
+
+    @Autowired
+    private ScoreHorizontaltopicprojectsService scoreHorizontaltopicprojectsService;
 
     @Override
     public int deleteByPrimaryKey(Integer id) {
@@ -53,5 +58,23 @@ public class ScientificresearchHorizontaltopicprojectsServiceImpl implements Sci
     @Override
     public int updateByPrimaryKey(ScientificresearchHorizontaltopicprojects record) {
         return scientificresearchHorizontaltopicprojectsMapper.updateByPrimaryKey(record);
+    }
+
+    @Override
+    public BigDecimal getScore(BigDecimal money) {
+        if (money.compareTo(BigDecimal.valueOf(1)) == -1) {
+            return scoreHorizontaltopicprojectsService.selectByPrimaryKey(1).getOneMillion();
+        } else if (money.compareTo(BigDecimal.valueOf(3)) == -1) {
+            return scoreHorizontaltopicprojectsService.selectByPrimaryKey(1).getOneToThreeMillion();
+        } else if (money.compareTo(BigDecimal.valueOf(5)) == -1) {
+            return scoreHorizontaltopicprojectsService.selectByPrimaryKey(1).getThreeToFiveMillion();
+        } else if (money.compareTo(BigDecimal.valueOf(10)) == -1) {
+            return scoreHorizontaltopicprojectsService.selectByPrimaryKey(1).getFiveToTenMillion();
+        } else if (money.compareTo(BigDecimal.valueOf(20)) == -1) {
+            return scoreHorizontaltopicprojectsService.selectByPrimaryKey(1).getTenToTwentyMillion();
+        } else if (money.compareTo(BigDecimal.valueOf(30)) == -1) {
+            return scoreHorizontaltopicprojectsService.selectByPrimaryKey(1).getTwentyToThirtyMillion();
+        }
+        return BigDecimal.valueOf(0);
     }
 }

@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.annotations.ApiIgnore;
 
+import java.math.BigDecimal;
+
 /**
  * @Author: HuangHaoXuan
  * @Email: huanghaoxuan1998@outlook.com
@@ -64,7 +66,12 @@ public class ScientificresearchPatentapplicationController {
     })
     public Integer updateByPrimaryKey(@ApiIgnore Integer id, String classTeacher, String status, String name, String tpye, String publicationDate, String hasProcessing, String hasAuthorized, String hasPatent, String note, Integer year, String semester) {
         ScientificresearchPatentapplication scientificresearchPatentapplication = new ScientificresearchPatentapplication(id, classTeacher, status, name, tpye, publicationDate, hasProcessing, hasAuthorized, hasPatent, note, year, semester);
-
+        if (status.equals("通过")) {
+            BigDecimal score = scientificresearchPatentapplicationService.getScore(tpye);
+            scientificresearchPatentapplication.setScore(score);
+        } else if (status.equals("不通过") || status.equals("未审核")) {
+            scientificresearchPatentapplication.setScore(null);
+        }
         return scientificresearchPatentapplicationService.updateByPrimaryKey(scientificresearchPatentapplication);
     }
 

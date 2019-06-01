@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 public class TeachingconstructionTextbookconstruction implements Serializable {
     private Integer id;
@@ -15,7 +16,7 @@ public class TeachingconstructionTextbookconstruction implements Serializable {
 
     private String publicationTime;
 
-    private String textbooksNumber;
+    private BigDecimal textbooksNumber;
 
     private String character;
 
@@ -27,10 +28,19 @@ public class TeachingconstructionTextbookconstruction implements Serializable {
 
     private String semester;
 
+    private BigDecimal score;
+
+    public BigDecimal getScore() {
+        return score;
+    }
+
+    public void setScore(BigDecimal score) {
+        this.score = score;
+    }
     public TeachingconstructionTextbookconstruction() {
     }
 
-    public TeachingconstructionTextbookconstruction(String classTeacher, String status, String name, String press, String publicationTime, String textbooksNumber, String character, String yesorno, String note, Integer year, String semester) {
+    public TeachingconstructionTextbookconstruction(String classTeacher, String status, String name, String press, String publicationTime, BigDecimal textbooksNumber, String character, String yesorno, String note, Integer year, String semester) {
         this.classTeacher = classTeacher;
         this.status = status;
         this.name = name;
@@ -44,7 +54,7 @@ public class TeachingconstructionTextbookconstruction implements Serializable {
         this.semester = semester;
     }
 
-    public TeachingconstructionTextbookconstruction(Integer id, String classTeacher, String status, String name, String press, String publicationTime, String textbooksNumber, String character, String yesorno, String note, Integer year, String semester) {
+    public TeachingconstructionTextbookconstruction(Integer id, String classTeacher, String status, String name, String press, String publicationTime, BigDecimal textbooksNumber, String character, String yesorno, String note, Integer year, String semester) {
         this.id = id;
         this.classTeacher = classTeacher;
         this.status = status;
@@ -109,12 +119,12 @@ public class TeachingconstructionTextbookconstruction implements Serializable {
         this.publicationTime = publicationTime == null ? null : publicationTime.trim();
     }
 
-    public String getTextbooksNumber() {
+    public BigDecimal getTextbooksNumber() {
         return textbooksNumber;
     }
 
-    public void setTextbooksNumber(String textbooksNumber) {
-        this.textbooksNumber = textbooksNumber == null ? null : textbooksNumber.trim();
+    public void setTextbooksNumber(BigDecimal textbooksNumber) {
+        this.textbooksNumber = textbooksNumber;
     }
 
     public String getCharacter() {

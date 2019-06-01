@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.annotations.ApiIgnore;
 
+import java.math.BigDecimal;
+
 /**
  * @Author: HuangHaoXuan
  * @Email: huanghaoxuan1998@outlook.com
@@ -65,7 +67,12 @@ public class ScientificresearchPublishpaperController {
     })
     public Integer updateByPrimaryKey(@ApiIgnore Integer id, String classTeacher, String status, String name, String journals, String publicationDate, String level, String collectionInformation, String character, String type, String note, Integer year, String semester) {
         ScientificresearchPublishpaper scientificresearchPublishpaper = new ScientificresearchPublishpaper(id, classTeacher, status, name, journals, publicationDate, level, collectionInformation, character, type, note, year, semester);
-
+        if (status.equals("通过")) {
+            BigDecimal score = scientificresearchPublishpaperService.getScore(collectionInformation, character);
+            scientificresearchPublishpaper.setScore(score);
+        } else if (status.equals("不通过") || status.equals("未审核")) {
+            scientificresearchPublishpaper.setScore(null);
+        }
         return scientificresearchPublishpaperService.updateByPrimaryKey(scientificresearchPublishpaper);
     }
 

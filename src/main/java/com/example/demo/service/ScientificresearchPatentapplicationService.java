@@ -3,6 +3,8 @@ package com.example.demo.service;
 import com.example.demo.model.ScientificresearchPatentapplication;
 import com.github.pagehelper.PageInfo;
 
+import java.math.BigDecimal;
+
 public interface ScientificresearchPatentapplicationService {
     int deleteByPrimaryKey(Integer id);
 
@@ -13,4 +15,6 @@ public interface ScientificresearchPatentapplicationService {
     PageInfo<ScientificresearchPatentapplication> selectByClassTeacher(ScientificresearchPatentapplication teaching, int pageNum, int pageSize);
 
     int updateByPrimaryKey(ScientificresearchPatentapplication record);
+
+    BigDecimal getScore(String tpye);
 }

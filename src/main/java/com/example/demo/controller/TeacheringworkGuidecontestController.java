@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.annotations.ApiIgnore;
 
+import java.math.BigDecimal;
+
 /**
  * @Author: HuangHaoXuan
  * @Email: huanghaoxuan1998@outlook.com
@@ -67,7 +69,12 @@ public class TeacheringworkGuidecontestController {
     })
     public Integer updateByPrimaryKey(@ApiIgnore Integer id, String classTeacher, String status, String name, String level, Integer prizePersonsNumber, Integer firstPersonsNumber, Integer secondPersonsNumber, Integer thirdPersonsNumber, Integer outstandingAwardsNumber, String guidanceType, Integer instructorsNumber, String note, Integer year, String semester) {
         TeacheringworkGuidecontest teacheringworkGuidecontest = new TeacheringworkGuidecontest(id, classTeacher, status, name, level, prizePersonsNumber, firstPersonsNumber, secondPersonsNumber, thirdPersonsNumber, outstandingAwardsNumber, guidanceType, instructorsNumber, note, year, semester);
-
+        if (status.equals("通过")) {
+            BigDecimal score = teacheringworkGuidecontestService.getScore(level, prizePersonsNumber, firstPersonsNumber, secondPersonsNumber, thirdPersonsNumber, instructorsNumber);
+            teacheringworkGuidecontest.setScore(score);
+        } else if (status.equals("不通过") || status.equals("未审核")) {
+            teacheringworkGuidecontest.setScore(null);
+        }
         return teacheringworkGuidecontestService.updateByPrimaryKey(teacheringworkGuidecontest);
     }
 

@@ -3,11 +3,13 @@ package com.example.demo.service.impl;
 import com.example.demo.mapper.ScientificresearchPatentapplicationMapper;
 import com.example.demo.model.ScientificresearchPatentapplication;
 import com.example.demo.service.ScientificresearchPatentapplicationService;
+import com.example.demo.service.ScorePatentapplicationService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -23,6 +25,9 @@ public class ScientificresearchPatentapplicationServiceImpl implements Scientifi
 
     @Autowired
     private ScientificresearchPatentapplicationMapper scientificresearchPatentapplicationMapper;
+
+    @Autowired
+    private ScorePatentapplicationService scorePatentapplicationService;
 
     @Override
     public int deleteByPrimaryKey(Integer id) {
@@ -53,5 +58,19 @@ public class ScientificresearchPatentapplicationServiceImpl implements Scientifi
     @Override
     public int updateByPrimaryKey(ScientificresearchPatentapplication record) {
         return scientificresearchPatentapplicationMapper.updateByPrimaryKey(record);
+    }
+
+    @Override
+    public BigDecimal getScore(String tpye) {
+        if (tpye.equals("发明专利授权")) {
+            return scorePatentapplicationService.selectByPrimaryKey(1).getInvention();
+        } else if (tpye.equals("国家已受理发明专利")) {
+            return scorePatentapplicationService.selectByPrimaryKey(1).getCountryAccept();
+        } else if (tpye.equals("实用新型专利")) {
+            return scorePatentapplicationService.selectByPrimaryKey(1).getPractical();
+        } else if (tpye.equals("外观设计专利")) {
+            return scorePatentapplicationService.selectByPrimaryKey(1).getExteriorDesign();
+        }
+        return BigDecimal.valueOf(0);
     }
 }

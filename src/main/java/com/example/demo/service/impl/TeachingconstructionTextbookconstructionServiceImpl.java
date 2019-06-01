@@ -8,6 +8,9 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+import java.math.MathContext;
+import java.math.RoundingMode;
 import java.util.List;
 
 /**
@@ -53,5 +56,26 @@ public class TeachingconstructionTextbookconstructionServiceImpl implements Teac
     @Override
     public int updateByPrimaryKey(TeachingconstructionTextbookconstruction record) {
         return teachingconstructionTextbookconstructionMapper.updateByPrimaryKey(record);
+    }
+
+    @Override
+    public BigDecimal getScore(String yesorno, BigDecimal textbooksNumber) {
+        BigDecimal bigDecimal = this.sqrt(textbooksNumber.add(BigDecimal.valueOf(1)), 3);
+        return bigDecimal.multiply(BigDecimal.valueOf(100));
+    }
+
+
+    private BigDecimal sqrt(BigDecimal value, int scale) {
+        BigDecimal num2 = BigDecimal.valueOf(2);
+        int precision = 100;
+        MathContext mc = new MathContext(precision, RoundingMode.HALF_UP);
+        BigDecimal deviation = value;
+        int cnt = 0;
+        while (cnt < precision) {
+            deviation = (deviation.add(value.divide(deviation, mc))).divide(num2, mc);
+            cnt++;
+        }
+        deviation = deviation.setScale(scale, BigDecimal.ROUND_HALF_UP);
+        return deviation;
     }
 }
