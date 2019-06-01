@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.ScoreHorizontaltopicprojectsMapper">
+    <resultMap id="BaseResultMap" type="com.example.demo.model.ScoreHorizontaltopicprojects">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="oneMillion" jdbcType="DECIMAL" property="oneMillion"/>
+        <result column="oneToThreeMillion" jdbcType="DECIMAL" property="oneToThreeMillion"/>
+        <result column="ThreeToFiveMillion" jdbcType="DECIMAL" property="threeToFiveMillion"/>
+        <result column="FiveToTenMillion" jdbcType="DECIMAL" property="fiveToTenMillion"/>
+        <result column="TenToTwentyMillion" jdbcType="DECIMAL" property="tenToTwentyMillion"/>
+        <result column="TwentyToThirtyMillion" jdbcType="DECIMAL" property="twentyToThirtyMillion"/>
+    </resultMap>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from score_horizontalTopicProjects
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="com.example.demo.model.ScoreHorizontaltopicprojects">
+    insert into score_horizontalTopicProjects (oneMillion, oneToThreeMillion,
+      ThreeToFiveMillion, FiveToTenMillion, TenToTwentyMillion, 
+      TwentyToThirtyMillion)
+    values (#{oneMillion,jdbcType=DECIMAL}, #{oneToThreeMillion,jdbcType=DECIMAL},
+      #{threeToFiveMillion,jdbcType=DECIMAL}, #{fiveToTenMillion,jdbcType=DECIMAL}, #{tenToTwentyMillion,jdbcType=DECIMAL}, 
+      #{twentyToThirtyMillion,jdbcType=DECIMAL})
+  </insert>
+    <update id="updateByPrimaryKey" parameterType="com.example.demo.model.ScoreHorizontaltopicprojects">
+    update score_horizontalTopicProjects
+    set oneMillion = #{oneMillion,jdbcType=DECIMAL},
+      oneToThreeMillion = #{oneToThreeMillion,jdbcType=DECIMAL},
+      ThreeToFiveMillion = #{threeToFiveMillion,jdbcType=DECIMAL},
+      FiveToTenMillion = #{fiveToTenMillion,jdbcType=DECIMAL},
+      TenToTwentyMillion = #{tenToTwentyMillion,jdbcType=DECIMAL},
+      TwentyToThirtyMillion = #{twentyToThirtyMillion,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, oneMillion, oneToThreeMillion, ThreeToFiveMillion, FiveToTenMillion, TenToTwentyMillion, 
+    TwentyToThirtyMillion
+    from score_horizontalTopicProjects
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+    <select id="selectAll" resultMap="BaseResultMap">
+    select *
+    from score_horizontalTopicProjects
+  </select>
+</mapper>

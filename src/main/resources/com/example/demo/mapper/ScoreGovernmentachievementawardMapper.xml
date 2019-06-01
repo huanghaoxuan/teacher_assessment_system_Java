@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.ScoreGovernmentachievementawardMapper">
+    <resultMap id="BaseResultMap" type="com.example.demo.model.ScoreGovernmentachievementaward">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="countryFirstDigit" jdbcType="DECIMAL" property="countryFirstDigit"/>
+        <result column="countrySecondDigit" jdbcType="DECIMAL" property="countrySecondDigit"/>
+        <result column="countryThirdDigit" jdbcType="DECIMAL" property="countryThirdDigit"/>
+        <result column="provincialFirstDigit" jdbcType="DECIMAL" property="provincialFirstDigit"/>
+        <result column="provincialSecondDigit" jdbcType="DECIMAL" property="provincialSecondDigit"/>
+        <result column="provincialThirdDigit" jdbcType="DECIMAL" property="provincialThirdDigit"/>
+        <result column="cityFirstDigit" jdbcType="DECIMAL" property="cityFirstDigit"/>
+        <result column="citySecondDigit" jdbcType="DECIMAL" property="citySecondDigit"/>
+        <result column="cityThirdDigit" jdbcType="DECIMAL" property="cityThirdDigit"/>
+        <result column="schoolFirstDigit" jdbcType="DECIMAL" property="schoolFirstDigit"/>
+        <result column="schoolSecondDigit" jdbcType="DECIMAL" property="schoolSecondDigit"/>
+        <result column="schoolThirdDigit" jdbcType="DECIMAL" property="schoolThirdDigit"/>
+    </resultMap>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from score_governmentAchievementAward
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="com.example.demo.model.ScoreGovernmentachievementaward">
+    insert into score_governmentAchievementAward (countryFirstDigit, countrySecondDigit,
+      countryThirdDigit, provincialFirstDigit, 
+      provincialSecondDigit, provincialThirdDigit, 
+      cityFirstDigit, citySecondDigit, cityThirdDigit, 
+      schoolFirstDigit, schoolSecondDigit, schoolThirdDigit
+      )
+    values (#{countryFirstDigit,jdbcType=DECIMAL}, #{countrySecondDigit,jdbcType=DECIMAL},
+      #{countryThirdDigit,jdbcType=DECIMAL}, #{provincialFirstDigit,jdbcType=DECIMAL}, 
+      #{provincialSecondDigit,jdbcType=DECIMAL}, #{provincialThirdDigit,jdbcType=DECIMAL}, 
+      #{cityFirstDigit,jdbcType=DECIMAL}, #{citySecondDigit,jdbcType=DECIMAL}, #{cityThirdDigit,jdbcType=DECIMAL}, 
+      #{schoolFirstDigit,jdbcType=DECIMAL}, #{schoolSecondDigit,jdbcType=DECIMAL}, #{schoolThirdDigit,jdbcType=DECIMAL}
+      )
+  </insert>
+    <update id="updateByPrimaryKey" parameterType="com.example.demo.model.ScoreGovernmentachievementaward">
+    update score_governmentAchievementAward
+    set countryFirstDigit = #{countryFirstDigit,jdbcType=DECIMAL},
+      countrySecondDigit = #{countrySecondDigit,jdbcType=DECIMAL},
+      countryThirdDigit = #{countryThirdDigit,jdbcType=DECIMAL},
+      provincialFirstDigit = #{provincialFirstDigit,jdbcType=DECIMAL},
+      provincialSecondDigit = #{provincialSecondDigit,jdbcType=DECIMAL},
+      provincialThirdDigit = #{provincialThirdDigit,jdbcType=DECIMAL},
+      cityFirstDigit = #{cityFirstDigit,jdbcType=DECIMAL},
+      citySecondDigit = #{citySecondDigit,jdbcType=DECIMAL},
+      cityThirdDigit = #{cityThirdDigit,jdbcType=DECIMAL},
+      schoolFirstDigit = #{schoolFirstDigit,jdbcType=DECIMAL},
+      schoolSecondDigit = #{schoolSecondDigit,jdbcType=DECIMAL},
+      schoolThirdDigit = #{schoolThirdDigit,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, countryFirstDigit, countrySecondDigit, countryThirdDigit, provincialFirstDigit, 
+    provincialSecondDigit, provincialThirdDigit, cityFirstDigit, citySecondDigit, cityThirdDigit, 
+    schoolFirstDigit, schoolSecondDigit, schoolThirdDigit
+    from score_governmentAchievementAward
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+    <select id="selectAll" resultMap="BaseResultMap">
+    select *
+    from score_governmentAchievementAward
+  </select>
+</mapper>

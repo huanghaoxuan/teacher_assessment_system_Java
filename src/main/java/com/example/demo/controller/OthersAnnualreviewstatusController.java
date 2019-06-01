@@ -40,7 +40,7 @@ public class OthersAnnualreviewstatusController {
     @RequestMapping(value = "/updateByPrimaryKey", method = {RequestMethod.POST})
     @ApiOperation(value = "更新年度考核情况", notes = "年度考核情况更新接口")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "id", value = "主键序列", required = true, dataType = "varchar", paramType = "query"),
+            @ApiImplicitParam(name = "id", value = "主键序列", required = true, dataType = "int", paramType = "query"),
             @ApiImplicitParam(name = "assessmentStatus", value = "考核情况", required = true, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "note", value = "备注", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "year", value = "学年", required = false, dataType = "int", paramType = "query"),

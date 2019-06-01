@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.ScoreLongitudinaltopicsprojectMapper">
+    <resultMap id="BaseResultMap" type="com.example.demo.model.ScoreLongitudinaltopicsproject">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="countryKeyFunding" jdbcType="DECIMAL" property="countryKeyFunding"/>
+        <result column="countryGeneralFunding" jdbcType="DECIMAL" property="countryGeneralFunding"/>
+        <result column="countryProject" jdbcType="DECIMAL" property="countryProject"/>
+        <result column="provincialKeyFunding" jdbcType="DECIMAL" property="provincialKeyFunding"/>
+        <result column="provincialGeneralFunding" jdbcType="DECIMAL" property="provincialGeneralFunding"/>
+        <result column="provincialProject" jdbcType="DECIMAL" property="provincialProject"/>
+        <result column="cityKeyFunding" jdbcType="DECIMAL" property="cityKeyFunding"/>
+        <result column="cityGeneralFunding" jdbcType="DECIMAL" property="cityGeneralFunding"/>
+        <result column="cityProject" jdbcType="DECIMAL" property="cityProject"/>
+        <result column="schoolKeyFunding" jdbcType="DECIMAL" property="schoolKeyFunding"/>
+        <result column="schoolGeneralFunding" jdbcType="DECIMAL" property="schoolGeneralFunding"/>
+        <result column="schoolProject" jdbcType="DECIMAL" property="schoolProject"/>
+    </resultMap>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from score_longitudinalTopicsProject
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="com.example.demo.model.ScoreLongitudinaltopicsproject">
+    insert into score_longitudinalTopicsProject (countryKeyFunding, countryGeneralFunding,
+      countryProject, provincialKeyFunding, provincialGeneralFunding, 
+      provincialProject, cityKeyFunding, cityGeneralFunding, 
+      cityProject, schoolKeyFunding, schoolGeneralFunding, 
+      schoolProject)
+    values (#{countryKeyFunding,jdbcType=DECIMAL}, #{countryGeneralFunding,jdbcType=DECIMAL},
+      #{countryProject,jdbcType=DECIMAL}, #{provincialKeyFunding,jdbcType=DECIMAL}, #{provincialGeneralFunding,jdbcType=DECIMAL}, 
+      #{provincialProject,jdbcType=DECIMAL}, #{cityKeyFunding,jdbcType=DECIMAL}, #{cityGeneralFunding,jdbcType=DECIMAL}, 
+      #{cityProject,jdbcType=DECIMAL}, #{schoolKeyFunding,jdbcType=DECIMAL}, #{schoolGeneralFunding,jdbcType=DECIMAL}, 
+      #{schoolProject,jdbcType=DECIMAL})
+  </insert>
+    <update id="updateByPrimaryKey" parameterType="com.example.demo.model.ScoreLongitudinaltopicsproject">
+    update score_longitudinalTopicsProject
+    set countryKeyFunding = #{countryKeyFunding,jdbcType=DECIMAL},
+      countryGeneralFunding = #{countryGeneralFunding,jdbcType=DECIMAL},
+      countryProject = #{countryProject,jdbcType=DECIMAL},
+      provincialKeyFunding = #{provincialKeyFunding,jdbcType=DECIMAL},
+      provincialGeneralFunding = #{provincialGeneralFunding,jdbcType=DECIMAL},
+      provincialProject = #{provincialProject,jdbcType=DECIMAL},
+      cityKeyFunding = #{cityKeyFunding,jdbcType=DECIMAL},
+      cityGeneralFunding = #{cityGeneralFunding,jdbcType=DECIMAL},
+      cityProject = #{cityProject,jdbcType=DECIMAL},
+      schoolKeyFunding = #{schoolKeyFunding,jdbcType=DECIMAL},
+      schoolGeneralFunding = #{schoolGeneralFunding,jdbcType=DECIMAL},
+      schoolProject = #{schoolProject,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, countryKeyFunding, countryGeneralFunding, countryProject, provincialKeyFunding, 
+    provincialGeneralFunding, provincialProject, cityKeyFunding, cityGeneralFunding, 
+    cityProject, schoolKeyFunding, schoolGeneralFunding, schoolProject
+    from score_longitudinalTopicsProject
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+    <select id="selectAll" resultMap="BaseResultMap">
+    select *
+    from score_longitudinalTopicsProject
+  </select>
+</mapper>

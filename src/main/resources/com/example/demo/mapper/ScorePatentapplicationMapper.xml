@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.ScorePatentapplicationMapper">
+    <resultMap id="BaseResultMap" type="com.example.demo.model.ScorePatentapplication">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="invention" jdbcType="DECIMAL" property="invention"/>
+        <result column="countryAccept" jdbcType="DECIMAL" property="countryAccept"/>
+        <result column="practical" jdbcType="DECIMAL" property="practical"/>
+        <result column="exteriorDesign" jdbcType="DECIMAL" property="exteriorDesign"/>
+    </resultMap>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from score_patentApplication
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="com.example.demo.model.ScorePatentapplication">
+    insert into score_patentApplication (invention, countryAccept,
+      practical, exteriorDesign)
+    values (#{invention,jdbcType=DECIMAL}, #{countryAccept,jdbcType=DECIMAL},
+      #{practical,jdbcType=DECIMAL}, #{exteriorDesign,jdbcType=DECIMAL})
+  </insert>
+    <update id="updateByPrimaryKey" parameterType="com.example.demo.model.ScorePatentapplication">
+    update score_patentApplication
+    set invention = #{invention,jdbcType=DECIMAL},
+      countryAccept = #{countryAccept,jdbcType=DECIMAL},
+      practical = #{practical,jdbcType=DECIMAL},
+      exteriorDesign = #{exteriorDesign,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, invention, countryAccept, practical, exteriorDesign
+    from score_patentApplication
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+    <select id="selectAll" resultMap="BaseResultMap">
+    select *
+    from score_patentApplication
+  </select>
+</mapper>
