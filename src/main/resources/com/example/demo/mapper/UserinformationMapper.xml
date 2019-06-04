@@ -36,7 +36,18 @@
         <result column="continuingEducationSituation" jdbcType="NVARCHAR" property="continuingEducationSituation"/>
         <result column="engineeringPracticeExperience" jdbcType="NVARCHAR" property="engineeringPracticeExperience"/>
         <result column="guidanceStudentPracticeNumber" jdbcType="INTEGER" property="guidanceStudentPracticeNumber"/>
+        <result column="email" jdbcType="NVARCHAR" property="email"/>
     </resultMap>
+    <update id="updateEmail" parameterType="com.example.demo.model.Userinformation">
+    update userInformation
+    set email = #{email,jdbcType=NVARCHAR}
+    where classTeacher = #{classTeacher,jdbcType=NVARCHAR}
+  </update>
+    <update id="updatename" parameterType="com.example.demo.model.Userinformation">
+    update userInformation
+    set name = #{name,jdbcType=NVARCHAR}
+    where classTeacher = #{classTeacher,jdbcType=NVARCHAR}
+  </update>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from userInformation
     where id = #{id,jdbcType=INTEGER}

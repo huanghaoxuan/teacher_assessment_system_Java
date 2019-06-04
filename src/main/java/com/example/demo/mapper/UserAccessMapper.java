@@ -13,7 +13,7 @@ public interface UserAccessMapper {
 
     List<UserAccess> selectAll();
 
-    int updateByPrimaryKey(UserAccess record);
+    int updateNamePassword(UserAccess record);
 
     int updateIdentity(UserAccess record);
 

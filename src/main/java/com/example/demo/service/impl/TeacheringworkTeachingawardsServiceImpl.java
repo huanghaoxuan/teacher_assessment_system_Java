@@ -173,6 +173,18 @@ public class TeacheringworkTeachingawardsServiceImpl implements TeacheringworkTe
                     return scoreNotgovernmentachievementawardService.selectByPrimaryKey(1).getSchoolThirdDigit().divide(bparticipantsNumber, 3);
                 }
             }
+//            else if (level.equals("院级")) {
+//                if (grade.equals("特等奖") || grade.equals("一等奖")) {
+//                    BigDecimal bigDecimal = scoreNotgovernmentachievementawardService.selectByPrimaryKey(1).getSchoolFirstDigit().divide(bparticipantsNumber, 3);
+//                    return (bigDecimal.compareTo(BigDecimal.valueOf(10)) == -1)? bigDecimal:BigDecimal.valueOf(10);
+//                } else if (grade.equals("二等奖")) {
+//                    BigDecimal bigDecimal = scoreNotgovernmentachievementawardService.selectByPrimaryKey(1).getSchoolSecondDigit().divide(bparticipantsNumber, 3);
+//                    return (bigDecimal.compareTo(BigDecimal.valueOf(8)) == -1)? bigDecimal:BigDecimal.valueOf(8);
+//                } else if (grade.equals("三等奖")) {
+//                    BigDecimal bigDecimal = scoreNotgovernmentachievementawardService.selectByPrimaryKey(1).getSchoolThirdDigit().divide(bparticipantsNumber, 3);
+//                    return (bigDecimal.compareTo(BigDecimal.valueOf(6)) == -1)? bigDecimal:BigDecimal.valueOf(6);
+//                }
+//            }
         }
         return BigDecimal.valueOf(0);
     }

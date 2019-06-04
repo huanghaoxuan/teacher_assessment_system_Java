@@ -12,6 +12,7 @@
     <result column="loopsNumber" jdbcType="INTEGER" property="loopsNumber"/>
     <result column="trainingType" jdbcType="NVARCHAR" property="trainingType"/>
     <result column="results" jdbcType="NVARCHAR" property="results"/>
+    <result column="hasCorrecting" jdbcType="NVARCHAR" property="hasCorrecting"/>
     <result column="note" jdbcType="NVARCHAR" property="note"/>
     <result column="year" jdbcType="INTEGER" property="year"/>
     <result column="semester" jdbcType="NVARCHAR" property="semester"/>
@@ -24,12 +25,12 @@
     insert into teacheringWork_practicalTrainingGuidance (classTeacher, status,
       name, credits, hours, 
       studentNumber, loopsNumber, trainingType, 
-      results, note, year, 
+      results, hasCorrecting, note, year,
       semester)
     values (#{classTeacher,jdbcType=NVARCHAR}, #{status,jdbcType=NVARCHAR},
       #{name,jdbcType=NVARCHAR}, #{credits,jdbcType=DECIMAL}, #{hours,jdbcType=DECIMAL}, 
       #{studentNumber,jdbcType=INTEGER}, #{loopsNumber,jdbcType=INTEGER}, #{trainingType,jdbcType=NVARCHAR}, 
-      #{results,jdbcType=NVARCHAR}, #{note,jdbcType=NVARCHAR}, #{year,jdbcType=INTEGER}, 
+      #{results,jdbcType=NVARCHAR}, #{hasCorrecting,jdbcType=NVARCHAR}, #{note,jdbcType=NVARCHAR}, #{year,jdbcType=INTEGER},
       #{semester,jdbcType=NVARCHAR})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.example.demo.model.TeacheringworkPracticaltrainingguidance">
@@ -43,15 +44,14 @@
       loopsNumber = #{loopsNumber,jdbcType=INTEGER},
       trainingType = #{trainingType,jdbcType=NVARCHAR},
       results = #{results,jdbcType=NVARCHAR},
+      hasCorrecting = #{hasCorrecting,jdbcType=NVARCHAR},
       note = #{note,jdbcType=NVARCHAR},
       year = #{year,jdbcType=INTEGER},
       semester = #{semester,jdbcType=NVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select id, classTeacher, status, name, credits, hours, studentNumber, loopsNumber, 
-    trainingType, results, note, year, semester
-    from teacheringWork_practicalTrainingGuidance
+    select * from teacheringWork_practicalTrainingGuidance
     where id = #{id,jdbcType=INTEGER}
   </select>
     <select id="selectAll" resultMap="BaseResultMap">

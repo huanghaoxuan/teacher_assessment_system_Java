@@ -20,25 +20,11 @@ public class TeacheringworkPracticaltrainingguidance implements Serializable {
 
     private Integer loopsNumber;
 
-    public TeacheringworkPracticaltrainingguidance() {
-    }
+    private String trainingType;
 
-    public TeacheringworkPracticaltrainingguidance(String classTeacher, String status, String name, BigDecimal credits, BigDecimal hours, Integer studentNumber, Integer loopsNumber, String trainingType, String results, String note, Integer year, String semester) {
-        this.classTeacher = classTeacher;
-        this.status = status;
-        this.name = name;
-        this.credits = credits;
-        this.hours = hours;
-        this.studentNumber = studentNumber;
-        this.loopsNumber = loopsNumber;
-        this.trainingType = trainingType;
-        this.results = results;
-        this.note = note;
-        this.year = year;
-        this.semester = semester;
-    }
+    private String results;
 
-    public TeacheringworkPracticaltrainingguidance(Integer id, String classTeacher, String status, String name, BigDecimal credits, BigDecimal hours, Integer studentNumber, Integer loopsNumber, String trainingType, String results, String note, Integer year, String semester) {
+    public TeacheringworkPracticaltrainingguidance(Integer id, String classTeacher, String status, String name, BigDecimal credits, BigDecimal hours, Integer studentNumber, Integer loopsNumber, String trainingType, String results, String hasCorrecting, String note, Integer year, String semester) {
         this.id = id;
         this.classTeacher = classTeacher;
         this.status = status;
@@ -49,14 +35,40 @@ public class TeacheringworkPracticaltrainingguidance implements Serializable {
         this.loopsNumber = loopsNumber;
         this.trainingType = trainingType;
         this.results = results;
+        this.hasCorrecting = hasCorrecting;
         this.note = note;
         this.year = year;
         this.semester = semester;
     }
 
-    private String trainingType;
+    public TeacheringworkPracticaltrainingguidance() {
+    }
 
-    private String results;
+    public TeacheringworkPracticaltrainingguidance(String classTeacher, String status, String name, BigDecimal credits, BigDecimal hours, Integer studentNumber, Integer loopsNumber, String trainingType, String results, String hasCorrecting, String note, Integer year, String semester) {
+        this.classTeacher = classTeacher;
+        this.status = status;
+        this.name = name;
+        this.credits = credits;
+        this.hours = hours;
+        this.studentNumber = studentNumber;
+        this.loopsNumber = loopsNumber;
+        this.trainingType = trainingType;
+        this.results = results;
+        this.hasCorrecting = hasCorrecting;
+        this.note = note;
+        this.year = year;
+        this.semester = semester;
+    }
+
+    private String hasCorrecting;
+
+    public String getHasCorrecting() {
+        return hasCorrecting;
+    }
+
+    public void setHasCorrecting(String hasCorrecting) {
+        this.hasCorrecting = hasCorrecting;
+    }
 
     private String note;
 

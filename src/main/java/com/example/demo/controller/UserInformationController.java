@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.annotations.ApiIgnore;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.math.BigDecimal;
 
 @RestController
@@ -76,5 +78,55 @@ public class UserInformationController {
         return userinformationService.updateByPrimaryKey(userinformation);
     }
 
+    @RequestMapping(value = "/updateEmail", method = {RequestMethod.POST})
+    @ApiOperation(value = "更新邮箱", notes = "更新邮箱接口")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "classTeacher", value = "工号", required = true, dataType = "varchar", paramType = "query"),
+            @ApiImplicitParam(name = "email", value = "邮箱", required = true, dataType = "varchar", paramType = "query"),
+            @ApiImplicitParam(name = "token", value = "验证码", required = true, dataType = "int", paramType = "query"),
+
+    })
+    public int updateEmail(@ApiIgnore String classTeacher, String email, int token, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        int token_v = (int) session.getAttribute("token"); //正确的验证码
+        System.out.println(token_v);
+        if (token_v == token) {
+            Userinformation userinformation = new Userinformation();
+            userinformation.setClassTeacher(classTeacher);
+            userinformation.setEmail(email);
+            return userinformationService.updateEmail(userinformation);
+        } else {
+            return 0;
+        }
+
+    }
+
+    @RequestMapping(value = "/updatename", method = {RequestMethod.POST})
+    @ApiOperation(value = "更新姓名", notes = "更新姓名接口")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "classTeacher", value = "工号", required = true, dataType = "varchar", paramType = "query"),
+            @ApiImplicitParam(name = "name", value = "名字", required = true, dataType = "varchar", paramType = "query"),
+
+    })
+    public int updatename(@ApiIgnore String classTeacher, String name) {
+        Userinformation userinformation = new Userinformation();
+        userinformation.setClassTeacher(classTeacher);
+        userinformation.setName(name);
+        return userinformationService.updatename(userinformation);
+    }
+
+    @RequestMapping(value = "/getToken", method = {RequestMethod.POST})
+    @ApiOperation(value = "获取邮箱验证码", notes = "获取邮箱验证码接口")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "email", value = "邮箱", required = true, dataType = "varchar", paramType = "query"),
+
+    })
+    public int getToken(@ApiIgnore String email, HttpServletRequest request) {
+
+        int token = userinformationService.getToken(email);
+        HttpSession session = request.getSession();
+        session.setAttribute("token", token);
+        return 1;
+    }
 
 }

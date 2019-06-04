@@ -15,5 +15,9 @@ public interface UserinformationMapper {
 
     int updateByPrimaryKey(Userinformation record);
 
+    int updateEmail(Userinformation record);
+
+    int updatename(Userinformation record);
+
     List<Userinformation> selectByClassTeacher(Userinformation record);
 }

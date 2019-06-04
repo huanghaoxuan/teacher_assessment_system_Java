@@ -8,5 +8,7 @@ public interface UserAccessService {
 
     int updateIdentity(UserAccess record);
 
+    int updateNamePassword(UserAccess oldUserAccess, UserAccess newUserAccess);
+
     int selectByNamePassword(UserAccess record);
 }

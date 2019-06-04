@@ -45,6 +45,16 @@ public class UserAccessServiceImpl implements UserAccessService {
     }
 
     @Override
+    public int updateNamePassword(UserAccess oldUserAccess, UserAccess newUserAccess) {
+        List<UserAccess> userAccesses = userAccessMapper.selectByNamePassword(oldUserAccess);
+        if (userAccesses.isEmpty()) {
+            return 0;
+        } else {
+            return userAccessMapper.updateNamePassword(newUserAccess);
+        }
+    }
+
+    @Override
     public int selectByNamePassword(UserAccess record) {
         List<UserAccess> userAccesses = userAccessMapper.selectByNamePassword(record);
         if (userAccesses.isEmpty()) {

@@ -14,4 +14,10 @@ public interface UserinformationService {
     Userinformation selectUserinformation(Userinformation record);
 
     int updateByPrimaryKey(Userinformation record);
+
+    int updateEmail(Userinformation record);
+
+    int updatename(Userinformation record);
+
+    int getToken(String email);
 }

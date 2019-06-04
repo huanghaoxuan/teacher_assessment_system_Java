@@ -59,4 +59,19 @@ public class UserAccessController {
     }
 
 
+    @RequestMapping(value = "/updateNamePassword", method = {RequestMethod.POST})
+    @ApiOperation(value = "修改密码", notes = "修改密码接口")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "access_name", value = "账号", required = true, dataType = "varchar", paramType = "query"),
+            @ApiImplicitParam(name = "old_access_pass", value = "旧的密码", required = true, dataType = "varchar", paramType = "query"),
+            @ApiImplicitParam(name = "access_pass", value = "密码", required = false, dataType = "varchar", paramType = "query"),
+
+    })
+    public int updateNamePassword(@ApiIgnore String access_name, String access_pass, String old_access_pass) {
+        UserAccess olduserAccess = new UserAccess(access_name, old_access_pass);
+        UserAccess newuserAccess = new UserAccess(access_name, access_pass);
+        return userAccessService.updateNamePassword(olduserAccess, newuserAccess);
+    }
+
+
 }

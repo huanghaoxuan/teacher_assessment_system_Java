@@ -17,12 +17,10 @@
     values (#{access_name,jdbcType=NVARCHAR}, #{access_pass,jdbcType=NVARCHAR},
       #{access_identity,jdbcType=INTEGER})
   </insert>
-    <update id="updateByPrimaryKey" parameterType="com.example.demo.model.UserAccess">
+    <update id="updateNamePassword" parameterType="com.example.demo.model.UserAccess">
     update user_access
-    set access_name = #{access_name,jdbcType=NVARCHAR},
-      access_pass = #{access_pass,jdbcType=NVARCHAR},
-      access_identity = #{access_identity,jdbcType=INTEGER}
-    where id = #{id,jdbcType=INTEGER}
+    set access_pass = #{access_pass,jdbcType=NVARCHAR}
+    where access_name = #{access_name,jdbcType=INTEGER}
   </update>
     <update id="updateIdentity" parameterType="com.example.demo.model.UserAccess">
     update user_access

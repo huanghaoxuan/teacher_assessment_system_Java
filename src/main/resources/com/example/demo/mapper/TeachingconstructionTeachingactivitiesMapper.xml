@@ -40,7 +40,7 @@
     where id = #{id,jdbcType=INTEGER}
   </select>
     <select id="selectAll" resultMap="BaseResultMap">
-    select id, classTeacher, status, absent, lateDeparture, note, year
+    select *
     from teachingConstruction_teachingActivities
   </select>
   <select id="selectByClassTeacher" parameterType="com.example.demo.model.TeachingconstructionTeachingactivities"
