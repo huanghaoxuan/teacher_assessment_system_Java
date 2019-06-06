@@ -15,6 +15,16 @@ public class PublicaffairsSecondclassroom implements Serializable {
 
     private String regularGuidance;
 
+    private String classTeacherName;//老师姓名
+
+    public String getClassTeacherName() {
+        return classTeacherName;
+    }
+
+    public void setClassTeacherName(String classTeacherName) {
+        this.classTeacherName = classTeacherName;
+    }
+
     private String occasionalGuidance;
 
     private String time;

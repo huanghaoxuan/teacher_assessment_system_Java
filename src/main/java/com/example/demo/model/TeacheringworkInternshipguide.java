@@ -16,6 +16,16 @@ public class TeacheringworkInternshipguide implements Serializable {
 
     private BigDecimal hours;
 
+    private String classTeacherName;//老师姓名
+
+    public String getClassTeacherName() {
+        return classTeacherName;
+    }
+
+    public void setClassTeacherName(String classTeacherName) {
+        this.classTeacherName = classTeacherName;
+    }
+
     private Integer studentNumber;
 
     private Integer loopsNumber;

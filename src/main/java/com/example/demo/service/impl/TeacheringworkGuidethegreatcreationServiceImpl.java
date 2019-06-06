@@ -2,8 +2,10 @@ package com.example.demo.service.impl;
 
 import com.example.demo.mapper.TeacheringworkGuidethegreatcreationMapper;
 import com.example.demo.model.TeacheringworkGuidethegreatcreation;
+import com.example.demo.model.Userinformation;
 import com.example.demo.service.ScoreGuidecontestService;
 import com.example.demo.service.TeacheringworkGuidethegreatcreationService;
+import com.example.demo.service.UserinformationService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,9 @@ public class TeacheringworkGuidethegreatcreationServiceImpl implements Teacherin
     private TeacheringworkGuidethegreatcreationMapper teacheringworkGuidethegreatcreationMapper;
 
     @Autowired
+    private UserinformationService userinformationService;
+
+    @Autowired
     private ScoreGuidecontestService scoreGuidecontestService;
 
     @Override
@@ -43,6 +48,12 @@ public class TeacheringworkGuidethegreatcreationServiceImpl implements Teacherin
     public PageInfo<TeacheringworkGuidethegreatcreation> selectAll(int pageNum, int pageSize) {
         PageHelper.startPage(pageNum, pageSize);
         List<TeacheringworkGuidethegreatcreation> teachings = teacheringworkGuidethegreatcreationMapper.selectAll();
+        for (int index = 0; index < teachings.size(); index++) {
+            TeacheringworkGuidethegreatcreation teacheringworkGuidethegreatcreation = teachings.get(index);
+            Userinformation userinformation = new Userinformation();
+            userinformation.setClassTeacher(teacheringworkGuidethegreatcreation.getClassTeacher());
+            teacheringworkGuidethegreatcreation.setClassTeacherName(userinformationService.selectUserinformation(userinformation).getName());
+        }
         PageInfo<TeacheringworkGuidethegreatcreation> result = new PageInfo<>(teachings);
         return result;
     }

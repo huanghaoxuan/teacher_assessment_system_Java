@@ -2,8 +2,10 @@ package com.example.demo.service.impl;
 
 import com.example.demo.mapper.ScientificresearchPatentapplicationMapper;
 import com.example.demo.model.ScientificresearchPatentapplication;
+import com.example.demo.model.Userinformation;
 import com.example.demo.service.ScientificresearchPatentapplicationService;
 import com.example.demo.service.ScorePatentapplicationService;
+import com.example.demo.service.UserinformationService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,9 @@ public class ScientificresearchPatentapplicationServiceImpl implements Scientifi
     private ScientificresearchPatentapplicationMapper scientificresearchPatentapplicationMapper;
 
     @Autowired
+    private UserinformationService userinformationService;
+
+    @Autowired
     private ScorePatentapplicationService scorePatentapplicationService;
 
     @Override
@@ -43,6 +48,12 @@ public class ScientificresearchPatentapplicationServiceImpl implements Scientifi
     public PageInfo<ScientificresearchPatentapplication> selectAll(int pageNum, int pageSize) {
         PageHelper.startPage(pageNum, pageSize);
         List<ScientificresearchPatentapplication> teachings = scientificresearchPatentapplicationMapper.selectAll();
+        for (int index = 0; index < teachings.size(); index++) {
+            ScientificresearchPatentapplication scientificresearchPatentapplication = teachings.get(index);
+            Userinformation userinformation = new Userinformation();
+            userinformation.setClassTeacher(scientificresearchPatentapplication.getClassTeacher());
+            scientificresearchPatentapplication.setClassTeacherName(userinformationService.selectUserinformation(userinformation).getName());
+        }
         PageInfo<ScientificresearchPatentapplication> result = new PageInfo<>(teachings);
         return result;
     }

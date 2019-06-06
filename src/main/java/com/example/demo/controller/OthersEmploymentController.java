@@ -60,8 +60,8 @@ public class OthersEmploymentController {
             @ApiImplicitParam(name = "classTeacher", value = "教师用户工号", required = true, dataType = "varchar", paramType = "query")
 
     })
-    public Integer updateByPrimaryKey(@ApiIgnore Integer id, String name, Integer employment, Integer graduating, Integer disciplinaryRate, String note, Integer year, String semester, String classTeacher) {
-        OthersEmployment othersEmployment = new OthersEmployment(id, name, employment, graduating, disciplinaryRate, note, year, semester, classTeacher);
+    public Integer updateByPrimaryKey(@ApiIgnore Integer id, String name, Integer employment, Integer graduating, Integer disciplinaryRate, String note, Integer year, String semester, String status, String classTeacher) {
+        OthersEmployment othersEmployment = new OthersEmployment(id, name, employment, graduating, disciplinaryRate, note, year, semester, status, classTeacher);
 
         return othersEmploymentService.updateByPrimaryKey(othersEmployment);
     }
@@ -79,8 +79,8 @@ public class OthersEmploymentController {
             @ApiImplicitParam(name = "status", value = "审核情况", required = false, dataType = "varchar", paramType = "query"),
             @ApiImplicitParam(name = "classTeacher", value = "教师用户工号", required = true, dataType = "varchar", paramType = "query")
     })
-    public Integer insert(@ApiIgnore String name, Integer employment, Integer graduating, Integer disciplinaryRate, String note, Integer year, String semester, String classTeacher) {
-        OthersEmployment othersEmployment = new OthersEmployment(name, employment, graduating, disciplinaryRate, note, year, semester, classTeacher);
+    public Integer insert(@ApiIgnore String name, Integer employment, Integer graduating, Integer disciplinaryRate, String note, Integer year, String semester, String status, String classTeacher) {
+        OthersEmployment othersEmployment = new OthersEmployment(name, employment, graduating, disciplinaryRate, note, year, semester, status, classTeacher);
 
         return othersEmploymentService.insert(othersEmployment);
     }

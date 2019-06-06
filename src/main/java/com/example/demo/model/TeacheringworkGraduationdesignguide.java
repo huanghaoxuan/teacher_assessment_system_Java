@@ -18,6 +18,16 @@ public class TeacheringworkGraduationdesignguide implements Serializable {
 
     private Integer winnersNumber;
 
+    private String classTeacherName;//老师姓名
+
+    public String getClassTeacherName() {
+        return classTeacherName;
+    }
+
+    public void setClassTeacherName(String classTeacherName) {
+        this.classTeacherName = classTeacherName;
+    }
+
     private String note;
 
     private Integer year;

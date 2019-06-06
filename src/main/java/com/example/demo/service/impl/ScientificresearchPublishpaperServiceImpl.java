@@ -2,8 +2,10 @@ package com.example.demo.service.impl;
 
 import com.example.demo.mapper.ScientificresearchPublishpaperMapper;
 import com.example.demo.model.ScientificresearchPublishpaper;
+import com.example.demo.model.Userinformation;
 import com.example.demo.service.ScientificresearchPublishpaperService;
 import com.example.demo.service.ScorePublishpaperService;
+import com.example.demo.service.UserinformationService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,9 @@ public class ScientificresearchPublishpaperServiceImpl implements Scientificrese
     private ScientificresearchPublishpaperMapper pcientificresearchPublishpaperMapper;
 
     @Autowired
+    private UserinformationService userinformationService;
+
+    @Autowired
     private ScorePublishpaperService scorePublishpaperService;
 
     @Override
@@ -43,6 +48,12 @@ public class ScientificresearchPublishpaperServiceImpl implements Scientificrese
     public PageInfo<ScientificresearchPublishpaper> selectAll(int pageNum, int pageSize) {
         PageHelper.startPage(pageNum, pageSize);
         List<ScientificresearchPublishpaper> teachings = pcientificresearchPublishpaperMapper.selectAll();
+        for (int index = 0; index < teachings.size(); index++) {
+            ScientificresearchPublishpaper scientificresearchPublishpaper = teachings.get(index);
+            Userinformation userinformation = new Userinformation();
+            userinformation.setClassTeacher(scientificresearchPublishpaper.getClassTeacher());
+            scientificresearchPublishpaper.setClassTeacherName(userinformationService.selectUserinformation(userinformation).getName());
+        }
         PageInfo<ScientificresearchPublishpaper> result = new PageInfo<>(teachings);
         return result;
     }

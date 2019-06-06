@@ -17,6 +17,16 @@ public class TeachingconstructionCurriculumconstruction implements Serializable 
 
     private Integer year;
 
+    private String classTeacherName;//老师姓名
+
+    public String getClassTeacherName() {
+        return classTeacherName;
+    }
+
+    public void setClassTeacherName(String classTeacherName) {
+        this.classTeacherName = classTeacherName;
+    }
+
     private String semester;
 
     private static final long serialVersionUID = 1L;

@@ -16,6 +16,16 @@ public class ScientificresearchPublishpaper implements Serializable {
 
     private String publicationDate;
 
+    private String classTeacherName;//老师姓名
+
+    public String getClassTeacherName() {
+        return classTeacherName;
+    }
+
+    public void setClassTeacherName(String classTeacherName) {
+        this.classTeacherName = classTeacherName;
+    }
+
     private String level;
 
     private String collectionInformation;

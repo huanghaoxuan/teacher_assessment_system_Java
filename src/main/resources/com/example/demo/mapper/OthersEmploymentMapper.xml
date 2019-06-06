@@ -10,6 +10,7 @@
     <result column="note" jdbcType="NVARCHAR" property="note"/>
     <result column="year" jdbcType="INTEGER" property="year"/>
     <result column="semester" jdbcType="NVARCHAR" property="semester"/>
+    <result column="status" jdbcType="NVARCHAR" property="status"/>
     <result column="classTeacher" jdbcType="NVARCHAR" property="classTeacher"/>
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
@@ -19,11 +20,11 @@
   <insert id="insert" parameterType="com.example.demo.model.OthersEmployment">
     insert into others_employment (name, employment,
       graduating, disciplinaryRate, note, 
-      year, semester, classTeacher
+      year, semester,status, classTeacher
       )
     values (#{name,jdbcType=NVARCHAR}, #{employment,jdbcType=INTEGER},
       #{graduating,jdbcType=INTEGER}, #{disciplinaryRate,jdbcType=INTEGER}, #{note,jdbcType=NVARCHAR}, 
-      #{year,jdbcType=INTEGER}, #{semester,jdbcType=NVARCHAR}, #{classTeacher,jdbcType=NVARCHAR}
+      #{year,jdbcType=INTEGER}, #{semester,jdbcType=NVARCHAR},#{status,jdbcType=NVARCHAR}, #{classTeacher,jdbcType=NVARCHAR}
       )
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.example.demo.model.OthersEmployment">
@@ -35,11 +36,12 @@
       note = #{note,jdbcType=NVARCHAR},
       year = #{year,jdbcType=INTEGER},
       semester = #{semester,jdbcType=NVARCHAR},
+      status = #{status,jdbcType=NVARCHAR},
       classTeacher = #{classTeacher,jdbcType=NVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select id, name, employment, graduating, disciplinaryRate, note, year, semester, 
+    select id, name, employment, graduating, disciplinaryRate, note, year, semester, status
     classTeacher
     from others_employment
     where id = #{id,jdbcType=INTEGER}

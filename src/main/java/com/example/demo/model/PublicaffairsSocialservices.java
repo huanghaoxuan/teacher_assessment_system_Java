@@ -17,6 +17,16 @@ public class PublicaffairsSocialservices implements Serializable {
 
     private Integer year;
 
+    private String classTeacherName;//老师姓名
+
+    public String getClassTeacherName() {
+        return classTeacherName;
+    }
+
+    public void setClassTeacherName(String classTeacherName) {
+        this.classTeacherName = classTeacherName;
+    }
+
     private String semester;
 
     public PublicaffairsSocialservices() {

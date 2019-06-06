@@ -16,6 +16,16 @@ public class TeacheringworkExperimentalpracticeteaching implements Serializable 
 
     private BigDecimal allTime;
 
+    private String classTeacherName;//老师姓名
+
+    public String getClassTeacherName() {
+        return classTeacherName;
+    }
+
+    public void setClassTeacherName(String classTeacherName) {
+        this.classTeacherName = classTeacherName;
+    }
+
     private BigDecimal weekTime;
 
     private Integer studentNumber;

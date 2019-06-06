@@ -17,6 +17,16 @@ public class PublicaffairsEmployment implements Serializable {
 
     private Integer guideEntrepreneurshipNumber;
 
+    private String classTeacherName;//老师姓名
+
+    public String getClassTeacherName() {
+        return classTeacherName;
+    }
+
+    public void setClassTeacherName(String classTeacherName) {
+        this.classTeacherName = classTeacherName;
+    }
+
     private String note;
 
     private Integer year;

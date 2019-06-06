@@ -2,8 +2,10 @@ package com.example.demo.service.impl;
 
 import com.example.demo.mapper.TeacheringworkGraduationdesignguideMapper;
 import com.example.demo.model.TeacheringworkGraduationdesignguide;
+import com.example.demo.model.Userinformation;
 import com.example.demo.service.ScoreGuidecontestService;
 import com.example.demo.service.TeacheringworkGraduationdesignguideService;
+import com.example.demo.service.UserinformationService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,9 @@ public class TeacheringworkGraduationdesignguideServiceImpl implements Teacherin
     private TeacheringworkGraduationdesignguideMapper teacheringworkGraduationdesignguideMapper;
 
     @Autowired
+    private UserinformationService userinformationService;
+
+    @Autowired
     private ScoreGuidecontestService scoreGuidecontestService;
 
     @Override
@@ -43,6 +48,12 @@ public class TeacheringworkGraduationdesignguideServiceImpl implements Teacherin
     public PageInfo<TeacheringworkGraduationdesignguide> selectAll(int pageNum, int pageSize) {
         PageHelper.startPage(pageNum, pageSize);
         List<TeacheringworkGraduationdesignguide> teachings = teacheringworkGraduationdesignguideMapper.selectAll();
+        for (int index = 0; index < teachings.size(); index++) {
+            TeacheringworkGraduationdesignguide teacheringworkGraduationdesignguide = teachings.get(index);
+            Userinformation userinformation = new Userinformation();
+            userinformation.setClassTeacher(teacheringworkGraduationdesignguide.getClassTeacher());
+            teacheringworkGraduationdesignguide.setClassTeacherName(userinformationService.selectUserinformation(userinformation).getName());
+        }
         PageInfo<TeacheringworkGraduationdesignguide> result = new PageInfo<>(teachings);
         return result;
     }

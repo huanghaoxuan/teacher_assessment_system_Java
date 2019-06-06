@@ -14,11 +14,6 @@ import java.util.Random;
 
 public class MailToTest {
 
-    @Test
-    public void sendMail() throws Exception {
-        MailTo mailTo = new MailTo();
-        mailTo.sendmail("772844233@qq.com", 123456);
-    }
 
     @Test
     public void re() {

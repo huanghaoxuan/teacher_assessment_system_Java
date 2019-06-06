@@ -2,7 +2,9 @@ package com.example.demo.service.impl;
 
 import com.example.demo.mapper.OthersFilesMapper;
 import com.example.demo.model.OthersFiles;
+import com.example.demo.model.Userinformation;
 import com.example.demo.service.OthersFilesService;
+import com.example.demo.service.UserinformationService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,9 @@ public class OthersFilesServiceImpl implements OthersFilesService {
     @Autowired
     private OthersFilesMapper othersFilesMapper;
 
+    @Autowired
+    private UserinformationService userinformationService;
+
     @Override
     public int deleteByPrimaryKey(Integer id) {
         return othersFilesMapper.deleteByPrimaryKey(id);
@@ -38,6 +43,12 @@ public class OthersFilesServiceImpl implements OthersFilesService {
     public PageInfo<OthersFiles> selectAll(int pageNum, int pageSize) {
         PageHelper.startPage(pageNum, pageSize);
         List<OthersFiles> teachings = othersFilesMapper.selectAll();
+        for (int index = 0; index < teachings.size(); index++) {
+            OthersFiles othersFiles = teachings.get(index);
+            Userinformation userinformation = new Userinformation();
+            userinformation.setClassTeacher(othersFiles.getClassTeacher());
+            othersFiles.setClassTeacherName(userinformationService.selectUserinformation(userinformation).getName());
+        }
         PageInfo<OthersFiles> result = new PageInfo<>(teachings);
         return result;
     }

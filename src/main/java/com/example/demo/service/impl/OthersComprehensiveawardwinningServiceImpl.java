@@ -2,7 +2,9 @@ package com.example.demo.service.impl;
 
 import com.example.demo.mapper.OthersComprehensiveawardwinningMapper;
 import com.example.demo.model.OthersComprehensiveawardwinning;
+import com.example.demo.model.Userinformation;
 import com.example.demo.service.OthersComprehensiveawardwinningService;
+import com.example.demo.service.UserinformationService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,9 @@ public class OthersComprehensiveawardwinningServiceImpl implements OthersCompreh
     @Autowired
     private OthersComprehensiveawardwinningMapper othersComprehensiveawardwinningMapper;
 
+    @Autowired
+    private UserinformationService userinformationService;
+
     @Override
     public int deleteByPrimaryKey(Integer id) {
         return othersComprehensiveawardwinningMapper.deleteByPrimaryKey(id);
@@ -38,6 +43,12 @@ public class OthersComprehensiveawardwinningServiceImpl implements OthersCompreh
     public PageInfo<OthersComprehensiveawardwinning> selectAll(int pageNum, int pageSize) {
         PageHelper.startPage(pageNum, pageSize);
         List<OthersComprehensiveawardwinning> teachings = othersComprehensiveawardwinningMapper.selectAll();
+        for (int index = 0; index < teachings.size(); index++) {
+            OthersComprehensiveawardwinning othersComprehensiveawardwinning = teachings.get(index);
+            Userinformation userinformation = new Userinformation();
+            userinformation.setClassTeacher(othersComprehensiveawardwinning.getClassTeacher());
+            othersComprehensiveawardwinning.setClassTeacherName(userinformationService.selectUserinformation(userinformation).getName());
+        }
         PageInfo<OthersComprehensiveawardwinning> result = new PageInfo<>(teachings);
         return result;
     }

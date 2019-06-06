@@ -2,7 +2,9 @@ package com.example.demo.service.impl;
 
 import com.example.demo.mapper.TeacheringworkInternshipguideMapper;
 import com.example.demo.model.TeacheringworkInternshipguide;
+import com.example.demo.model.Userinformation;
 import com.example.demo.service.TeacheringworkInternshipguideService;
+import com.example.demo.service.UserinformationService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,9 @@ public class TeacheringworkInternshipguideServiceImpl implements TeacheringworkI
     @Autowired
     private TeacheringworkInternshipguideMapper teacheringworkInternshipguideMapper;
 
+    @Autowired
+    private UserinformationService userinformationService;
+
     @Override
     public int deleteByPrimaryKey(Integer id) {
         return teacheringworkInternshipguideMapper.deleteByPrimaryKey(id);
@@ -38,6 +43,12 @@ public class TeacheringworkInternshipguideServiceImpl implements TeacheringworkI
     public PageInfo<TeacheringworkInternshipguide> selectAll(int pageNum, int pageSize) {
         PageHelper.startPage(pageNum, pageSize);
         List<TeacheringworkInternshipguide> teachings = teacheringworkInternshipguideMapper.selectAll();
+        for (int index = 0; index < teachings.size(); index++) {
+            TeacheringworkInternshipguide teacheringworkInternshipguide = teachings.get(index);
+            Userinformation userinformation = new Userinformation();
+            userinformation.setClassTeacher(teacheringworkInternshipguide.getClassTeacher());
+            teacheringworkInternshipguide.setClassTeacherName(userinformationService.selectUserinformation(userinformation).getName());
+        }
         PageInfo<TeacheringworkInternshipguide> result = new PageInfo<>(teachings);
         return result;
     }

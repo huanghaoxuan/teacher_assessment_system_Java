@@ -13,6 +13,16 @@ public class OthersEmployment implements Serializable {
 
     private Integer disciplinaryRate;
 
+    private String classTeacherName;//老师姓名
+
+    public String getClassTeacherName() {
+        return classTeacherName;
+    }
+
+    public void setClassTeacherName(String classTeacherName) {
+        this.classTeacherName = classTeacherName;
+    }
+
     private String note;
 
     private Integer year;
@@ -22,7 +32,7 @@ public class OthersEmployment implements Serializable {
     public OthersEmployment() {
     }
 
-    public OthersEmployment(String name, Integer employment, Integer graduating, Integer disciplinaryRate, String note, Integer year, String semester, String classTeacher) {
+    public OthersEmployment(String name, Integer employment, Integer graduating, Integer disciplinaryRate, String note, Integer year, String semester, String status, String classTeacher) {
         this.name = name;
         this.employment = employment;
         this.graduating = graduating;
@@ -30,10 +40,11 @@ public class OthersEmployment implements Serializable {
         this.note = note;
         this.year = year;
         this.semester = semester;
+        this.status = status;
         this.classTeacher = classTeacher;
     }
 
-    public OthersEmployment(Integer id, String name, Integer employment, Integer graduating, Integer disciplinaryRate, String note, Integer year, String semester, String classTeacher) {
+    public OthersEmployment(Integer id, String name, Integer employment, Integer graduating, Integer disciplinaryRate, String note, Integer year, String semester, String status, String classTeacher) {
         this.id = id;
         this.name = name;
         this.employment = employment;
@@ -42,7 +53,18 @@ public class OthersEmployment implements Serializable {
         this.note = note;
         this.year = year;
         this.semester = semester;
+        this.status = status;
         this.classTeacher = classTeacher;
+    }
+
+    private String status;
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     private String classTeacher;

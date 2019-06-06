@@ -17,6 +17,16 @@ public class PublicaffairsCounselor implements Serializable {
 
     private String startTime;
 
+    private String classTeacherName;//老师姓名
+
+    public String getClassTeacherName() {
+        return classTeacherName;
+    }
+
+    public void setClassTeacherName(String classTeacherName) {
+        this.classTeacherName = classTeacherName;
+    }
+
     private String endTime;
 
     private String note;

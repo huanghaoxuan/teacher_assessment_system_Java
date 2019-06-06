@@ -2,10 +2,8 @@ package com.example.demo.service.impl;
 
 import com.example.demo.mapper.TeacheringworkTeachingawardsMapper;
 import com.example.demo.model.TeacheringworkTeachingawards;
-import com.example.demo.service.ScoreContestawardService;
-import com.example.demo.service.ScoreGovernmentachievementawardService;
-import com.example.demo.service.ScoreNotgovernmentachievementawardService;
-import com.example.demo.service.TeacheringworkTeachingawardsService;
+import com.example.demo.model.Userinformation;
+import com.example.demo.service.*;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +25,9 @@ public class TeacheringworkTeachingawardsServiceImpl implements TeacheringworkTe
 
     @Autowired
     private TeacheringworkTeachingawardsMapper teacheringworkTeachingawardsMapper;
+
+    @Autowired
+    private UserinformationService userinformationService;
 
     @Autowired
     private ScoreContestawardService scoreContestawardService;
@@ -51,6 +52,12 @@ public class TeacheringworkTeachingawardsServiceImpl implements TeacheringworkTe
     public PageInfo<TeacheringworkTeachingawards> selectAll(int pageNum, int pageSize) {
         PageHelper.startPage(pageNum, pageSize);
         List<TeacheringworkTeachingawards> teachings = teacheringworkTeachingawardsMapper.selectAll();
+        for (int index = 0; index < teachings.size(); index++) {
+            TeacheringworkTeachingawards teacheringworkTeachingawards = teachings.get(index);
+            Userinformation userinformation = new Userinformation();
+            userinformation.setClassTeacher(teacheringworkTeachingawards.getClassTeacher());
+            teacheringworkTeachingawards.setClassTeacherName(userinformationService.selectUserinformation(userinformation).getName());
+        }
         PageInfo<TeacheringworkTeachingawards> result = new PageInfo<>(teachings);
         return result;
     }

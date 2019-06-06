@@ -2,8 +2,10 @@ package com.example.demo.service.impl;
 
 import com.example.demo.mapper.ScientificresearchLongitudinaltopicsprojectMapper;
 import com.example.demo.model.ScientificresearchLongitudinaltopicsproject;
+import com.example.demo.model.Userinformation;
 import com.example.demo.service.ScientificresearchLongitudinaltopicsprojectService;
 import com.example.demo.service.ScoreLongitudinaltopicsprojectService;
+import com.example.demo.service.UserinformationService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,9 @@ public class ScientificresearchLongitudinaltopicsprojectServiceImpl implements S
     private ScientificresearchLongitudinaltopicsprojectMapper scientificresearchLongitudinaltopicsprojectMapper;
 
     @Autowired
+    private UserinformationService userinformationService;
+
+    @Autowired
     private ScoreLongitudinaltopicsprojectService scoreLongitudinaltopicsprojectService;
 
     @Override
@@ -43,6 +48,12 @@ public class ScientificresearchLongitudinaltopicsprojectServiceImpl implements S
     public PageInfo<ScientificresearchLongitudinaltopicsproject> selectAll(int pageNum, int pageSize) {
         PageHelper.startPage(pageNum, pageSize);
         List<ScientificresearchLongitudinaltopicsproject> teachings = scientificresearchLongitudinaltopicsprojectMapper.selectAll();
+        for (int index = 0; index < teachings.size(); index++) {
+            ScientificresearchLongitudinaltopicsproject scientificresearchLongitudinaltopicsproject = teachings.get(index);
+            Userinformation userinformation = new Userinformation();
+            userinformation.setClassTeacher(scientificresearchLongitudinaltopicsproject.getClassTeacher());
+            scientificresearchLongitudinaltopicsproject.setClassTeacherName(userinformationService.selectUserinformation(userinformation).getName());
+        }
         PageInfo<ScientificresearchLongitudinaltopicsproject> result = new PageInfo<>(teachings);
         return result;
     }

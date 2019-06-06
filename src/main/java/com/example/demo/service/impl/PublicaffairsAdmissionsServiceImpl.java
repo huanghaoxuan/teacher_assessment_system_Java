@@ -2,7 +2,9 @@ package com.example.demo.service.impl;
 
 import com.example.demo.mapper.PublicaffairsAdmissionsMapper;
 import com.example.demo.model.PublicaffairsAdmissions;
+import com.example.demo.model.Userinformation;
 import com.example.demo.service.PublicaffairsAdmissionsService;
+import com.example.demo.service.UserinformationService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,9 @@ public class PublicaffairsAdmissionsServiceImpl implements PublicaffairsAdmissio
     @Autowired
     private PublicaffairsAdmissionsMapper publicaffairsAdmissionsMapper;
 
+    @Autowired
+    private UserinformationService userinformationService;
+
     @Override
     public int deleteByPrimaryKey(Integer id) {
         return publicaffairsAdmissionsMapper.deleteByPrimaryKey(id);
@@ -38,6 +43,12 @@ public class PublicaffairsAdmissionsServiceImpl implements PublicaffairsAdmissio
     public PageInfo<PublicaffairsAdmissions> selectAll(int pageNum, int pageSize) {
         PageHelper.startPage(pageNum, pageSize);
         List<PublicaffairsAdmissions> teachings = publicaffairsAdmissionsMapper.selectAll();
+        for (int index = 0; index < teachings.size(); index++) {
+            PublicaffairsAdmissions publicaffairsAdmissions = teachings.get(index);
+            Userinformation userinformation = new Userinformation();
+            userinformation.setClassTeacher(publicaffairsAdmissions.getClassTeacher());
+            publicaffairsAdmissions.setClassTeacherName(userinformationService.selectUserinformation(userinformation).getName());
+        }
         PageInfo<PublicaffairsAdmissions> result = new PageInfo<>(teachings);
         return result;
     }

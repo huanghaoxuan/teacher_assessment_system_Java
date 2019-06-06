@@ -16,6 +16,16 @@ public class TeacheringworkClassroomteaching implements Serializable {
 
     private String type;
 
+    private String classTeacherName;//老师姓名
+
+    public String getClassTeacherName() {
+        return classTeacherName;
+    }
+
+    public void setClassTeacherName(String classTeacherName) {
+        this.classTeacherName = classTeacherName;
+    }
+
     private String yesorno;
 
     private BigDecimal credits;

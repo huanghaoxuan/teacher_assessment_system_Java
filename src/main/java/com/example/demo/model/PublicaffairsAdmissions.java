@@ -17,6 +17,16 @@ public class PublicaffairsAdmissions implements Serializable {
 
     private String note;
 
+    private String classTeacherName;//老师姓名
+
+    public String getClassTeacherName() {
+        return classTeacherName;
+    }
+
+    public void setClassTeacherName(String classTeacherName) {
+        this.classTeacherName = classTeacherName;
+    }
+
     private Integer year;
 
     private String semester;

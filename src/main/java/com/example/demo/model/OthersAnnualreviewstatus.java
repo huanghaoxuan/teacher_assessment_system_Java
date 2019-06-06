@@ -15,6 +15,16 @@ public class OthersAnnualreviewstatus implements Serializable {
 
     private String status;
 
+    private String classTeacherName;//老师姓名
+
+    public String getClassTeacherName() {
+        return classTeacherName;
+    }
+
+    public void setClassTeacherName(String classTeacherName) {
+        this.classTeacherName = classTeacherName;
+    }
+
     public OthersAnnualreviewstatus() {
     }
 

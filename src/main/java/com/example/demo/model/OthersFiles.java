@@ -15,6 +15,16 @@ public class OthersFiles implements Serializable {
 
     private String useScope;
 
+    private String classTeacherName;//老师姓名
+
+    public String getClassTeacherName() {
+        return classTeacherName;
+    }
+
+    public void setClassTeacherName(String classTeacherName) {
+        this.classTeacherName = classTeacherName;
+    }
+
     private String note;
 
     private Integer year;

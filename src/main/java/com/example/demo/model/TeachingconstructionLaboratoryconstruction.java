@@ -16,6 +16,16 @@ public class TeachingconstructionLaboratoryconstruction implements Serializable 
 
     private String contribution;
 
+    private String classTeacherName;//老师姓名
+
+    public String getClassTeacherName() {
+        return classTeacherName;
+    }
+
+    public void setClassTeacherName(String classTeacherName) {
+        this.classTeacherName = classTeacherName;
+    }
+
     private BigDecimal hours;
 
     private Integer peopleNumber;

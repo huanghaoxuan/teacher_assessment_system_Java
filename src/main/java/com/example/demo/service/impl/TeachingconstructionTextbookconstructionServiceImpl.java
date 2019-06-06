@@ -2,7 +2,9 @@ package com.example.demo.service.impl;
 
 import com.example.demo.mapper.TeachingconstructionTextbookconstructionMapper;
 import com.example.demo.model.TeachingconstructionTextbookconstruction;
+import com.example.demo.model.Userinformation;
 import com.example.demo.service.TeachingconstructionTextbookconstructionService;
+import com.example.demo.service.UserinformationService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,9 @@ public class TeachingconstructionTextbookconstructionServiceImpl implements Teac
     @Autowired
     private TeachingconstructionTextbookconstructionMapper teachingconstructionTextbookconstructionMapper;
 
+    @Autowired
+    private UserinformationService userinformationService;
+
     @Override
     public int deleteByPrimaryKey(Integer id) {
         return teachingconstructionTextbookconstructionMapper.deleteByPrimaryKey(id);
@@ -41,6 +46,12 @@ public class TeachingconstructionTextbookconstructionServiceImpl implements Teac
     public PageInfo<TeachingconstructionTextbookconstruction> selectAll(int pageNum, int pageSize) {
         PageHelper.startPage(pageNum, pageSize, "id desc");
         List<TeachingconstructionTextbookconstruction> teachings = teachingconstructionTextbookconstructionMapper.selectAll();
+        for (int index = 0; index < teachings.size(); index++) {
+            TeachingconstructionTextbookconstruction teachingconstructionTextbookconstruction = teachings.get(index);
+            Userinformation userinformation = new Userinformation();
+            userinformation.setClassTeacher(teachingconstructionTextbookconstruction.getClassTeacher());
+            teachingconstructionTextbookconstruction.setClassTeacherName(userinformationService.selectUserinformation(userinformation).getName());
+        }
         PageInfo<TeachingconstructionTextbookconstruction> result = new PageInfo<>(teachings);
         return result;
     }

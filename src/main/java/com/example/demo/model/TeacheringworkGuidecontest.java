@@ -14,6 +14,16 @@ public class TeacheringworkGuidecontest implements Serializable {
 
     private String level;
 
+    private String classTeacherName;//老师姓名
+
+    public String getClassTeacherName() {
+        return classTeacherName;
+    }
+
+    public void setClassTeacherName(String classTeacherName) {
+        this.classTeacherName = classTeacherName;
+    }
+
     private Integer prizePersonsNumber;
 
     private Integer firstPersonsNumber;

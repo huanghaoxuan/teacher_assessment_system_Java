@@ -2,7 +2,9 @@ package com.example.demo.service.impl;
 
 import com.example.demo.mapper.TeacheringworkPracticaltrainingguidanceMapper;
 import com.example.demo.model.TeacheringworkPracticaltrainingguidance;
+import com.example.demo.model.Userinformation;
 import com.example.demo.service.TeacheringworkPracticaltrainingguidanceService;
+import com.example.demo.service.UserinformationService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,9 @@ public class TeacheringworkPracticaltrainingguidanceServiceImpl implements Teach
     @Autowired
     private TeacheringworkPracticaltrainingguidanceMapper teacheringworkPracticaltrainingguidanceMapper;
 
+    @Autowired
+    private UserinformationService userinformationService;
+
     @Override
     public int deleteByPrimaryKey(Integer id) {
         return teacheringworkPracticaltrainingguidanceMapper.deleteByPrimaryKey(id);
@@ -38,6 +43,12 @@ public class TeacheringworkPracticaltrainingguidanceServiceImpl implements Teach
     public PageInfo<TeacheringworkPracticaltrainingguidance> selectAll(int pageNum, int pageSize) {
         PageHelper.startPage(pageNum, pageSize);
         List<TeacheringworkPracticaltrainingguidance> teachings = teacheringworkPracticaltrainingguidanceMapper.selectAll();
+        for (int index = 0; index < teachings.size(); index++) {
+            TeacheringworkPracticaltrainingguidance teacheringworkPracticaltrainingguidance = teachings.get(index);
+            Userinformation userinformation = new Userinformation();
+            userinformation.setClassTeacher(teacheringworkPracticaltrainingguidance.getClassTeacher());
+            teacheringworkPracticaltrainingguidance.setClassTeacherName(userinformationService.selectUserinformation(userinformation).getName());
+        }
         PageInfo<TeacheringworkPracticaltrainingguidance> result = new PageInfo<>(teachings);
         return result;
     }

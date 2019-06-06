@@ -2,7 +2,9 @@ package com.example.demo.service.impl;
 
 import com.example.demo.mapper.TeachingconstructionCurriculumconstructionMapper;
 import com.example.demo.model.TeachingconstructionCurriculumconstruction;
+import com.example.demo.model.Userinformation;
 import com.example.demo.service.TeachingconstructionCurriculumconstructionService;
+import com.example.demo.service.UserinformationService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,9 @@ public class TeachingconstructionCurriculumconstructionServiceImpl implements Te
     @Autowired
     private TeachingconstructionCurriculumconstructionMapper teachingconstructionCurriculumconstructionMapper;
 
+    @Autowired
+    private UserinformationService userinformationService;
+
     @Override
     public int deleteByPrimaryKey(Integer id) {
         return teachingconstructionCurriculumconstructionMapper.deleteByPrimaryKey(id);
@@ -38,6 +43,12 @@ public class TeachingconstructionCurriculumconstructionServiceImpl implements Te
     public PageInfo<TeachingconstructionCurriculumconstruction> selectAll(int pageNum, int pageSize) {
         PageHelper.startPage(pageNum, pageSize);
         List<TeachingconstructionCurriculumconstruction> teachings = teachingconstructionCurriculumconstructionMapper.selectAll();
+        for (int index = 0; index < teachings.size(); index++) {
+            TeachingconstructionCurriculumconstruction teachingconstructionCurriculumconstruction = teachings.get(index);
+            Userinformation userinformation = new Userinformation();
+            userinformation.setClassTeacher(teachingconstructionCurriculumconstruction.getClassTeacher());
+            teachingconstructionCurriculumconstruction.setClassTeacherName(userinformationService.selectUserinformation(userinformation).getName());
+        }
         PageInfo<TeachingconstructionCurriculumconstruction> result = new PageInfo<>(teachings);
         return result;
     }

@@ -2,7 +2,9 @@ package com.example.demo.service.impl;
 
 import com.example.demo.mapper.OthersAnnualreviewstatusMapper;
 import com.example.demo.model.OthersAnnualreviewstatus;
+import com.example.demo.model.Userinformation;
 import com.example.demo.service.OthersAnnualreviewstatusService;
+import com.example.demo.service.UserinformationService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,9 @@ public class OthersAnnualreviewstatusServiceImpl implements OthersAnnualreviewst
 
     @Autowired
     private OthersAnnualreviewstatusMapper othersAnnualreviewstatusMapper;
+
+    @Autowired
+    private UserinformationService userinformationService;
 
     @Override
     public PageInfo<OthersAnnualreviewstatus> selectByClassTeacher(OthersAnnualreviewstatus teaching, int pageNum, int pageSize) {
@@ -51,6 +56,12 @@ public class OthersAnnualreviewstatusServiceImpl implements OthersAnnualreviewst
     public PageInfo<OthersAnnualreviewstatus> selectAll(int pageNum, int pageSize) {
         PageHelper.startPage(pageNum, pageSize);
         List<OthersAnnualreviewstatus> teachings = othersAnnualreviewstatusMapper.selectAll();
+        for (int index = 0; index < teachings.size(); index++) {
+            OthersAnnualreviewstatus othersAnnualreviewstatus = teachings.get(index);
+            Userinformation userinformation = new Userinformation();
+            userinformation.setClassTeacher(othersAnnualreviewstatus.getClassTeacher());
+            othersAnnualreviewstatus.setClassTeacherName(userinformationService.selectUserinformation(userinformation).getName());
+        }
         PageInfo<OthersAnnualreviewstatus> result = new PageInfo<>(teachings);
         return result;
     }

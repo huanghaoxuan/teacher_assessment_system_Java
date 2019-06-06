@@ -129,14 +129,7 @@
     where id = #{id,jdbcType=INTEGER}
   </select>
     <select id="selectAll" resultMap="BaseResultMap">
-    select id, name, sex, birthday, academicQualifications, academicDegrees, duties, 
-    politicalLandscape, classTeacher, departmentDept, enterSchoolTime, universityYear, 
-    undergraduateGraduationSchool, academicQualificationsSchool, academicDegreesSchool, 
-    idcard, willDiscipline, willProfessionalTitles, studyProfessional, jobYear, teacherQualificationCertificate, 
-    preJobTraining, putonghuaExam, academicQualificationsTime, academicDegreesTime, professionalTechnologyDuties, 
-    professionalTechnologyDutiesTime, professionalStudyDirection, professionalStudyDirectionYear, 
-    continuingEducationSituation, engineeringPracticeExperience, guidanceStudentPracticeNumber
-    from userInformation
+    select * from userInformation
   </select>
     <select id="selectByClassTeacher" parameterType="com.example.demo.model.Userinformation"
             resultMap="BaseResultMap">

@@ -15,6 +15,16 @@ public class OthersComprehensiveawardwinning implements Serializable {
 
     private String ranking;
 
+    private String classTeacherName;//老师姓名
+
+    public String getClassTeacherName() {
+        return classTeacherName;
+    }
+
+    public void setClassTeacherName(String classTeacherName) {
+        this.classTeacherName = classTeacherName;
+    }
+
     private Integer peopleNumber;
 
     private String note;

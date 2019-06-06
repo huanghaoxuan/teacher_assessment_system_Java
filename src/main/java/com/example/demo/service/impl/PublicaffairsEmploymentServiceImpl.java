@@ -2,7 +2,9 @@ package com.example.demo.service.impl;
 
 import com.example.demo.mapper.PublicaffairsEmploymentMapper;
 import com.example.demo.model.PublicaffairsEmployment;
+import com.example.demo.model.Userinformation;
 import com.example.demo.service.PublicaffairsEmploymentService;
+import com.example.demo.service.UserinformationService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,9 @@ public class PublicaffairsEmploymentServiceImpl implements PublicaffairsEmployme
     @Autowired
     private PublicaffairsEmploymentMapper publicaffairsEmploymentMapper;
 
+    @Autowired
+    private UserinformationService userinformationService;
+
     @Override
     public int deleteByPrimaryKey(Integer id) {
         return publicaffairsEmploymentMapper.deleteByPrimaryKey(id);
@@ -38,6 +43,12 @@ public class PublicaffairsEmploymentServiceImpl implements PublicaffairsEmployme
     public PageInfo<PublicaffairsEmployment> selectAll(int pageNum, int pageSize) {
         PageHelper.startPage(pageNum, pageSize);
         List<PublicaffairsEmployment> teachings = publicaffairsEmploymentMapper.selectAll();
+        for (int index = 0; index < teachings.size(); index++) {
+            PublicaffairsEmployment publicaffairsEmployment = teachings.get(index);
+            Userinformation userinformation = new Userinformation();
+            userinformation.setClassTeacher(publicaffairsEmployment.getClassTeacher());
+            publicaffairsEmployment.setClassTeacherName(userinformationService.selectUserinformation(userinformation).getName());
+        }
         PageInfo<PublicaffairsEmployment> result = new PageInfo<>(teachings);
         return result;
     }

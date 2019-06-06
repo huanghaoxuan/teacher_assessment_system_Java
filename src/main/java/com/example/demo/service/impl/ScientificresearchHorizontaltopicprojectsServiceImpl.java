@@ -2,8 +2,10 @@ package com.example.demo.service.impl;
 
 import com.example.demo.mapper.ScientificresearchHorizontaltopicprojectsMapper;
 import com.example.demo.model.ScientificresearchHorizontaltopicprojects;
+import com.example.demo.model.Userinformation;
 import com.example.demo.service.ScientificresearchHorizontaltopicprojectsService;
 import com.example.demo.service.ScoreHorizontaltopicprojectsService;
+import com.example.demo.service.UserinformationService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,9 @@ public class ScientificresearchHorizontaltopicprojectsServiceImpl implements Sci
     private ScientificresearchHorizontaltopicprojectsMapper scientificresearchHorizontaltopicprojectsMapper;
 
     @Autowired
+    private UserinformationService userinformationService;
+
+    @Autowired
     private ScoreHorizontaltopicprojectsService scoreHorizontaltopicprojectsService;
 
     @Override
@@ -43,6 +48,12 @@ public class ScientificresearchHorizontaltopicprojectsServiceImpl implements Sci
     public PageInfo<ScientificresearchHorizontaltopicprojects> selectAll(int pageNum, int pageSize) {
         PageHelper.startPage(pageNum, pageSize);
         List<ScientificresearchHorizontaltopicprojects> teachings = scientificresearchHorizontaltopicprojectsMapper.selectAll();
+        for (int index = 0; index < teachings.size(); index++) {
+            ScientificresearchHorizontaltopicprojects scientificresearchHorizontaltopicprojects = teachings.get(index);
+            Userinformation userinformation = new Userinformation();
+            userinformation.setClassTeacher(scientificresearchHorizontaltopicprojects.getClassTeacher());
+            scientificresearchHorizontaltopicprojects.setClassTeacherName(userinformationService.selectUserinformation(userinformation).getName());
+        }
         PageInfo<ScientificresearchHorizontaltopicprojects> result = new PageInfo<>(teachings);
         return result;
     }

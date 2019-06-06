@@ -3,7 +3,9 @@ package com.example.demo.service.impl;
 
 import com.example.demo.mapper.TeachingconstructionTeachingtopicsMapper;
 import com.example.demo.model.TeachingconstructionTeachingtopics;
+import com.example.demo.model.Userinformation;
 import com.example.demo.service.TeachingconstructionTeachingtopicsService;
+import com.example.demo.service.UserinformationService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,9 @@ public class TeachingconstructionTeachingtopicsServiceImpl implements Teachingco
     @Autowired
     private TeachingconstructionTeachingtopicsMapper teachingconstructionTeachingtopicsMapper;
 
+    @Autowired
+    private UserinformationService userinformationService;
+
     @Override
     public int deleteByPrimaryKey(Integer id) {
         return teachingconstructionTeachingtopicsMapper.deleteByPrimaryKey(id);
@@ -39,6 +44,12 @@ public class TeachingconstructionTeachingtopicsServiceImpl implements Teachingco
     public PageInfo<TeachingconstructionTeachingtopics> selectAll(int pageNum, int pageSize) {
         PageHelper.startPage(pageNum, pageSize);
         List<TeachingconstructionTeachingtopics> teachings = teachingconstructionTeachingtopicsMapper.selectAll();
+        for (int index = 0; index < teachings.size(); index++) {
+            TeachingconstructionTeachingtopics teachingconstructionTeachingtopics = teachings.get(index);
+            Userinformation userinformation = new Userinformation();
+            userinformation.setClassTeacher(teachingconstructionTeachingtopics.getClassTeacher());
+            teachingconstructionTeachingtopics.setClassTeacherName(userinformationService.selectUserinformation(userinformation).getName());
+        }
         PageInfo<TeachingconstructionTeachingtopics> result = new PageInfo<>(teachings);
         return result;
     }
