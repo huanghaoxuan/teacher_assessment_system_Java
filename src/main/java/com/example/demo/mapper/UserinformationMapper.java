@@ -19,5 +19,7 @@ public interface UserinformationMapper {
 
     int updatename(Userinformation record);
 
+    int updatedepartmentDept(Userinformation record);
+
     List<Userinformation> selectByClassTeacher(Userinformation record);
 }

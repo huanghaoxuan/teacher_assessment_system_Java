@@ -45,6 +45,11 @@ public class UserinformationServiceImpl implements UserinformationService {
     }
 
     @Override
+    public int updatedepartmentDept(Userinformation record) {
+        return userinformationMapper.updatedepartmentDept(record);
+    }
+
+    @Override
     public int getToken(String email) {
         String str = "0123456789";
         StringBuilder sb = new StringBuilder(6);

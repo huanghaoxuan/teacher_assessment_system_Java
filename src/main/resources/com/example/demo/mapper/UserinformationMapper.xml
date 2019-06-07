@@ -48,6 +48,11 @@
     set name = #{name,jdbcType=NVARCHAR}
     where classTeacher = #{classTeacher,jdbcType=NVARCHAR}
   </update>
+    <update id="updatedepartmentDept" parameterType="com.example.demo.model.Userinformation">
+    update userInformation
+    set departmentDept = #{departmentDept,jdbcType=NVARCHAR}
+    where classTeacher = #{classTeacher,jdbcType=NVARCHAR}
+  </update>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from userInformation
     where id = #{id,jdbcType=INTEGER}

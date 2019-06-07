@@ -19,5 +19,7 @@ public interface UserinformationService {
 
     int updatename(Userinformation record);
 
+    int updatedepartmentDept(Userinformation record);
+
     int getToken(String email);
 }

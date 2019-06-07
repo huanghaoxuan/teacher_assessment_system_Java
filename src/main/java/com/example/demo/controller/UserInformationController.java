@@ -115,6 +115,20 @@ public class UserInformationController {
         return userinformationService.updatename(userinformation);
     }
 
+    @RequestMapping(value = "/updatedepartmentDept", method = {RequestMethod.POST})
+    @ApiOperation(value = "更新所属学院", notes = "更新所属学院接口")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "classTeacher", value = "工号", required = true, dataType = "varchar", paramType = "query"),
+            @ApiImplicitParam(name = "departmentDept", value = "所属学院", required = true, dataType = "varchar", paramType = "query"),
+
+    })
+    public int updatedepartmentDept(@ApiIgnore String classTeacher, String departmentDept) {
+        Userinformation userinformation = new Userinformation();
+        userinformation.setClassTeacher(classTeacher);
+        userinformation.setDepartmentDept(departmentDept);
+        return userinformationService.updatedepartmentDept(userinformation);
+    }
+
     @RequestMapping(value = "/getToken", method = {RequestMethod.POST})
     @ApiOperation(value = "获取邮箱验证码", notes = "获取邮箱验证码接口")
     @ApiImplicitParams({
