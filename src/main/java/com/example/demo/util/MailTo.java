@@ -1,29 +1,36 @@
 package com.example.demo.util;
 
 import javax.mail.*;
-import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.Date;
 import java.util.Properties;
 
 public class MailTo {
     // 发件人 账号和密码
-    public static final String MY_EMAIL_ACCOUNT = "sjcj_cxxy@outlook.com";
-    public static final String MY_EMAIL_PASSWORD = "sjcjcxxy123";// 密码,是你自己的设置的授权码
+    //public static final String MY_EMAIL_ACCOUNT = "";
+    //public static final String MY_EMAIL_PASSWORD = "";// 密码,是你自己的设置的授权码
 
     // SMTP服务器(这里用的163 SMTP服务器)
-    public static final String MEAIL_outlook_SMTP_HOST = "smtp.office365.com";
-    public static final String SMTP_oulook_PORT = "587";// 端口号,这个是163使用到的;QQ的应该是465或者875
+    //public static final String MEAIL_outlook_SMTP_HOST = "";
+    //public static final String SMTP_oulook_PORT = "";// 端口号,这个是163使用到的;QQ的应该是465或者875
 
     // 收件人
     //public static final String RECEIVE_EMAIL_ACCOUNT = "1477205319@qq.com";
 
-    public void sendmail(String email, int token) throws AddressException, MessagingException {
+    public void sendmail(String email, int token) throws Exception {
+        Properties properties = new Properties();
+        // 使用InPutStream流读取properties文件
+        BufferedReader bufferedReader = new BufferedReader(new FileReader("src\\main\\resources\\com\\example\\demo\\util\\mail.properties"));
+        properties.load(bufferedReader);
+        // 获取key对应的value值
+        //properties.getProperty(String key);
         Properties p = new Properties();
-        p.setProperty("mail.smtp.host", MEAIL_outlook_SMTP_HOST);
-        p.setProperty("mail.smtp.port", SMTP_oulook_PORT);
-        p.setProperty("mail.smtp.socketFactory.port", SMTP_oulook_PORT);
+        p.setProperty("mail.smtp.host", properties.getProperty("MEAIL_SMTP_HOST"));
+        p.setProperty("mail.smtp.port", properties.getProperty("SMTP_PORT"));
+        p.setProperty("mail.smtp.socketFactory.port", properties.getProperty("SMTP_PORT"));
         p.setProperty("mail.smtp.starttls.enable", "true");
         p.setProperty("mail.smtp.auth", "true");
         p.setProperty("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
@@ -33,14 +40,14 @@ public class MailTo {
             // 设置认证账户信息
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(MY_EMAIL_ACCOUNT, MY_EMAIL_PASSWORD);
+                return new PasswordAuthentication(properties.getProperty("MY_EMAIL_ACCOUNT"), properties.getProperty("MY_EMAIL_PASSWORD"));
             }
         });
         session.setDebug(true);
         System.out.println("创建邮件");
         MimeMessage message = new MimeMessage(session);
         // 发件人
-        message.setFrom(new InternetAddress(MY_EMAIL_ACCOUNT));
+        message.setFrom(new InternetAddress(properties.getProperty("MY_EMAIL_ACCOUNT")));
         // 收件人和抄送人
         message.setRecipients(Message.RecipientType.TO, email);
         //给自己抄送一份，解决 554 DT:SPM 问题

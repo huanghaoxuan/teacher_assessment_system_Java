@@ -14,7 +14,6 @@ import java.util.Random;
 
 public class MailToTest {
 
-
     @Test
     public void re() {
         String str = "0123456789";
