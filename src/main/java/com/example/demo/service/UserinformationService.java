@@ -26,4 +26,6 @@ public interface UserinformationService {
     List<String> selectBydepartmentDept(String departmentDept);
 
     int getToken(String email);
+
+    int getTokenForget(String classTeacher);
 }

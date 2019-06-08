@@ -10,5 +10,7 @@ public interface UserAccessService {
 
     int updateNamePassword(UserAccess oldUserAccess, UserAccess newUserAccess);
 
+    int updateNamePassword(UserAccess UserAccess);
+
     int selectByNamePassword(UserAccess record);
 }

@@ -89,7 +89,8 @@ public class UserInformationController {
     public int updateEmail(@ApiIgnore String classTeacher, String email, int token, HttpServletRequest request) {
         HttpSession session = request.getSession();
         int token_v = (int) session.getAttribute("token"); //正确的验证码
-        System.out.println(token_v);
+        session.removeAttribute("token");
+        //System.out.println(token_v);
         if (token_v == token) {
             Userinformation userinformation = new Userinformation();
             userinformation.setClassTeacher(classTeacher);
@@ -130,7 +131,7 @@ public class UserInformationController {
     }
 
     @RequestMapping(value = "/getToken", method = {RequestMethod.POST})
-    @ApiOperation(value = "获取邮箱验证码", notes = "获取邮箱验证码接口")
+    @ApiOperation(value = "获取邮箱验证码", notes = "新设置邮箱时获取邮箱验证码接口")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "email", value = "邮箱", required = true, dataType = "varchar", paramType = "query"),
 
@@ -138,6 +139,20 @@ public class UserInformationController {
     public int getToken(@ApiIgnore String email, HttpServletRequest request) {
 
         int token = userinformationService.getToken(email);
+        HttpSession session = request.getSession();
+        session.setAttribute("token", token);
+        return 1;
+    }
+
+    @RequestMapping(value = "/getToken/forget", method = {RequestMethod.POST})
+    @ApiOperation(value = "获取邮箱验证码", notes = "忘记密码时时获取邮箱验证码接口")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "access_name", value = "工号", required = true, dataType = "varchar", paramType = "query"),
+
+    })
+    public int getTokenForget(@ApiIgnore String access_name, HttpServletRequest request) {
+
+        int token = userinformationService.getTokenForget(access_name);
         HttpSession session = request.getSession();
         session.setAttribute("token", token);
         return 1;

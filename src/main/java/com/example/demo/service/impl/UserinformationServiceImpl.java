@@ -81,4 +81,12 @@ public class UserinformationServiceImpl implements UserinformationService {
         }).start();
         return Integer.parseInt(sb.toString());
     }
+
+    @Override
+    public int getTokenForget(String access_name) {
+        Userinformation userinformation = new Userinformation();
+        userinformation.setClassTeacher(access_name);
+        String email = selectUserinformation(userinformation).getEmail();
+        return getToken(email);
+    }
 }
