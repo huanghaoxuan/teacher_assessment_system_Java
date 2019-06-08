@@ -104,10 +104,11 @@ public class OthersComprehensiveawardwinningController {
     @ApiOperation(value = "查询全部综合获奖情况", notes = "查询全部获奖情况更新接口")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "pageNum", value = "页码", required = true, dataType = "int", paramType = "query"),
-            @ApiImplicitParam(name = "pageSize", value = "页大小", required = true, dataType = "int", paramType = "query")
+            @ApiImplicitParam(name = "pageSize", value = "页大小", required = true, dataType = "int", paramType = "query"),
+            @ApiImplicitParam(name = "departmentDept", value = "学院", required = false, dataType = "varchar", paramType = "query")
     })
-    public PageInfo<OthersComprehensiveawardwinning> selectAll(@ApiIgnore int pageNum, int pageSize) {
+    public PageInfo<OthersComprehensiveawardwinning> selectAll(@ApiIgnore int pageNum, int pageSize, String departmentDept) {
 
-        return othersComprehensiveawardwinningService.selectAll(pageNum, pageSize);
+        return othersComprehensiveawardwinningService.selectAll(pageNum, pageSize, departmentDept);
     }
 }

@@ -11,6 +11,8 @@ public interface OthersComprehensiveawardwinningMapper {
 
     OthersComprehensiveawardwinning selectByPrimaryKey(Integer id);
 
+    List<OthersComprehensiveawardwinning> selectAllByClassTeacher(List<String> classTeachers);
+
     List<OthersComprehensiveawardwinning> selectAll();
 
     int updateByPrimaryKey(OthersComprehensiveawardwinning record);

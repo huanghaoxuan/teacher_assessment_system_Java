@@ -48,6 +48,14 @@
     from publicAffairs_admissions
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="selectAllByClassTeacher" parameterType="java.util.List" resultMap="BaseResultMap">
+    SELECT * FROM publicAffairs_admissions
+    WHERE classTeacher in
+    <foreach collection="list" item="classTeacher" index="index"
+             open="(" close=")" separator=",">
+      #{classTeacher}
+    </foreach>
+  </select>
     <select id="selectAll" resultMap="BaseResultMap">
         SELECT * FROM publicAffairs_admissions
   </select>

@@ -7,6 +7,8 @@ import com.example.demo.util.MailTo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -50,6 +52,17 @@ public class UserinformationServiceImpl implements UserinformationService {
     }
 
     @Override
+    public List<String> selectBydepartmentDept(String departmentDept) {
+        List<Userinformation> userinformations = userinformationMapper.selectBydepartmentDept(departmentDept);
+        List<String> classTeachers = new ArrayList<>();
+        for (int i = 0; i < userinformations.size(); i++) {
+            classTeachers.add(userinformations.get(i).getClassTeacher());
+
+        }
+        return classTeachers;
+    }
+
+    @Override
     public int getToken(String email) {
         String str = "0123456789";
         StringBuilder sb = new StringBuilder(6);
@@ -58,17 +71,14 @@ public class UserinformationServiceImpl implements UserinformationService {
             sb.append(ch);
         }
         //发送邮件
-        new Thread() {
-            @Override
-            public void run() {
-                try {
-                    MailTo mailTo = new MailTo();
-                    mailTo.sendmail(email, Integer.parseInt(sb.toString()));
-                } catch (Exception e) {
-                    System.out.println("异常");
-                }
+        new Thread(() -> {
+            try {
+                MailTo mailTo = new MailTo();
+                mailTo.sendmail(email, Integer.parseInt(sb.toString()));
+            } catch (Exception e) {
+                System.out.println("异常");
             }
-        }.start();
+        }).start();
         return Integer.parseInt(sb.toString());
     }
 }

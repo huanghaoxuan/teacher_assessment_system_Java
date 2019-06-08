@@ -11,6 +11,8 @@ public interface TeachingconstructionTextbookconstructionMapper {
 
     TeachingconstructionTextbookconstruction selectByPrimaryKey(Integer id);
 
+    List<TeachingconstructionTextbookconstruction> selectAllByClassTeacher(List<String> classTeachers);
+
     List<TeachingconstructionTextbookconstruction> selectAll();
 
     int updateByPrimaryKey(TeachingconstructionTextbookconstruction record);

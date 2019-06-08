@@ -45,9 +45,19 @@ public class ScientificresearchPatentapplicationServiceImpl implements Scientifi
     }
 
     @Override
-    public PageInfo<ScientificresearchPatentapplication> selectAll(int pageNum, int pageSize) {
+    public PageInfo<ScientificresearchPatentapplication> selectAll(int pageNum, int pageSize, String departmentDept) {
         PageHelper.startPage(pageNum, pageSize);
-        List<ScientificresearchPatentapplication> teachings = scientificresearchPatentapplicationMapper.selectAll();
+        List<ScientificresearchPatentapplication> teachings;
+        if (departmentDept != null && !departmentDept.equals("")) {
+            List<String> classTeachers = userinformationService.selectBydepartmentDept(departmentDept);
+            //如果查询学院下没有记录，返回空
+            if (classTeachers.size() == 0) {
+                return new PageInfo<>();
+            }
+            teachings = scientificresearchPatentapplicationMapper.selectAllByClassTeacher(classTeachers);
+        } else {
+            teachings = scientificresearchPatentapplicationMapper.selectAll();
+        }
         for (int index = 0; index < teachings.size(); index++) {
             ScientificresearchPatentapplication scientificresearchPatentapplication = teachings.get(index);
             Userinformation userinformation = new Userinformation();

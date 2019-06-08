@@ -41,9 +41,19 @@ public class TeachingconstructionTeachingactivitiesServiceImpl implements Teachi
     }
 
     @Override
-    public PageInfo<TeachingconstructionTeachingactivities> selectAll(int pageNum, int pageSize) {
+    public PageInfo<TeachingconstructionTeachingactivities> selectAll(int pageNum, int pageSize, String departmentDept) {
         PageHelper.startPage(pageNum, pageSize);
-        List<TeachingconstructionTeachingactivities> teachings = teachingconstructionTeachingactivitiesMapper.selectAll();
+        List<TeachingconstructionTeachingactivities> teachings;
+        if (departmentDept != null && !departmentDept.equals("")) {
+            List<String> classTeachers = userinformationService.selectBydepartmentDept(departmentDept);
+            //如果查询学院下没有记录，返回空
+            if (classTeachers.size() == 0) {
+                return new PageInfo<>();
+            }
+            teachings = teachingconstructionTeachingactivitiesMapper.selectAllByClassTeacher(classTeachers);
+        } else {
+            teachings = teachingconstructionTeachingactivitiesMapper.selectAll();
+        }
         for (int index = 0; index < teachings.size(); index++) {
             TeachingconstructionTeachingactivities teachingconstructionTeachingactivities = teachings.get(index);
             Userinformation userinformation = new Userinformation();

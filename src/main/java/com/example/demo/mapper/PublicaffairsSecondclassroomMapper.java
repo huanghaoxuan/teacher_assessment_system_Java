@@ -11,6 +11,8 @@ public interface PublicaffairsSecondclassroomMapper {
 
     PublicaffairsSecondclassroom selectByPrimaryKey(Integer id);
 
+    List<PublicaffairsSecondclassroom> selectAllByClassTeacher(List<String> classTeachers);
+
     List<PublicaffairsSecondclassroom> selectAll();
 
     int updateByPrimaryKey(PublicaffairsSecondclassroom record);

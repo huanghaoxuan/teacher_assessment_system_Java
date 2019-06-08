@@ -8,7 +8,7 @@ public interface TeacheringworkClassroomteachingService {
 
     int insert(TeacheringworkClassroomteaching record);
 
-    PageInfo<TeacheringworkClassroomteaching> selectAll(int pageNum, int pageSize);
+    PageInfo<TeacheringworkClassroomteaching> selectAll(int pageNum, int pageSize, String departmentDept);
 
     PageInfo<TeacheringworkClassroomteaching> selectByClassTeacher(TeacheringworkClassroomteaching teaching, int pageNum, int pageSize);
 

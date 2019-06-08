@@ -11,6 +11,8 @@ public interface TeacheringworkInternshipguideMapper {
 
     TeacheringworkInternshipguide selectByPrimaryKey(Integer id);
 
+    List<TeacheringworkInternshipguide> selectAllByClassTeacher(List<String> classTeachers);
+
     List<TeacheringworkInternshipguide> selectAll();
 
     int updateByPrimaryKey(TeacheringworkInternshipguide record);

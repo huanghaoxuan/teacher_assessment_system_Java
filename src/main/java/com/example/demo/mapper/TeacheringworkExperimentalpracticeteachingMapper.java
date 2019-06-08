@@ -11,6 +11,8 @@ public interface TeacheringworkExperimentalpracticeteachingMapper {
 
     TeacheringworkExperimentalpracticeteaching selectByPrimaryKey(Integer id);
 
+    List<TeacheringworkExperimentalpracticeteaching> selectAllByClassTeacher(List<String> classTeachers);
+
     List<TeacheringworkExperimentalpracticeteaching> selectAll();
 
     int updateByPrimaryKey(TeacheringworkExperimentalpracticeteaching record);

@@ -10,7 +10,7 @@ public interface ScientificresearchPatentapplicationService {
 
     int insert(ScientificresearchPatentapplication record);
 
-    PageInfo<ScientificresearchPatentapplication> selectAll(int pageNum, int pageSize);
+    PageInfo<ScientificresearchPatentapplication> selectAll(int pageNum, int pageSize, String departmentDept);
 
     PageInfo<ScientificresearchPatentapplication> selectByClassTeacher(ScientificresearchPatentapplication teaching, int pageNum, int pageSize);
 

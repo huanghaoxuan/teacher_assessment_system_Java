@@ -11,6 +11,8 @@ public interface PublicaffairsSocialservicesMapper {
 
     PublicaffairsSocialservices selectByPrimaryKey(Integer id);
 
+    List<PublicaffairsSocialservices> selectAllByClassTeacher(List<String> classTeachers);
+
     List<PublicaffairsSocialservices> selectAll();
 
     int updateByPrimaryKey(PublicaffairsSocialservices record);

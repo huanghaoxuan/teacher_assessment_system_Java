@@ -11,6 +11,8 @@ public interface OthersEmploymentMapper {
 
     OthersEmployment selectByPrimaryKey(Integer id);
 
+    List<OthersEmployment> selectAllByClassTeacher(List<String> classTeachers);
+
     List<OthersEmployment> selectAll();
 
     int updateByPrimaryKey(OthersEmployment record);

@@ -11,6 +11,8 @@ public interface OthersFilesMapper {
 
     OthersFiles selectByPrimaryKey(Integer id);
 
+    List<OthersFiles> selectAllByClassTeacher(List<String> classTeachers);
+
     List<OthersFiles> selectAll();
 
     int updateByPrimaryKey(OthersFiles record);

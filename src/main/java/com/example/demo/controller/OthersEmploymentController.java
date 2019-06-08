@@ -100,11 +100,12 @@ public class OthersEmploymentController {
     @ApiOperation(value = "查询全部任职以来所带已毕业班级就业率考研率违纪率情况", notes = "查询全部任职以来所带已毕业班级就业率考研率违纪率情况更新接口")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "pageNum", value = "页码", required = true, dataType = "int", paramType = "query"),
-            @ApiImplicitParam(name = "pageSize", value = "页大小", required = true, dataType = "int", paramType = "query")
+            @ApiImplicitParam(name = "pageSize", value = "页大小", required = true, dataType = "int", paramType = "query"),
+            @ApiImplicitParam(name = "departmentDept", value = "学院", required = false, dataType = "varchar", paramType = "query")
     })
-    public PageInfo<OthersEmployment> selectAll(@ApiIgnore int pageNum, int pageSize) {
+    public PageInfo<OthersEmployment> selectAll(@ApiIgnore int pageNum, int pageSize, String departmentDept) {
 
-        return othersEmploymentService.selectAll(pageNum, pageSize);
+        return othersEmploymentService.selectAll(pageNum, pageSize, departmentDept);
     }
 }
 

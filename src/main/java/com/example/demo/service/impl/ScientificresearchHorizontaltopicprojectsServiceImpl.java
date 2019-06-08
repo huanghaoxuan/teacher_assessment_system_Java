@@ -45,9 +45,19 @@ public class ScientificresearchHorizontaltopicprojectsServiceImpl implements Sci
     }
 
     @Override
-    public PageInfo<ScientificresearchHorizontaltopicprojects> selectAll(int pageNum, int pageSize) {
+    public PageInfo<ScientificresearchHorizontaltopicprojects> selectAll(int pageNum, int pageSize, String departmentDept) {
         PageHelper.startPage(pageNum, pageSize);
-        List<ScientificresearchHorizontaltopicprojects> teachings = scientificresearchHorizontaltopicprojectsMapper.selectAll();
+        List<ScientificresearchHorizontaltopicprojects> teachings;
+        if (departmentDept != null && !departmentDept.equals("")) {
+            List<String> classTeachers = userinformationService.selectBydepartmentDept(departmentDept);
+            //如果查询学院下没有记录，返回空
+            if (classTeachers.size() == 0) {
+                return new PageInfo<>();
+            }
+            teachings = scientificresearchHorizontaltopicprojectsMapper.selectAllByClassTeacher(classTeachers);
+        } else {
+            teachings = scientificresearchHorizontaltopicprojectsMapper.selectAll();
+        }
         for (int index = 0; index < teachings.size(); index++) {
             ScientificresearchHorizontaltopicprojects scientificresearchHorizontaltopicprojects = teachings.get(index);
             Userinformation userinformation = new Userinformation();

@@ -10,7 +10,7 @@ public interface ScientificresearchHorizontaltopicprojectsService {
 
     int insert(ScientificresearchHorizontaltopicprojects record);
 
-    PageInfo<ScientificresearchHorizontaltopicprojects> selectAll(int pageNum, int pageSize);
+    PageInfo<ScientificresearchHorizontaltopicprojects> selectAll(int pageNum, int pageSize, String departmentDept);
 
     PageInfo<ScientificresearchHorizontaltopicprojects> selectByClassTeacher(ScientificresearchHorizontaltopicprojects teaching, int pageNum, int pageSize);
 

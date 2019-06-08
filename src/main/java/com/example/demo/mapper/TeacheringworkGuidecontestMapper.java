@@ -11,6 +11,8 @@ public interface TeacheringworkGuidecontestMapper {
 
     TeacheringworkGuidecontest selectByPrimaryKey(Integer id);
 
+    List<TeacheringworkGuidecontest> selectAllByClassTeacher(List<String> classTeachers);
+
     List<TeacheringworkGuidecontest> selectAll();
 
     int updateByPrimaryKey(TeacheringworkGuidecontest record);

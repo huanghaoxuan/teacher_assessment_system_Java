@@ -1,6 +1,7 @@
 package com.example.demo.mapper;
 
 import com.example.demo.model.Userinformation;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -21,5 +22,8 @@ public interface UserinformationMapper {
 
     int updatedepartmentDept(Userinformation record);
 
+    List<Userinformation> selectBydepartmentDept(@Param("departmentDept") String departmentDept);
+
     List<Userinformation> selectByClassTeacher(Userinformation record);
+
 }

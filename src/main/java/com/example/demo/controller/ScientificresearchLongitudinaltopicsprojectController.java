@@ -116,11 +116,12 @@ public class ScientificresearchLongitudinaltopicsprojectController {
     @ApiOperation(value = "查询全部纵向课题项目", notes = "查询全部纵向课题项目更新接口")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "pageNum", value = "页码", required = true, dataType = "int", paramType = "query"),
-            @ApiImplicitParam(name = "pageSize", value = "页大小", required = true, dataType = "int", paramType = "query")
+            @ApiImplicitParam(name = "pageSize", value = "页大小", required = true, dataType = "int", paramType = "query"),
+            @ApiImplicitParam(name = "departmentDept", value = "学院", required = false, dataType = "varchar", paramType = "query")
     })
-    public PageInfo<ScientificresearchLongitudinaltopicsproject> selectAll(@ApiIgnore int pageNum, int pageSize) {
+    public PageInfo<ScientificresearchLongitudinaltopicsproject> selectAll(@ApiIgnore int pageNum, int pageSize, String departmentDept) {
 
-        return scientificresearchLongitudinaltopicsprojectService.selectAll(pageNum, pageSize);
+        return scientificresearchLongitudinaltopicsprojectService.selectAll(pageNum, pageSize, departmentDept);
     }
 }
 

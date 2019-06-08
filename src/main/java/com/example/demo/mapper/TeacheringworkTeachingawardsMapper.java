@@ -11,6 +11,8 @@ public interface TeacheringworkTeachingawardsMapper {
 
     TeacheringworkTeachingawards selectByPrimaryKey(Integer id);
 
+    List<TeacheringworkTeachingawards> selectAllByClassTeacher(List<String> classTeachers);
+
     List<TeacheringworkTeachingawards> selectAll();
 
     int updateByPrimaryKey(TeacheringworkTeachingawards record);

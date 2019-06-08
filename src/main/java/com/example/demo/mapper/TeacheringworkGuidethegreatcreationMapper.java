@@ -11,6 +11,8 @@ public interface TeacheringworkGuidethegreatcreationMapper {
 
     TeacheringworkGuidethegreatcreation selectByPrimaryKey(Integer id);
 
+    List<TeacheringworkGuidethegreatcreation> selectAllByClassTeacher(List<String> classTeachers);
+
     List<TeacheringworkGuidethegreatcreation> selectAll();
 
     int updateByPrimaryKey(TeacheringworkGuidethegreatcreation record);

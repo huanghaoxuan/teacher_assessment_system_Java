@@ -114,11 +114,12 @@ public class ScientificresearchHorizontaltopicprojectsController {
     @ApiOperation(value = "查询全部横向课题项目", notes = "查询全部横向课题项目更新接口")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "pageNum", value = "页码", required = true, dataType = "int", paramType = "query"),
-            @ApiImplicitParam(name = "pageSize", value = "页大小", required = true, dataType = "int", paramType = "query")
+            @ApiImplicitParam(name = "pageSize", value = "页大小", required = true, dataType = "int", paramType = "query"),
+            @ApiImplicitParam(name = "departmentDept", value = "学院", required = false, dataType = "varchar", paramType = "query")
     })
-    public PageInfo<ScientificresearchHorizontaltopicprojects> selectAll(@ApiIgnore int pageNum, int pageSize) {
+    public PageInfo<ScientificresearchHorizontaltopicprojects> selectAll(@ApiIgnore int pageNum, int pageSize, String departmentDept) {
 
-        return scientificresearchHorizontaltopicprojectsService.selectAll(pageNum, pageSize);
+        return scientificresearchHorizontaltopicprojectsService.selectAll(pageNum, pageSize, departmentDept);
     }
 }
 

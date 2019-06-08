@@ -40,9 +40,19 @@ public class PublicaffairsSecondclassroomServiceImpl implements PublicaffairsSec
     }
 
     @Override
-    public PageInfo<PublicaffairsSecondclassroom> selectAll(int pageNum, int pageSize) {
+    public PageInfo<PublicaffairsSecondclassroom> selectAll(int pageNum, int pageSize, String departmentDept) {
         PageHelper.startPage(pageNum, pageSize);
-        List<PublicaffairsSecondclassroom> teachings = publicaffairsSecondclassroomMapper.selectAll();
+        List<PublicaffairsSecondclassroom> teachings;
+        if (departmentDept != null && !departmentDept.equals("")) {
+            List<String> classTeachers = userinformationService.selectBydepartmentDept(departmentDept);
+            //如果查询学院下没有记录，返回空
+            if (classTeachers.size() == 0) {
+                return new PageInfo<>();
+            }
+            teachings = publicaffairsSecondclassroomMapper.selectAllByClassTeacher(classTeachers);
+        } else {
+            teachings = publicaffairsSecondclassroomMapper.selectAll();
+        }
         for (int index = 0; index < teachings.size(); index++) {
             PublicaffairsSecondclassroom publicaffairsSecondclassroom = teachings.get(index);
             Userinformation userinformation = new Userinformation();

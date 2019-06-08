@@ -11,6 +11,8 @@ public interface PublicaffairsEmploymentMapper {
 
     PublicaffairsEmployment selectByPrimaryKey(Integer id);
 
+    List<PublicaffairsEmployment> selectAllByClassTeacher(List<String> classTeachers);
+
     List<PublicaffairsEmployment> selectAll();
 
     int updateByPrimaryKey(PublicaffairsEmployment record);

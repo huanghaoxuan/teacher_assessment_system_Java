@@ -141,4 +141,11 @@
     SELECT * FROM userInformation WHERE 1=1
     AND classTeacher=#{classTeacher,jdbcType=NVARCHAR}
   </select>
+    <select id="selectBydepartmentDept" parameterType="java.lang.String"
+            resultMap="BaseResultMap">
+        SELECT * FROM userInformation WHERE 1=1
+        <if test="departmentDept != null">
+            AND departmentDept=#{departmentDept,jdbcType=NVARCHAR}
+        </if>
+    </select>
 </mapper>

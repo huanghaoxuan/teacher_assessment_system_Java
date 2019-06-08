@@ -56,6 +56,14 @@
     from scientificResearch_horizontalTopicProjects
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="selectAllByClassTeacher" parameterType="java.util.List" resultMap="BaseResultMap">
+    SELECT * FROM scientificResearch_horizontalTopicProjects
+    WHERE classTeacher in
+    <foreach collection="list" item="classTeacher" index="index"
+             open="(" close=")" separator=",">
+      #{classTeacher}
+    </foreach>
+  </select>
     <select id="selectAll" resultMap="BaseResultMap">
     SELECT * FROM scientificResearch_horizontalTopicProjects
   </select>

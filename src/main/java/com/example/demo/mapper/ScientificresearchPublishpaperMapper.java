@@ -11,6 +11,8 @@ public interface ScientificresearchPublishpaperMapper {
 
     ScientificresearchPublishpaper selectByPrimaryKey(Integer id);
 
+    List<ScientificresearchPublishpaper> selectAllByClassTeacher(List<String> classTeachers);
+
     List<ScientificresearchPublishpaper> selectAll();
 
     int updateByPrimaryKey(ScientificresearchPublishpaper record);

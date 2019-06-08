@@ -40,9 +40,19 @@ public class TeacheringworkClassroomteachingServiceImpl implements Teacheringwor
     }
 
     @Override
-    public PageInfo<TeacheringworkClassroomteaching> selectAll(int pageNum, int pageSize) {
+    public PageInfo<TeacheringworkClassroomteaching> selectAll(int pageNum, int pageSize, String departmentDept) {
         PageHelper.startPage(pageNum, pageSize);
-        List<TeacheringworkClassroomteaching> teachings = teacheringworkClassroomteachingMapper.selectAll();
+        List<TeacheringworkClassroomteaching> teachings;
+        if (departmentDept != null && !departmentDept.equals("")) {
+            List<String> classTeachers = userinformationService.selectBydepartmentDept(departmentDept);
+            //如果查询学院下没有记录，返回空
+            if (classTeachers.size() == 0) {
+                return new PageInfo<>();
+            }
+            teachings = teacheringworkClassroomteachingMapper.selectAllByClassTeacher(classTeachers);
+        } else {
+            teachings = teacheringworkClassroomteachingMapper.selectAll();
+        }
         for (int index = 0; index < teachings.size(); index++) {
             TeacheringworkClassroomteaching teacheringworkClassroomteaching = teachings.get(index);
             Userinformation userinformation = new Userinformation();

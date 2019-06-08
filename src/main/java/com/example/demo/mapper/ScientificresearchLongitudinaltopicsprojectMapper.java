@@ -11,6 +11,8 @@ public interface ScientificresearchLongitudinaltopicsprojectMapper {
 
     ScientificresearchLongitudinaltopicsproject selectByPrimaryKey(Integer id);
 
+    List<ScientificresearchLongitudinaltopicsproject> selectAllByClassTeacher(List<String> classTeachers);
+
     List<ScientificresearchLongitudinaltopicsproject> selectAll();
 
     int updateByPrimaryKey(ScientificresearchLongitudinaltopicsproject record);

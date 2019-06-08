@@ -39,6 +39,14 @@
     from teachingConstruction_comprehensiveReform
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="selectAllByClassTeacher" parameterType="java.util.List" resultMap="BaseResultMap">
+    SELECT * FROM teachingConstruction_comprehensiveReform
+    WHERE classTeacher in
+    <foreach collection="list" item="classTeacher" index="index"
+             open="(" close=")" separator=",">
+      #{classTeacher}
+    </foreach>
+  </select>
     <select id="selectAll" resultMap="BaseResultMap">
     SELECT * FROM teachingConstruction_comprehensiveReform
   </select>

@@ -98,11 +98,12 @@ public class TeachingconstructionCurriculumconstructionController {
     @ApiOperation(value = "查询全部课程建设", notes = "查询全部课程建设更新接口")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "pageNum", value = "页码", required = true, dataType = "int", paramType = "query"),
-            @ApiImplicitParam(name = "pageSize", value = "页大小", required = true, dataType = "int", paramType = "query")
+            @ApiImplicitParam(name = "pageSize", value = "页大小", required = true, dataType = "int", paramType = "query"),
+            @ApiImplicitParam(name = "departmentDept", value = "学院", required = false, dataType = "varchar", paramType = "query")
     })
-    public PageInfo<TeachingconstructionCurriculumconstruction> selectAll(@ApiIgnore int pageNum, int pageSize) {
+    public PageInfo<TeachingconstructionCurriculumconstruction> selectAll(@ApiIgnore int pageNum, int pageSize, String departmentDept) {
 
-        return teachingconstructionCurriculumconstructionService.selectAll(pageNum, pageSize);
+        return teachingconstructionCurriculumconstructionService.selectAll(pageNum, pageSize, departmentDept);
     }
 }
 

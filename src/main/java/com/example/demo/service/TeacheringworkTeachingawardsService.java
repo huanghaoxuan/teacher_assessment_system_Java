@@ -10,7 +10,7 @@ public interface TeacheringworkTeachingawardsService {
 
     int insert(TeacheringworkTeachingawards record);
 
-    PageInfo<TeacheringworkTeachingawards> selectAll(int pageNum, int pageSize);
+    PageInfo<TeacheringworkTeachingawards> selectAll(int pageNum, int pageSize, String departmentDept);
 
     PageInfo<TeacheringworkTeachingawards> selectByClassTeacher(TeacheringworkTeachingawards teaching, int pageNum, int pageSize);
 

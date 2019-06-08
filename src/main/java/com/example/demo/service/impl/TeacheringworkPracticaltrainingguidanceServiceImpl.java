@@ -40,9 +40,19 @@ public class TeacheringworkPracticaltrainingguidanceServiceImpl implements Teach
     }
 
     @Override
-    public PageInfo<TeacheringworkPracticaltrainingguidance> selectAll(int pageNum, int pageSize) {
+    public PageInfo<TeacheringworkPracticaltrainingguidance> selectAll(int pageNum, int pageSize, String departmentDept) {
         PageHelper.startPage(pageNum, pageSize);
-        List<TeacheringworkPracticaltrainingguidance> teachings = teacheringworkPracticaltrainingguidanceMapper.selectAll();
+        List<TeacheringworkPracticaltrainingguidance> teachings;
+        if (departmentDept != null && !departmentDept.equals("")) {
+            List<String> classTeachers = userinformationService.selectBydepartmentDept(departmentDept);
+            //如果查询学院下没有记录，返回空
+            if (classTeachers.size() == 0) {
+                return new PageInfo<>();
+            }
+            teachings = teacheringworkPracticaltrainingguidanceMapper.selectAllByClassTeacher(classTeachers);
+        } else {
+            teachings = teacheringworkPracticaltrainingguidanceMapper.selectAll();
+        }
         for (int index = 0; index < teachings.size(); index++) {
             TeacheringworkPracticaltrainingguidance teacheringworkPracticaltrainingguidance = teachings.get(index);
             Userinformation userinformation = new Userinformation();

@@ -11,6 +11,8 @@ public interface TeacheringworkGraduationdesignguideMapper {
 
     TeacheringworkGraduationdesignguide selectByPrimaryKey(Integer id);
 
+    List<TeacheringworkGraduationdesignguide> selectAllByClassTeacher(List<String> classTeachers);
+
     List<TeacheringworkGraduationdesignguide> selectAll();
 
     int updateByPrimaryKey(TeacheringworkGraduationdesignguide record);

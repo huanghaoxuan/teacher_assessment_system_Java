@@ -40,9 +40,19 @@ public class TeachingconstructionCurriculumconstructionServiceImpl implements Te
     }
 
     @Override
-    public PageInfo<TeachingconstructionCurriculumconstruction> selectAll(int pageNum, int pageSize) {
+    public PageInfo<TeachingconstructionCurriculumconstruction> selectAll(int pageNum, int pageSize, String departmentDept) {
         PageHelper.startPage(pageNum, pageSize);
-        List<TeachingconstructionCurriculumconstruction> teachings = teachingconstructionCurriculumconstructionMapper.selectAll();
+        List<TeachingconstructionCurriculumconstruction> teachings;
+        if (departmentDept != null && !departmentDept.equals("")) {
+            List<String> classTeachers = userinformationService.selectBydepartmentDept(departmentDept);
+            //如果查询学院下没有记录，返回空
+            if (classTeachers.size() == 0) {
+                return new PageInfo<>();
+            }
+            teachings = teachingconstructionCurriculumconstructionMapper.selectAllByClassTeacher(classTeachers);
+        } else {
+            teachings = teachingconstructionCurriculumconstructionMapper.selectAll();
+        }
         for (int index = 0; index < teachings.size(); index++) {
             TeachingconstructionCurriculumconstruction teachingconstructionCurriculumconstruction = teachings.get(index);
             Userinformation userinformation = new Userinformation();

@@ -2,6 +2,8 @@ package com.example.demo.service;
 
 import com.example.demo.model.Userinformation;
 
+import java.util.List;
+
 /**
  * @Author: HuangHaoXuan
  * @Email: huanghaoxuan1998@outlook.com
@@ -20,6 +22,8 @@ public interface UserinformationService {
     int updatename(Userinformation record);
 
     int updatedepartmentDept(Userinformation record);
+
+    List<String> selectBydepartmentDept(String departmentDept);
 
     int getToken(String email);
 }

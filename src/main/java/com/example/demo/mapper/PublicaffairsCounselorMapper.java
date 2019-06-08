@@ -11,6 +11,8 @@ public interface PublicaffairsCounselorMapper {
 
     PublicaffairsCounselor selectByPrimaryKey(Integer id);
 
+    List<PublicaffairsCounselor> selectAllByClassTeacher(List<String> classTeachers);
+
     List<PublicaffairsCounselor> selectAll();
 
     int updateByPrimaryKey(PublicaffairsCounselor record);

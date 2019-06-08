@@ -43,9 +43,19 @@ public class TeachingconstructionTextbookconstructionServiceImpl implements Teac
     }
 
     @Override
-    public PageInfo<TeachingconstructionTextbookconstruction> selectAll(int pageNum, int pageSize) {
-        PageHelper.startPage(pageNum, pageSize, "id desc");
-        List<TeachingconstructionTextbookconstruction> teachings = teachingconstructionTextbookconstructionMapper.selectAll();
+    public PageInfo<TeachingconstructionTextbookconstruction> selectAll(int pageNum, int pageSize, String departmentDept) {
+        PageHelper.startPage(pageNum, pageSize);
+        List<TeachingconstructionTextbookconstruction> teachings;
+        if (departmentDept != null && !departmentDept.equals("")) {
+            List<String> classTeachers = userinformationService.selectBydepartmentDept(departmentDept);
+            //如果查询学院下没有记录，返回空
+            if (classTeachers.size() == 0) {
+                return new PageInfo<>();
+            }
+            teachings = teachingconstructionTextbookconstructionMapper.selectAllByClassTeacher(classTeachers);
+        } else {
+            teachings = teachingconstructionTextbookconstructionMapper.selectAll();
+        }
         for (int index = 0; index < teachings.size(); index++) {
             TeachingconstructionTextbookconstruction teachingconstructionTextbookconstruction = teachings.get(index);
             Userinformation userinformation = new Userinformation();
@@ -58,7 +68,7 @@ public class TeachingconstructionTextbookconstructionServiceImpl implements Teac
 
     @Override
     public PageInfo<TeachingconstructionTextbookconstruction> selectByClassTeacher(TeachingconstructionTextbookconstruction teaching, int pageNum, int pageSize) {
-        PageHelper.startPage(pageNum, pageSize);
+        PageHelper.startPage(pageNum, pageSize, "id desc");
         List<TeachingconstructionTextbookconstruction> teachings = teachingconstructionTextbookconstructionMapper.selectByClassTeacher(teaching);
         PageInfo<TeachingconstructionTextbookconstruction> result = new PageInfo<>(teachings);
         return result;

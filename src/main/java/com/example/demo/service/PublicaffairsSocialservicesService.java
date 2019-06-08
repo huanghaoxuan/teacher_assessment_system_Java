@@ -8,7 +8,7 @@ public interface PublicaffairsSocialservicesService {
 
     int insert(PublicaffairsSocialservices record);
 
-    PageInfo<PublicaffairsSocialservices> selectAll(int pageNum, int pageSize);
+    PageInfo<PublicaffairsSocialservices> selectAll(int pageNum, int pageSize, String departmentDept);
 
     PageInfo<PublicaffairsSocialservices> selectByClassTeacher(PublicaffairsSocialservices teaching, int pageNum, int pageSize);
 

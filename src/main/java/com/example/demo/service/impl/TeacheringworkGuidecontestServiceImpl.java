@@ -46,9 +46,19 @@ public class TeacheringworkGuidecontestServiceImpl implements TeacheringworkGuid
     }
 
     @Override
-    public PageInfo<TeacheringworkGuidecontest> selectAll(int pageNum, int pageSize) {
+    public PageInfo<TeacheringworkGuidecontest> selectAll(int pageNum, int pageSize, String departmentDept) {
         PageHelper.startPage(pageNum, pageSize);
-        List<TeacheringworkGuidecontest> teachings = teacheringworkGuidecontestMapper.selectAll();
+        List<TeacheringworkGuidecontest> teachings;
+        if (departmentDept != null && !departmentDept.equals("")) {
+            List<String> classTeachers = userinformationService.selectBydepartmentDept(departmentDept);
+            //如果查询学院下没有记录，返回空
+            if (classTeachers.size() == 0) {
+                return new PageInfo<>();
+            }
+            teachings = teacheringworkGuidecontestMapper.selectAllByClassTeacher(classTeachers);
+        } else {
+            teachings = teacheringworkGuidecontestMapper.selectAll();
+        }
         for (int index = 0; index < teachings.size(); index++) {
             TeacheringworkGuidecontest teacheringworkGuidecontest = teachings.get(index);
             Userinformation userinformation = new Userinformation();

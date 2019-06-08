@@ -40,9 +40,19 @@ public class TeacheringworkExperimentalpracticeteachingServiceImpl implements Te
     }
 
     @Override
-    public PageInfo<TeacheringworkExperimentalpracticeteaching> selectAll(int pageNum, int pageSize) {
+    public PageInfo<TeacheringworkExperimentalpracticeteaching> selectAll(int pageNum, int pageSize, String departmentDept) {
         PageHelper.startPage(pageNum, pageSize);
-        List<TeacheringworkExperimentalpracticeteaching> teachings = teacheringworkExperimentalpracticeteachingMapper.selectAll();
+        List<TeacheringworkExperimentalpracticeteaching> teachings;
+        if (departmentDept != null && !departmentDept.equals("")) {
+            List<String> classTeachers = userinformationService.selectBydepartmentDept(departmentDept);
+            //如果查询学院下没有记录，返回空
+            if (classTeachers.size() == 0) {
+                return new PageInfo<>();
+            }
+            teachings = teacheringworkExperimentalpracticeteachingMapper.selectAllByClassTeacher(classTeachers);
+        } else {
+            teachings = teacheringworkExperimentalpracticeteachingMapper.selectAll();
+        }
         for (int index = 0; index < teachings.size(); index++) {
             TeacheringworkExperimentalpracticeteaching teacheringworkExperimentalpracticeteaching = teachings.get(index);
             Userinformation userinformation = new Userinformation();

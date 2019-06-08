@@ -40,9 +40,19 @@ public class PublicaffairsSocialservicesServiceImpl implements PublicaffairsSoci
     }
 
     @Override
-    public PageInfo<PublicaffairsSocialservices> selectAll(int pageNum, int pageSize) {
+    public PageInfo<PublicaffairsSocialservices> selectAll(int pageNum, int pageSize, String departmentDept) {
         PageHelper.startPage(pageNum, pageSize);
-        List<PublicaffairsSocialservices> teachings = publicaffairsSocialservicesMapper.selectAll();
+        List<PublicaffairsSocialservices> teachings;
+        if (departmentDept != null && !departmentDept.equals("")) {
+            List<String> classTeachers = userinformationService.selectBydepartmentDept(departmentDept);
+            //如果查询学院下没有记录，返回空
+            if (classTeachers.size() == 0) {
+                return new PageInfo<>();
+            }
+            teachings = publicaffairsSocialservicesMapper.selectAllByClassTeacher(classTeachers);
+        } else {
+            teachings = publicaffairsSocialservicesMapper.selectAll();
+        }
         for (int index = 0; index < teachings.size(); index++) {
             PublicaffairsSocialservices publicaffairsSocialservices = teachings.get(index);
             Userinformation userinformation = new Userinformation();

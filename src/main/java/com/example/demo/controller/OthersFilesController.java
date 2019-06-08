@@ -102,11 +102,12 @@ public class OthersFilesController {
     @ApiOperation(value = "查询全部任职以来起草、制定的重要文件、报告情况", notes = "查询全部任职以来起草、制定的重要文件、报告情况更新接口")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "pageNum", value = "页码", required = true, dataType = "int", paramType = "query"),
-            @ApiImplicitParam(name = "pageSize", value = "页大小", required = true, dataType = "int", paramType = "query")
+            @ApiImplicitParam(name = "pageSize", value = "页大小", required = true, dataType = "int", paramType = "query"),
+            @ApiImplicitParam(name = "departmentDept", value = "学院", required = false, dataType = "varchar", paramType = "query")
     })
-    public PageInfo<OthersFiles> selectAll(@ApiIgnore int pageNum, int pageSize) {
+    public PageInfo<OthersFiles> selectAll(@ApiIgnore int pageNum, int pageSize, String departmentDept) {
 
-        return othersFilesService.selectAll(pageNum, pageSize);
+        return othersFilesService.selectAll(pageNum, pageSize, departmentDept);
     }
 }
 

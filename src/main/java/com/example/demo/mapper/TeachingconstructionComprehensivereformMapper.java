@@ -11,6 +11,8 @@ public interface TeachingconstructionComprehensivereformMapper {
 
     TeachingconstructionComprehensivereform selectByPrimaryKey(Integer id);
 
+    List<TeachingconstructionComprehensivereform> selectAllByClassTeacher(List<String> classTeachers);
+
     List<TeachingconstructionComprehensivereform> selectAll();
 
     int updateByPrimaryKey(TeachingconstructionComprehensivereform record);

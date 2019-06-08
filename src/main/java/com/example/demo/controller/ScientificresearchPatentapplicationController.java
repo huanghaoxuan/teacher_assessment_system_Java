@@ -112,11 +112,12 @@ public class ScientificresearchPatentapplicationController {
     @ApiOperation(value = "查询全部申请专利", notes = "查询全部申请专利更新接口")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "pageNum", value = "页码", required = true, dataType = "int", paramType = "query"),
-            @ApiImplicitParam(name = "pageSize", value = "页大小", required = true, dataType = "int", paramType = "query")
+            @ApiImplicitParam(name = "pageSize", value = "页大小", required = true, dataType = "int", paramType = "query"),
+            @ApiImplicitParam(name = "departmentDept", value = "学院", required = false, dataType = "varchar", paramType = "query")
     })
-    public PageInfo<ScientificresearchPatentapplication> selectAll(@ApiIgnore int pageNum, int pageSize) {
+    public PageInfo<ScientificresearchPatentapplication> selectAll(@ApiIgnore int pageNum, int pageSize, String departmentDept) {
 
-        return scientificresearchPatentapplicationService.selectAll(pageNum, pageSize);
+        return scientificresearchPatentapplicationService.selectAll(pageNum, pageSize, departmentDept);
     }
 }
 

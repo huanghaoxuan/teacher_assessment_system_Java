@@ -40,9 +40,19 @@ public class OthersFilesServiceImpl implements OthersFilesService {
     }
 
     @Override
-    public PageInfo<OthersFiles> selectAll(int pageNum, int pageSize) {
+    public PageInfo<OthersFiles> selectAll(int pageNum, int pageSize, String departmentDept) {
         PageHelper.startPage(pageNum, pageSize);
-        List<OthersFiles> teachings = othersFilesMapper.selectAll();
+        List<OthersFiles> teachings;
+        if (departmentDept != null && !departmentDept.equals("")) {
+            List<String> classTeachers = userinformationService.selectBydepartmentDept(departmentDept);
+            //如果查询学院下没有记录，返回空
+            if (classTeachers.size() == 0) {
+                return new PageInfo<>();
+            }
+            teachings = othersFilesMapper.selectAllByClassTeacher(classTeachers);
+        } else {
+            teachings = othersFilesMapper.selectAll();
+        }
         for (int index = 0; index < teachings.size(); index++) {
             OthersFiles othersFiles = teachings.get(index);
             Userinformation userinformation = new Userinformation();

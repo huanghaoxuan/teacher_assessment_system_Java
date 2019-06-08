@@ -3,8 +3,6 @@ package com.example.demo.service;
 import com.example.demo.model.OthersAnnualreviewstatus;
 import com.github.pagehelper.PageInfo;
 
-import java.util.List;
-
 public interface OthersAnnualreviewstatusService {
 
     PageInfo<OthersAnnualreviewstatus> selectByClassTeacher(OthersAnnualreviewstatus teaching, int pageNum, int pageSize);
@@ -15,6 +13,6 @@ public interface OthersAnnualreviewstatusService {
 
     int deleteByPrimaryKey(Integer id);
 
-    PageInfo<OthersAnnualreviewstatus> selectAll(int pageNum, int pageSize);
+    PageInfo<OthersAnnualreviewstatus> selectAll(int pageNum, int pageSize, String departmentDept);
 
 }

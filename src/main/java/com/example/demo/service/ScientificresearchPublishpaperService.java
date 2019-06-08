@@ -10,7 +10,7 @@ public interface ScientificresearchPublishpaperService {
 
     int insert(ScientificresearchPublishpaper record);
 
-    PageInfo<ScientificresearchPublishpaper> selectAll(int pageNum, int pageSize);
+    PageInfo<ScientificresearchPublishpaper> selectAll(int pageNum, int pageSize, String departmentDept);
 
     PageInfo<ScientificresearchPublishpaper> selectByClassTeacher(ScientificresearchPublishpaper teaching, int pageNum, int pageSize);
 

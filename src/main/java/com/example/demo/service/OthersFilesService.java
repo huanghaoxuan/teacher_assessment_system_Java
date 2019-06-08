@@ -8,7 +8,7 @@ public interface OthersFilesService {
 
     int insert(OthersFiles record);
 
-    PageInfo<OthersFiles> selectAll(int pageNum, int pageSize);
+    PageInfo<OthersFiles> selectAll(int pageNum, int pageSize, String departmentDept);
 
     PageInfo<OthersFiles> selectByClassTeacher(OthersFiles teaching, int pageNum, int pageSize);
 

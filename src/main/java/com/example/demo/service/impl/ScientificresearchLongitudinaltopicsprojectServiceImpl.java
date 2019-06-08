@@ -45,9 +45,19 @@ public class ScientificresearchLongitudinaltopicsprojectServiceImpl implements S
     }
 
     @Override
-    public PageInfo<ScientificresearchLongitudinaltopicsproject> selectAll(int pageNum, int pageSize) {
+    public PageInfo<ScientificresearchLongitudinaltopicsproject> selectAll(int pageNum, int pageSize, String departmentDept) {
         PageHelper.startPage(pageNum, pageSize);
-        List<ScientificresearchLongitudinaltopicsproject> teachings = scientificresearchLongitudinaltopicsprojectMapper.selectAll();
+        List<ScientificresearchLongitudinaltopicsproject> teachings;
+        if (departmentDept != null && !departmentDept.equals("")) {
+            List<String> classTeachers = userinformationService.selectBydepartmentDept(departmentDept);
+            //如果查询学院下没有记录，返回空
+            if (classTeachers.size() == 0) {
+                return new PageInfo<>();
+            }
+            teachings = scientificresearchLongitudinaltopicsprojectMapper.selectAllByClassTeacher(classTeachers);
+        } else {
+            teachings = scientificresearchLongitudinaltopicsprojectMapper.selectAll();
+        }
         for (int index = 0; index < teachings.size(); index++) {
             ScientificresearchLongitudinaltopicsproject scientificresearchLongitudinaltopicsproject = teachings.get(index);
             Userinformation userinformation = new Userinformation();

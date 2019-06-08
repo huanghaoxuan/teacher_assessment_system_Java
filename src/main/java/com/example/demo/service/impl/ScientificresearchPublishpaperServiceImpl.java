@@ -45,9 +45,19 @@ public class ScientificresearchPublishpaperServiceImpl implements Scientificrese
     }
 
     @Override
-    public PageInfo<ScientificresearchPublishpaper> selectAll(int pageNum, int pageSize) {
+    public PageInfo<ScientificresearchPublishpaper> selectAll(int pageNum, int pageSize, String departmentDept) {
         PageHelper.startPage(pageNum, pageSize);
-        List<ScientificresearchPublishpaper> teachings = pcientificresearchPublishpaperMapper.selectAll();
+        List<ScientificresearchPublishpaper> teachings;
+        if (departmentDept != null && !departmentDept.equals("")) {
+            List<String> classTeachers = userinformationService.selectBydepartmentDept(departmentDept);
+            //如果查询学院下没有记录，返回空
+            if (classTeachers.size() == 0) {
+                return new PageInfo<>();
+            }
+            teachings = pcientificresearchPublishpaperMapper.selectAllByClassTeacher(classTeachers);
+        } else {
+            teachings = pcientificresearchPublishpaperMapper.selectAll();
+        }
         for (int index = 0; index < teachings.size(); index++) {
             ScientificresearchPublishpaper scientificresearchPublishpaper = teachings.get(index);
             Userinformation userinformation = new Userinformation();

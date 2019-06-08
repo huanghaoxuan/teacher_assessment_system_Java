@@ -40,9 +40,19 @@ public class PublicaffairsEmploymentServiceImpl implements PublicaffairsEmployme
     }
 
     @Override
-    public PageInfo<PublicaffairsEmployment> selectAll(int pageNum, int pageSize) {
+    public PageInfo<PublicaffairsEmployment> selectAll(int pageNum, int pageSize, String departmentDept) {
         PageHelper.startPage(pageNum, pageSize);
-        List<PublicaffairsEmployment> teachings = publicaffairsEmploymentMapper.selectAll();
+        List<PublicaffairsEmployment> teachings;
+        if (departmentDept != null && !departmentDept.equals("")) {
+            List<String> classTeachers = userinformationService.selectBydepartmentDept(departmentDept);
+            //如果查询学院下没有记录，返回空
+            if (classTeachers.size() == 0) {
+                return new PageInfo<>();
+            }
+            teachings = publicaffairsEmploymentMapper.selectAllByClassTeacher(classTeachers);
+        } else {
+            teachings = publicaffairsEmploymentMapper.selectAll();
+        }
         for (int index = 0; index < teachings.size(); index++) {
             PublicaffairsEmployment publicaffairsEmployment = teachings.get(index);
             Userinformation userinformation = new Userinformation();

@@ -1,6 +1,7 @@
 package com.example.demo.mapper;
 
 import com.example.demo.model.OthersAnnualreviewstatus;
+
 import java.util.List;
 
 public interface OthersAnnualreviewstatusMapper {
@@ -9,6 +10,8 @@ public interface OthersAnnualreviewstatusMapper {
     int insert(OthersAnnualreviewstatus record);
 
     OthersAnnualreviewstatus selectByPrimaryKey(Integer id);
+
+    List<OthersAnnualreviewstatus> selectAllByClassTeacher(List<String> classTeachers);
 
     List<OthersAnnualreviewstatus> selectAll();
 

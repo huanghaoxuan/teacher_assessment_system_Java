@@ -11,6 +11,8 @@ public interface ScientificresearchHorizontaltopicprojectsMapper {
 
     ScientificresearchHorizontaltopicprojects selectByPrimaryKey(Integer id);
 
+    List<ScientificresearchHorizontaltopicprojects> selectAllByClassTeacher(List<String> classTeachers);
+
     List<ScientificresearchHorizontaltopicprojects> selectAll();
 
     int updateByPrimaryKey(ScientificresearchHorizontaltopicprojects record);

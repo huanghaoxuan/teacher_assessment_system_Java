@@ -40,9 +40,19 @@ public class TeacheringworkInternshipguideServiceImpl implements TeacheringworkI
     }
 
     @Override
-    public PageInfo<TeacheringworkInternshipguide> selectAll(int pageNum, int pageSize) {
+    public PageInfo<TeacheringworkInternshipguide> selectAll(int pageNum, int pageSize, String departmentDept) {
         PageHelper.startPage(pageNum, pageSize);
-        List<TeacheringworkInternshipguide> teachings = teacheringworkInternshipguideMapper.selectAll();
+        List<TeacheringworkInternshipguide> teachings;
+        if (departmentDept != null && !departmentDept.equals("")) {
+            List<String> classTeachers = userinformationService.selectBydepartmentDept(departmentDept);
+            //如果查询学院下没有记录，返回空
+            if (classTeachers.size() == 0) {
+                return new PageInfo<>();
+            }
+            teachings = teacheringworkInternshipguideMapper.selectAllByClassTeacher(classTeachers);
+        } else {
+            teachings = teacheringworkInternshipguideMapper.selectAll();
+        }
         for (int index = 0; index < teachings.size(); index++) {
             TeacheringworkInternshipguide teacheringworkInternshipguide = teachings.get(index);
             Userinformation userinformation = new Userinformation();

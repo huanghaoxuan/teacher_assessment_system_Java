@@ -11,6 +11,8 @@ public interface ScientificresearchPatentapplicationMapper {
 
     ScientificresearchPatentapplication selectByPrimaryKey(Integer id);
 
+    List<ScientificresearchPatentapplication> selectAllByClassTeacher(List<String> classTeachers);
+
     List<ScientificresearchPatentapplication> selectAll();
 
     int updateByPrimaryKey(ScientificresearchPatentapplication record);

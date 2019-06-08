@@ -52,7 +52,15 @@
     from others_comprehensiveAwardWinning
     where id = #{id,jdbcType=INTEGER}
   </select>
-    <select id="selectAll" resultMap="BaseResultMap">
+  <select id="selectAllByClassTeacher" parameterType="java.util.List" resultMap="BaseResultMap">
+    SELECT * FROM others_comprehensiveAwardWinning
+    WHERE classTeacher in
+    <foreach collection="list" item="classTeacher" index="index"
+             open="(" close=")" separator=",">
+      #{classTeacher}
+    </foreach>
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
         SELECT * FROM others_comprehensiveAwardWinning
   </select>
   <select id="selectByClassTeacher" parameterType="com.example.demo.model.OthersComprehensiveawardwinning"
