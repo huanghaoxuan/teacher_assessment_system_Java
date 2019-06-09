@@ -36,6 +36,18 @@ public class UserInformationController {
         return userinformationService.selectUserinformation(userinformation);
     }
 
+    @RequestMapping(value = "/selectUserinformation/name", method = {RequestMethod.GET})
+    @ApiOperation(value = "查询个人资料", notes = "通过姓名用户个人资料查询接口")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "name", value = "姓名", required = true, dataType = "varchar", paramType = "query"),
+
+    })
+    public Userinformation selectUserinformationByName(@ApiIgnore String name) {
+        Userinformation userinformation = new Userinformation();
+        userinformation.setName(name);
+        return userinformationService.selectByName(userinformation);
+    }
+
     @RequestMapping(value = "/updateByPrimaryKey", method = {RequestMethod.POST})
     @ApiOperation(value = "更新个人资料", notes = "更新个人资料")
     @ApiImplicitParams({

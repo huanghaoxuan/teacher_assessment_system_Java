@@ -13,7 +13,9 @@ import java.util.List;
  */
 public interface UserinformationService {
 
-    Userinformation selectUserinformation(Userinformation record);
+    Userinformation selectUserinformation(Userinformation record); //通过教师工号查询信息
+
+    Userinformation selectByName(Userinformation record);//通过教师姓名查询信息
 
     int updateByPrimaryKey(Userinformation record);
 

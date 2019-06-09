@@ -28,7 +28,12 @@ public class UserinformationServiceImpl implements UserinformationService {
 
     @Override
     public Userinformation selectUserinformation(Userinformation record) {
-        return userinformationMapper.selectByClassTeacher(record).get(0);
+        return userinformationMapper.selectByClassTeacher(record);
+    }
+
+    @Override
+    public Userinformation selectByName(Userinformation record) {
+        return userinformationMapper.selectByName(record);
     }
 
     @Override

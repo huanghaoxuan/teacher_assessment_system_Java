@@ -137,9 +137,14 @@
     select * from userInformation
   </select>
     <select id="selectByClassTeacher" parameterType="com.example.demo.model.Userinformation"
-            resultMap="BaseResultMap">
+            resultType="com.example.demo.model.Userinformation">
     SELECT * FROM userInformation WHERE 1=1
     AND classTeacher=#{classTeacher,jdbcType=NVARCHAR}
+  </select>
+    <select id="selectByName" parameterType="com.example.demo.model.Userinformation"
+            resultType="com.example.demo.model.Userinformation">
+    SELECT * FROM userInformation WHERE 1=1
+    AND name =#{name,jdbcType=NVARCHAR}
   </select>
     <select id="selectBydepartmentDept" parameterType="java.lang.String"
             resultMap="BaseResultMap">

@@ -24,6 +24,8 @@ public interface UserinformationMapper {
 
     List<Userinformation> selectBydepartmentDept(@Param("departmentDept") String departmentDept);
 
-    List<Userinformation> selectByClassTeacher(Userinformation record);
+    Userinformation selectByClassTeacher(Userinformation record);
+
+    Userinformation selectByName(Userinformation record);
 
 }
