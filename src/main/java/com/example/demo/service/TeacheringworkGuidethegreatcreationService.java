@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.model.TeacheringworkGuidethegreatcreation;
+import com.example.demo.model.Userinformation;
 import com.github.pagehelper.PageInfo;
 
 import java.math.BigDecimal;
@@ -10,7 +11,7 @@ public interface TeacheringworkGuidethegreatcreationService {
 
     int insert(TeacheringworkGuidethegreatcreation record);
 
-    PageInfo<TeacheringworkGuidethegreatcreation> selectAll(int pageNum, int pageSize, String departmentDept);
+    PageInfo<TeacheringworkGuidethegreatcreation> selectAll(int pageNum, int pageSize, Userinformation record);
 
     PageInfo<TeacheringworkGuidethegreatcreation> selectByClassTeacher(TeacheringworkGuidethegreatcreation teaching, int pageNum, int pageSize);
 

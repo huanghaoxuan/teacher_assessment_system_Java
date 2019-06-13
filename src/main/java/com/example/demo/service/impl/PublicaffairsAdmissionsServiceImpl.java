@@ -40,19 +40,17 @@ public class PublicaffairsAdmissionsServiceImpl implements PublicaffairsAdmissio
     }
 
     @Override
-    public PageInfo<PublicaffairsAdmissions> selectAll(int pageNum, int pageSize, String departmentDept) {
+    public PageInfo<PublicaffairsAdmissions> selectAll(int pageNum, int pageSize, Userinformation record) {
         PageHelper.startPage(pageNum, pageSize);
         List<PublicaffairsAdmissions> teachings;
-        if (departmentDept != null && !departmentDept.equals("")) {
-            List<String> classTeachers = userinformationService.selectBydepartmentDept(departmentDept);
-            //如果查询学院下没有记录，返回空
-            if (classTeachers.size() == 0) {
-                return new PageInfo<>();
-            }
-            teachings = publicaffairsAdmissionsMapper.selectAllByClassTeacher(classTeachers);
-        } else {
-            teachings = publicaffairsAdmissionsMapper.selectAll();
+        List<String> classTeachers = userinformationService.selectSomeByAny(record);
+        //如果查询信息表下没有记录，返回空
+        if (classTeachers.size() == 0) {
+            return new PageInfo<>();
         }
+        teachings = publicaffairsAdmissionsMapper.selectAllByClassTeacher(classTeachers);
+
+        //加入当前记录老师姓名
         for (int index = 0; index < teachings.size(); index++) {
             PublicaffairsAdmissions publicaffairsAdmissions = teachings.get(index);
             Userinformation userinformation = new Userinformation();

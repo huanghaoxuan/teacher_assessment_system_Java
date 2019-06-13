@@ -26,7 +26,7 @@ public interface UserinformationService {
 
     int updatedepartmentDept(Userinformation record);
 
-    List<String> selectBydepartmentDept(String departmentDept);
+    List<String> selectSomeByAny(Userinformation record);
 
     int getToken(String email);
 

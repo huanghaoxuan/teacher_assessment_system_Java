@@ -62,8 +62,8 @@ public class UserinformationServiceImpl implements UserinformationService {
     }
 
     @Override
-    public List<String> selectBydepartmentDept(String departmentDept) {
-        List<Userinformation> userinformations = userinformationMapper.selectBydepartmentDept(departmentDept);
+    public List<String> selectSomeByAny(Userinformation record) {
+        List<Userinformation> userinformations = userinformationMapper.selectSomeByAny(record);
         List<String> classTeachers = new ArrayList<>();
         for (int i = 0; i < userinformations.size(); i++) {
             classTeachers.add(userinformations.get(i).getClassTeacher());

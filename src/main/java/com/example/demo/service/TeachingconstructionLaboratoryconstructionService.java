@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.model.TeachingconstructionLaboratoryconstruction;
+import com.example.demo.model.Userinformation;
 import com.github.pagehelper.PageInfo;
 
 public interface TeachingconstructionLaboratoryconstructionService {
@@ -8,7 +9,7 @@ public interface TeachingconstructionLaboratoryconstructionService {
 
     int insert(TeachingconstructionLaboratoryconstruction record);
 
-    PageInfo<TeachingconstructionLaboratoryconstruction> selectAll(int pageNum, int pageSize, String departmentDept);
+    PageInfo<TeachingconstructionLaboratoryconstruction> selectAll(int pageNum, int pageSize, Userinformation record);
 
     PageInfo<TeachingconstructionLaboratoryconstruction> selectByClassTeacher(TeachingconstructionLaboratoryconstruction teaching, int pageNum, int pageSize);
 

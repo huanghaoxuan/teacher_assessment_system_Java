@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.model.ScientificresearchPublishpaper;
+import com.example.demo.model.Userinformation;
 import com.github.pagehelper.PageInfo;
 
 import java.math.BigDecimal;
@@ -10,7 +11,7 @@ public interface ScientificresearchPublishpaperService {
 
     int insert(ScientificresearchPublishpaper record);
 
-    PageInfo<ScientificresearchPublishpaper> selectAll(int pageNum, int pageSize, String departmentDept);
+    PageInfo<ScientificresearchPublishpaper> selectAll(int pageNum, int pageSize, Userinformation record);
 
     PageInfo<ScientificresearchPublishpaper> selectByClassTeacher(ScientificresearchPublishpaper teaching, int pageNum, int pageSize);
 

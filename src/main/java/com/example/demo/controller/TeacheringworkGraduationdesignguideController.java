@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.TeacheringworkGraduationdesignguide;
+import com.example.demo.model.Userinformation;
 import com.example.demo.service.TeacheringworkGraduationdesignguideService;
 import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
@@ -109,11 +110,16 @@ public class TeacheringworkGraduationdesignguideController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "pageNum", value = "页码", required = true, dataType = "int", paramType = "query"),
             @ApiImplicitParam(name = "pageSize", value = "页大小", required = true, dataType = "int", paramType = "query"),
-            @ApiImplicitParam(name = "departmentDept", value = "学院", required = false, dataType = "varchar", paramType = "query")
+            @ApiImplicitParam(name = "classTeacher", value = "工号", required = false, dataType = "varchar", paramType = "query"),
+            @ApiImplicitParam(name = "name", value = "姓名", required = false, dataType = "varchar", paramType = "query"),
+            @ApiImplicitParam(name = "departmentDept", value = "所在系部", required = false, dataType = "varchar", paramType = "query"),
     })
-    public PageInfo<TeacheringworkGraduationdesignguide> selectAll(@ApiIgnore int pageNum, int pageSize, String departmentDept) {
-
-        return teacheringworkGraduationdesignguideService.selectAll(pageNum, pageSize, departmentDept);
+    public PageInfo<TeacheringworkGraduationdesignguide> selectAll(@ApiIgnore int pageNum, int pageSize, String classTeacher, String name, String departmentDept) {
+        Userinformation userinformation = new Userinformation();
+        userinformation.setName(name);
+        userinformation.setClassTeacher(classTeacher);
+        userinformation.setDepartmentDept(departmentDept);
+        return teacheringworkGraduationdesignguideService.selectAll(pageNum, pageSize, userinformation);
     }
 }
 

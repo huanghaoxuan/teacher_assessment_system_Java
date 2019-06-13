@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.model.OthersAnnualreviewstatus;
+import com.example.demo.model.Userinformation;
 import com.github.pagehelper.PageInfo;
 
 public interface OthersAnnualreviewstatusService {
@@ -13,6 +14,6 @@ public interface OthersAnnualreviewstatusService {
 
     int deleteByPrimaryKey(Integer id);
 
-    PageInfo<OthersAnnualreviewstatus> selectAll(int pageNum, int pageSize, String departmentDept);
+    PageInfo<OthersAnnualreviewstatus> selectAll(int pageNum, int pageSize, Userinformation record);
 
 }

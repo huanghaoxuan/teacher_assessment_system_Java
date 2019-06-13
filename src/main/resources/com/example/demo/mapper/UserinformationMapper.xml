@@ -143,7 +143,7 @@
   </select>
     <select id="selectByUserinformation" parameterType="com.example.demo.model.Userinformation"
             resultMap="BaseResultMap">
-    SELECT * FROM userInformation WHERE 1=1
+        SELECT * FROM userInformation WHERE 1=1
         <if test="classTeacher != null and classTeacher != ''">
             AND classTeacher=#{classTeacher,jdbcType=NVARCHAR}
         </if>
@@ -153,11 +153,18 @@
         <if test="departmentDept != null and departmentDept != ''">
             AND departmentDept=#{departmentDept,jdbcType=NVARCHAR}
         </if>
-  </select>
-    <select id="selectBydepartmentDept" parameterType="java.lang.String"
+    </select>
+    <!--    通过各种条件查询-->
+    <select id="selectSomeByAny" parameterType="com.example.demo.model.Userinformation"
             resultMap="BaseResultMap">
         SELECT * FROM userInformation WHERE 1=1
-        <if test="departmentDept != null">
+        <if test="classTeacher != null and classTeacher != ''">
+            AND classTeacher=#{classTeacher,jdbcType=NVARCHAR}
+        </if>
+        <if test="name != null and name != ''">
+            AND name=#{name,jdbcType=NVARCHAR}
+        </if>
+        <if test="departmentDept != null and departmentDept != ''">
             AND departmentDept=#{departmentDept,jdbcType=NVARCHAR}
         </if>
     </select>

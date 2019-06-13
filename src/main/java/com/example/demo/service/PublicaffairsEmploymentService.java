@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.model.PublicaffairsEmployment;
+import com.example.demo.model.Userinformation;
 import com.github.pagehelper.PageInfo;
 
 public interface PublicaffairsEmploymentService {
@@ -8,7 +9,7 @@ public interface PublicaffairsEmploymentService {
 
     int insert(PublicaffairsEmployment record);
 
-    PageInfo<PublicaffairsEmployment> selectAll(int pageNum, int pageSize, String departmentDept);
+    PageInfo<PublicaffairsEmployment> selectAll(int pageNum, int pageSize, Userinformation record);
 
     PageInfo<PublicaffairsEmployment> selectByClassTeacher(PublicaffairsEmployment teaching, int pageNum, int pageSize);
 
