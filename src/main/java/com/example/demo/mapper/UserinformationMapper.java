@@ -26,6 +26,6 @@ public interface UserinformationMapper {
 
     Userinformation selectByClassTeacher(Userinformation record);
 
-    Userinformation selectByName(Userinformation record);
+    List<Userinformation> selectByUserinformation(Userinformation record);
 
 }

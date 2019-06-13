@@ -57,7 +57,7 @@ public class PublicaffairsCounselorServiceImpl implements PublicaffairsCounselor
             PublicaffairsCounselor publicaffairsCounselor = teachings.get(index);
             Userinformation userinformation = new Userinformation();
             userinformation.setClassTeacher(publicaffairsCounselor.getClassTeacher());
-            publicaffairsCounselor.setClassTeacherName(userinformationService.selectUserinformation(userinformation).getName());
+            publicaffairsCounselor.setClassTeacherName(userinformationService.selectByClassTeacher(userinformation).getName());
         }
         PageInfo<PublicaffairsCounselor> result = new PageInfo<>(teachings);
         return result;

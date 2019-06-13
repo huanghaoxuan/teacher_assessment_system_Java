@@ -57,7 +57,7 @@ public class TeacheringworkPracticaltrainingguidanceServiceImpl implements Teach
             TeacheringworkPracticaltrainingguidance teacheringworkPracticaltrainingguidance = teachings.get(index);
             Userinformation userinformation = new Userinformation();
             userinformation.setClassTeacher(teacheringworkPracticaltrainingguidance.getClassTeacher());
-            teacheringworkPracticaltrainingguidance.setClassTeacherName(userinformationService.selectUserinformation(userinformation).getName());
+            teacheringworkPracticaltrainingguidance.setClassTeacherName(userinformationService.selectByClassTeacher(userinformation).getName());
         }
         PageInfo<TeacheringworkPracticaltrainingguidance> result = new PageInfo<>(teachings);
         return result;

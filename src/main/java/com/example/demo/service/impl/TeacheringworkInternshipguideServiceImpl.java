@@ -57,7 +57,7 @@ public class TeacheringworkInternshipguideServiceImpl implements TeacheringworkI
             TeacheringworkInternshipguide teacheringworkInternshipguide = teachings.get(index);
             Userinformation userinformation = new Userinformation();
             userinformation.setClassTeacher(teacheringworkInternshipguide.getClassTeacher());
-            teacheringworkInternshipguide.setClassTeacherName(userinformationService.selectUserinformation(userinformation).getName());
+            teacheringworkInternshipguide.setClassTeacherName(userinformationService.selectByClassTeacher(userinformation).getName());
         }
         PageInfo<TeacheringworkInternshipguide> result = new PageInfo<>(teachings);
         return result;

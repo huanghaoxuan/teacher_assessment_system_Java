@@ -4,6 +4,8 @@ import com.example.demo.mapper.UserinformationMapper;
 import com.example.demo.model.Userinformation;
 import com.example.demo.service.UserinformationService;
 import com.example.demo.util.MailTo;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,13 +29,16 @@ public class UserinformationServiceImpl implements UserinformationService {
 
 
     @Override
-    public Userinformation selectUserinformation(Userinformation record) {
+    public Userinformation selectByClassTeacher(Userinformation record) {
         return userinformationMapper.selectByClassTeacher(record);
     }
 
     @Override
-    public Userinformation selectByName(Userinformation record) {
-        return userinformationMapper.selectByName(record);
+    public PageInfo<Userinformation> selectByUserinformation(int pageNum, int pageSize, Userinformation record) {
+        PageHelper.startPage(pageNum, pageSize);
+        List<Userinformation> teachings = userinformationMapper.selectByUserinformation(record);
+        PageInfo<Userinformation> result = new PageInfo<>(teachings);
+        return result;
     }
 
     @Override
@@ -91,7 +96,7 @@ public class UserinformationServiceImpl implements UserinformationService {
     public int getTokenForget(String access_name) {
         Userinformation userinformation = new Userinformation();
         userinformation.setClassTeacher(access_name);
-        String email = selectUserinformation(userinformation).getEmail();
+        String email = selectByClassTeacher(userinformation).getEmail();
         return getToken(email);
     }
 }

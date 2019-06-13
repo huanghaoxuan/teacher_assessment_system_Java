@@ -57,7 +57,7 @@ public class PublicaffairsSecondclassroomServiceImpl implements PublicaffairsSec
             PublicaffairsSecondclassroom publicaffairsSecondclassroom = teachings.get(index);
             Userinformation userinformation = new Userinformation();
             userinformation.setClassTeacher(publicaffairsSecondclassroom.getClassTeacher());
-            publicaffairsSecondclassroom.setClassTeacherName(userinformationService.selectUserinformation(userinformation).getName());
+            publicaffairsSecondclassroom.setClassTeacherName(userinformationService.selectByClassTeacher(userinformation).getName());
         }
         PageInfo<PublicaffairsSecondclassroom> result = new PageInfo<>(teachings);
         return result;

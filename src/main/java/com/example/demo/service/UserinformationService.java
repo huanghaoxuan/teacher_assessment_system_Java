@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.model.Userinformation;
+import com.github.pagehelper.PageInfo;
 
 import java.util.List;
 
@@ -13,9 +14,9 @@ import java.util.List;
  */
 public interface UserinformationService {
 
-    Userinformation selectUserinformation(Userinformation record); //通过教师工号查询信息
+    Userinformation selectByClassTeacher(Userinformation record); //通过教师工号查询信息
 
-    Userinformation selectByName(Userinformation record);//通过教师姓名查询信息
+    PageInfo<Userinformation> selectByUserinformation(int pageNum, int pageSize, Userinformation record);//查询信息(各种查询条件)
 
     int updateByPrimaryKey(Userinformation record);
 

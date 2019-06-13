@@ -57,7 +57,7 @@ public class TeacheringworkExperimentalpracticeteachingServiceImpl implements Te
             TeacheringworkExperimentalpracticeteaching teacheringworkExperimentalpracticeteaching = teachings.get(index);
             Userinformation userinformation = new Userinformation();
             userinformation.setClassTeacher(teacheringworkExperimentalpracticeteaching.getClassTeacher());
-            teacheringworkExperimentalpracticeteaching.setClassTeacherName(userinformationService.selectUserinformation(userinformation).getName());
+            teacheringworkExperimentalpracticeteaching.setClassTeacherName(userinformationService.selectByClassTeacher(userinformation).getName());
         }
         PageInfo<TeacheringworkExperimentalpracticeteaching> result = new PageInfo<>(teachings);
         return result;

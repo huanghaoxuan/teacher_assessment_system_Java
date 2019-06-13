@@ -66,7 +66,7 @@ public class TeacheringworkTeachingawardsServiceImpl implements TeacheringworkTe
             TeacheringworkTeachingawards teacheringworkTeachingawards = teachings.get(index);
             Userinformation userinformation = new Userinformation();
             userinformation.setClassTeacher(teacheringworkTeachingawards.getClassTeacher());
-            teacheringworkTeachingawards.setClassTeacherName(userinformationService.selectUserinformation(userinformation).getName());
+            teacheringworkTeachingawards.setClassTeacherName(userinformationService.selectByClassTeacher(userinformation).getName());
         }
         PageInfo<TeacheringworkTeachingawards> result = new PageInfo<>(teachings);
         return result;

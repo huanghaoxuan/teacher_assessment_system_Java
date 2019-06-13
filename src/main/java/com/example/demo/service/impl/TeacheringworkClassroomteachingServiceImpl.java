@@ -57,7 +57,7 @@ public class TeacheringworkClassroomteachingServiceImpl implements Teacheringwor
             TeacheringworkClassroomteaching teacheringworkClassroomteaching = teachings.get(index);
             Userinformation userinformation = new Userinformation();
             userinformation.setClassTeacher(teacheringworkClassroomteaching.getClassTeacher());
-            teacheringworkClassroomteaching.setClassTeacherName(userinformationService.selectUserinformation(userinformation).getName());
+            teacheringworkClassroomteaching.setClassTeacherName(userinformationService.selectByClassTeacher(userinformation).getName());
         }
         PageInfo<TeacheringworkClassroomteaching> result = new PageInfo<>(teachings);
         return result;

@@ -58,7 +58,7 @@ public class TeachingconstructionTeachingactivitiesServiceImpl implements Teachi
             TeachingconstructionTeachingactivities teachingconstructionTeachingactivities = teachings.get(index);
             Userinformation userinformation = new Userinformation();
             userinformation.setClassTeacher(teachingconstructionTeachingactivities.getClassTeacher());
-            teachingconstructionTeachingactivities.setClassTeacherName(userinformationService.selectUserinformation(userinformation).getName());
+            teachingconstructionTeachingactivities.setClassTeacherName(userinformationService.selectByClassTeacher(userinformation).getName());
         }
         PageInfo<TeachingconstructionTeachingactivities> result = new PageInfo<>(teachings);
         return result;

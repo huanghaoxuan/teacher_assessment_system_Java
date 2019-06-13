@@ -57,7 +57,7 @@ public class OthersFilesServiceImpl implements OthersFilesService {
             OthersFiles othersFiles = teachings.get(index);
             Userinformation userinformation = new Userinformation();
             userinformation.setClassTeacher(othersFiles.getClassTeacher());
-            othersFiles.setClassTeacherName(userinformationService.selectUserinformation(userinformation).getName());
+            othersFiles.setClassTeacherName(userinformationService.selectByClassTeacher(userinformation).getName());
         }
         PageInfo<OthersFiles> result = new PageInfo<>(teachings);
         return result;

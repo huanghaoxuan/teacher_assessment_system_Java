@@ -62,7 +62,7 @@ public class ScientificresearchLongitudinaltopicsprojectServiceImpl implements S
             ScientificresearchLongitudinaltopicsproject scientificresearchLongitudinaltopicsproject = teachings.get(index);
             Userinformation userinformation = new Userinformation();
             userinformation.setClassTeacher(scientificresearchLongitudinaltopicsproject.getClassTeacher());
-            scientificresearchLongitudinaltopicsproject.setClassTeacherName(userinformationService.selectUserinformation(userinformation).getName());
+            scientificresearchLongitudinaltopicsproject.setClassTeacherName(userinformationService.selectByClassTeacher(userinformation).getName());
         }
         PageInfo<ScientificresearchLongitudinaltopicsproject> result = new PageInfo<>(teachings);
         return result;

@@ -71,7 +71,7 @@ public class OthersAnnualreviewstatusServiceImpl implements OthersAnnualreviewst
             OthersAnnualreviewstatus othersAnnualreviewstatus = teachings.get(index);
             Userinformation userinformation = new Userinformation();
             userinformation.setClassTeacher(othersAnnualreviewstatus.getClassTeacher());
-            othersAnnualreviewstatus.setClassTeacherName(userinformationService.selectUserinformation(userinformation).getName());
+            othersAnnualreviewstatus.setClassTeacherName(userinformationService.selectByClassTeacher(userinformation).getName());
         }
         PageInfo<OthersAnnualreviewstatus> result = new PageInfo<>(teachings);
         return result;

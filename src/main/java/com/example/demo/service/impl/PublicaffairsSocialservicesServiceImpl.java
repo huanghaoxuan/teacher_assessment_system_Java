@@ -57,7 +57,7 @@ public class PublicaffairsSocialservicesServiceImpl implements PublicaffairsSoci
             PublicaffairsSocialservices publicaffairsSocialservices = teachings.get(index);
             Userinformation userinformation = new Userinformation();
             userinformation.setClassTeacher(publicaffairsSocialservices.getClassTeacher());
-            publicaffairsSocialservices.setClassTeacherName(userinformationService.selectUserinformation(userinformation).getName());
+            publicaffairsSocialservices.setClassTeacherName(userinformationService.selectByClassTeacher(userinformation).getName());
         }
         PageInfo<PublicaffairsSocialservices> result = new PageInfo<>(teachings);
         return result;

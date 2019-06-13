@@ -57,7 +57,7 @@ public class OthersComprehensiveawardwinningServiceImpl implements OthersCompreh
             OthersComprehensiveawardwinning othersComprehensiveawardwinning = teachings.get(index);
             Userinformation userinformation = new Userinformation();
             userinformation.setClassTeacher(othersComprehensiveawardwinning.getClassTeacher());
-            othersComprehensiveawardwinning.setClassTeacherName(userinformationService.selectUserinformation(userinformation).getName());
+            othersComprehensiveawardwinning.setClassTeacherName(userinformationService.selectByClassTeacher(userinformation).getName());
         }
         PageInfo<OthersComprehensiveawardwinning> result = new PageInfo<>(teachings);
         return result;

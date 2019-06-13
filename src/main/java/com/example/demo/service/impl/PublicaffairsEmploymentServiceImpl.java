@@ -57,7 +57,7 @@ public class PublicaffairsEmploymentServiceImpl implements PublicaffairsEmployme
             PublicaffairsEmployment publicaffairsEmployment = teachings.get(index);
             Userinformation userinformation = new Userinformation();
             userinformation.setClassTeacher(publicaffairsEmployment.getClassTeacher());
-            publicaffairsEmployment.setClassTeacherName(userinformationService.selectUserinformation(userinformation).getName());
+            publicaffairsEmployment.setClassTeacherName(userinformationService.selectByClassTeacher(userinformation).getName());
         }
         PageInfo<PublicaffairsEmployment> result = new PageInfo<>(teachings);
         return result;

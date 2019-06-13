@@ -62,7 +62,7 @@ public class TeacheringworkGraduationdesignguideServiceImpl implements Teacherin
             TeacheringworkGraduationdesignguide teacheringworkGraduationdesignguide = teachings.get(index);
             Userinformation userinformation = new Userinformation();
             userinformation.setClassTeacher(teacheringworkGraduationdesignguide.getClassTeacher());
-            teacheringworkGraduationdesignguide.setClassTeacherName(userinformationService.selectUserinformation(userinformation).getName());
+            teacheringworkGraduationdesignguide.setClassTeacherName(userinformationService.selectByClassTeacher(userinformation).getName());
         }
         PageInfo<TeacheringworkGraduationdesignguide> result = new PageInfo<>(teachings);
         return result;

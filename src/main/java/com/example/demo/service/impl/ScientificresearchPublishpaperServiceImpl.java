@@ -62,7 +62,7 @@ public class ScientificresearchPublishpaperServiceImpl implements Scientificrese
             ScientificresearchPublishpaper scientificresearchPublishpaper = teachings.get(index);
             Userinformation userinformation = new Userinformation();
             userinformation.setClassTeacher(scientificresearchPublishpaper.getClassTeacher());
-            scientificresearchPublishpaper.setClassTeacherName(userinformationService.selectUserinformation(userinformation).getName());
+            scientificresearchPublishpaper.setClassTeacherName(userinformationService.selectByClassTeacher(userinformation).getName());
         }
         PageInfo<ScientificresearchPublishpaper> result = new PageInfo<>(teachings);
         return result;

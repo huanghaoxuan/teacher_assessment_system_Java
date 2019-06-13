@@ -60,7 +60,7 @@ public class TeachingconstructionTextbookconstructionServiceImpl implements Teac
             TeachingconstructionTextbookconstruction teachingconstructionTextbookconstruction = teachings.get(index);
             Userinformation userinformation = new Userinformation();
             userinformation.setClassTeacher(teachingconstructionTextbookconstruction.getClassTeacher());
-            teachingconstructionTextbookconstruction.setClassTeacherName(userinformationService.selectUserinformation(userinformation).getName());
+            teachingconstructionTextbookconstruction.setClassTeacherName(userinformationService.selectByClassTeacher(userinformation).getName());
         }
         PageInfo<TeachingconstructionTextbookconstruction> result = new PageInfo<>(teachings);
         return result;

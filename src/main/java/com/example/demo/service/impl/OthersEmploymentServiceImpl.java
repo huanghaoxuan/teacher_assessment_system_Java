@@ -56,7 +56,7 @@ public class OthersEmploymentServiceImpl implements OthersEmploymentService {
             OthersEmployment othersEmployment = teachings.get(index);
             Userinformation userinformation = new Userinformation();
             userinformation.setClassTeacher(othersEmployment.getClassTeacher());
-            othersEmployment.setClassTeacherName(userinformationService.selectUserinformation(userinformation).getName());
+            othersEmployment.setClassTeacherName(userinformationService.selectByClassTeacher(userinformation).getName());
         }
         PageInfo<OthersEmployment> result = new PageInfo<>(teachings);
         return result;

@@ -57,7 +57,7 @@ public class PublicaffairsAdmissionsServiceImpl implements PublicaffairsAdmissio
             PublicaffairsAdmissions publicaffairsAdmissions = teachings.get(index);
             Userinformation userinformation = new Userinformation();
             userinformation.setClassTeacher(publicaffairsAdmissions.getClassTeacher());
-            publicaffairsAdmissions.setClassTeacherName(userinformationService.selectUserinformation(userinformation).getName());
+            publicaffairsAdmissions.setClassTeacherName(userinformationService.selectByClassTeacher(userinformation).getName());
         }
         PageInfo<PublicaffairsAdmissions> result = new PageInfo<>(teachings);
         return result;

@@ -63,7 +63,7 @@ public class TeacheringworkGuidecontestServiceImpl implements TeacheringworkGuid
             TeacheringworkGuidecontest teacheringworkGuidecontest = teachings.get(index);
             Userinformation userinformation = new Userinformation();
             userinformation.setClassTeacher(teacheringworkGuidecontest.getClassTeacher());
-            teacheringworkGuidecontest.setClassTeacherName(userinformationService.selectUserinformation(userinformation).getName());
+            teacheringworkGuidecontest.setClassTeacherName(userinformationService.selectByClassTeacher(userinformation).getName());
         }
         PageInfo<TeacheringworkGuidecontest> result = new PageInfo<>(teachings);
         return result;

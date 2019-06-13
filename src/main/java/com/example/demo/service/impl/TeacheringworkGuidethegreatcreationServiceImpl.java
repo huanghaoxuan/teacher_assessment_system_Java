@@ -62,7 +62,7 @@ public class TeacheringworkGuidethegreatcreationServiceImpl implements Teacherin
             TeacheringworkGuidethegreatcreation teacheringworkGuidethegreatcreation = teachings.get(index);
             Userinformation userinformation = new Userinformation();
             userinformation.setClassTeacher(teacheringworkGuidethegreatcreation.getClassTeacher());
-            teacheringworkGuidethegreatcreation.setClassTeacherName(userinformationService.selectUserinformation(userinformation).getName());
+            teacheringworkGuidethegreatcreation.setClassTeacherName(userinformationService.selectByClassTeacher(userinformation).getName());
         }
         PageInfo<TeacheringworkGuidethegreatcreation> result = new PageInfo<>(teachings);
         return result;

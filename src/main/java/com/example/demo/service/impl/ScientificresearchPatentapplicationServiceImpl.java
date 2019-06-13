@@ -62,7 +62,7 @@ public class ScientificresearchPatentapplicationServiceImpl implements Scientifi
             ScientificresearchPatentapplication scientificresearchPatentapplication = teachings.get(index);
             Userinformation userinformation = new Userinformation();
             userinformation.setClassTeacher(scientificresearchPatentapplication.getClassTeacher());
-            scientificresearchPatentapplication.setClassTeacherName(userinformationService.selectUserinformation(userinformation).getName());
+            scientificresearchPatentapplication.setClassTeacherName(userinformationService.selectByClassTeacher(userinformation).getName());
         }
         PageInfo<ScientificresearchPatentapplication> result = new PageInfo<>(teachings);
         return result;

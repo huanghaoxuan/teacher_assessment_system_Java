@@ -57,7 +57,7 @@ public class TeachingconstructionComprehensivereformServiceImpl implements Teach
             TeachingconstructionComprehensivereform teachingconstructionComprehensivereform = teachings.get(index);
             Userinformation userinformation = new Userinformation();
             userinformation.setClassTeacher(teachingconstructionComprehensivereform.getClassTeacher());
-            teachingconstructionComprehensivereform.setClassTeacherName(userinformationService.selectUserinformation(userinformation).getName());
+            teachingconstructionComprehensivereform.setClassTeacherName(userinformationService.selectByClassTeacher(userinformation).getName());
         }
         PageInfo<TeachingconstructionComprehensivereform> result = new PageInfo<>(teachings);
         return result;

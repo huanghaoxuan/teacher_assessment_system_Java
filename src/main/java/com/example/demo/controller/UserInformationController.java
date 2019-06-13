@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.model.Userinformation;
 import com.example.demo.service.UserinformationService;
+import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -25,7 +26,7 @@ public class UserInformationController {
     private UserinformationService userinformationService;
 
     @RequestMapping(value = "/selectUserinformation", method = {RequestMethod.GET})
-    @ApiOperation(value = "查询个人资料", notes = "用户个人资料查询接口")
+    @ApiOperation(value = "查询个人资料", notes = "通过工号 用户个人资料查询接口")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "classTeacher", value = "工号", required = true, dataType = "varchar", paramType = "query"),
 
@@ -33,19 +34,25 @@ public class UserInformationController {
     public Userinformation selectUserinformation(@ApiIgnore String classTeacher) {
         Userinformation userinformation = new Userinformation();
         userinformation.setClassTeacher(classTeacher);
-        return userinformationService.selectUserinformation(userinformation);
+        return userinformationService.selectByClassTeacher(userinformation);
     }
 
-    @RequestMapping(value = "/selectUserinformation/name", method = {RequestMethod.GET})
-    @ApiOperation(value = "查询个人资料", notes = "通过姓名用户个人资料查询接口")
+    @RequestMapping(value = "/selectUserinformation/findUser", method = {RequestMethod.GET})
+    @ApiOperation(value = "查询个人资料", notes = "通过各种查询条件用户个人资料查询接口")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "name", value = "姓名", required = true, dataType = "varchar", paramType = "query"),
+            @ApiImplicitParam(name = "pageNum", value = "页码", required = true, dataType = "int", paramType = "query"),
+            @ApiImplicitParam(name = "pageSize", value = "页大小", required = true, dataType = "int", paramType = "query"),
+            @ApiImplicitParam(name = "classTeacher", value = "工号", required = false, dataType = "varchar", paramType = "query"),
+            @ApiImplicitParam(name = "name", value = "姓名", required = false, dataType = "varchar", paramType = "query"),
+            @ApiImplicitParam(name = "departmentDept", value = "所在系部", required = false, dataType = "varchar", paramType = "query"),
 
     })
-    public Userinformation selectUserinformationByName(@ApiIgnore String name) {
+    public PageInfo<Userinformation> selectUserinformationByName(@ApiIgnore int pageNum, int pageSize, String classTeacher, String name, String departmentDept) {
         Userinformation userinformation = new Userinformation();
         userinformation.setName(name);
-        return userinformationService.selectByName(userinformation);
+        userinformation.setClassTeacher(classTeacher);
+        userinformation.setDepartmentDept(departmentDept);
+        return userinformationService.selectByUserinformation(pageNum, pageSize, userinformation);
     }
 
     @RequestMapping(value = "/updateByPrimaryKey", method = {RequestMethod.POST})

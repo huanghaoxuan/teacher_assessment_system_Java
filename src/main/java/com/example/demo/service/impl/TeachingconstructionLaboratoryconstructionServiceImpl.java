@@ -57,7 +57,7 @@ public class TeachingconstructionLaboratoryconstructionServiceImpl implements Te
             TeachingconstructionLaboratoryconstruction teachingconstructionLaboratoryconstruction = teachings.get(index);
             Userinformation userinformation = new Userinformation();
             userinformation.setClassTeacher(teachingconstructionLaboratoryconstruction.getClassTeacher());
-            teachingconstructionLaboratoryconstruction.setClassTeacherName(userinformationService.selectUserinformation(userinformation).getName());
+            teachingconstructionLaboratoryconstruction.setClassTeacherName(userinformationService.selectByClassTeacher(userinformation).getName());
         }
         PageInfo<TeachingconstructionLaboratoryconstruction> result = new PageInfo<>(teachings);
         return result;

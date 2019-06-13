@@ -62,7 +62,7 @@ public class ScientificresearchHorizontaltopicprojectsServiceImpl implements Sci
             ScientificresearchHorizontaltopicprojects scientificresearchHorizontaltopicprojects = teachings.get(index);
             Userinformation userinformation = new Userinformation();
             userinformation.setClassTeacher(scientificresearchHorizontaltopicprojects.getClassTeacher());
-            scientificresearchHorizontaltopicprojects.setClassTeacherName(userinformationService.selectUserinformation(userinformation).getName());
+            scientificresearchHorizontaltopicprojects.setClassTeacherName(userinformationService.selectByClassTeacher(userinformation).getName());
         }
         PageInfo<ScientificresearchHorizontaltopicprojects> result = new PageInfo<>(teachings);
         return result;
