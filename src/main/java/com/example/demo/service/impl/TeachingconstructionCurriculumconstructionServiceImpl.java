@@ -41,9 +41,9 @@ public class TeachingconstructionCurriculumconstructionServiceImpl implements Te
 
     @Override
     public PageInfo<TeachingconstructionCurriculumconstruction> selectAll(int pageNum, int pageSize, Userinformation record) {
+        List<String> classTeachers = userinformationService.selectSomeByAny(record);
         PageHelper.startPage(pageNum, pageSize);
         List<TeachingconstructionCurriculumconstruction> teachings;
-        List<String> classTeachers = userinformationService.selectSomeByAny(record);
         //如果查询信息表下没有记录，返回空
         if (classTeachers.size() == 0) {
             return new PageInfo<>();

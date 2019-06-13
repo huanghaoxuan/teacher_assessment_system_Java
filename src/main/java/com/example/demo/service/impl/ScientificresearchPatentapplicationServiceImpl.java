@@ -46,9 +46,9 @@ public class ScientificresearchPatentapplicationServiceImpl implements Scientifi
 
     @Override
     public PageInfo<ScientificresearchPatentapplication> selectAll(int pageNum, int pageSize, Userinformation record) {
+        List<String> classTeachers = userinformationService.selectSomeByAny(record);
         PageHelper.startPage(pageNum, pageSize);
         List<ScientificresearchPatentapplication> teachings;
-        List<String> classTeachers = userinformationService.selectSomeByAny(record);
         //如果查询信息表下没有记录，返回空
         if (classTeachers.size() == 0) {
             return new PageInfo<>();
