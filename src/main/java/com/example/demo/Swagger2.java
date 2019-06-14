@@ -53,10 +53,10 @@ public class Swagger2 {
      */
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("高校教师成果信息管理系统")
-                .description("后端作者：http://www.github.com/ZaleJ/")
+                .title("高校教师数据采集系统")
+                .description("后端作者：https://github.com/huanghaoxuan/")
                 .termsOfServiceUrl("http://jskh.cxxy.seu.edu.cn")
-                .contact(new Contact("zalej", "http://github.com/ZaleJ/", "hellojzl@foxmail.com"))
+                .contact(new Contact("黄浩轩", "https://github.com/huanghaoxuan/", "huanghaoxuan1998@outlook.com"))
                 .version("1.0")
                 .build();
     }
